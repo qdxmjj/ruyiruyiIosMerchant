@@ -24,7 +24,18 @@
     return;
 }
 
+-(void)showTextLoading{
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].windows lastObject] animated:YES];
+    hud.mode = MBProgressHUDModeAnnularDeterminate;
 
+    hud.label.text = @"正在加载...";
+    hud.mode = MBProgressHUDModeText;
+
+    [hud showAnimated:YES];
+    [hud hideAnimated:YES afterDelay:1.5];
+
+}
 
 +(void)MBProgressHUDWithTextMessage:(NSString *)message {
     if ([UIApplication sharedApplication].keyWindow) {

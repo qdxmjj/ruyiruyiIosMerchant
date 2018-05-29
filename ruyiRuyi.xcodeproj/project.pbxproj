@@ -46,6 +46,9 @@
 		3624E2C62091EE1300CC4AF4 /* LogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3624E2C42091EE1300CC4AF4 /* LogInViewController.xib */; };
 		3647A85D2099D51B000723FA /* YMCityPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3647A85C2099D51B000723FA /* YMCityPickerView.m */; };
 		36656D76209C5BEC00D97874 /* HUDQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 36656D75209C5BEC00D97874 /* HUDQueue.m */; };
+		36899BA320BBD12B00B06184 /* OrdersPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36899BA120BBD12B00B06184 /* OrdersPhotoCell.m */; };
+		36899BA420BBD12B00B06184 /* OrdersPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36899BA220BBD12B00B06184 /* OrdersPhotoCell.xib */; };
+		36899BA820BBE6E700B06184 /* MyOrdersDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36899BA720BBE6E700B06184 /* MyOrdersDetailsController.m */; };
 		368A7A55209AF22B00CA8DD0 /* JJFileStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 368A7A54209AF22B00CA8DD0 /* JJFileStorage.m */; };
 		368A7A59209B195300CA8DD0 /* ProjectCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 368A7A57209B195300CA8DD0 /* ProjectCollectionViewCell.m */; };
 		368A7A5A209B195300CA8DD0 /* ProjectCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368A7A58209B195300CA8DD0 /* ProjectCollectionViewCell.xib */; };
@@ -239,6 +242,11 @@
 		3647A85C2099D51B000723FA /* YMCityPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMCityPickerView.m; sourceTree = "<group>"; };
 		36656D74209C5BEC00D97874 /* HUDQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HUDQueue.h; sourceTree = "<group>"; };
 		36656D75209C5BEC00D97874 /* HUDQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HUDQueue.m; sourceTree = "<group>"; };
+		36899BA020BBD12B00B06184 /* OrdersPhotoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrdersPhotoCell.h; sourceTree = "<group>"; };
+		36899BA120BBD12B00B06184 /* OrdersPhotoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrdersPhotoCell.m; sourceTree = "<group>"; };
+		36899BA220BBD12B00B06184 /* OrdersPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrdersPhotoCell.xib; sourceTree = "<group>"; };
+		36899BA620BBE6E700B06184 /* MyOrdersDetailsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrdersDetailsController.h; sourceTree = "<group>"; };
+		36899BA720BBE6E700B06184 /* MyOrdersDetailsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrdersDetailsController.m; sourceTree = "<group>"; };
 		368A7A53209AF22B00CA8DD0 /* JJFileStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJFileStorage.h; sourceTree = "<group>"; };
 		368A7A54209AF22B00CA8DD0 /* JJFileStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJFileStorage.m; sourceTree = "<group>"; };
 		368A7A56209B195300CA8DD0 /* ProjectCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjectCollectionViewCell.h; sourceTree = "<group>"; };
@@ -662,6 +670,16 @@
 			name = AppConfig;
 			sourceTree = "<group>";
 		};
+		36899BA520BBE68D00B06184 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				360F497D20B2FBA8005D4CCF /* MyOrdersCell.h */,
+				360F497E20B2FBA8005D4CCF /* MyOrdersCell.m */,
+				360F497F20B2FBA8005D4CCF /* MyOrdersCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		36A584CA209C09EF00A71C35 /* ResetPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -803,6 +821,9 @@
 				36F4F17D20B94732009CA642 /* SelectServiceCell.h */,
 				36F4F17E20B94732009CA642 /* SelectServiceCell.m */,
 				36F4F17F20B94732009CA642 /* SelectServiceCell.xib */,
+				36899BA020BBD12B00B06184 /* OrdersPhotoCell.h */,
+				36899BA120BBD12B00B06184 /* OrdersPhotoCell.m */,
+				36899BA220BBD12B00B06184 /* OrdersPhotoCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1008,14 +1029,14 @@
 		36FE63C920A03F2800209196 /* 我的订单 */ = {
 			isa = PBXGroup;
 			children = (
+				36899BA520BBE68D00B06184 /* view */,
 				36B7F3C820B3EB9300252811 /* MyOrdersRequest */,
 				36FE63CB20A0411F00209196 /* MyOrdersViewController.h */,
 				36FE63CC20A0411F00209196 /* MyOrdersViewController.m */,
 				36FE63CE20A0476100209196 /* MyOrderTableViewController.h */,
 				36FE63CF20A0476100209196 /* MyOrderTableViewController.m */,
-				360F497D20B2FBA8005D4CCF /* MyOrdersCell.h */,
-				360F497E20B2FBA8005D4CCF /* MyOrdersCell.m */,
-				360F497F20B2FBA8005D4CCF /* MyOrdersCell.xib */,
+				36899BA620BBE6E700B06184 /* MyOrdersDetailsController.h */,
+				36899BA720BBE6E700B06184 /* MyOrdersDetailsController.m */,
 			);
 			path = "我的订单";
 			sourceTree = "<group>";
@@ -1164,6 +1185,7 @@
 				368A7A5A209B195300CA8DD0 /* ProjectCollectionViewCell.xib in Resources */,
 				36AE7DFB20B552EA0079A4CC /* CodeNumberCell.xib in Resources */,
 				36EF2FE120A42E37005FFE1A /* AssessCell.xib in Resources */,
+				36899BA420BBD12B00B06184 /* OrdersPhotoCell.xib in Resources */,
 				36AFA18B20A2CA0F005835B0 /* ShopPhotoCell.xib in Resources */,
 				3600FE7B20AC51710028A806 /* AddCommodityCell.xib in Resources */,
 				360044D92092CA2800BEDF73 /* photoCell.xib in Resources */,
@@ -1315,6 +1337,7 @@
 				36AE7E0320B566DF0079A4CC /* CodeNumheadView.m in Sources */,
 				3624E2C12091E6E400CC4AF4 /* BaseNavigation.m in Sources */,
 				368A7A55209AF22B00CA8DD0 /* JJFileStorage.m in Sources */,
+				36899BA320BBD12B00B06184 /* OrdersPhotoCell.m in Sources */,
 				36AFA1A920A2ED01005835B0 /* ShopItemFlowLayout.m in Sources */,
 				36EF2FEC20A47AE4005FFE1A /* AssessFlowLayout.m in Sources */,
 				36D009DB20A13138008D1F53 /* OrderCell.m in Sources */,
@@ -1378,6 +1401,7 @@
 				36A8AE212091C6BE00A6E883 /* AppDelegate.m in Sources */,
 				36FE63C820A031A300209196 /* MD5Encrypt.m in Sources */,
 				36EF2FE020A42E37005FFE1A /* AssessCell.m in Sources */,
+				36899BA820BBE6E700B06184 /* MyOrdersDetailsController.m in Sources */,
 				36AE7DED20B5098D0079A4CC /* OrdersModel.m in Sources */,
 				36656D76209C5BEC00D97874 /* HUDQueue.m in Sources */,
 				36AFA17620A2936F005835B0 /* AssessTableViewController.m in Sources */,

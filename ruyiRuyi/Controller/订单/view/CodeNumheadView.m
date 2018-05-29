@@ -14,7 +14,7 @@
 
     self = [super initWithReuseIdentifier:reuseIdentifier];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        self.contentView.backgroundColor = [UIColor whiteColor];
         UILabel *leftLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/2, 40)];
         leftLab.text = @"条形码";
         leftLab.textAlignment = NSTextAlignmentCenter;

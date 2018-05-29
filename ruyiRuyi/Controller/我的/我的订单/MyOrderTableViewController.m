@@ -7,6 +7,9 @@
 //
 
 #import "MyOrderTableViewController.h"
+
+#import "MyOrdersDetailsController.h"
+
 #import "MyOrdersCell.h"
 @interface MyOrderTableViewController ()
 
@@ -149,9 +152,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    MyOrdersDetailsController *myOrdersDetailsVC = [[MyOrdersDetailsController alloc] initWithStyle:UITableViewStyleGrouped];
     
+    [myOrdersDetailsVC getMyOrdersDetailsInfo:[self.dataArr[indexPath.row] objectForKey:@"orderNo"] orderType:[self.dataArr[indexPath.row] objectForKey:@"orderType"] storeId:[UserConfig storeID]];
     
-    
+    [self.navigationController pushViewController:myOrdersDetailsVC animated:YES];
     
 }
 

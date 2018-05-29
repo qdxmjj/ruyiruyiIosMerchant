@@ -28,7 +28,7 @@
 
 +(void)getStoreOrderInfoByNoAndTypeWithInfo:(NSDictionary *)info succrss:(requestSuccessBlock)succrsshandler failure:(requestFailureBlock)failureHandler{
     
-    [self postRequest:@"getStoreOrderInfoByNoAndType" params:@{@"reqJson":[JJTools convertToJsonData:info]} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+    [self postRequest:@"getStoreOrderInfoByNoAndType" params:@{@"reqJson":[JJTools convertToJsonData:info],@"token":[UserConfig token]} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
     
         
         if ([code longLongValue] == 1) {

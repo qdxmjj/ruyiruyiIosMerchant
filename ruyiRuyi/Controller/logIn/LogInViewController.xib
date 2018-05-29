@@ -57,7 +57,7 @@
                     <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="18353675618" placeholder="请输入您的账号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oph-YF-fRg">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="18254262176" placeholder="请输入您的账号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oph-YF-fRg">
                     <rect key="frame" x="87" y="309" width="231" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="B2Z-0z-EZH"/>
@@ -96,7 +96,7 @@
                         <constraint firstAttribute="height" constant="1" id="7bI-Ce-OQl"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" placeholder="请输入您的密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ql8-q4-RcK">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="000000" placeholder="请输入您的密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ql8-q4-RcK">
                     <rect key="frame" x="87.5" y="378" width="231" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="Tyq-4C-RpP"/>

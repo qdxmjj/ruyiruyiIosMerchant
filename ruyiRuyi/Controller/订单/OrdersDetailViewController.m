@@ -14,6 +14,7 @@
 #import "OrdersInfoCell.h"
 #import "CodeNumberCell.h"
 #import "TiresCell.h"
+#import "OrdersPhotoCell.h"
 
 #import "OrdersViewController.h"
 @interface OrdersDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -150,7 +151,7 @@
 -(NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
     
-    return 4;
+    return 5;
 }
 
 -(NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -179,8 +180,11 @@
         case 3:
             
             
-            return self.selectServiceCellDisplay == NO? 0:self.storeServiceTypes.count>0?self.storeServiceTypes.count:0;
+            return 2;
+            break;
+        case 4:
             
+            return self.selectServiceCellDisplay == NO? 0:self.storeServiceTypes.count>0?self.storeServiceTypes.count:0;
             break;
             
         default:
@@ -230,13 +234,23 @@
             
         case 3:{
             
+            OrdersPhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ordersPhotoCellID" forIndexPath:indexPath];
+            
+            cell.titleLab.text = @[@"行驶证照片",@"车辆照片"][indexPath.row];
+            
+            return cell;
+            
+        }
+            break;
+            
+        case 4:{
+            
             SelectServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"selectServiceTypeCellID" forIndexPath:indexPath];
             JJWeakSelf
             cell.popBlock = ^(BOOL isPop) {
-              
+                
                 if (isPop) {
                     
-
                     weakSelf.popOrdersVCBlock(YES);
                     
                     [weakSelf.navigationController popViewControllerAnimated:YES];
@@ -249,12 +263,12 @@
                 NSNumber *i = self.storeServiceTypes[indexPath.row];
                 [cell setCellType:i.integerValue];
             }
-
             
             return cell;
         }
             
             break;
+            
             
         default:
             break;
@@ -281,6 +295,10 @@
             return 50;
             break;
         case 3:
+        
+            return 112;
+            break;
+        case 4:
             
             return 40;
             break;
@@ -511,6 +529,8 @@
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TiresCell class]) bundle:nil] forCellReuseIdentifier:@"tiresCellID"];
         
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CodeNumberCell class]) bundle:nil] forCellReuseIdentifier:@"codeNumberCellID"];
+        
+        [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([OrdersPhotoCell class]) bundle:nil] forCellReuseIdentifier:@"ordersPhotoCellID"];
         
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([SelectServiceCell class]) bundle:nil] forCellReuseIdentifier:@"selectServiceTypeCellID"];        
     }
