@@ -11,5 +11,6 @@
 @interface PhotoCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIButton *deleteImageBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *bottonTitleLab;
 
 @end

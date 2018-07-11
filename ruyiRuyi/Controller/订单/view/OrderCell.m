@@ -18,7 +18,26 @@
 
 -(void)setModel:(OrdersModel *)model{
     
-    [self.orderImg sd_setImageWithURL:[NSURL URLWithString:model.orderImage]];
+    if ([model.orderState isEqualToString:@"14"]) {
+        
+        if ([model.orderType isEqualToString:@"4"]) {
+            
+            NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ic_hui_xiubu" ofType:@"png"];
+            self.orderImg.image = [UIImage imageWithContentsOfFile:imagePath];
+            
+        }else if ([model.orderType isEqualToString:@"2"]){
+            
+            NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ic_shouci" ofType:@"png"];
+            self.orderImg.image = [UIImage imageWithContentsOfFile:imagePath];
+            
+        }else{
+            
+            NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ic_hui_free" ofType:@"png"];
+            self.orderImg.image = [UIImage imageWithContentsOfFile:imagePath];
+        }
+    }else{
+        [self.orderImg sd_setImageWithURL:[NSURL URLWithString:model.orderImage]];
+    }
     self.ordersType.text = model.orderName;
     self.carNumber.text = model.platNumber;
     self.statusImg.hidden = [model.isRead longLongValue] == 1 ? YES:NO;

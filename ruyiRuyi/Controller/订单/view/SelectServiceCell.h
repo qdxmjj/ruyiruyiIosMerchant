@@ -9,16 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "MainOrdersRequest.h"
 
-typedef void (^popViewBlock)(BOOL isPop);
-
 @interface SelectServiceCell : UITableViewCell
 
-
-@property(nonatomic,copy)NSString *ordersNum;
-
-@property(nonatomic,copy)NSString *orderType;
+@property (weak, nonatomic) IBOutlet UIButton *ServiceTypeBtn;
 
 -(void)setCellType:(StoreServiceType )serviceType;
 
-@property(nonatomic,copy)popViewBlock popBlock;
+
+
 @end

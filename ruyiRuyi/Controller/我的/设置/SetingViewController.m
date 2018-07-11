@@ -10,23 +10,50 @@
 #import "LogInViewController.h"
 #import "ChangePwdViewController.h"
 #import "BaseNavigation.h"
-@interface SetingViewController ()
+#import <Masonry.h>
+@interface SetingViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property(nonatomic,strong)UIButton *signOutBtn;
+
+@property(nonatomic,strong)UITableView *tableView;
 
 @end
 
 @implementation SetingViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"设置";
 
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"setingCellID"];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.signOutBtn];
     
+    [self.signOutBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        if (@available(iOS 11.0, *)) {
+            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).inset(5);
+        } else {
+            
+            make.bottom.mas_equalTo(self.view.mas_bottom).inset(5);
+        }
+        make.left.mas_equalTo(self.view.mas_left).inset(16);
+        make.right.mas_equalTo(self.view.mas_right).inset(16);
+        make.height.mas_equalTo(@40);
+    }];
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.top.mas_equalTo(self.view.mas_top);
+        make.left.and.right.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.signOutBtn.mas_top);
+    }];
+    
+   
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -42,7 +69,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 2;
+    return 1;
 }
 
 
@@ -51,16 +78,13 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"setingCellID" forIndexPath:indexPath];
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    // Configure the cell...
     
     switch (indexPath.row) {
         case 0:
             cell.textLabel.text = @"修改密码";
+            cell.imageView.image = [UIImage imageNamed:@"ic_gaimima"];
+            cell.imageView.contentMode = UIViewContentModeCenter;
             break;
-        case 1:
-            cell.textLabel.text = @"退出登陆";
-            break;
-            
         default:
             break;
     }
@@ -81,8 +105,7 @@
             break;
         case 1:{
             
-            BaseNavigation *nav = [[BaseNavigation alloc] initWithRootViewController: [[LogInViewController alloc] init]];
-            [[UIApplication sharedApplication].keyWindow setRootViewController:nav];
+
         }
             
             break;
@@ -91,51 +114,76 @@
             break;
     }
     
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     
+    return 2;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return 5;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    return [UIView new];
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    return [UIView new];
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+-(UITableView *)tableView{
+    
+    if (!_tableView) {
+        
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        
+        _tableView.backgroundColor = [UIColor whiteColor];
+        
+        _tableView.scrollEnabled = NO;
+        
+        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"setingCellID"];
+        
+    }
+    
+    
+    return _tableView;
 }
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(UIButton *)signOutBtn{
+    
+    if (!_signOutBtn) {
+        
+        _signOutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_signOutBtn setTitle:@"退出登录" forState:UIControlStateNormal];
+        [_signOutBtn setBackgroundColor:JJThemeColor];
+        [_signOutBtn setTintColor:[UIColor whiteColor]];
+        [_signOutBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        _signOutBtn.layer.cornerRadius = 5.f;
+        _signOutBtn.layer.masksToBounds = YES;
+        [_signOutBtn addTarget:self action:@selector(signOut) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _signOutBtn;
 }
-*/
 
+-(void)signOut{
+    
+    [UserConfig userDefaultsSetObject:nil key:kFirstLogIn];
+    
+    [[SDImageCache sharedImageCache] clearMemory];
+    
+    [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+        
+    }];
+    
+    BaseNavigation *nav = [[BaseNavigation alloc] initWithRootViewController: [[LogInViewController alloc] init]];
+    [[UIApplication sharedApplication].keyWindow setRootViewController:nav];
+}
 @end

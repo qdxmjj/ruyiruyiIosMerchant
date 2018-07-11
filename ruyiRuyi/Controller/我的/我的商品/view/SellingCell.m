@@ -8,19 +8,25 @@
 
 #import "SellingCell.h"
 #import <UIImageView+WebCache.h>
+#import "JJMacro.h"
+#import "JJTools.h"
 @implementation SellingCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.delBtn.layer.cornerRadius = 3;
+    self.delBtn.layer.borderWidth = 1;
+    self.delBtn.layer.borderColor = [JJThemeColor CGColor];//
+    self.delBtn.layer.masksToBounds = YES;
 }
 
 -(void)setValueWithModel:(sellingModel *)model{
     
     self.titleLab.text = model.name;
-    self.soldLab.text = [model.soldNo stringValue];
-    self.priceLab.text = [model.price stringValue];
-    self.stocklab.text = [model.amount stringValue];
+    self.soldLab.text = [NSString stringWithFormat:@"库存：%@",model.amount];
+    self.priceLab.attributedText = [JJTools priceWithRedString:[NSString stringWithFormat:@"%@.0",model.price]];
+    self.stocklab.text = [NSString stringWithFormat:@"已售：   %@",model.soldNo];
     [self.commodityImg sd_setImageWithURL:[NSURL URLWithString:model.imgUrl]];
 }
 

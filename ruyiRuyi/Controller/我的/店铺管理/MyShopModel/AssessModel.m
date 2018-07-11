@@ -18,49 +18,63 @@
     }
     if ([key isEqualToString:@"img1Url"]) {
         
-//        _img1 =value;
-        
-        [_imaArr addObject:value];
+        if ([self isUrlString:value]) {
+
+            [_imaArr addObject:value];
+        }
     }
     if ([key isEqualToString:@"img2Url"]) {
         
-//        _img2 = value;
-        [_imaArr addObject:value];
-
+        if ([self isUrlString:value]) {
+            
+            [_imaArr addObject:value];
+        }
     }
     if ([key isEqualToString:@"img3Url"]) {
         
-//        _img3  = value;
-        [_imaArr addObject:value];
-
-
+        if ([self isUrlString:value]) {
+            
+            [_imaArr addObject:value];
+        }
     }
     if ([key isEqualToString:@"img4Url"]) {
         
-//        _img4  = value;
-        [_imaArr addObject:value];
-
+        if ([self isUrlString:value]) {
+            
+            [_imaArr addObject:value];
+        }
     }
     if ([key isEqualToString:@"img5Url"]) {
         
-//        _img5  = value;
+
         [self.imaArr addObject:value];
-
-
     }
     if ([key isEqualToString:@"storeCommitUserHeadImg"]) {
+        
         
         _handImg = [NSURL URLWithString:value];
     }
     if ([key isEqualToString:@"time"]) {
         
+        
         _time = value;
+
     }
     
     if ([key isEqualToString:@"storeCommitUserName"]) {
         
         _userName = value;
     }
+    
+}
+
+- (BOOL)isUrlString:(NSString *)urlStr{
+    
+    NSString *emailRegex = @"[a-zA-z]+://.*";
+    
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    
+    return [emailTest evaluateWithObject:urlStr];
     
 }
 

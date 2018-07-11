@@ -1,0 +1,6 @@
+module Pods_ruyiRuyi [system] {
+  umbrella header "Pods-ruyiRuyi-umbrella.h"
+
+  export *
+  module * { export * }
+}

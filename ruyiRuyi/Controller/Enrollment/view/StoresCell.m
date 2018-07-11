@@ -57,13 +57,11 @@
             
         }else{
             
-            dic = @{@"time":[JJTools getTimestampFromTime:self.fileStorage.lastObjectTime]};
+            dic = @{@"time":[JJTools getTimestampFromTime:self.fileStorage.lastObjectTime formatter:@"yyyy-MM-dd HH:mm:ss"]};
         }
         
         [EnrollmentRequestData getCityListWithJson:[JJTools convertToJsonData:dic] succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
-            
-            
             if ([data isEqualToArray:@[]]) {
                 
                 return ;

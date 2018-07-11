@@ -7,6 +7,8 @@
 //
 
 #import "StoresViewController.h"
+#import "OrderDetailsViewController.h"
+#import "OrderFactory.h"
 #import "MainOrdersRequest.h"
 #import "StoresHeadView.h"
 #import "MainStoresCell.h"
@@ -14,6 +16,8 @@
 @interface StoresViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate>
 
 @property(nonatomic,strong)UITableView *tableview;
+
+@property(nonatomic,strong)UIImageView *backgroundImgView;
 
 @property(nonatomic,strong)NSMutableArray *dataArr;
 
@@ -37,7 +41,6 @@
     
     [self.view addSubview:self.headView];
     [self.view addSubview:self.tableview];
-    
     
     //上拉更多
     self.tableview.mj_footer=[MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
@@ -100,10 +103,13 @@
             
             [weakSelf.tableview.mj_footer setHidden:YES];
         }
-        if (weakSelf.dataArr.count>0) {
+        
+        if (self.dataArr.count>0 ){
             
-            [weakSelf.tableview reloadData];
+            self.backgroundImgView.hidden = YES;
         }
+        
+        [weakSelf.tableview reloadData];
         
     } failure:^(NSError * _Nullable error) {
         
@@ -143,7 +149,26 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
- 
+    
+    JJWeakSelf
+    
+    NSInteger i =  [[self.dataArr[indexPath.row] objectForKey:@"orderState"] longLongValue];
+    NSInteger orderType = [[self.dataArr[indexPath.row] objectForKey:@"orderType"] longLongValue];
+    
+    OrderDetailsViewController *orderDetailsVC = [OrderFactory GenerateOrders:orderType orderStatus:i];
+    if (orderDetailsVC == nil) {
+        
+        return;
+    }
+    [orderDetailsVC getOrdersInfo:[self.dataArr[indexPath.row] objectForKey:@"orderNo"] orderType:[self.dataArr[indexPath.row] objectForKey:@"orderType"] storeId:[UserConfig storeID]];
+    
+    orderDetailsVC.popOrdersVCBlock = ^(BOOL isPop) {
+        
+        [weakSelf.tableview.mj_header beginRefreshing];
+    };
+    
+    [self.navigationController pushViewController:orderDetailsVC animated:YES];
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -168,12 +193,28 @@
         _tableview = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
         _tableview.delegate = self;
         _tableview.dataSource = self;
+        
+        _tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+        [_tableview addSubview:self.backgroundImgView];
+        
         [_tableview registerNib:[UINib nibWithNibName:NSStringFromClass([MainStoresCell class]) bundle:nil] forCellReuseIdentifier:@"storesCellID"];
     }
     
     return _tableview;
 }
 
+-(UIImageView *)backgroundImgView{
+    
+    if (!_backgroundImgView) {
+        
+        _backgroundImgView = [[UIImageView alloc] initWithFrame:self.tableview.bounds];
+        _backgroundImgView.backgroundColor = [UIColor whiteColor];
+        [_backgroundImgView setImage:[UIImage imageNamed:@"ic_dakongbai"]];
+        _backgroundImgView.contentMode = UIViewContentModeCenter;
+    }
+    
+    return _backgroundImgView;
+}
 
 -(StoresHeadView *)headView{
     

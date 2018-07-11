@@ -41,14 +41,8 @@
         
         self.bottomConstraint.constant = -self.height;
         self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismiss)];
-//        //        tap.delegate = self;
-//        [self addGestureRecognizer:tap];
-        
+
         [self layoutIfNeeded];
-
-//        [[UIApplication sharedApplication].keyWindow bringSubviewToFront:self];
-
         
         self.startPickerView.delegate = self;
         self.stopPickerView.delegate = self;

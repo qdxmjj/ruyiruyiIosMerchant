@@ -10,12 +10,13 @@
 #import "ShopInfoCell.h"
 #import "ShopItemCell.h"
 #import "ShopPhotoCell.h"
+#import "photoCell.h"
 #import "ShopInfoRequest.h"
 
 #import "EnrollmentRequestData.h"
 #import "YMDatePickerView.h"
 #import "MyShopModel.h"
-
+#import "ShopPhotoView.h"
 @interface ShopDetailsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 
@@ -26,6 +27,10 @@
 @property(nonatomic,strong)UITableView *tableView;
 
 @property(nonatomic,strong)UIButton *bottomBtn;
+
+@property(nonatomic,strong)NSMutableArray *bottomImgArr;
+
+@property(nonatomic,strong)ShopPhotoView *shopPhotoView;
 @end
 
 @implementation ShopDetailsViewController
@@ -33,13 +38,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-//    self.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-
     [self.view addSubview:self.bottomBtn];
     [self.view addSubview:self.tableView];
-    
-    
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -57,7 +57,7 @@
         make.bottom.mas_equalTo(self.view.mas_bottom).inset(5);
         make.left.mas_equalTo(self.view.mas_left).inset(10);
         make.right.mas_equalTo(self.view.mas_right).inset(10);
-        make.height.mas_equalTo(50);
+        make.height.mas_equalTo(40);
     }];
 }
 
@@ -114,6 +114,16 @@
     [ShopInfoRequest getShopInfoWithInfo:@{@"storeId":[UserConfig storeID]} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
         [self.shopModel setValuesForKeysWithDictionary:data];
+        
+//        @property(nonatomic,strong)NSURL *factoryImgUrl;//
+//
+//        @property(nonatomic,strong)NSURL *indoorImgUrl;
+//
+//        @property(nonatomic,strong)NSURL *locationImgUrl;
+        [self.bottomImgArr addObject:self.shopModel.locationImgUrl];
+        [self.bottomImgArr addObject:self.shopModel.indoorImgUrl];
+        [self.bottomImgArr addObject:self.shopModel.factoryImgUrl];
+
         [self.tableView reloadData];
         
         //请求服务项目
@@ -177,11 +187,12 @@
         case 2:
         {
             ShopPhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"shopPhotoCellID" forIndexPath:indexPath];
+
+            [cell.indoorImg sd_setImageWithURL:self.shopModel.indoorImgUrl];
+            [cell.factoryImg sd_setImageWithURL:self.shopModel.factoryImgUrl];
+            [cell.locationImg sd_setImageWithURL:self.shopModel.locationImgUrl];
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            [cell.factoryImg sd_setImageWithURL:self.shopModel.factoryImgUrl placeholderImage:[UIImage imageNamed:@""]];
-            [cell.indoorImg sd_setImageWithURL:self.shopModel.indoorImgUrl placeholderImage:[UIImage imageNamed:@""]];
-            [cell.locationImg sd_setImageWithURL:self.shopModel.locationImgUrl placeholderImage:[UIImage imageNamed:@""]];
-            
+
             return cell;
         }
             break;
@@ -210,7 +221,7 @@
             break;
         case 2:
             
-            return 150.f;
+            return 120.f;
             break;
             
         default:
@@ -268,13 +279,15 @@
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    
+    _tableView.tableFooterView = self.shopPhotoView;
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ShopInfoCell class]) bundle:nil] forCellReuseIdentifier:@"shopInfoCellID"];
     
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ShopItemCell class]) bundle:nil] forCellReuseIdentifier:@"shopItemCellID"];
     
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ShopPhotoCell class]) bundle:nil] forCellReuseIdentifier:@"shopPhotoCellID"];
     
+//    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([photoCell class]) bundle:nil] forCellReuseIdentifier:@"shopPhotoCellID"];
+
     return _tableView;
 }
 
@@ -291,6 +304,28 @@
     }
     
     return _bottomBtn;
+}
+
+-(NSMutableArray *)bottomImgArr{
+    
+    if (!_bottomImgArr) {
+        
+        _bottomImgArr = [NSMutableArray array];
+    }
+    return _bottomImgArr;
+}
+
+-(ShopPhotoView *)shopPhotoView{
+    
+    if (!_shopPhotoView) {
+        
+        _shopPhotoView = [[ShopPhotoView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 120)];
+        
+    }
+    
+    
+    
+    return _shopPhotoView;
 }
 
 - (void)didReceiveMemoryWarning {

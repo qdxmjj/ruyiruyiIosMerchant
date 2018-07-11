@@ -244,6 +244,11 @@
         
         [self.areaArr removeAllObjects];
     }
+    
+    if (self.areaIDs.count >0) {
+        
+        [self.areaIDs removeAllObjects];
+    }
     for (NSDictionary *dic1 in copyCityArr) {
         
         if ([[dic1 objectForKey:@"fid"]longLongValue] == AreaID.integerValue) {

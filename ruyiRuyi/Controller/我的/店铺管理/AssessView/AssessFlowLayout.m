@@ -20,7 +20,7 @@
     // 1.设置列间距
     self.minimumInteritemSpacing = 10;
     // 2.设置行间距
-    self.minimumLineSpacing = 10;
+//    self.minimumLineSpacing = 10;
     // 3.设置每个item的大小
     
     // 5.设置布局方向

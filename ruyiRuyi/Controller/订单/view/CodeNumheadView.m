@@ -17,17 +17,18 @@
         self.contentView.backgroundColor = [UIColor whiteColor];
         UILabel *leftLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/2, 40)];
         leftLab.text = @"条形码";
+        leftLab.textColor = JJSecondaryFont;
         leftLab.textAlignment = NSTextAlignmentCenter;
         leftLab.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:leftLab];
         
         UILabel *rigthLab = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2, 0, SCREEN_WIDTH/2, 40)];
         rigthLab.text = @"是否不一致";
+        rigthLab.textColor = JJSecondaryFont;
         rigthLab.textAlignment = NSTextAlignmentCenter;
         rigthLab.backgroundColor = [UIColor whiteColor];
         rigthLab.tag = 1001011;
         [self.contentView addSubview:rigthLab];
-        
     }
     return self;
 }

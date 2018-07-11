@@ -26,7 +26,7 @@
 
 -(void)showTextLoading{
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].windows lastObject] animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
     hud.mode = MBProgressHUDModeAnnularDeterminate;
 
     hud.label.text = @"正在加载...";
@@ -42,7 +42,7 @@
         
         
     }
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].windows lastObject] animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
     hud.label.text = message;
     hud.mode = MBProgressHUDModeText;
     

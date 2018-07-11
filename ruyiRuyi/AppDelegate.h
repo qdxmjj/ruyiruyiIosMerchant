@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
-@interface AppDelegate : UIResponder <UIApplicationDelegate>{
+
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+#import <WXApi.h>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,WXApiDelegate>{
     
     BMKMapManager* _mapManager;
 

@@ -12,7 +12,7 @@
 
 @property(nonatomic,assign)ServiceTypeList serviecType;
 
-@property(nonatomic,strong)NSArray *dataArr;
+@property(nonatomic,strong)NSMutableArray *dataArr;
 
 
 @end
@@ -33,6 +33,7 @@
     [super viewDidLoad];
     
     self.tableView.allowsMultipleSelection = YES;
+
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MyServiceCell class]) bundle:nil] forCellReuseIdentifier:@"myServiceCellID"];
 
 }
@@ -40,14 +41,19 @@
 
 -(void)getServiceList{
     
-    
     [ServiceRequest getStoreServiceSubClassWithInfo:@{@"storeId":[UserConfig storeID],@"serviceTypeId":@(self.serviecType)} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
+        if (self.dataArr.count>0) {
+            
+            [self.dataArr removeAllObjects];
+        }
         
-        self.dataArr = data;
+        [self.dataArr addObjectsFromArray:data];
         
+        NSLog(@"%@",data);
         
         [self.tableView reloadData];
+        
     } failure:^(NSError * _Nullable error) {
         
     }];
@@ -85,7 +91,12 @@
     if ([[self.dataArr[indexPath.row] objectForKey:@"selectState"] longLongValue] == 1 ){
         
         [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:(UITableViewScrollPositionNone)];
+        
         cell.selelctImg.hidden = NO;
+        
+    }else{
+        
+        cell.selelctImg.hidden = YES;
     }
     
     return cell;
@@ -98,6 +109,11 @@
     
     cell.selelctImg.hidden = !cell.selelctImg.hidden;
  
+    NSMutableDictionary *dic = [self.dataArr[indexPath.row] mutableCopy];
+    
+    [dic setValue:@(1) forKey:@"selectState"];
+    
+    [self.dataArr replaceObjectAtIndex:indexPath.row withObject:dic];
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -105,22 +121,26 @@
     MyServiceCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 
     cell.selelctImg.hidden = !cell.selelctImg.hidden;
+    
+    NSMutableDictionary *dic = [self.dataArr[indexPath.row] mutableCopy];
+    
+    [dic setValue:@(0) forKey:@"selectState"];
+    
+    [self.dataArr replaceObjectAtIndex:indexPath.row withObject:dic];
+   
 }
 
 -(NSArray *)selectDataArr{
     
     NSMutableArray *arr = [NSMutableArray array];
     
-    if (self.tableView.indexPathsForSelectedRows.count<=0 ||self.dataArr<=0) {
+    for (NSMutableDictionary *dic in self.dataArr) {
         
-        return @[];
+        if ([[dic objectForKey:@"selectState"] longLongValue] == 1) {
+            
+            [arr addObject:[dic objectForKey:@"id"]];
+        }
     }
-    
-    for (NSIndexPath *indexPath in self.tableView.indexPathsForSelectedRows) {
-        
-        [arr addObject:[self.dataArr[indexPath.row] objectForKey:@"id"]];
-    }
-    
     
     return arr;
 }
@@ -148,11 +168,11 @@
     
     return [UIView new];
 }
--(NSArray *)dataArr{
+-(NSMutableArray *)dataArr{
     
     if (!_dataArr) {
         
-        _dataArr = [[NSArray alloc] init];
+        _dataArr = [[NSMutableArray alloc] init];
     }
     
     return _dataArr;

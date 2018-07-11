@@ -21,6 +21,15 @@
 
 @implementation AssessTableViewController
 
+-(instancetype)initWithStyle:(UITableViewStyle)style{
+    
+    self = [super initWithStyle:UITableViewStyleGrouped];
+    
+    
+    return self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -71,7 +80,6 @@
 
 -(void)getAssessInfo:(NSString *)number{
     
-    
     JJWeakSelf
     [ShopInfoRequest getCommitByConditionWithInfo:@{@"page":number,@"rows":@"10",@"storeId":[UserConfig storeID],@"userId":@""} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
@@ -85,10 +93,8 @@
             
             [weakSelf.tableView.mj_footer setHidden:YES];
         }
-        if (self.dataArr.count>0) {
-            
-            [weakSelf.tableView reloadData];
-        }
+        
+        [weakSelf.tableView reloadData];
 
     } failure:^(NSError * _Nullable error) {
         
@@ -117,7 +123,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     AssessCell *cell = [tableView dequeueReusableCellWithIdentifier:@"assessCellID" forIndexPath:indexPath];
-    
+
+    AssessModel *model = [[AssessModel alloc] init];
+    [model setValuesForKeysWithDictionary:self.dataArr[indexPath.row]];
+    cell.model = model;
+        
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;
@@ -125,14 +135,7 @@
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if ([cell isKindOfClass:[AssessCell class]]) {
-     
-        AssessCell *asCell =(AssessCell *)cell;
-        AssessModel *model = [[AssessModel alloc] init];
-        [model setValuesForKeysWithDictionary:self.dataArr[indexPath.row]];
-        asCell.model = model;
-        
-    }
+
 }
 
 
@@ -140,12 +143,32 @@
 {
     
     //预估高度
-    return 10;
+    return 200;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     //计算后高度
     return UITableViewAutomaticDimension;
+}
+
+-(CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return 2;
+}
+
+-(CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return 2;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    
+    return [UIView new];
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    return [UIView new];
 }
 
 -(NSMutableArray *)dataArr{

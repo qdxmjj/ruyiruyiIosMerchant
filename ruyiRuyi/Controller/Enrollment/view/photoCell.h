@@ -12,7 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *photoTitle;//分别设置当前cell的标题
 
-@property(nonatomic,assign)NSInteger itemNumber;//当前cell  item的个数
+@property(nonatomic,strong)NSArray *itemContentArr;//item提示内容
 
 @property(nonatomic,strong)UIImage *img1;
 @property(nonatomic,strong)UIImage *img2;

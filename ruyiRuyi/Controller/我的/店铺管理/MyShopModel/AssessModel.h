@@ -30,4 +30,12 @@
 
 @property(nonatomic,strong)NSMutableArray *imaArr;
 
+@property(nonatomic,copy)NSString *storeCommitUserName;
+
+@property(nonatomic,copy)NSString *storeAddress;
+
+@property(nonatomic,copy)NSString *storeLocation;
+
+@property(nonatomic,copy)NSString *storeName;
+
 @end

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,31 +20,103 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="129.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="上传门店照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgB-WY-qfl">
-                        <rect key="frame" x="16" y="11" width="151" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传门店照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgB-WY-qfl">
+                        <rect key="frame" x="16" y="11" width="92" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_picture" translatesAutoresizingMaskIntoConstraints="NO" id="8gJ-Zp-d3Q">
-                        <rect key="frame" x="280" y="11" width="24" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_picture" translatesAutoresizingMaskIntoConstraints="NO" id="8gJ-Zp-d3Q">
+                        <rect key="frame" x="284" y="11" width="20" height="17"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x1l-KG-FRA">
-                        <rect key="frame" x="121" y="62" width="76" height="57"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RiF-VT-maF" userLabel="indoorBtn">
+                        <rect key="frame" x="120.5" y="59.5" width="80" height="60"/>
+                        <state key="normal" image="ic_add"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4l-94-faI" userLabel="locationBtn">
+                        <rect key="frame" x="224.5" y="59.5" width="80" height="60"/>
+                        <state key="normal" image="ic_add"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btj-dU-yY7" userLabel="factoryBtn">
+                        <rect key="frame" x="16.5" y="59.5" width="80" height="60"/>
+                        <state key="normal" image="ic_add"/>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x1l-KG-FRA">
+                        <rect key="frame" x="120" y="59" width="80" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="tF5-ox-dIK"/>
+                        </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="myv-Iv-EWe">
-                        <rect key="frame" x="220" y="62" width="84" height="57"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJz-Ov-E7K">
+                        <rect key="frame" x="188" y="59" width="12" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="lb9-ai-TI8"/>
+                        </constraints>
+                        <state key="normal" image="ic_delete"/>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="myv-Iv-EWe">
+                        <rect key="frame" x="224" y="59" width="80" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="gjq-1u-2ch"/>
+                        </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8KC-gd-53g">
-                        <rect key="frame" x="16" y="62" width="77" height="57"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wjh-Jk-3WB">
+                        <rect key="frame" x="292" y="59" width="12" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="13" id="2Hc-L5-Fih"/>
+                        </constraints>
+                        <state key="normal" image="ic_delete"/>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8KC-gd-53g">
+                        <rect key="frame" x="16" y="59" width="80" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="jMU-gu-EuE"/>
+                        </constraints>
                     </imageView>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiC-n8-so4">
+                        <rect key="frame" x="84" y="59" width="12" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="13" id="wKd-bI-lX2"/>
+                        </constraints>
+                        <state key="normal" image="ic_delete"/>
+                    </button>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="myv-Iv-EWe" secondAttribute="bottom" constant="10" id="0bh-5G-4Kh"/>
+                    <constraint firstItem="RiF-VT-maF" firstAttribute="height" secondItem="x1l-KG-FRA" secondAttribute="height" id="0ft-XR-AJy"/>
+                    <constraint firstItem="8gJ-Zp-d3Q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="7bY-wf-6YZ"/>
+                    <constraint firstItem="RiF-VT-maF" firstAttribute="centerY" secondItem="x1l-KG-FRA" secondAttribute="centerY" id="Dn0-yN-JxT"/>
+                    <constraint firstItem="Wjh-Jk-3WB" firstAttribute="top" secondItem="myv-Iv-EWe" secondAttribute="top" id="EmC-vc-9ax"/>
+                    <constraint firstAttribute="bottom" secondItem="8KC-gd-53g" secondAttribute="bottom" constant="10" id="FAI-jH-eBk"/>
+                    <constraint firstAttribute="bottom" secondItem="x1l-KG-FRA" secondAttribute="bottom" constant="10" id="ISO-TB-XUR"/>
+                    <constraint firstItem="HJz-Ov-E7K" firstAttribute="top" secondItem="x1l-KG-FRA" secondAttribute="top" id="L9G-Gr-ola"/>
+                    <constraint firstItem="HgB-WY-qfl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="NJR-mV-hY4"/>
+                    <constraint firstItem="x1l-KG-FRA" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Nt6-d0-ZEq"/>
+                    <constraint firstItem="8KC-gd-53g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="NxH-id-xSk"/>
+                    <constraint firstItem="btj-dU-yY7" firstAttribute="centerX" secondItem="8KC-gd-53g" secondAttribute="centerX" id="RzW-Vk-Nd5"/>
+                    <constraint firstItem="Wjh-Jk-3WB" firstAttribute="trailing" secondItem="myv-Iv-EWe" secondAttribute="trailing" id="Spp-Zq-4dS"/>
+                    <constraint firstItem="C4l-94-faI" firstAttribute="centerX" secondItem="myv-Iv-EWe" secondAttribute="centerX" id="Vdq-SQ-pm9"/>
+                    <constraint firstItem="C4l-94-faI" firstAttribute="centerY" secondItem="myv-Iv-EWe" secondAttribute="centerY" id="bDH-gl-kd6"/>
+                    <constraint firstItem="btj-dU-yY7" firstAttribute="centerY" secondItem="8KC-gd-53g" secondAttribute="centerY" id="bQ6-kZ-QXh"/>
+                    <constraint firstItem="HgB-WY-qfl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="c16-TS-fiQ"/>
+                    <constraint firstItem="xiC-n8-so4" firstAttribute="trailing" secondItem="8KC-gd-53g" secondAttribute="trailing" id="f3I-tj-tr8"/>
+                    <constraint firstItem="btj-dU-yY7" firstAttribute="width" secondItem="8KC-gd-53g" secondAttribute="width" id="fmI-wt-62d"/>
+                    <constraint firstItem="xiC-n8-so4" firstAttribute="top" secondItem="8KC-gd-53g" secondAttribute="top" id="kaO-Ml-3qC"/>
+                    <constraint firstItem="HJz-Ov-E7K" firstAttribute="trailing" secondItem="x1l-KG-FRA" secondAttribute="trailing" id="lHe-H8-Jha"/>
+                    <constraint firstItem="RiF-VT-maF" firstAttribute="centerX" secondItem="x1l-KG-FRA" secondAttribute="centerX" id="mSq-hb-7fr"/>
+                    <constraint firstAttribute="trailing" secondItem="8gJ-Zp-d3Q" secondAttribute="trailing" constant="16" id="o8c-wT-R5N"/>
+                    <constraint firstAttribute="trailing" secondItem="myv-Iv-EWe" secondAttribute="trailing" constant="16" id="orj-js-EYW"/>
+                    <constraint firstItem="C4l-94-faI" firstAttribute="width" secondItem="myv-Iv-EWe" secondAttribute="width" id="qvY-D8-shE"/>
+                    <constraint firstItem="btj-dU-yY7" firstAttribute="height" secondItem="8KC-gd-53g" secondAttribute="height" id="rvv-dy-L1M"/>
+                    <constraint firstItem="RiF-VT-maF" firstAttribute="width" secondItem="x1l-KG-FRA" secondAttribute="width" id="v6Z-sn-hqt"/>
+                    <constraint firstItem="C4l-94-faI" firstAttribute="height" secondItem="myv-Iv-EWe" secondAttribute="height" id="xaZ-Aa-vS5"/>
+                </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="8KC-gd-53g" firstAttribute="width" secondItem="KGk-i7-Jjw" secondAttribute="width" multiplier="1:4" id="S79-EU-ZDk"/>
+                <constraint firstItem="myv-Iv-EWe" firstAttribute="width" secondItem="KGk-i7-Jjw" secondAttribute="width" multiplier="1:4" id="ZTF-Mf-dS8"/>
+                <constraint firstItem="x1l-KG-FRA" firstAttribute="width" secondItem="KGk-i7-Jjw" secondAttribute="width" multiplier="1:4" id="a8l-W7-gwe"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="factoryImg" destination="8KC-gd-53g" id="C8z-B0-yRs"/>
@@ -54,6 +127,8 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="ic_add" width="29" height="24"/>
+        <image name="ic_delete" width="12" height="12"/>
         <image name="ic_picture" width="20" height="17"/>
     </resources>
 </document>

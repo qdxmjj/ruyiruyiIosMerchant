@@ -15,6 +15,7 @@
 #import "MyShopViewController.h"
 #import "MyCommodityViewController.h"
 #import "SetingViewController.h"
+#import "PromotionAwardViewController.h"
 
 @interface UserViewController ()<UINavigationControllerDelegate>
 
@@ -33,6 +34,7 @@
     self.navigationController.delegate = self;
     
     self.tableView.tableHeaderView = self.handerView;
+    self.tableView.scrollEnabled = NO;
 
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([UserCell class]) bundle:nil] forCellReuseIdentifier:@"userCellID"];
     
@@ -92,13 +94,20 @@
             [self.navigationController pushViewController:[[MyCommodityViewController alloc]init] animated:YES];
             
             break;
-        case 2:
+        case 2:{
+            
+            [self.navigationController pushViewController:[[PromotionAwardViewController alloc]init] animated:YES];
+        }
+            break;
+        case 3:{
+            
+        }
+            
             
             break;
         case 4:
         {
             [self.navigationController pushViewController:[[SetingViewController alloc]init] animated:YES];
-
         }
             
             break;

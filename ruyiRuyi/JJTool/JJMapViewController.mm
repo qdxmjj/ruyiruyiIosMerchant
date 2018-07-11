@@ -42,7 +42,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"定位";
+    self.view.backgroundColor = [UIColor whiteColor];
     self.view = self.mapView;
     
     [self.view addSubview:self.bottomView];
@@ -132,6 +133,14 @@
         [self.mapView setCenterCoordinate:coord animated:true];
         [self.mapView addAnnotation:_pointAnnotation];
     });
+    
+    self.latitude = coord.latitude;
+    self.longitude = coord.longitude;
+    
+    //给反向地理编码选项对象的坐标点赋值
+    self.reverseOption.reverseGeoPoint = coord;
+    //执行反地理编码
+    [self.geoCode reverseGeoCode:self.reverseOption];
 }
 
 #pragma mark 点击其他位置
@@ -165,7 +174,7 @@
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation{
 
     if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
-        if (annotation== self.pointAnnotation) {
+        if (annotation == self.pointAnnotation) {
             
         static NSString *pointReuseIndentifier = @"pointReuseIndentifier";
         BMKPinAnnotationView*annotationView = (BMKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndentifier];
@@ -223,7 +232,7 @@
     
     if (!_bottomView) {
         
-        _bottomView = [[MapBottomView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-110, SCREEN_WIDTH, 110)];
+        _bottomView = [[MapBottomView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-110-nav_height, SCREEN_WIDTH, 110)];
         _bottomView.backgroundColor = [UIColor whiteColor];
         [_bottomView.btn addTarget:self action:@selector(popViewControllerWithLocation) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -253,6 +262,7 @@
 -(void)popViewControllerWithLocation{
     
     if (self.longitude&&self.latitude&&self.storePosition) {
+        
         self.locationBlock(self.longitude, self.latitude,self.storePosition);
     }
     [self.navigationController popViewControllerAnimated:YES];

@@ -10,10 +10,11 @@
 #import "PhotoCollectionViewCell.h"
 #import "ZZYPhotoHelper.h"
 #import "JJMacro.h"
-
+#import <UIImageView+WebCache.h>
 @interface photoCell()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *photoCollectionView;
+
 
 @end
 @implementation photoCell
@@ -38,17 +39,19 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    if (self.itemNumber) {
+    if (self.itemContentArr.count>0) {
         
-        return self.itemNumber;
+        return self.itemContentArr.count;
     }
-    return 3;
+    return 1;
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     
     PhotoCollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"photoCollectionCell" forIndexPath:indexPath];
     [cell.deleteImageBtn addTarget:self action:@selector(deleteImage:) forControlEvents:UIControlEventTouchUpInside];
+    cell.bottonTitleLab.text = self.itemContentArr[indexPath.row];
+
     return cell;
     
 }
@@ -81,6 +84,8 @@
             default:
                 break;
         }
+        
+        cell.bottonTitleLab.hidden = YES;
     }];
 }
 
@@ -103,9 +108,10 @@
             break;
     }
     cell.imageView.image =  NULL;
-    
-    
+    cell.bottonTitleLab.hidden = NO;
 }
+
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

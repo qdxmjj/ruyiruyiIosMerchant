@@ -9,10 +9,6 @@
 #import "SelectServiceCell.h"
 #import "JJMacro.h"
 @interface SelectServiceCell ()
-
-@property (weak, nonatomic) IBOutlet UIButton *ServiceTypeBtn;
-
-
 @end
 
 
@@ -66,44 +62,6 @@
             break;
     }
 }
-
-- (IBAction)selelctServiceType:(UIButton *)sender {
-    
-    if (!self.orderType&&self.orderType.length<=0) {
-        
-        [MBProgressHUD showTextMessage:@"订单信息获取失败！"];
-        
-        return;
-    }
-    
-    
-    StoreServiceType serviceType;
-    if ([sender.titleLabel.text isEqualToString:@"确认服务"]) {
-        
-        
-        serviceType = StoreConfirmServiceType;
-        
-    }else if ([sender.titleLabel.text isEqualToString:@"拒绝服务"]){
-        
-        serviceType = StoreRefuseServiceType;
-        
-    }else{
-        
-        serviceType = clientSelfHelpServiceType;
-    }
-    
-    NSLog(@"%@   %@",self.orderType,self.ordersNum);
-    
-    [MainOrdersRequest confirmServrceTypeWithInfo:@{@"orderNo":self.ordersNum,@"serviceType":self.orderType,@"orderType":@""} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
-        
-        self.popBlock(YES);
-        
-    } failure:^(NSError * _Nullable error) {
-        
-        
-    }];
-}
-
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

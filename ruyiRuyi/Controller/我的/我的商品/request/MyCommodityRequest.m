@@ -14,35 +14,37 @@
     
     [self postRequest:@"getStoreAddedServices" params:@{@"reqJson":[JJTools convertToJsonData:info]} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
        
-        if ([code longLongValue] == 1) {
+        if ([code longLongValue] != 1) {
             
-            NSArray *keyArr =[data allKeys];
-            
-            NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-            
-            if ([keyArr containsObject:@"美容清洗"]) {
-                
-                [dic setObject:[data objectForKey:@"美容清洗"] forKey:@"美容清洗"];
-                
-            }
-            if ([keyArr containsObject:@"汽车保养"]){
-                [dic setObject:[data objectForKey:@"汽车保养"] forKey:@"汽车保养"];
-                
-                
-            }
-            if ([keyArr containsObject:@"安装"]){
-                [dic setObject:[data objectForKey:@"安装"] forKey:@"安装"];
-                
-            }
-            if([keyArr containsObject:@"轮胎服务"]){
-                
-                [dic setObject:[data objectForKey:@"轮胎服务"] forKey:@"轮胎服务"];
-            }
-            
-            succrsshandler(code,message,dic);
+
+            [MBProgressHUD showTextMessage:message];
+            return ;
         }
         
-        [MBProgressHUD showTextMessage:message];
+        NSArray *keyArr =[data allKeys];
+        
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        
+        if ([keyArr containsObject:@"美容清洗"]) {
+            
+            [dic setObject:[data objectForKey:@"美容清洗"] forKey:@"美容清洗"];
+            
+        }
+        if ([keyArr containsObject:@"汽车保养"]){
+            [dic setObject:[data objectForKey:@"汽车保养"] forKey:@"汽车保养"];
+            
+            
+        }
+        if ([keyArr containsObject:@"安装改装"]){
+            [dic setObject:[data objectForKey:@"安装改装"] forKey:@"安装改装"];
+            
+        }
+        if([keyArr containsObject:@"轮胎服务"]){
+            
+            [dic setObject:[data objectForKey:@"轮胎服务"] forKey:@"轮胎服务"];
+        }
+        
+        succrsshandler(code,message,dic);
         
     } failure:^(NSError * _Nullable error) {
         
@@ -57,13 +59,13 @@
         
     } success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
    
-        if ([code longLongValue]==1) {
+        if ([code longLongValue] != 1) {
             
-            
-            succrsshandler(code,message,data);
+            [MBProgressHUD showTextMessage:message];
+            return ;
         }
-        
-        [MBProgressHUD showTextMessage:message];
+        succrsshandler(code,message,data);
+
     } complete:^(id  _Nullable dataObj, NSError * _Nullable error) {
         
     }];
@@ -74,13 +76,13 @@
     
     [self postRequest:@"getStockByCondition" params:@{@"reqJson":[JJTools convertToJsonData:info]} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
-        if ([code longLongValue] == 1) {
+        if ([code longLongValue] != 1) {
             
-            
-            succrsshandler(code,message,data);
+            [MBProgressHUD showTextMessage:message];
+            return ;
         }
-        
-        [MBProgressHUD showTextMessage:message];
+        succrsshandler(code,message,data);
+
     } failure:^(NSError * _Nullable error) {
         
     }];
@@ -93,19 +95,16 @@
         
     } success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
-        if ([code longLongValue]==1) {
+        if ([code longLongValue] != 1) {
             
-            succrsshandler(code,message,data);
+            [MBProgressHUD showTextMessage:message];
+            return ;
         }
-        
-        [MBProgressHUD showTextMessage:message];
+        succrsshandler(code,message,data);
+
     } complete:^(id  _Nullable dataObj, NSError * _Nullable error) {
         
     }];
-    
-    
-    
-    
     
 }
 @end

@@ -20,5 +20,10 @@
 
 @property(nonatomic,copy)NSString *orderType;
 
+@property(nonatomic,copy)NSString *orderState;
+
+@property(nonatomic,copy)NSString *orderActuallyPrice;
+
+@property(nonatomic,strong)NSArray *orderServcieTypeNameList;
 
 @end

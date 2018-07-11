@@ -10,11 +10,10 @@
 
 typedef enum : NSInteger {
   
-    ordersTypeAll = 0,              //全部
-    ordersTypeTuBeDelivered,    //待发货
-    ordersTypeWaitReceive,      //待收货
-    ordersTypeWaitService,      //待服务
-    ordersTypeCompleted,        //已完成
+    ordersTypeAll         = 0,      //全部
+    ordersTypeWaitReceive = 2,      //待收货
+    ordersTypeWaitService = 3,      //待服务
+    ordersTypeCompleted   = 4,      //已完成
 
 }MyOrdersTypeList;
 

@@ -15,21 +15,16 @@
     
     [self postRequest:@"getStoreGeneralOrderByState" params:@{@"reqJson":[JJTools convertToJsonData:info]} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
        
-        if ([code longLongValue] ==1) {
+        if ([code longLongValue] != 1) {
             
-            succrsshandler(code,message,data);
+            [MBProgressHUD showTextMessage:message];
+            return ;
         }
-        
-        
-        [MBProgressHUD showTextMessage:message];
-        
+        succrsshandler(code,message,data);
+
     } failure:^(NSError * _Nullable error) {
         
-    }];
-    
-    
-    
-    
+    }]; 
 }
 
 

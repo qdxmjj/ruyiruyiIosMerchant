@@ -34,9 +34,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.title = @"注册";
     [self.view addSubview:self.myTabView];
-    
 }
 
 
@@ -86,9 +85,7 @@
         {
             photoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"photoCell1" forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.itemNumber = 1;
             cell.photoTitle.text = @"上传营业执照";
-            
             if (![self.indexPathArr containsObject:cell]) {
                 [self.indexPathArr addObject:cell];
             }
@@ -100,7 +97,8 @@
             photoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"photoCell2" forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.photoTitle.text = @"上传门店照片";
-            
+            cell.itemContentArr = @[@"门头照片",@"店内照片",@"车间照片"];
+
             if (![self.indexPathArr containsObject:cell]) {
                 [self.indexPathArr addObject:cell];
             }
@@ -112,8 +110,6 @@
             photoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"photoCell3" forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.photoTitle.text = @"手持身份证照片";
-            cell.itemNumber = 1;
-            
             if (![self.indexPathArr containsObject:cell]) {
                 [self.indexPathArr addObject:cell];
             }
@@ -157,10 +153,10 @@
     
     switch (indexPath.section) {
         case 0:
-            return 220;
+            return 200;
             break;
         case 1:
-            return 300;
+            return 282;
             break;
         case 2:case 3:case 4:
             return 115;
@@ -172,7 +168,7 @@
             return 80;
             break;
         default:
-            return 50;
+            return 40;
             break;
     }
 }
@@ -204,12 +200,12 @@
     if (indexPath.section==7) {
         
         if (self.longitude && self.latitude) {
-            
+
             NSLog(@"经纬度存在");
         }
-        
+
         AccountCell *accCell = self.indexPathArr[0];
-        
+
         if ([accCell.userField.text isEqualToString:@""]
             ||
             [accCell.phoenField.text isEqualToString:@""]
@@ -224,16 +220,27 @@
             [MBProgressHUD showTextMessage:@"用户信息不完整!"];
             return;
         }
-        
-        
+
+        if (![accCell.passwordField.text isEqualToString:accCell.checkPswdField.text]) {
+
+            [MBProgressHUD showTextMessage:@"两次密码不一致！"];
+            return;
+        }
+
+        if (accCell.passwordField.text.length <6) {
+
+            [MBProgressHUD showTextMessage:@"密码最低为六位！"];
+            return;
+        }
+
         StoresCell  *storeCell = self.indexPathArr[1];
-        
+
         if (!storeCell.cityID && !storeCell.areaID) {
-         
+
             NSLog(@"上传ID判断一下，有的城市没有区");
         }
-        
-        
+
+
         if (
             [storeCell.storeName.text isEqualToString:@""]
             ||
@@ -257,34 +264,43 @@
         
         NSArray *array = [storeCell.storeTime.titleLabel.text componentsSeparatedByString:@"至"]; //商店营业时间
         if (array.count<2) {
+            
             return;
         }
         
         NSString *storeStartTime = [NSString stringWithFormat:@"2000-01-01T%@.000+0800",array[0]];
         NSString *storeStopTime = [NSString stringWithFormat:@"2000-01-01T%@.000+0800",array[1]];
 
-
         //门店相关照片
         photoCell *phCell = self.indexPathArr[2];
         photoCell *phStoreCell = self.indexPathArr[3];
         photoCell *IDCell = self.indexPathArr[4];
 
+        if (phCell.img1 == nil      ||
+            phStoreCell.img1 == nil ||
+            phStoreCell.img2 == nil ||
+            phStoreCell.img3 == nil ||
+            IDCell.img1 == nil) {
+            
+            [MBProgressHUD showTextMessage:@"请选择完整的照片信息！"];
+            return;
+        }
         
+        //合作项目
         ProjectCell *Pcell = self.indexPathArr[5];
         if (Pcell.selectItems.count<=0) {
             
             [MBProgressHUD showTextMessage:@"请选择服务类型"];
+            return;
         }
-        NSLog(@"选中的数据为： %@",Pcell.selectItems);
+//        NSLog(@"选中的数据为： %@",Pcell.selectItems);
         
+        //熟练度
         DegreeCell *Dcell = self.indexPathArr[6];
-        
         
         NSString *appExpert = [Dcell.selectBtn isEqualToString:@"熟练"] ? @"1":@"2";
         
         NSDictionary *reqJsonDic = @{@"producerName":accCell.userField.text,@"phone":accCell.phoenField.text,@"password":[MD5Encrypt MD5ForUpper32Bate:accCell.passwordField.text],@"storeName":storeCell.storeName.text,@"storeTypeId":storeCell.storeTypeID,@"tel":storeCell.storePhone.text,@"startTime":storeStartTime,@"endTime":storeStopTime,@"cityId":storeCell.cityID,@"positionId":storeCell.areaID,@"address":storeCell.storeLocation.text,@"longitude":self.longitude,@"latitude":self.latitude,@"appExpert":appExpert,@"storeLocation":storeCell.storeCity.titleLabel.text};
-        
-        
         
         float imgCompressionQuality = 0.3;//图片压缩比例
         NSData *licenseData=UIImageJPEGRepresentation(phCell.img1, imgCompressionQuality);
@@ -309,7 +325,6 @@
                 
                 [self.navigationController popViewControllerAnimated:YES];
             }
-            [MBProgressHUD showTextMessage:message];
 
         } failure:^(NSError * _Nullable error) {
             

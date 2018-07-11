@@ -59,13 +59,18 @@
         return;
     }
 
-
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+    hud.label.text = @"正在登录...";
+    [hud showAnimated:YES];
+    
 
     NSDictionary *dic = @{@"phone":self.accountField.text,@"password":[MD5Encrypt MD5ForUpper32Bate:self.pwdField.text]};
     
 
     [LogInrequestData logInRequestWithReqJson:[JJTools convertToJsonData:dic] succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
 
+        [hud hideAnimated:YES];
+        
         if ([code longLongValue]==111111) {
 
             [UserConfig userDefaultsSetObject:[data objectForKey:@"producerName"] key:KproducerName];
@@ -74,11 +79,18 @@
             [UserConfig userDefaultsSetObject:[data objectForKey:@"storeName"] key:kStoreName];
             [UserConfig userDefaultsSetObject:[data objectForKey:@"token"] key:kToken];
 
+            [UserConfig userDefaultsSetObject:[data objectForKey:@"phone"] key:kPhone];
+
+            [UserConfig userDefaultsSetObject:@"yes" key:kFirstLogIn];
+
             [[UIApplication sharedApplication].keyWindow setRootViewController:[[RootViewController alloc]init]];
+            
         }
         
         
     } failure:^(NSError * _Nullable error) {
+
+        [hud hideAnimated:YES];
 
     }];
 

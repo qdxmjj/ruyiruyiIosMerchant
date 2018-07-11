@@ -18,7 +18,7 @@
         _meirongqingxi = value;
     }
     
-    if ([key isEqualToString:@"安装"]) {
+    if ([key isEqualToString:@"安装改装"]) {
         
         _anzhuang = value;
     }

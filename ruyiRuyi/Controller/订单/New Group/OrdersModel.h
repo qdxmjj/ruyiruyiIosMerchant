@@ -18,5 +18,9 @@
 
 @property(nonatomic,copy)NSString *platNumber;
 
+@property(nonatomic,copy)NSString *orderState;
+
+@property(nonatomic,copy)NSString *orderType;
+
 
 @end

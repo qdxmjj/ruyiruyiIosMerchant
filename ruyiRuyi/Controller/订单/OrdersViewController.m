@@ -7,16 +7,22 @@
 //
 
 #import "OrdersViewController.h"
-#import "OrdersDetailViewController.h"
+#import "FirstReplaceOrdersViewController.h"
+#import "OrderStatusTypeViewController.h"
+
 #import "MainOrdersRequest.h"
 #import "OrderHanderView.h"
 #import "OrdersModel.h"
 #import "OrderCell.h"
+#import "OrderDetailsViewController.h"
+#import "OrderFactory.h"
 @interface OrdersViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate>
 
 @property(nonatomic,strong)OrderHanderView *handerView;
 
 @property(nonatomic,strong)UITableView *tableview;
+
+@property(nonatomic,strong)UIImageView *backgroundImgView;
 
 @property(nonatomic,strong)NSMutableArray *dataArr;
 
@@ -35,7 +41,7 @@
     self.navigationController.delegate = self;
     [self.view addSubview:self.handerView];
     [self.view addSubview:self.tableview];
-
+//    [self.view addSubview:self.backgroundImgView];
     
     [self.tableview registerNib:[UINib nibWithNibName:NSStringFromClass([OrderCell class]) bundle:nil] forCellReuseIdentifier:@"ordersCellID"];
     
@@ -114,10 +120,15 @@
             
             [weakSelf.tableview.mj_footer setHidden:YES];
         }
-        if (weakSelf.dataArr.count>0) {
+        if (self.dataArr.count>0 ){
             
-            [weakSelf.tableview reloadData];
+            self.backgroundImgView.hidden = YES;
         }
+        
+        
+        [weakSelf.tableview reloadData];
+        
+
         
     } failure:^(NSError * _Nullable error) {
         
@@ -159,19 +170,25 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSInteger i =  [[self.dataArr[indexPath.row] objectForKey:@"orderState"] longLongValue];
-    
-    OrdersDetailViewController *detailVC = [[OrdersDetailViewController alloc]initWithOrdersStatus:i];
-    
-    
-    [detailVC getOrdersInfo:[self.dataArr[indexPath.row] objectForKey:@"orderNo"] orderType:[self.dataArr[indexPath.row] objectForKey:@"orderType"] storeId:[UserConfig storeID]];
     JJWeakSelf
-    detailVC.popOrdersVCBlock = ^(BOOL isPop) {
-      
-        [weakSelf.tableview.mj_header beginRefreshing];
+    
+    NSInteger i =  [[self.dataArr[indexPath.row] objectForKey:@"orderState"] longLongValue];
+    NSInteger orderType = [[self.dataArr[indexPath.row] objectForKey:@"orderType"] longLongValue];
+    
+    OrderDetailsViewController *orderDetailsVC = [OrderFactory GenerateOrders:orderType orderStatus:i];
+    if (orderDetailsVC == nil) {
         
+        return;
+    }
+    [orderDetailsVC getOrdersInfo:[self.dataArr[indexPath.row] objectForKey:@"orderNo"] orderType:[self.dataArr[indexPath.row] objectForKey:@"orderType"] storeId:[UserConfig storeID]];
+    
+    orderDetailsVC.popOrdersVCBlock = ^(BOOL isPop) {
+        
+        [weakSelf.tableview.mj_header beginRefreshing];
+
     };
-    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    [self.navigationController pushViewController:orderDetailsVC animated:YES];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -179,6 +196,17 @@
     return 45.f;
 }
 
+-(void)pushOrdersStatusTypeVC:(UIButton *)sender{
+    
+    OrderStatusTypeViewController *ostVC = [[OrderStatusTypeViewController alloc] init];
+
+    if (sender == self.handerView.leftBtn) {
+        
+        ostVC.status = @"2";
+    }
+    
+    [self.navigationController pushViewController:ostVC animated:YES];
+}
 
 
 -(OrderHanderView *)handerView{
@@ -186,6 +214,10 @@
     if (!_handerView) {
         
         _handerView = [[OrderHanderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT*0.4)];
+        
+        [_handerView.leftBtn addTarget:self action:@selector(pushOrdersStatusTypeVC:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [_handerView.rigBtn addTarget:self action:@selector(pushOrdersStatusTypeVC:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _handerView;
 }
@@ -205,9 +237,25 @@
         _tableview = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
         _tableview.delegate = self;
         _tableview.dataSource = self;
+        _tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+        [_tableview addSubview:self.backgroundImgView];
+        
     }
     
     return _tableview;
+}
+
+-(UIImageView *)backgroundImgView{
+    
+    if (!_backgroundImgView) {
+        
+        _backgroundImgView = [[UIImageView alloc] initWithFrame:self.tableview.bounds];
+        _backgroundImgView.backgroundColor = [UIColor whiteColor];
+        [_backgroundImgView setImage:[UIImage imageNamed:@"ic_dakongbai"]];
+        _backgroundImgView.contentMode = UIViewContentModeCenter;
+    }
+    
+    return _backgroundImgView;
 }
 -(NSMutableArray *)dataArr{
     

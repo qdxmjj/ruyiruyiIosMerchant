@@ -37,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-
+    self.tableView.backgroundColor = [UIColor colorWithRed:248.f/255.f green:248.f/255.f blue:248.f/255.f alpha:1.f];
     pageNumber=1;
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([SellingCell class]) bundle:nil] forCellReuseIdentifier:@"sellingCellID"];
@@ -160,7 +160,7 @@
             break;
         case 4:
             
-            editCommodity.commodityTypeText = [self getServiceTypeContentText:@"安装" serviceType:4 arrIndex:sender.tag-10086];
+            editCommodity.commodityTypeText = [self getServiceTypeContentText:@"安装改装" serviceType:4 arrIndex:sender.tag-10086];
 
             break;
         case 5:
@@ -265,16 +265,16 @@
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
     if (self.sellingDataArr.count<=0) {
         
         return 0;
     }
-    return self.sellingDataArr.count;
+    return self.sellingDataArr.count;}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+
+    return 1;
 }
 
 
@@ -286,13 +286,13 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     
-    return 5;
+    return 2.5;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
     
-    return 5;
+    return 2.5;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
@@ -312,15 +312,15 @@
     SellingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sellingCellID" forIndexPath:indexPath];
     
     sellingModel *model = [[sellingModel alloc] init];
-    [model setValuesForKeysWithDictionary: self.sellingDataArr[indexPath.row]];
+    [model setValuesForKeysWithDictionary: self.sellingDataArr[indexPath.section]];
     [cell setValueWithModel:model];
     
     [cell.editBtn addTarget:self action:@selector(PushEditCommodityVC:) forControlEvents:UIControlEventTouchUpInside];
-    cell.editBtn.tag = 10086+indexPath.row;
+    cell.editBtn.tag = 10086+indexPath.section;
     
     [cell.delBtn addTarget:self
                     action:@selector(deleteCommodityEvent:) forControlEvents:UIControlEventTouchUpInside];
-    cell.delBtn.tag = 10087+indexPath.row;
+    cell.delBtn.tag = 10087+indexPath.section;
 
     return cell;
 }

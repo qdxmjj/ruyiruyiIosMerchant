@@ -28,6 +28,23 @@
     
 }
 
++(void)confirmOrderRequestWithInfo:(NSDictionary *)info succrss:(requestSuccessBlock)succrsshandler failure:(requestFailureBlock)failureHandler{
+    
+    [self postRequest:@"storeSelectStockOrderType" params:@{@"reqJson":[JJTools convertToJsonData:info],@"token":[UserConfig token]} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+       
+        if ([code longLongValue] == 1) {
+            
+            succrsshandler(code,message,data);
+        }
+        
+        [MBProgressHUD showTextMessage:message];
+    } failure:^(NSError * _Nullable error) {
+        
+    }];
+    
+    
+    
+}
 
 
 @end

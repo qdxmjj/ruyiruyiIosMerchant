@@ -12,7 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *delPhotoBtn;
 
-@property (weak, nonatomic) IBOutlet UIButton *selectPhotoBen;
 
 @end
 @implementation OrdersPhotoCell
@@ -20,6 +19,12 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.exampleBtn.layer.cornerRadius = 3;
+    self.exampleBtn.layer.borderWidth = 1;
+    self.exampleBtn.layer.borderColor = [[UIColor lightGrayColor] CGColor];//
+    self.exampleBtn.layer.masksToBounds = YES;
 }
 - (IBAction)selectPhoto:(UIButton *)sender {
     
@@ -36,7 +41,8 @@
 }
 - (IBAction)delPhoto:(UIButton *)sender {
     
-    [self.selectPhotoBen setImage:NULL forState:UIControlStateNormal];
+    [self.selectPhotoBen setImage:nil forState:UIControlStateNormal];
+    [self.selectPhotoBen.imageView setImage:nil];
     self.delPhotoBtn.hidden = YES;
 }
 

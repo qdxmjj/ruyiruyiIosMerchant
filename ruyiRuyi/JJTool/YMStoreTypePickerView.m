@@ -29,12 +29,6 @@
         
         self.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
         
-//        //点击背景是否影藏
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismiss)];
-//        [self addGestureRecognizer:tap];
-//        
-        
-        
         [self addSubview:self.mainView];
         [self.mainView addSubview:self.titleLab];
         [self.mainView addSubview:self.selectBtn];
@@ -92,7 +86,10 @@
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     
-    
+    if ([self.status isEqualToString:@"1"]) {
+        
+        return [self.typeArr objectAtIndex:row];
+    }
     
     return [[self.typeArr objectAtIndex:row] objectForKey:@"name"];
 }
@@ -131,7 +128,16 @@
 -(void)selectStoreType:(UIButton *)sender{
     
     
-    if (self.typeArr.count>1) {
+    if (self.typeArr.count>=1) {
+        
+        if ([self.status isEqualToString:@"1"]) {
+            
+            NSInteger row=[self.storeTypePicker selectedRowInComponent:0];
+
+            
+            self.codeNumberBlock([self.typeArr objectAtIndex:row]);
+            
+        }else{
         
         NSInteger row=[self.storeTypePicker selectedRowInComponent:0];
 
@@ -139,6 +145,7 @@
         NSString *typeID=[[self.typeArr objectAtIndex:row] objectForKey:@"id"];
 
         self.storeType(sotreType,typeID);
+        }
     }
 
     [self dismiss];

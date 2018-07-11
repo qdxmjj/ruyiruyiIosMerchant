@@ -9,12 +9,18 @@
 #import <UIKit/UIKit.h>
 typedef void (^storeTypeBlock)(NSString *storeType,NSString *typeID);
 
+typedef void (^codeNumberBlock)(NSString *codeNumber);
+
 @interface YMStoreTypePickerView : UIView<UIPickerViewDelegate,UIPickerViewDataSource>
 
 
 @property(nonatomic,strong)NSArray *typeArr;
 
 -(void)show;
+
 @property(nonatomic,copy)storeTypeBlock storeType;
 
+@property(nonatomic,copy)codeNumberBlock codeNumberBlock;
+
+@property(nonatomic,copy)NSString *status;
 @end

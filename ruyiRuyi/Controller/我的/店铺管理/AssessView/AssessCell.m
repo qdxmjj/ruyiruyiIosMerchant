@@ -9,10 +9,10 @@
 #import "AssessCell.h"
 #import "AssessModel.h"
 #import "AssessCollectionViewCell.h"
-
+#import "JJTools.h"
 #import <UIImageView+WebCache.h>
-
-@interface AssessCell()<UICollectionViewDelegate,UICollectionViewDataSource>
+#import "SDPhotoBrowser.h"
+@interface AssessCell()<UICollectionViewDelegate,UICollectionViewDataSource,SDPhotoBrowserDelegate>
 
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewH;//底部视图的高
@@ -51,9 +51,9 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
 
-    if (self.dataImgArr.count>0) {
+    if (self.dataImgArr.count-1>0) {
         
-        return self.dataImgArr.count;
+        return self.dataImgArr.count-1;
     }
     
     return 0;
@@ -63,7 +63,9 @@
     
     AssessCollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"AssessCollectionCellID" forIndexPath:indexPath];
     
-    [cell.itemImg sd_setImageWithURL:self.dataImgArr[indexPath.row]];
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ic_my_shibai" ofType:@"png"];
+
+    [cell.itemImg sd_setImageWithURL:self.dataImgArr[indexPath.row]  placeholderImage:[[UIImage alloc] initWithContentsOfFile:imagePath]];
     
     return cell;
     
@@ -71,25 +73,53 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    AssessCollectionViewCell *cell = (AssessCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
     
+    //设置容器视图,父视图
     
-    NSLog(@"点击的图片为：%@",cell.itemImg.image);
+    browser.sourceImagesContainerView = self;
+    
+    browser.currentImageIndex = indexPath.item;
+    
+    browser.imageCount = self.dataImgArr.count-1;
+    
+    //设置代理
+    browser.delegate = self;
+    //显示图片浏览器
+    [browser show];
 }
 
+- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index
+
+{
+    //拿到显示的图片的高清图片地址
+    NSURL *url = [NSURL URLWithString:self.dataImgArr[index]];
+    return url;
+}
+
+//返回占位图片
+- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index
+
+{
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    
+    AssessCollectionViewCell *cell = (AssessCollectionViewCell *)[self.imgCollectionView cellForItemAtIndexPath:indexPath];
+    return cell.itemImg.image;
+}
 
 - (void)setModel:(AssessModel *)model
 {
     self.contentlab.text = model.content;
-    [self.headImg sd_setImageWithURL:model.handImg];
-    
-    
-    if (model.imaArr.count<=0) {
-        
-        self.bottomViewH.constant = 0.f;
-        
+    [self.headImg sd_setImageWithURL:model.handImg placeholderImage:[UIImage imageNamed:@"ic_my_shibai"]];
+    self.titleLab.text = model.storeCommitUserName;
+    self.timeLab.text = [JJTools getTimestampFromTime:[NSString stringWithFormat:@"%@",model.time] formatter:@"yyyy-MM-dd"];
+    if (model.imaArr.count-1<=0) {
+
+        self.bottomViewH.constant = 0.1f;
+
     }else{
-        
+
         self.bottomViewH.constant = 50+10+10;
     }
     self.dataImgArr = model.imaArr;

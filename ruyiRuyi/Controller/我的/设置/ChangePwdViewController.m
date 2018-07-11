@@ -7,8 +7,15 @@
 //
 
 #import "ChangePwdViewController.h"
-
+#import "JJRequest.h"
+#import "BaseNavigation.h"
+#import "LogInViewController.h"
 @interface ChangePwdViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *accountTextField;
+
+@property (weak, nonatomic) IBOutlet UITextField *oldPasswordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *changepasswordTextField;
 
 @end
 
@@ -16,22 +23,58 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    self.title = @"修改密码";
 }
 
+
+- (IBAction)changePasswordEvent:(UIButton *)sender {
+ 
+    if ([self.accountTextField.text isEqualToString:@""]||[self.oldPasswordTextField.text isEqualToString: @""] ||[self.changepasswordTextField.text isEqualToString:@""]) {
+        
+        [MBProgressHUD showTextMessage:@"输入信息不完成！"];
+        return;
+    }
+    
+    if (self.oldPasswordTextField.text.length<6 ||self.changepasswordTextField.text.length<6) {
+        
+        [MBProgressHUD showTextMessage:@"密码长度不足(密码最少六位)！"];
+        return;
+    }
+    
+    
+   NSString *oldPwd = [MD5Encrypt MD5ForUpper32Bate:self.oldPasswordTextField.text];
+   NSString *newPwd = [MD5Encrypt MD5ForUpper32Bate:self.changepasswordTextField.text];
+
+    NSString *infoStr = [JJTools convertToJsonData:@{@"oldPassword":oldPwd,@"newPassword":newPwd,@"phone":self.accountTextField.text}];
+    [JJRequest postRequest:@"changeStorePwdByOldPwd" params:@{@"reqJson":infoStr} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+        
+        if ([code longLongValue] == 1) {
+            
+            [UserConfig userDefaultsSetObject:nil key:kFirstLogIn];
+            
+            [[SDImageCache sharedImageCache] clearMemory];
+            
+            [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+                
+            }];
+            
+            BaseNavigation *nav = [[BaseNavigation alloc] initWithRootViewController: [[LogInViewController alloc] init]];
+            [[UIApplication sharedApplication].keyWindow setRootViewController:nav];
+            
+        }
+        [MBProgressHUD showTextMessage:message];
+        
+    } failure:^(NSError * _Nullable error) {
+        
+    }];
+    
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

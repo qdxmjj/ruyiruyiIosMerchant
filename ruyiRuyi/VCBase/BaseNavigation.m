@@ -19,6 +19,7 @@
     
     self.navigationBar.barTintColor = JJThemeColor;
 
+
 }
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     

@@ -122,16 +122,6 @@
         
     }];
     
-    [self.subImg mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.centerY.and.centerX.mas_equalTo(handerImg);
-        make.width.and.height.mas_equalTo(CGSizeMake(100, 100));
-        
-    }];
-    self.subImg.layer.cornerRadius = 50.f;
-    self.subImg.layer.masksToBounds =YES;
-    
-    
     [toolView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.mas_equalTo(self.mas_left).offset(20);
@@ -143,13 +133,21 @@
     
     
     [self.titlLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.top.mas_equalTo(self.subImg.mas_bottom).offset(10);
-        make.bottom.mas_equalTo(toolView.mas_top);
-        make.width.mas_equalTo(200);
-        make.centerX.mas_equalTo(handerImg.mas_centerX);
+        make.bottom.mas_equalTo(toolView.mas_top).inset(5);
+        make.centerX.mas_equalTo(self.mas_centerX);
+        make.height.mas_equalTo(@20);
     }];
     
+    [self.subImg mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.width.and.height.mas_equalTo(CGSizeMake(100, 100));
+        make.bottom.mas_equalTo(self.titlLab.mas_top).inset(5);
+        make.centerX.mas_equalTo(handerImg.mas_centerX);
+        
+        
+    }];
+    self.subImg.layer.cornerRadius = 50.f;
+    self.subImg.layer.masksToBounds =YES;
     
     [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         

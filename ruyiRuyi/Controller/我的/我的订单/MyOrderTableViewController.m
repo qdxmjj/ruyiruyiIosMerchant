@@ -8,13 +8,19 @@
 
 #import "MyOrderTableViewController.h"
 
-#import "MyOrdersDetailsController.h"
+#import "OrderDetailsViewController.h"
 
 #import "MyOrdersCell.h"
+
+#import "OrderFactory.h"
+
+#import "MyOrdersDetailsModel.h"
 @interface MyOrderTableViewController ()
 
 
 @property(nonatomic,assign)MyOrdersTypeList ordersType;
+
+@property(nonatomic,strong)UIImageView *backgroundImgView;
 
 @property(nonatomic,strong)NSMutableArray *dataArr;
 
@@ -40,10 +46,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.view addSubview:self.backgroundImgView];
+
     self.pageNumber = 1;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MyOrdersCell class]) bundle:nil] forCellReuseIdentifier:@"myOrdersCellID"];
 
-    
+    [self getMyOrdersInfo:@"1"];
     //上拉更多
     self.tableView.mj_footer=[MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         
@@ -85,7 +93,6 @@
 }
 
 
-
 -(void)getMyOrdersInfo:(NSString *)number{
     JJWeakSelf
     
@@ -101,18 +108,14 @@
             
             [weakSelf.tableView.mj_footer setHidden:YES];
         }
-        if (weakSelf.dataArr.count>0) {
+        if (self.dataArr.count>0 ){
             
-            [weakSelf.tableView reloadData];
+            self.backgroundImgView.hidden = YES;
         }
-        
-        
+        [weakSelf.tableView reloadData];
         
     } failure:^(NSError * _Nullable error) {
-        
     }];
-    
-    
 }
 
 
@@ -141,22 +144,37 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     MyOrdersCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myOrdersCellID" forIndexPath:indexPath];
-    cell.ordersName.text = [self.dataArr[indexPath.row] objectForKey:@"orderName"];
-    cell.ordersNumber.text = [self.dataArr[indexPath.row] objectForKey:@"orderNo"];
-    cell.ordersPrice.text = [self.dataArr[indexPath.row] objectForKey:@"orderPrice"];
-    cell.ordersStatus.text = [self.dataArr[indexPath.row] objectForKey:@"orderType"];
-    [cell.ordersImg sd_setImageWithURL:[NSURL URLWithString:[self.dataArr[indexPath.row] objectForKey:@"orderImage"]]];
 
+
+    MyOrdersDetailsModel *model = [[MyOrdersDetailsModel alloc] init];
+    
+    [model setValuesForKeysWithDictionary:self.dataArr[indexPath.row]];
+    
+    [cell setModel:model];
+    
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    MyOrdersDetailsController *myOrdersDetailsVC = [[MyOrdersDetailsController alloc] initWithStyle:UITableViewStyleGrouped];
     
-    [myOrdersDetailsVC getMyOrdersDetailsInfo:[self.dataArr[indexPath.row] objectForKey:@"orderNo"] orderType:[self.dataArr[indexPath.row] objectForKey:@"orderType"] storeId:[UserConfig storeID]];
+    NSInteger orderType = [[self.dataArr[indexPath.row] objectForKey:@"orderType"] longLongValue];
     
-    [self.navigationController pushViewController:myOrdersDetailsVC animated:YES];
+    NSInteger i =  [[self.dataArr[indexPath.row] objectForKey:@"orderState"] longLongValue];
+
+    OrderDetailsViewController *orderDetailsVC = [OrderFactory GenerateOrders:orderType orderStatus:i];
+    if (orderDetailsVC == nil) {
+        
+        return;
+    }
+    [orderDetailsVC getOrdersInfo:[self.dataArr[indexPath.row] objectForKey:@"orderNo"] orderType:[self.dataArr[indexPath.row] objectForKey:@"orderType"] storeId:[UserConfig storeID]];
+    
+    orderDetailsVC.popOrdersVCBlock = ^(BOOL isPop) {
+        
+        [self.tableView.mj_header beginRefreshing];
+    };
+    
+    [self.navigationController pushViewController:orderDetailsVC animated:YES];
     
 }
 
@@ -189,61 +207,24 @@
     return [UIView new];
 }
 
+-(UIImageView *)backgroundImgView{
+    
+    if (!_backgroundImgView) {
+        
+        _backgroundImgView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+        _backgroundImgView.backgroundColor = [UIColor whiteColor];
+        [_backgroundImgView setImage:[UIImage imageNamed:@"ic_dakongbai"]];
+        _backgroundImgView.contentMode = UIViewContentModeCenter;
+    }
+    
+    return _backgroundImgView;
+}
 -(NSMutableArray *)dataArr{
     
     if (!_dataArr) {
         
         _dataArr = [NSMutableArray array];
     }
-    
-    
     return _dataArr;
 }
-
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

@@ -12,4 +12,6 @@
 
 +(void)updateStoreHeadImgByStoreIdWithInfo:(NSDictionary *)info headPhoto:(NSArray <JJFileParam *>*)headPhoto succrss:(_Nullable requestSuccessBlock )succrsshandler failure:(_Nullable requestFailureBlock)failureHandler;
 
++(void)confirmOrderRequestWithInfo:(NSDictionary *)info succrss:(_Nullable requestSuccessBlock )succrsshandler failure:(_Nullable requestFailureBlock)failureHandler;
+
 @end

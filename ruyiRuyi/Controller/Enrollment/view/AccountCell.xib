@@ -13,10 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="211" id="KGk-i7-Jjw" customClass="AccountCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="209.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="申请人" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fvl-LB-iTH">
@@ -44,7 +44,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="确认密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUC-ny-7LD">
-                        <rect key="frame" x="16" y="175" width="58" height="17"/>
+                        <rect key="frame" x="16" y="172.5" width="58" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -77,13 +77,6 @@
                             <constraint firstAttribute="height" constant="1" id="Ssu-9d-XDt"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUE-j3-Zqg">
-                        <rect key="frame" x="16" y="202" width="304" height="1"/>
-                        <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="1" id="s4a-KL-5Tq"/>
-                        </constraints>
-                    </view>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的手机号" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="33B-nJ-YAB">
                         <rect key="frame" x="89" y="52.5" width="140" height="15"/>
                         <nil key="textColor"/>
@@ -103,7 +96,7 @@
                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                     </textField>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请再次确认您的登陆密码" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nyt-Sj-LQQ">
-                        <rect key="frame" x="89" y="176.5" width="231" height="15"/>
+                        <rect key="frame" x="89" y="174" width="231" height="15"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -144,17 +137,16 @@
                     <constraint firstItem="ttt-0A-ELJ" firstAttribute="bottom" secondItem="wO6-qK-MzN" secondAttribute="top" constant="-10" id="IbI-Xo-s9Z"/>
                     <constraint firstItem="nyt-Sj-LQQ" firstAttribute="centerY" secondItem="aUC-ny-7LD" secondAttribute="centerY" id="JCH-su-TBv"/>
                     <constraint firstItem="Fvl-LB-iTH" firstAttribute="bottom" secondItem="K2x-1T-BNE" secondAttribute="top" constant="-10" id="KJy-Wn-C1W"/>
+                    <constraint firstAttribute="bottom" secondItem="aUC-ny-7LD" secondAttribute="bottom" constant="10" id="Knx-gP-ZyN"/>
                     <constraint firstItem="33B-nJ-YAB" firstAttribute="trailing" secondItem="1JF-AS-zo9" secondAttribute="leading" id="NIs-aw-jrm"/>
                     <constraint firstItem="wO6-qK-MzN" firstAttribute="top" secondItem="tQ7-5d-IEF" secondAttribute="bottom" constant="40" id="Ow6-1Y-wf4"/>
-                    <constraint firstItem="aUC-ny-7LD" firstAttribute="bottom" secondItem="hUE-j3-Zqg" secondAttribute="top" constant="-10" id="PKU-IZ-eaT"/>
                     <constraint firstItem="33B-nJ-YAB" firstAttribute="leading" secondItem="9wS-h4-8Is" secondAttribute="trailing" constant="30" id="S3p-MB-JBZ"/>
                     <constraint firstItem="1JF-AS-zo9" firstAttribute="top" secondItem="K2x-1T-BNE" secondAttribute="top" constant="1" id="Uxk-OZ-1zu"/>
-                    <constraint firstItem="aUC-ny-7LD" firstAttribute="leading" secondItem="hUE-j3-Zqg" secondAttribute="leading" id="XTT-LL-ngS"/>
                     <constraint firstItem="nyt-Sj-LQQ" firstAttribute="leading" secondItem="Plj-Tn-WrX" secondAttribute="leading" id="YfL-BF-Otl"/>
-                    <constraint firstItem="hUE-j3-Zqg" firstAttribute="top" secondItem="hzJ-fc-iTg" secondAttribute="bottom" constant="40" id="Z3h-gd-zhb"/>
                     <constraint firstItem="tQ7-5d-IEF" firstAttribute="bottom" secondItem="K2x-1T-BNE" secondAttribute="top" constant="40" id="Z7W-0t-coP"/>
                     <constraint firstItem="irY-TN-N25" firstAttribute="trailing" secondItem="9Tw-ON-7WP" secondAttribute="leading" id="Zl3-RW-3xk"/>
                     <constraint firstItem="bPJ-tg-Vii" firstAttribute="leading" secondItem="hzJ-fc-iTg" secondAttribute="leading" id="ahf-SR-Uax"/>
+                    <constraint firstItem="aUC-ny-7LD" firstAttribute="leading" secondItem="hzJ-fc-iTg" secondAttribute="leading" id="dhg-6h-hTD"/>
                     <constraint firstItem="9wS-h4-8Is" firstAttribute="leading" secondItem="tQ7-5d-IEF" secondAttribute="leading" id="f94-jJ-gJz"/>
                     <constraint firstItem="irY-TN-N25" firstAttribute="leading" secondItem="ttt-0A-ELJ" secondAttribute="trailing" constant="30" id="fLU-Vt-bwa"/>
                     <constraint firstItem="Fvl-LB-iTH" firstAttribute="leading" secondItem="K2x-1T-BNE" secondAttribute="leading" id="k6Y-GT-kHH"/>
@@ -168,10 +160,8 @@
                 </constraints>
             </tableViewCellContentView>
             <constraints>
-                <constraint firstItem="hUE-j3-Zqg" firstAttribute="leading" secondItem="aW0-zy-SZf" secondAttribute="leading" constant="16" id="0wg-MQ-Vt5"/>
                 <constraint firstItem="tQ7-5d-IEF" firstAttribute="leading" secondItem="aW0-zy-SZf" secondAttribute="leading" constant="16" id="4ij-4F-FcR"/>
                 <constraint firstItem="aW0-zy-SZf" firstAttribute="trailing" secondItem="tQ7-5d-IEF" secondAttribute="trailing" id="85J-8n-tWh"/>
-                <constraint firstItem="aW0-zy-SZf" firstAttribute="trailing" secondItem="hUE-j3-Zqg" secondAttribute="trailing" id="8DG-iI-aWd"/>
                 <constraint firstItem="aW0-zy-SZf" firstAttribute="trailing" secondItem="Plj-Tn-WrX" secondAttribute="trailing" id="9VK-FV-IEc"/>
                 <constraint firstItem="aW0-zy-SZf" firstAttribute="trailing" secondItem="K2x-1T-BNE" secondAttribute="trailing" id="Hxa-1C-2EG"/>
                 <constraint firstItem="K2x-1T-BNE" firstAttribute="leading" secondItem="aW0-zy-SZf" secondAttribute="leading" constant="16" id="TCH-cZ-nm4"/>

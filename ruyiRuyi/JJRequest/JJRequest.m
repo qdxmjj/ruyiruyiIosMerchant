@@ -62,7 +62,7 @@
              id data = [responseObject objectForKey:@"data"];
              successHandler(code,message,data);
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             YLog(@"------请求失败-------%@",error);
+             NSLog(@"------请求失败-------%@",error);
              failureHandler(error);
          }];
     
@@ -95,7 +95,7 @@
               successHandler(code,message,data);
               
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-              YLog(@"------请求失败-------%@",error);
+              NSLog(@"------请求失败-------%@",error);
               
               [self requestErrorCode:error.code];
               
@@ -121,7 +121,7 @@
              successHandler(code,message,data);
              
          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             YLog(@"------请求失败-------%@",error);
+             NSLog(@"------请求失败-------%@",error);
              failureHandler(error);
          }];
 }
@@ -143,7 +143,7 @@
         successHandler(code,message,data);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        YLog(@"------请求失败-------%@",error);
+        NSLog(@"------请求失败-------%@",error);
         failureHandler(error);
     }];
 }
@@ -180,7 +180,7 @@
         
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nonnull filePath, NSError * _Nonnull error){
         if (error) {
-            YLog(@"------下载失败-------%@",error);
+            NSLog(@"------下载失败-------%@",error);
         }
         completionHandler(response, error);
     }];

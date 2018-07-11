@@ -9,12 +9,9 @@
 #import "MyServiceViewController.h"
 #import "MyServiceTableViewController.h"
 
-static const CGFloat topBtnH = 40;
+static const CGFloat topBtnH = 45;
 
-static const CGFloat bottomBtnH = 50;
-
-static const CGFloat bottomSpacing = 10;
-
+static const CGFloat bottomBtnH = 40;
 
 
 @interface MyServiceViewController ()<UIScrollViewDelegate>
@@ -35,17 +32,19 @@ static const CGFloat bottomSpacing = 10;
     [super viewDidLoad];
 
 
-    
-    NSArray  *titleArr = @[@"保养",@"美容清洗",@"安装",@"改装"];
+    self.title = @"我的服务";
+
+    NSArray  *titleArr = @[@"保养",@"美容清洗",@"安装",@"轮胎服务"];
     
     for (int i=0; i<=3; i++) {
         
         UIButton *tabbarBtn=[UIButton buttonWithType:UIButtonTypeCustom];
         tabbarBtn.frame=CGRectMake(SCREEN_WIDTH/4*i,0 , SCREEN_WIDTH/4, topBtnH);
-        tabbarBtn.backgroundColor=[UIColor cyanColor];
+        tabbarBtn.backgroundColor=[UIColor whiteColor];
         [tabbarBtn setTitle:titleArr[i] forState:UIControlStateNormal];
         [tabbarBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        
+        [tabbarBtn.titleLabel setFont:[UIFont systemFontOfSize:14.f]];
+
         [tabbarBtn addTarget:self action:@selector(topBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
         
         [self.view addSubview:tabbarBtn];
@@ -81,7 +80,6 @@ static const CGFloat bottomSpacing = 10;
 
 -(void)UploadDataToServer{
     
-    
     NSMutableArray *subClassService = [NSMutableArray array];
     
     NSMutableArray *arrays = [NSMutableArray arrayWithObjects:self.baoyangVC.selectDataArr,self.meirongVC.selectDataArr,self.gaizhuangVC.selectDataArr,self.anzhuangVC.selectDataArr, nil];
@@ -99,6 +97,9 @@ static const CGFloat bottomSpacing = 10;
     NSString *serviceStr = [NSString stringWithFormat:@"%@",[subClassService componentsJoinedByString:@","]];
     
     [ServiceRequest addStoreServicesSubClassWithInfo:@{@"storeId":[UserConfig storeID],@"services":serviceStr} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+        
+        
+        [self.navigationController popViewControllerAnimated:YES];
         
     } failure:^(NSError * _Nullable error) {
         
@@ -152,6 +153,7 @@ static const CGFloat bottomSpacing = 10;
         _contentScrView.pagingEnabled=YES;
         
     }
+    
     return _contentScrView;
 }
 -(UIImageView *)sliderView{
@@ -160,16 +162,19 @@ static const CGFloat bottomSpacing = 10;
 
         _sliderView = [UIImageView new];
         if (KIsiPhoneX) {
+            
             _sliderView.frame = CGRectMake(0, topBtnH, SCREEN_WIDTH/4, 2.5);
 
         }else{
-        _sliderView.frame = CGRectMake(0, topBtnH, SCREEN_WIDTH/4, 2.5);
+            
+            _sliderView.frame = CGRectMake(0, topBtnH, SCREEN_WIDTH/4, 2.5);
         }
-        _sliderView.backgroundColor=[UIColor colorWithRed:0 green:144/255.0 blue:254/255.0 alpha:1];
+        _sliderView.backgroundColor=JJThemeColor;
 
     }
     return _sliderView;
 }
+
 -(MyServiceTableViewController *)baoyangVC{
     if (!_baoyangVC) {
         
@@ -208,7 +213,6 @@ static const CGFloat bottomSpacing = 10;
         
         _gaizhuangVC = [[MyServiceTableViewController alloc] initWithServiceType:ServiceTypeGaizhuang];
         _gaizhuangVC.view.frame = CGRectMake(SCREEN_WIDTH*3, 0, SCREEN_WIDTH, CGRectGetHeight(self.contentScrView.frame));
-        
         
         [self addChildViewController:self.gaizhuangVC];
         [self.contentScrView addSubview:self.gaizhuangVC.view];

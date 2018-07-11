@@ -15,7 +15,6 @@
 
 -(void)getServiceList;
 
-
 -(NSArray *)selectDataArr;
 
 

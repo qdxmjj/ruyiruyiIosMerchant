@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>ruyiRuyi</string>
+	<string>如意如驿商家版</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -17,20 +17,60 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>weixin</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wxe7d25890f6c97a1a</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>weixin</string>
+		<string>wechat</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MOBAppSecret</key>
+	<string>ac32809fb7d6c1416dec6354593164b0</string>
+	<key>MOBAppkey</key>
+	<string>1cb09fb322191</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>App需要您的同意，才能访问相册</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>App需要您的同意,才能访问媒体资料库</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>App需要您的同意,才能访问蓝牙</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>App需要您的同意,才能访问日历</string>
 	<key>NSCameraUsageDescription</key>
 	<string>是否允许本应用使用相册？</string>
+	<key>NSContactsUsageDescription</key>
+	<string>请求访问通讯录</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>App需要您的同意,才能访问健康分享</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>App需要您的同意,才能始终访问位置</string>
+	<key>NSLocationUsageDescription</key>
+	<string>App需要您的同意,才能访问位置</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>是否允许本应用使用定位功能？</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>App需要您的同意,才能访问麦克风</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>是否允许本应用使用相机？</string>
 	<key>UILaunchStoryboardName</key>
@@ -44,8 +84,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

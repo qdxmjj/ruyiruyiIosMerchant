@@ -10,17 +10,17 @@
 
 @implementation MainOrdersRequest
 
-//主页订单与店铺订单列表  type: 1:商品订单 2:如意如意平台订单）
 +(void)getStoreGeneralOrderByTypeWithInfo:(NSDictionary *)info succrss:(requestSuccessBlock)succrsshandler failure:(requestFailureBlock)failureHandler{
     
     [self postRequest:@"getStoreGeneralOrderByType" params:@{@"reqJson":[JJTools convertToJsonData:info]} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
        
-        if ([code longLongValue] == 1) {
+        if ([code longLongValue] != 1) {
             
-            succrsshandler(code,message,data);
+            [MBProgressHUD showTextMessage:message];
+            return ;
         }
-        
-        [MBProgressHUD showTextMessage:message];
+        succrsshandler(code,message,data);
+
     } failure:^(NSError * _Nullable error) {
         
     }];
@@ -31,17 +31,38 @@
     [self postRequest:@"getStoreOrderInfoByNoAndType" params:@{@"reqJson":[JJTools convertToJsonData:info],@"token":[UserConfig token]} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
     
         
-        if ([code longLongValue] == 1) {
+        if ([code longLongValue] != 1) {
             
-            succrsshandler(code,message,data);
+            [MBProgressHUD showTextMessage:message];
+            return ;
         }
-        
-        [MBProgressHUD showTextMessage:message];
+        succrsshandler(code,message,data);
+
         
     } failure:^(NSError * _Nullable error) {
         
     }];
 }
+
++(void)getStoreGeneralOrderByTypeAndStateWithInfo:(NSDictionary *)info succrss:(requestSuccessBlock)succrsshandler failure:(requestFailureBlock)failureHandler{
+    
+    [self postRequest:@"getStoreGeneralOrderByTypeAndState" params:@{@"reqJson":[JJTools convertToJsonData:info],@"token":[UserConfig token]} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+        
+        
+        if ([code longLongValue] != 1) {
+            
+            [MBProgressHUD showTextMessage:message];
+            return ;
+        }
+        succrsshandler(code,message,data);
+
+    } failure:^(NSError * _Nullable error) {
+        
+    }];
+    
+    
+}
+
 
 +(void)submitStoreConfirmReceiptShoesWithInfo:(NSArray *)info succrss:(requestSuccessBlock)succrsshandler failure:(requestFailureBlock)failureHandler{
     
@@ -58,11 +79,11 @@
     }];
 }
 
-+(void)confirmServrceTypeWithInfo:(NSDictionary *)info succrss:(requestSuccessBlock)succrsshandler failure:(requestFailureBlock)failureHandler{
++(void)confirmServrceTypeWithInfo:(NSDictionary *)info photos:(NSArray <JJFileParam *> *)photos succrss:(requestSuccessBlock)succrsshandler failure:(requestFailureBlock)failureHandler{
     
-    
-    [self postRequest:@"storeSelectChangeShoeOrderType" params:@{@"reqJson":[JJTools convertToJsonData:info],@"token":[UserConfig token]} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+    [self updateRequest:@"storeSelectFirstChangeShoeOrderType" params:@{@"reqJson":[JJTools convertToJsonData:info],@"token":[UserConfig token]} fileConfig:photos progress:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
         
+    } success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
         if ([code longLongValue] == 1) {
             
@@ -71,9 +92,59 @@
         
         [MBProgressHUD showTextMessage:message];
         
-    } failure:^(NSError * _Nullable error) {
+    } complete:^(id  _Nullable dataObj, NSError * _Nullable error) {
         
     }];
+}
+
++(void)freeChangeServiceTypeWithInfo:(NSDictionary *)info changeBarCodeVoList:(NSArray *)BarCodeList photos:(NSArray<JJFileParam *> *)photos succrss:(requestSuccessBlock)succrsshandler failure:(requestFailureBlock)failureHandler{
+    
+    
+    [JJRequest updateRequest:@"storeSelectChangeShoeOrderType" params:@{@"reqJson":[JJTools convertToJsonData:info],@"changeBarCodeVoList":[JJTools convertToJsonData:BarCodeList],@"token":[UserConfig token]} fileConfig:photos progress:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
+        
+        
+        //进度
+        
+    } success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+        
+        if ([code longLongValue]==1) {
+            
+
+            succrsshandler(code,message,data);
+        }else{
+            
+            NSLog(@"%@          %@",code,message);
+        }
+        
+        [MBProgressHUD showTextMessage:message];
+    } complete:^(id  _Nullable dataObj, NSError * _Nullable error) {
+    }];
+}
+
++(void)tireRepairSelectServiceTypeWithInfo:(NSDictionary *)info repairBarCodeList:(NSArray *)repairbarCodeLish photos:(NSArray<JJFileParam *> *)photos succrss:(requestSuccessBlock)succrsshandler failure:(requestFailureBlock)failureHandler{
+    
+    [self updateRequest:@"storeSelectShoeRepairOrderType" params:@{@"reqJson":[JJTools convertToJsonData:info],@"repairBarCodeList":[JJTools convertToJsonData:repairbarCodeLish],@"token":[UserConfig token]} fileConfig:photos progress:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
+        
+        //进度
+        
+    } success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+        
+        
+        if ([code longLongValue]==1) {
+            
+            
+            succrsshandler(code,message,data);
+        }else{
+            
+            NSLog(@"%@          %@",code,message);
+        }
+        
+        [MBProgressHUD showTextMessage:message];
+        
+    } complete:^(id  _Nullable dataObj, NSError * _Nullable error) {
+        
+    }];
+    
     
     
 }

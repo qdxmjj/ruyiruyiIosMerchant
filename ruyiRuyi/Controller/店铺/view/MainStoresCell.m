@@ -9,6 +9,7 @@
 #import "MainStoresCell.h"
 #import <UIImageView+WebCache.h>
 #import "JJTools.h"
+#import "JJMacro.h"
 @implementation MainStoresCell
 
 - (void)awakeFromNib {
@@ -16,21 +17,66 @@
     // Initialization code
     self.accessoryType=UITableViewCellAccessoryNone;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    self.Voucher.layer.borderColor = [JJThemeColor CGColor];
+    self.Voucher.layer.borderWidth = 1.f;
 
 }
 
 -(void)setModel:(StoresModel *)model{
     
-    [self.storeOrdersImg sd_setImageWithURL:[NSURL URLWithString:model.orderImage]];
     
-    self.storeOrdersTitleLab.text = model.orderName;
+    NSString *orderServiceTypeName = model.orderServcieTypeNameList[0];
     
-    self.storeOrdersDateLab.text =[JJTools getTimestampFromTime:model.orderTime];
+    if ([orderServiceTypeName isEqualToString:@"汽车保养"]) {
+        
+        self.storeOrdersImg.image = [UIImage imageNamed:@"ic_baoyang"];
+    }else if ([orderServiceTypeName isEqualToString:@"美容清洗"]) {
+        
+        self.storeOrdersImg.image = [UIImage imageNamed:@"ic_qingxi"];
+    }else if ([orderServiceTypeName isEqualToString:@"安装改装"]) {
+        
+        self.storeOrdersImg.image = [UIImage imageNamed:@"ic_anzhuang"];
+        
+    }else{
+//        [orderServiceTypeName isEqualToString:@"轮胎服务"]
+        self.storeOrdersImg.image = [UIImage imageNamed:@"ic_luntai"];
+    }
     
-    self.storeOrdersPriceLab.text = [NSString stringWithFormat:@"+%@",model.orderPrice];
     
-    NSString *status = [model.orderType longLongValue] == 1?@"交易完成":[model.orderType longLongValue] == 2?@"待收货":[model.orderType longLongValue] == 3?@"待商家确认服务":[model.orderType longLongValue] == 4?@"作废":[model.orderType longLongValue] == 5?@"待发货":[model.orderType longLongValue] == 6?@"待车主确认服务":[model.orderType longLongValue] == 7?@"待评价":@"待支付";
+    self.storeOrdersTitleLab.text = [model.orderServcieTypeNameList componentsJoinedByString:@"\\"];
+    
+    self.storeOrdersDateLab.text =[JJTools getTimestampFromTime:model.orderTime formatter:@"yyyy-MM-dd"];
+    
+    if ([model.orderState integerValue] == 7||[model.orderState integerValue] == 1) {
+        
+        if ([model.orderPrice longLongValue] != [model.orderActuallyPrice longLongValue]) {
+            
+            self.Voucher.hidden = NO;
+            self.voucherWidth.constant = 18.f;
+
+        }else{
+            
+            self.Voucher.hidden = YES;
+            self.voucherWidth.constant = 0.f;
+        }
+        self.storeOrdersPriceLab.textColor = [UIColor redColor];
+        self.storeOrdersPriceLab.text = [NSString stringWithFormat:@"+ %@",model.orderActuallyPrice];
+    }else{
+        
+        if ([model.orderPrice longLongValue] != [model.orderActuallyPrice longLongValue]) {
+
+            self.Voucher.hidden = NO;
+            self.voucherWidth.constant = 18.f;
+        }else{
+            
+            self.Voucher.hidden = YES;
+            self.voucherWidth.constant = 0.f;
+        }
+        self.storeOrdersPriceLab.text = [NSString stringWithFormat:@"%@",model.orderActuallyPrice];
+        self.storeOrdersPriceLab.textColor = JJFirstLevelFont;
+    }
+    
+    NSString *status = [model.orderState longLongValue] == 1?@"已完成":[model.orderState longLongValue] == 2?@"待收货":[model.orderState longLongValue] == 3?@"待服务":[model.orderState longLongValue] == 4?@"作废":[model.orderState longLongValue] == 5?@"待发货":[model.orderState longLongValue] == 6?@"待车主确认服务":[model.orderState longLongValue] == 7?@"待评价":[model.orderState longLongValue] == 8?@"待支付":[model.orderState longLongValue] == 9?@"退款中":[model.orderState longLongValue] == 10?@"已退款":[model.orderState longLongValue] == 15?@"用户已取消":@"状态异常";
     
     self.storeOrdersStatusLab.text = status;
     

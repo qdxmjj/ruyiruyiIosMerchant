@@ -22,7 +22,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41q-Op-Jmg">
                         <rect key="frame" x="16" y="11" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add" translatesAutoresizingMaskIntoConstraints="NO" id="Dyh-j4-fb7">
@@ -76,11 +76,23 @@
                             <constraint firstItem="6sg-DN-EwT" firstAttribute="height" secondItem="xoy-dK-xst" secondAttribute="height" id="tU5-oc-GdP"/>
                         </constraints>
                     </view>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJ3-oL-3KA">
+                        <rect key="frame" x="224" y="11" width="80" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="6L6-iE-4aU"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal" title="拍照示例">
+                            <color key="titleColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Rhw-co-47g" firstAttribute="centerX" secondItem="Dyh-j4-fb7" secondAttribute="centerX" id="4Ml-cw-ih6"/>
+                    <constraint firstItem="XJ3-oL-3KA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="4o5-VM-1v0"/>
                     <constraint firstItem="xoy-dK-xst" firstAttribute="centerY" secondItem="Dyh-j4-fb7" secondAttribute="centerY" id="7nB-lH-dYd"/>
                     <constraint firstItem="Rhw-co-47g" firstAttribute="bottom" secondItem="Dyh-j4-fb7" secondAttribute="bottom" id="D6O-RE-Eks"/>
+                    <constraint firstAttribute="trailing" secondItem="XJ3-oL-3KA" secondAttribute="trailing" constant="16" id="Hpz-JM-OSS"/>
                     <constraint firstItem="xoy-dK-xst" firstAttribute="centerX" secondItem="Dyh-j4-fb7" secondAttribute="centerX" id="Xf0-zP-nMD"/>
                     <constraint firstItem="41q-Op-Jmg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="kPY-1t-2hK"/>
                     <constraint firstItem="41q-Op-Jmg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="mPz-uu-xhf"/>
@@ -93,7 +105,8 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="delPhotoBtn" destination="5eD-Xq-9zo" id="Sly-Fs-r0x"/>
-                <outlet property="selectPhotoBen" destination="6sg-DN-EwT" id="I9g-CV-UsE"/>
+                <outlet property="exampleBtn" destination="XJ3-oL-3KA" id="ZfJ-pd-BDm"/>
+                <outlet property="selectPhotoBen" destination="6sg-DN-EwT" id="ja7-2y-iZZ"/>
                 <outlet property="titleLab" destination="41q-Op-Jmg" id="9w4-gS-hxE"/>
             </connections>
             <point key="canvasLocation" x="27" y="94"/>

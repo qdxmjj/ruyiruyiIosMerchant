@@ -77,7 +77,7 @@
     [self.btn mas_makeConstraints:^(MASConstraintMaker *make) {
     
         make.center.mas_equalTo(self.rightView);
-        make.width.mas_equalTo(self.rightView.mas_width).multipliedBy(0.5);
+        make.width.mas_equalTo(self.rightView.mas_width).multipliedBy(0.4);
         make.height.mas_equalTo(self.rightView.mas_height);
     }];
     
@@ -85,7 +85,7 @@
    
     [self.classLab mas_makeConstraints:^(MASConstraintMaker *make) {
        
-        make.left.mas_equalTo(self.rightView.mas_left).inset(5);
+        make.left.mas_equalTo(self.rightView.mas_left).inset(10);
         make.right.mas_equalTo(self.btn.mas_left).inset(5);
         make.centerY.mas_equalTo(self.rightView.mas_centerY);
         make.height.mas_equalTo(self.rightView.mas_height);
@@ -110,7 +110,7 @@
         [_addBtn setTitle:@"添加商品" forState:UIControlStateNormal];
         [_addBtn.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
         [_addBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
-        [_addBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_addBtn setTitleColor:[UIColor colorWithRed:80.f/255.f green:80.f/255.f blue:80.f/255.f alpha:1.f] forState:UIControlStateNormal];
     }
     
     

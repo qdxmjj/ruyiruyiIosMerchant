@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"修改密码";
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(textFieldEditChanged:)   name:@"UITextFieldTextDidChangeNotification" object:self.codeField];
     
@@ -37,7 +37,7 @@
 - (IBAction)resetPwdEvent:(id)sender {
     
     if ([self.phoneFleld.text isEqualToString:@""]) {
-        
+
         [MBProgressHUD showTextMessage:@"手机号码为空!"];
         return;
     }else if ([self.codeField.text isEqualToString:@""]){

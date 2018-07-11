@@ -7,7 +7,6 @@
 //
 
 #import "OrderHanderView.h"
-
 @interface OrderHanderView()
 
 
@@ -175,6 +174,9 @@
     
 }
 
+
+
+
 -(void)setUserName:(NSString *)userName{
     
     if (userName.length<=0) {
@@ -187,12 +189,10 @@
 
 -(void)setUnfinishedNum:(NSString *)unfinishedNum{
     
-
     [self.leftBtn setTitle:[NSString stringWithFormat:@"%@（单）",unfinishedNum] forState:UIControlStateNormal];
 }
 
 -(void)setFinishedNum:(NSString *)finishedNum{
-    
     
     [self.rigBtn setTitle:[NSString stringWithFormat:@"%@（单）",finishedNum] forState:UIControlStateNormal];
 }

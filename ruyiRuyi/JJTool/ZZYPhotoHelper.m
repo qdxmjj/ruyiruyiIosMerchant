@@ -47,7 +47,11 @@ static ZZYPhotoHelper *picker = nil;
     [alertController addAction:canleAction];
     [alertController addAction:library];
     [alertController addAction:carmare];
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
+    
+    dispatch_async(dispatch_get_main_queue(),^{
+        
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
+    });
 }
   
 

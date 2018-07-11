@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ShopPhotoCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9K-4L-XJw" userLabel="factoryBtn">
+                        <rect key="frame" x="0.0" y="-0.5" width="50" height="50"/>
+                        <state key="normal" image="ic_add"/>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dkv-Bm-MSa">
+                        <rect key="frame" x="0.0" y="-0.5" width="50" height="50"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUb-Gv-KHl">
+                        <rect key="frame" x="38" y="-0.5" width="12" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="13" id="iSA-dR-159"/>
+                        </constraints>
+                        <state key="normal" image="ic_delete"/>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Dkv-Bm-MSa" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="8FJ-G1-qLw"/>
+                <constraint firstItem="Dkv-Bm-MSa" firstAttribute="centerX" secondItem="SEy-5g-ep8" secondAttribute="centerX" id="9Lm-eD-Poa"/>
+                <constraint firstItem="Dkv-Bm-MSa" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="E4j-1K-iwW"/>
+                <constraint firstItem="q9K-4L-XJw" firstAttribute="height" secondItem="Dkv-Bm-MSa" secondAttribute="height" id="HOv-L5-Q3V"/>
+                <constraint firstItem="GUb-Gv-KHl" firstAttribute="trailing" secondItem="Dkv-Bm-MSa" secondAttribute="trailing" id="Hsz-X8-wdw"/>
+                <constraint firstItem="GUb-Gv-KHl" firstAttribute="top" secondItem="Dkv-Bm-MSa" secondAttribute="top" id="Jrd-57-hmF"/>
+                <constraint firstItem="q9K-4L-XJw" firstAttribute="centerY" secondItem="Dkv-Bm-MSa" secondAttribute="centerY" id="TwP-Tj-56K"/>
+                <constraint firstItem="q9K-4L-XJw" firstAttribute="centerX" secondItem="Dkv-Bm-MSa" secondAttribute="centerX" id="eHq-HN-9MF"/>
+                <constraint firstItem="q9K-4L-XJw" firstAttribute="width" secondItem="Dkv-Bm-MSa" secondAttribute="width" id="gxp-te-pV4"/>
+                <constraint firstItem="Dkv-Bm-MSa" firstAttribute="centerY" secondItem="SEy-5g-ep8" secondAttribute="centerY" id="lD1-Pz-I0V"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <connections>
+                <outlet property="delBtn" destination="GUb-Gv-KHl" id="aZP-2v-Mhj"/>
+                <outlet property="imgView" destination="Dkv-Bm-MSa" id="m16-hq-T5C"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_add" width="29" height="24"/>
+        <image name="ic_delete" width="12" height="12"/>
+    </resources>
+</document>

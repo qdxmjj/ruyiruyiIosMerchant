@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface OrdersPhotoCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
+@property (weak, nonatomic) IBOutlet UIButton *exampleBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *selectPhotoBen;
 
 @end

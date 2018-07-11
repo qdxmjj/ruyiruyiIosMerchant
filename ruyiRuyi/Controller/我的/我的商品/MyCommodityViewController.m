@@ -42,7 +42,7 @@ static const CGFloat bottomH = 45;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.title = @"商品管理";
     self.view.backgroundColor = [UIColor whiteColor];
     NSArray  *titleArr = @[@"出售中",@"已下架"];
     
@@ -50,10 +50,10 @@ static const CGFloat bottomH = 45;
         
         UIButton *tabbarBtn=[UIButton buttonWithType:UIButtonTypeCustom];
         tabbarBtn.frame=CGRectMake(SCREEN_WIDTH/2*i,0 , SCREEN_WIDTH/2, topBtnH);
-        tabbarBtn.backgroundColor=[UIColor cyanColor];
+        tabbarBtn.backgroundColor=[UIColor whiteColor];
         [tabbarBtn setTitle:titleArr[i] forState:UIControlStateNormal];
         [tabbarBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        
+        [tabbarBtn.titleLabel setFont:[UIFont systemFontOfSize:14.f]];
         [tabbarBtn addTarget:self action:@selector(topBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
         
         [self.view addSubview:tabbarBtn];
@@ -107,7 +107,7 @@ static const CGFloat bottomH = 45;
     self.hidesBottomBarWhenPushed = YES;
 }
 
-
+//选择分类筛选商品
 -(void)showSelectCommodityTypeVC:(UIButton *)sender{
     
     JJWeakSelf
@@ -178,7 +178,7 @@ static const CGFloat bottomH = 45;
     if (_sliderView==nil) {
         _sliderView = [UIImageView new];
         _sliderView.frame = CGRectMake(0, topBtnH, SCREEN_WIDTH/2, sliderH);
-        _sliderView.backgroundColor=[UIColor colorWithRed:0 green:144/255.0 blue:254/255.0 alpha:1];
+        _sliderView.backgroundColor=[UIColor colorWithRed:255.f/255.f green:102.f/255.0 blue:35.f/255.0 alpha:1];
     }
     return _sliderView;
 }
@@ -231,6 +231,7 @@ static const CGFloat bottomH = 45;
         self.Cmodel.commodityTypeDic = data;
         self.sellingVC.cModel = self.Cmodel;
         self.dropVC.cModel = self.Cmodel;
+        
     } failure:^(NSError * _Nullable error) {
         
     }];

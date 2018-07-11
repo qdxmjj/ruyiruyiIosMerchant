@@ -20,23 +20,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjz-Pl-GIl">
-                        <rect key="frame" x="16" y="-1" width="288" height="44"/>
+                        <rect key="frame" x="16" y="4.5" width="288" height="33.5"/>
                         <state key="normal" title="Button"/>
-                        <connections>
-                            <action selector="selelctServiceType:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Crb-bq-vJZ"/>
-                        </connections>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="vjz-Pl-GIl" secondAttribute="trailing" constant="16" id="0tu-Ab-swD"/>
                     <constraint firstItem="vjz-Pl-GIl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="KAR-5A-oAf"/>
                     <constraint firstItem="vjz-Pl-GIl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="SYk-sO-Xcj"/>
-                    <constraint firstItem="vjz-Pl-GIl" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="WTc-N6-b7f"/>
+                    <constraint firstItem="vjz-Pl-GIl" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" constant="-10" id="WTc-N6-b7f"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
-                <outlet property="ServiceTypeBtn" destination="vjz-Pl-GIl" id="386-45-7wN"/>
+                <outlet property="ServiceTypeBtn" destination="vjz-Pl-GIl" id="lpw-Sw-UcG"/>
             </connections>
         </tableViewCell>
     </objects>

@@ -13,7 +13,7 @@ typedef enum : NSUInteger{
     ServiceTypeBaoyang = 2,//保养
     ServiceTypeMeirong = 3,//美容清洗
     ServiceTypeAnzhuang = 4,//安装
-    ServiceTypeGaizhuang = 5,//改装
+    ServiceTypeGaizhuang = 5,//轮胎服务
     
 } ServiceTypeList;
 

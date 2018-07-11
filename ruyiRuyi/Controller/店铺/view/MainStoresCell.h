@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *storeOrdersPriceLab;
 @property (weak, nonatomic) IBOutlet UILabel *storeOrdersStatusLab;
 
+@property (weak, nonatomic) IBOutlet UILabel *Voucher;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *voucherWidth;
 
 -(void)setModel:(StoresModel *)model;
 

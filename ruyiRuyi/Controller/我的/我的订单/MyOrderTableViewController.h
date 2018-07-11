@@ -13,7 +13,5 @@
 
 -(instancetype)initWithServiceType:(MyOrdersTypeList )listType;
 
--(void)getMyOrdersInfo:(NSString *)number;
-
 
 @end

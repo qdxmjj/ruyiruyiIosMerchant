@@ -11,7 +11,7 @@
 #import "AssessTableViewController.h"
 
 
-static const CGFloat topBtnH = 50;
+static const CGFloat topBtnH = 45;
 
 
 
@@ -34,6 +34,7 @@ static const CGFloat topBtnH = 50;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"管理店铺";
     
     NSArray  *titleArr = @[@"店铺详情",@"店铺评价"];
     
@@ -41,10 +42,10 @@ static const CGFloat topBtnH = 50;
         
         UIButton *tabbarBtn=[UIButton buttonWithType:UIButtonTypeCustom];
         tabbarBtn.frame=CGRectMake(SCREEN_WIDTH/2*i,0 , SCREEN_WIDTH/2, topBtnH);
-        tabbarBtn.backgroundColor=[UIColor cyanColor];
+        tabbarBtn.backgroundColor=[UIColor whiteColor];
         [tabbarBtn setTitle:titleArr[i] forState:UIControlStateNormal];
         [tabbarBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        
+        [tabbarBtn.titleLabel setFont:[UIFont systemFontOfSize:14.f]];
         [tabbarBtn addTarget:self action:@selector(topBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
         
         [self.view addSubview:tabbarBtn];
@@ -88,9 +89,9 @@ static const CGFloat topBtnH = 50;
         _contentScrView.delegate=self;
         _contentScrView.bounces=NO;
         if (KIsiPhoneX) {
-            _contentScrView.frame = CGRectMake(0, self.sliderView.mj_y+self.sliderView.mj_h, SCREEN_WIDTH, SCREEN_HEIGHT-self.sliderView.mj_y-self.sliderView.mj_h-88-34);
+            _contentScrView.frame = CGRectMake(0, topBtnH+2, SCREEN_WIDTH, SCREEN_HEIGHT-88-34-topBtnH);
         }else{
-            _contentScrView.frame = CGRectMake(0, self.sliderView.mj_y+self.sliderView.mj_h, SCREEN_WIDTH, SCREEN_HEIGHT-self.sliderView.mj_y-self.sliderView.mj_h-64);
+            _contentScrView.frame = CGRectMake(0, topBtnH+2, SCREEN_WIDTH, SCREEN_HEIGHT-64-topBtnH);
         }
         _contentScrView.contentSize=CGSizeMake(SCREEN_WIDTH*2, 0);
         _contentScrView.backgroundColor=[UIColor lightGrayColor];
@@ -104,9 +105,10 @@ static const CGFloat topBtnH = 50;
 }
 -(UIImageView *)sliderView{
     if (_sliderView==nil) {
+        
         _sliderView = [UIImageView new];
-        _sliderView.frame =CGRectMake(0, topBtnH, SCREEN_WIDTH/2, 2.5);
-        _sliderView.backgroundColor=[UIColor colorWithRed:0 green:144/255.0 blue:254/255.0 alpha:1];
+        _sliderView.frame =CGRectMake(0, topBtnH, SCREEN_WIDTH/2, 2);
+        _sliderView.backgroundColor = JJThemeColor;
     }
     return _sliderView;
 }

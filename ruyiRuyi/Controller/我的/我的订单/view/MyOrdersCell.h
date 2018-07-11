@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MyOrdersDetailsModel.h"
 @interface MyOrdersCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *ordersName;
 @property (weak, nonatomic) IBOutlet UILabel *ordersNumber;
@@ -15,4 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *ordersStatus;
 @property (weak, nonatomic) IBOutlet UIImageView *ordersImg;
 
+@property (weak, nonatomic) IBOutlet UILabel *Voucher;
+
+-(void)setModel:(MyOrdersDetailsModel *)model;
 @end

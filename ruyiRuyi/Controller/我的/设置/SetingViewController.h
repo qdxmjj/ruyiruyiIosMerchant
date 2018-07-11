@@ -6,8 +6,8 @@
 //  Copyright © 2018年 如驿如意. All rights reserved.
 //
 
-#import "BaseTableViewController.h"
+#import "BaseViewController.h"
 
-@interface SetingViewController : BaseTableViewController
+@interface SetingViewController : BaseViewController
 
 @end

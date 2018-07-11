@@ -19,9 +19,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yeG-QO-zuf">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_my_shibai" translatesAutoresizingMaskIntoConstraints="NO" id="yeG-QO-zuf">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </imageView>
                 </subviews>
             </view>
@@ -37,4 +36,7 @@
             </connections>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ic_my_shibai" width="30" height="24"/>
+    </resources>
 </document>

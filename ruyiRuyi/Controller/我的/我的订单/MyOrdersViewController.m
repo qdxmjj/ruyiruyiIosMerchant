@@ -19,13 +19,11 @@ static CGFloat const topBtnH = 45;
 @property(nonatomic,strong)UIImageView *sliderView;//滑块
 
 @property(nonatomic,strong)MyOrderTableViewController *AllOrdersVC;
-@property(nonatomic,strong)MyOrderTableViewController *TuBeDeliveredVC;
 @property(nonatomic,strong)MyOrderTableViewController *WaitReceiveVC;
 @property(nonatomic,strong)MyOrderTableViewController *WaitService;
 @property(nonatomic,strong)MyOrderTableViewController *CompletedVC;
 
 @property(nonatomic,strong)NSArray *titleArr;
-
 
 @end
 
@@ -34,15 +32,18 @@ static CGFloat const topBtnH = 45;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.titleArr = @[@"全部",@"待支付",@"待发货",@"待服务",@"完成"];
+    self.title = @"我的订单";
+
+    self.titleArr = @[@"全部订单",@"进行中",@"待服务",@"已完成"];
     
-    for (int i=0; i<=4; i++) {
+    for (int i=0; i<4; i++) {
         
        UIButton *tabbarBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-        tabbarBtn.frame=CGRectMake(SCREEN_WIDTH/5*i,0 , SCREEN_WIDTH/5, topBtnH);
-        tabbarBtn.backgroundColor=[UIColor cyanColor];
+        tabbarBtn.frame=CGRectMake(SCREEN_WIDTH/4*i,0 , SCREEN_WIDTH/4, topBtnH);
+        tabbarBtn.backgroundColor=[UIColor whiteColor];
         [tabbarBtn setTitle:self.titleArr[i] forState:UIControlStateNormal];
-        [tabbarBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [tabbarBtn.titleLabel setFont:[UIFont systemFontOfSize:14.f]];
+        [tabbarBtn setTitleColor:[UIColor colorWithRed:80.f/255.f green:80.f/255.f blue:80.f/255.f alpha:1.f] forState:UIControlStateNormal];
         
         [tabbarBtn addTarget:self action:@selector(topBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -56,10 +57,6 @@ static CGFloat const topBtnH = 45;
     [self addChildViewController:self.AllOrdersVC];
     
     [self.contentScrView addSubview:self.AllOrdersVC.view];
-    
-    [self addChildViewController:self.TuBeDeliveredVC];
-    
-    [self.contentScrView addSubview:self.TuBeDeliveredVC.view];
     
     [self addChildViewController:self.WaitReceiveVC];
     
@@ -77,11 +74,11 @@ static CGFloat const topBtnH = 45;
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.hidesBottomBarWhenPushed = YES;
-    [self.AllOrdersVC getMyOrdersInfo:@"1"];
-    [self.TuBeDeliveredVC getMyOrdersInfo:@"1"];
-    [self.WaitReceiveVC getMyOrdersInfo:@"1"];
-    [self.WaitService getMyOrdersInfo:@"1"];
-    [self.CompletedVC getMyOrdersInfo:@"1"];
+//    [self.AllOrdersVC getMyOrdersInfo:@"1"];
+//    [self.TuBeDeliveredVC getMyOrdersInfo:@"1"];
+//    [self.WaitReceiveVC getMyOrdersInfo:@"1"];
+//    [self.WaitService getMyOrdersInfo:@"1"];
+//    [self.CompletedVC getMyOrdersInfo:@"1"];
 }
 
 -(void)viewWillLayoutSubviews{
@@ -93,14 +90,14 @@ static CGFloat const topBtnH = 45;
 #pragma mark event
 -(void)topBtnPressed:(UIButton *)btn{
     
-    [self.contentScrView setContentOffset:CGPointMake(btn.frame.origin.x*5, 0) animated:YES];
+    [self.contentScrView setContentOffset:CGPointMake(btn.frame.origin.x*4, 0) animated:YES];
 }
 
 #pragma mark scrollView delegate
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
 
-    self.sliderView.mj_x = scrollView.contentOffset.x/5;
+    self.sliderView.mj_x = scrollView.contentOffset.x/4;
 }
 
 
@@ -116,7 +113,7 @@ static CGFloat const topBtnH = 45;
         }
         _contentScrView.delegate=self;
         _contentScrView.bounces=NO;
-        _contentScrView.contentSize=CGSizeMake(SCREEN_WIDTH*5, 0);
+        _contentScrView.contentSize=CGSizeMake(SCREEN_WIDTH*4, 0);
         _contentScrView.backgroundColor=[UIColor lightGrayColor];
         _contentScrView.showsVerticalScrollIndicator=NO;
         _contentScrView.delegate=self;
@@ -133,12 +130,12 @@ static CGFloat const topBtnH = 45;
         
         _sliderView = [UIImageView new];
         if (KIsiPhoneX) {
-            _sliderView.frame = CGRectMake(0, topBtnH, SCREEN_WIDTH/5, 2.5);
+            _sliderView.frame = CGRectMake(0, topBtnH, SCREEN_WIDTH/4, 2.5);
             
         }else{
-            _sliderView.frame = CGRectMake(0, topBtnH, SCREEN_WIDTH/5, 2.5);
+            _sliderView.frame = CGRectMake(0, topBtnH, SCREEN_WIDTH/4, 2.5);
         }
-        _sliderView.backgroundColor=[UIColor colorWithRed:0 green:144/255.0 blue:254/255.0 alpha:1];
+        _sliderView.backgroundColor= JJThemeColor;
         
     }
     return _sliderView;
@@ -154,20 +151,12 @@ static CGFloat const topBtnH = 45;
     }
     return _AllOrdersVC;
 }
--(MyOrderTableViewController *)TuBeDeliveredVC{
-    if (!_TuBeDeliveredVC) {
-        
-        _TuBeDeliveredVC = [[MyOrderTableViewController alloc] initWithServiceType:ordersTypeTuBeDelivered];
-        _TuBeDeliveredVC.view.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, CGRectGetHeight(self.contentScrView.frame));
 
-    }
-    return _TuBeDeliveredVC;
-}
 -(MyOrderTableViewController *)WaitReceiveVC{
     if (!_WaitReceiveVC) {
         
         _WaitReceiveVC = [[MyOrderTableViewController alloc] initWithServiceType:ordersTypeWaitReceive];
-        _WaitReceiveVC.view.frame = CGRectMake(SCREEN_WIDTH*2, 0, SCREEN_WIDTH, CGRectGetHeight(self.contentScrView.frame));
+        _WaitReceiveVC.view.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, CGRectGetHeight(self.contentScrView.frame));
 
     }
     return _WaitReceiveVC;
@@ -176,7 +165,7 @@ static CGFloat const topBtnH = 45;
     if (!_WaitService) {
         
         _WaitService = [[MyOrderTableViewController alloc] initWithServiceType:ordersTypeWaitService];
-        _WaitService.view.frame = CGRectMake(SCREEN_WIDTH*3, 0, SCREEN_WIDTH, CGRectGetHeight(self.contentScrView.frame));
+        _WaitService.view.frame = CGRectMake(SCREEN_WIDTH*2, 0, SCREEN_WIDTH, CGRectGetHeight(self.contentScrView.frame));
     }
     return _WaitService;
 }
@@ -184,7 +173,7 @@ static CGFloat const topBtnH = 45;
     if (!_CompletedVC) {
         
         _CompletedVC = [[MyOrderTableViewController alloc] initWithServiceType:ordersTypeCompleted];
-        _CompletedVC.view.frame = CGRectMake(SCREEN_WIDTH*4, 0, SCREEN_WIDTH, CGRectGetHeight(self.contentScrView.frame));
+        _CompletedVC.view.frame = CGRectMake(SCREEN_WIDTH*3, 0, SCREEN_WIDTH, CGRectGetHeight(self.contentScrView.frame));
     }
     return _CompletedVC;
 }

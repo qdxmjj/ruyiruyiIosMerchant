@@ -58,4 +58,8 @@
     return [self userDefaultsGetObjectForKey:kToken];
 }
 
++(NSString *)phone{
+    
+    return [self userDefaultsGetObjectForKey:kPhone];
+}
 @end

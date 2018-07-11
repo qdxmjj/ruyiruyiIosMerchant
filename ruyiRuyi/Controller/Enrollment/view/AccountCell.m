@@ -63,7 +63,13 @@
                 
                         weakSelf.codeImage.image = [UIImage imageNamed:@"ic_check"];
                 
+                    }else if([code longLongValue] == 111111){
+                        
+                        [MBProgressHUD showTextMessage:@"此手机号码已被注册！"];
+                        
+                        return ;
                     }else{
+                        
                         weakSelf.codeImage.image = [UIImage imageNamed:@"ic_wrong"];
                     }
                 

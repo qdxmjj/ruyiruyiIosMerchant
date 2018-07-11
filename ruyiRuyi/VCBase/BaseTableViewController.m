@@ -17,11 +17,45 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    // 设置CGRectZero从导航栏下开始计算
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.extendedLayoutIncludesOpaqueBars = YES;
+    
+    //解决tableview 再iOS11下无法顶到顶
+    if (@available(iOS 11.0, *)) {
+        
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        
+    } else {
+        
+        self.automaticallyAdjustsScrollViewInsets = NO;
+        
+    }
+    
+
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:20], NSFontAttributeName, nil]];
+    
+    self.navigationItem.leftBarButtonItem =[self BarButtonItemWithImage:[UIImage imageNamed:@"ic_back"] target:self action:@selector(backButtonAction)];
+    
+}
+
+- (void)backButtonAction{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(UIBarButtonItem *)BarButtonItemWithImage:(UIImage *)image target:(id)target action:(SEL)action
+{
+    UIButton*bt=[UIButton buttonWithType:UIButtonTypeCustom];
+    [bt setImage:image forState:UIControlStateNormal];
+    bt.frame=CGRectMake(0, 0, 33, 33);
+    [bt addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    return [[UIBarButtonItem alloc]initWithCustomView:bt];
 }
 
 - (void)didReceiveMemoryWarning {
