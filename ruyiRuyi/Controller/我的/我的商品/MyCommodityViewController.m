@@ -117,7 +117,6 @@ static const CGFloat bottomH = 45;
 
     YMCommodityTypePickerView * commodityPV = [[YMCommodityTypePickerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     commodityPV.dataDic = self.Cmodel.commodityTypeDic;
-
     commodityPV.disBlock = ^(NSString *FieldText, NSString *selectServiceTypeID, NSString *selectServiceID, BOOL isDismis) {
             
         if (isDismis) {

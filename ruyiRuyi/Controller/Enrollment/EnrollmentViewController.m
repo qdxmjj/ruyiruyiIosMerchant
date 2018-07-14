@@ -374,7 +374,8 @@
         _myTabView  = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
         _myTabView.delegate = self;
         _myTabView.dataSource = self;
-        
+        _myTabView.showsVerticalScrollIndicator = NO;
+
         [_myTabView registerNib:[UINib nibWithNibName:NSStringFromClass([AccountCell class]) bundle:nil] forCellReuseIdentifier:@"accountCell"];
         [_myTabView registerNib:[UINib nibWithNibName:NSStringFromClass([StoresCell class]) bundle:nil] forCellReuseIdentifier:@"storesCell"];
         [_myTabView registerNib:[UINib nibWithNibName:NSStringFromClass([photoCell class]) bundle:nil] forCellReuseIdentifier:@"photoCell1"];

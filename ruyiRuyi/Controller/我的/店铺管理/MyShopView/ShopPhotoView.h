@@ -10,5 +10,12 @@
 
 @interface ShopPhotoView : UIView
 
+@property(nonatomic,strong)NSArray *imgUrlArr;
+
+@property(nonatomic,strong)UIImage *location_img;
+
+@property(nonatomic,strong)UIImage *indoor_img;
+
+@property(nonatomic,strong)UIImage *factory_img;
 
 @end

@@ -56,7 +56,7 @@
 
                 NSString *value = [NSString stringWithFormat:@"{\"phone\":\"%@\",\"code\":\"%@\"}",self.phoenField.text,[toBeString substringToIndex:6]];
                 
-                [JJRequest postRequest:@"verificationCode" params:@{@"reqJson":value} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+                [JJRequest postRequest:@"storeVerificationCode" params:@{@"reqJson":value} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
                 
                     NSLog(@"返回码：%@  msg:%@ DATA:%@",code,message,data);
                     if ([code longLongValue] == 1) {

@@ -11,9 +11,14 @@
 #import "ZZYPhotoHelper.h"
 #import <UIImageView+WebCache.h>
 #import "JJRequest.h"
+#import "JJMacro.h"
 @interface ShopPhotoView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property(nonatomic,strong)UICollectionView *collectionView;
+
+@property(nonatomic,strong)UILabel *titleLab;
+
+@property(nonatomic,strong)UIImageView *imgView;
 
 @end
 @implementation ShopPhotoView
@@ -23,10 +28,41 @@
     self = [super initWithFrame:frame];
     
     if (self) {
-        
+        self.backgroundColor = [UIColor whiteColor];
+        [self addSubview:self.titleLab];
+        [self addSubview:self.imgView];
         [self addSubview:self.collectionView];
     }
     return  self;
+}
+
+
+-(void)setImgUrlArr:(NSArray *)imgUrlArr{
+
+    _imgUrlArr = imgUrlArr;
+    
+    [self.collectionView reloadData];
+}
+
+-(UILabel *)titleLab{
+    
+    if (!_titleLab) {
+        
+        _titleLab = [[UILabel alloc] initWithFrame:CGRectMake(16, 0, SCREEN_WIDTH-80, 30)];
+        _titleLab.text = @"上传门店照片";
+    }
+    return _titleLab;
+}
+
+-(UIImageView *)imgView{
+    
+    if (!_imgView) {
+        
+        _imgView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-30-16, 0, 30, 30)];
+        _imgView.image = [UIImage imageNamed:@"ic_picture"];
+        _imgView.contentMode = UIViewContentModeCenter;
+    }
+    return _imgView;
 }
 
 -(UICollectionView *)collectionView{
@@ -39,7 +75,8 @@
         // 2.设置行间距
         layout.minimumLineSpacing = 1;
         // 3.设置每个item的大小
-        layout.itemSize = CGSizeMake(75, 75);
+
+        layout.itemSize = CGSizeMake((SCREEN_WIDTH - 32 - 40)/3, 75);
 //        // 4.设置Item的估计大小,用于动态设置item的大小，结合自动布局（self-sizing-cell）
 //        layout.estimatedItemSize = CGSizeMake(320, 60);
 //        // 5.设置布局方向
@@ -49,7 +86,7 @@
 //        // 7.设置尾视图尺寸大小
 //        layout.footerReferenceSize = CGSizeMake(50, 50);
 //        // 8.设置分区(组)的EdgeInset（四边距）
-//        layout.sectionInset = UIEdgeInsetsMake(10, 20, 30, 40);
+        layout.sectionInset = UIEdgeInsetsMake(0, 16, 0, 16);
 //        // 9.10.设置分区的头视图和尾视图是否始终固定在屏幕上边和下边
 //        layout.sectionFootersPinToVisibleBounds = YES;
 //        layout.sectionHeadersPinToVisibleBounds = YES;
@@ -67,31 +104,38 @@
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     ShopPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ShopPhotoCollectionViewCellID" forIndexPath:indexPath];
+    
     [cell.delBtn addTarget:self action:@selector(delPhotoEvent:) forControlEvents:UIControlEventTouchUpInside];
+
+    if (self.imgUrlArr.count >= 3) {
+        
+        [cell.imgView sd_setImageWithURL:[NSURL URLWithString:self.imgUrlArr[indexPath.row]]];
+        cell.delBtn.hidden = NO;
+    }
     return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
+    if (self.imgUrlArr.count>0) {
+        
+        return self.imgUrlArr.count;
+    }
     return 3;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-//    [JJRequest postRequest:@"http:www.o2o2s.com/newApp/app/index.php" params:@{} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
-//
-//    } failure:^(NSError * _Nullable error) {
-//        
-//    }];
-    
-    
     ShopPhotoCollectionViewCell *cell = (ShopPhotoCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     
+    if (cell.imgView.image) {
+        
+        return;
+    }
     [[ZZYPhotoHelper shareHelper]showImageViewSelcteWithResultBlock:^(id data) {
       
-        
         cell.imgView.image = (UIImage *)data;
+        cell.delBtn.hidden = NO;
     }];
 }
 
@@ -100,8 +144,37 @@
     ShopPhotoCollectionViewCell *cell = (ShopPhotoCollectionViewCell *) sender.superview.superview;
     
     cell.imgView.image = nil;
-    
-    
+    cell.delBtn.hidden = YES;
 }
 
+-(UIImage *)location_img{
+    
+    ShopPhotoCollectionViewCell *cell = (ShopPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    
+    if (cell.imgView.image) {
+        
+        return  cell.imgView.image;
+    }
+    return nil;
+}
+-(UIImage *)indoor_img{
+    
+    ShopPhotoCollectionViewCell *cell = (ShopPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    
+    if (cell.imgView.image) {
+        
+        return  cell.imgView.image;
+    }
+    return nil;
+}
+-(UIImage *)factory_img{
+    
+    ShopPhotoCollectionViewCell *cell = (ShopPhotoCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+    
+    if (cell.imgView.image) {
+        
+        return  cell.imgView.image;
+    }
+    return nil;
+}
 @end

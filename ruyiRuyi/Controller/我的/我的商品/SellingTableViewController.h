@@ -23,7 +23,6 @@
 //服务对应的小类ID
 @property(nonatomic,copy)NSString *servicesId;
 
-
 //根据ID查询ID对应的服务文本，商品信息里面只有ID没有ID对应内容，需要自己查
 @property(nonatomic,strong)CommodityTypeModel *cModel;
 

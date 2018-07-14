@@ -69,7 +69,4 @@ typedef void (^destinationBlock)(NSURL * _Nonnull documentUrl);
  */
 + (void)updateRequest:(NSString * _Nullable )url params:( NSDictionary * _Nullable )params fileConfig:( NSArray<JJFileParam*> * _Nullable )fileArray progress:(_Nullable progressBlock)progressHandler success:(_Nullable requestSuccessBlock)successHandler complete:(_Nullable responseBlock)completionHandler;
 
-
-
-
 @end

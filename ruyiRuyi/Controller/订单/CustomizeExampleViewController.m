@@ -62,7 +62,7 @@
     
     if (imgNameArr.count == 1) {
         
-        self.img.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imgNameArr[0] ofType:@"png"]];
+        self.img.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imgNameArr[0] ofType:@"jpg"]];
         
         
     }else if (imgNameArr.count == 2){
@@ -71,8 +71,8 @@
         self.leftImg.hidden = NO;
         self.rigthImg.hidden = NO;
         
-        self.leftImg.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imgNameArr[0] ofType:@"png"]];
-        self.rigthImg.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imgNameArr[1] ofType:@"png"]];
+        self.leftImg.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imgNameArr[0] ofType:@"jpg"]];
+        self.rigthImg.image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imgNameArr[1] ofType:@"jpg"]];
         
     }else{
         

@@ -62,8 +62,7 @@ static const CGFloat topBtnH = 45;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    
-    [self.shopVC getShopInfoList];
+    [super viewWillAppear:animated];
     [self.assessVC getAssessInfo:@"1"];
 }
 

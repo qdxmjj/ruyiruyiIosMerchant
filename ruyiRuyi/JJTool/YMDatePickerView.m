@@ -101,6 +101,34 @@
         [self.stopPickerView selectRow:row inComponent:0 animated:YES];
     }
 }
+-(UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    
+    UILabel *lbl = (UILabel *)view;
+    
+    if (lbl == nil) {
+        
+        lbl = [[UILabel alloc]init];
+        
+        //在这里设置字体相关属性
+        
+        lbl.font = [UIFont systemFontOfSize:14.f];
+        
+        lbl.textColor = [UIColor blackColor];
+        
+        [lbl setTextAlignment:NSTextAlignmentCenter];
+        
+        [lbl setBackgroundColor:[UIColor clearColor]];
+        
+    }
+    
+    //重新加载lbl的文字内容
+    
+    lbl.text = [self pickerView:pickerView titleForRow:row forComponent:component];
+    
+    return lbl;
+}
+
+
 - (IBAction)selelctTime:(UIButton *)sender {
     
     NSInteger startRow=[self.startPickerView selectedRowInComponent:0];

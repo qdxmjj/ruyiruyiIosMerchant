@@ -23,13 +23,28 @@
 #define JJWeakSelf __weak typeof(self) weakSelf = self;
 #define JJStrongSele __strong __typeof (self) strongSelf = self
 
-
+//测试版IP
 //#define RuYiRuYiIP  @"http://192.168.0.190:8060"
-#define RuYiRuYiIP  @"http://192.168.0.167:8082/xmjj-webservice"
-//#define RuYiRuYiIP  @"http://ruyiruyi.s1.natapp.cc/xmjj-webservice"  //穿透
+//#define RuYiRuYiIP  @"http://192.168.0.167:8082/xmjj-webservice"
+
+//正式版IP
+#define RuYiRuYiIP  @"http://180.76.243.205:10002/xmjj-webservice/"
 
 // 判断是否是iPhone X
 #define KIsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
+// iPhone4S
+#define IS_iPhone_4S ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+
+// iPhone5 iPhone5s iPhoneSE
+#define IS_iPhone_5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+
+// iPhone6 7 8
+#define IS_iPhone_6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size)) : NO)
+
+// iPhone6plus  iPhone7plus iPhone8plus
+#define IS_iPhone6_Plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size)) : NO)
+
 // home indicator
 #define bottom_height (KIsiPhoneX ? 34.f : 0.f)
 

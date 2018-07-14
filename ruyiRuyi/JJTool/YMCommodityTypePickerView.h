@@ -15,7 +15,6 @@ typedef void (^dismisBlock)(NSString *FieldText,NSString *selectServiceTypeID,NS
 
 @property(nonatomic,strong)NSDictionary *dataDic;
 
-
 @property(nonatomic,copy)dismisBlock disBlock;
 
 -(void)show;

@@ -34,11 +34,8 @@ void uncaughtExceptionHandler(NSException *exception){
     
     
     //保存到本地沙盒中
-    
     [exceptionInfo writeToFile:[NSString stringWithFormat:@"%@/Documents/eror.log",NSHomeDirectory()] atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    
-    
-    
+
 }
 
 @end

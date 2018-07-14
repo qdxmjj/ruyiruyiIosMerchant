@@ -16,43 +16,11 @@
         
         _content = value;
     }
-    if ([key isEqualToString:@"img1Url"]) {
-        
-        if ([self isUrlString:value]) {
-
-            [_imaArr addObject:value];
-        }
-    }
-    if ([key isEqualToString:@"img2Url"]) {
-        
-        if ([self isUrlString:value]) {
-            
-            [_imaArr addObject:value];
-        }
-    }
-    if ([key isEqualToString:@"img3Url"]) {
-        
-        if ([self isUrlString:value]) {
-            
-            [_imaArr addObject:value];
-        }
-    }
-    if ([key isEqualToString:@"img4Url"]) {
-        
-        if ([self isUrlString:value]) {
-            
-            [_imaArr addObject:value];
-        }
-    }
-    if ([key isEqualToString:@"img5Url"]) {
-        
-
-        [self.imaArr addObject:value];
-    }
+   
     if ([key isEqualToString:@"storeCommitUserHeadImg"]) {
         
         
-        _handImg = [NSURL URLWithString:value];
+        self.handImg = [NSURL URLWithString:value];
     }
     if ([key isEqualToString:@"time"]) {
         
@@ -81,11 +49,24 @@
 -(NSMutableArray *)imaArr{
     
     if (!_imaArr) {
-        
         _imaArr = [NSMutableArray array];
+        
+        if ([self isUrlString:self.img1Url]) {
+            [_imaArr addObject:self.img1Url];
+        }
+        if ([self isUrlString:self.img2Url]) {
+            [_imaArr addObject:self.img2Url];
+        }
+        if ([self isUrlString:self.img3Url]) {
+            [_imaArr addObject:self.img3Url];
+        }
+        if ([self isUrlString:self.img4Url]) {
+            [_imaArr addObject:self.img4Url];
+        }
+        if ([self isUrlString:self.img5Url]) {
+            [_imaArr addObject:self.img5Url];
+        }
     }
-    
-    
     return _imaArr;
 }
 @end

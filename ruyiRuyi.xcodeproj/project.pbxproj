@@ -146,8 +146,6 @@
 		36AFA17620A2936F005835B0 /* AssessTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AFA17520A2936F005835B0 /* AssessTableViewController.m */; };
 		36AFA17A20A293F1005835B0 /* ShopInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AFA17820A293F1005835B0 /* ShopInfoCell.m */; };
 		36AFA17B20A293F1005835B0 /* ShopInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36AFA17920A293F1005835B0 /* ShopInfoCell.xib */; };
-		36AFA18A20A2CA0F005835B0 /* ShopPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AFA18820A2CA0F005835B0 /* ShopPhotoCell.m */; };
-		36AFA18B20A2CA0F005835B0 /* ShopPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36AFA18920A2CA0F005835B0 /* ShopPhotoCell.xib */; };
 		36AFA19420A2D598005835B0 /* ShopInfoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AFA19320A2D598005835B0 /* ShopInfoRequest.m */; };
 		36AFA19820A2D869005835B0 /* MyShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AFA19720A2D869005835B0 /* MyShopModel.m */; };
 		36AFA19E20A2E7D8005835B0 /* ShopItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AFA19C20A2E7D8005835B0 /* ShopItemCell.m */; };
@@ -214,6 +212,9 @@
 		36FE63C820A031A300209196 /* MD5Encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FE63C720A031A300209196 /* MD5Encrypt.m */; };
 		36FE63CD20A0411F00209196 /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FE63CC20A0411F00209196 /* MyOrdersViewController.m */; };
 		36FE63D020A0476100209196 /* MyOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FE63CF20A0476100209196 /* MyOrderTableViewController.m */; };
+		36FF49FB20F9DE6500F28729 /* 前轮示例.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 36FF49FA20F9DE6500F28729 /* 前轮示例.jpg */; };
+		36FF49FD20F9DE6800F28729 /* 后轮示例.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 36FF49FC20F9DE6800F28729 /* 后轮示例.jpg */; };
+		36FF49FF20F9E1AA00F28729 /* 车辆示例.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 36FF49FE20F9E1A900F28729 /* 车辆示例.jpg */; };
 		49B46BDBF2ADC7BC73C335DB /* libPods-ruyiRuyiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 591D4A6773DC043B39E2D6E4 /* libPods-ruyiRuyiTests.a */; };
 		4B6D998187F2EE18251F12FF /* libPods-ruyiRuyi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B3AB51BD3DB328A1395521 /* libPods-ruyiRuyi.a */; };
 /* End PBXBuildFile section */
@@ -470,9 +471,6 @@
 		36AFA17720A293F1005835B0 /* ShopInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopInfoCell.h; sourceTree = "<group>"; };
 		36AFA17820A293F1005835B0 /* ShopInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopInfoCell.m; sourceTree = "<group>"; };
 		36AFA17920A293F1005835B0 /* ShopInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopInfoCell.xib; sourceTree = "<group>"; };
-		36AFA18720A2CA0F005835B0 /* ShopPhotoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopPhotoCell.h; sourceTree = "<group>"; };
-		36AFA18820A2CA0F005835B0 /* ShopPhotoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopPhotoCell.m; sourceTree = "<group>"; };
-		36AFA18920A2CA0F005835B0 /* ShopPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopPhotoCell.xib; sourceTree = "<group>"; };
 		36AFA19220A2D598005835B0 /* ShopInfoRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopInfoRequest.h; sourceTree = "<group>"; };
 		36AFA19320A2D598005835B0 /* ShopInfoRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopInfoRequest.m; sourceTree = "<group>"; };
 		36AFA19620A2D869005835B0 /* MyShopModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyShopModel.h; sourceTree = "<group>"; };
@@ -578,6 +576,9 @@
 		36FE63CC20A0411F00209196 /* MyOrdersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrdersViewController.m; sourceTree = "<group>"; };
 		36FE63CE20A0476100209196 /* MyOrderTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderTableViewController.h; sourceTree = "<group>"; };
 		36FE63CF20A0476100209196 /* MyOrderTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderTableViewController.m; sourceTree = "<group>"; };
+		36FF49FA20F9DE6500F28729 /* 前轮示例.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "前轮示例.jpg"; sourceTree = "<group>"; };
+		36FF49FC20F9DE6800F28729 /* 后轮示例.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "后轮示例.jpg"; sourceTree = "<group>"; };
+		36FF49FE20F9E1A900F28729 /* 车辆示例.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "车辆示例.jpg"; sourceTree = "<group>"; };
 		591D4A6773DC043B39E2D6E4 /* libPods-ruyiRuyiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ruyiRuyiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87A1E2DCBBA0DD043D258918 /* libPods-ruyiRuyiUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ruyiRuyiUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8721B92012CC0A64FD2C0CE /* Pods-ruyiRuyiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ruyiRuyiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ruyiRuyiUITests/Pods-ruyiRuyiUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -664,6 +665,9 @@
 		36071A1720EC71F50089E633 /* 其他图片 */ = {
 			isa = PBXGroup;
 			children = (
+				36FF49FE20F9E1A900F28729 /* 车辆示例.jpg */,
+				36FF49FA20F9DE6500F28729 /* 前轮示例.jpg */,
+				36FF49FC20F9DE6800F28729 /* 后轮示例.jpg */,
 				36F6ED9120F3603800FC23DF /* qidong.png */,
 				36F6ED8F20F347F200FC23DF /* shareIMG.png */,
 				366052C920EF448E002BB138 /* ic_head.png */,
@@ -1160,9 +1164,6 @@
 				36AFA1A420A2EC85005835B0 /* ShopItemCollectionViewCell.xib */,
 				36AFA1A720A2ED01005835B0 /* ShopItemFlowLayout.h */,
 				36AFA1A820A2ED01005835B0 /* ShopItemFlowLayout.m */,
-				36AFA18720A2CA0F005835B0 /* ShopPhotoCell.h */,
-				36AFA18820A2CA0F005835B0 /* ShopPhotoCell.m */,
-				36AFA18920A2CA0F005835B0 /* ShopPhotoCell.xib */,
 				36E39B8B20F45B80001EC78F /* ShopPhotoView.h */,
 				36E39B8C20F45B80001EC78F /* ShopPhotoView.m */,
 				36E39B8E20F45D2E001EC78F /* ShopPhotoCollectionViewCell.h */,
@@ -1514,6 +1515,7 @@
 				36AE7DFB20B552EA0079A4CC /* CodeNumberCell.xib in Resources */,
 				360AA1B020EB570000E6DE17 /* ic_delete1.png in Resources */,
 				36EF2FE120A42E37005FFE1A /* AssessCell.xib in Resources */,
+				36FF49FD20F9DE6800F28729 /* 后轮示例.jpg in Resources */,
 				36E39B9220F45D2E001EC78F /* ShopPhotoCollectionViewCell.xib in Resources */,
 				360AA1B620EB655300E6DE17 /* ic_my_shibai@3x.png in Resources */,
 				360AA1AC20EB56A300E6DE17 /* ic_dakongbai@3x.png in Resources */,
@@ -1524,7 +1526,6 @@
 				360AA1C020EB9D0F00E6DE17 /* ic_hui_free.png in Resources */,
 				366052CD20EF448F002BB138 /* ic_head@3x.png in Resources */,
 				361E7B8120EA605E009ACE8E /* promotionAwardCell.xib in Resources */,
-				36AFA18B20A2CA0F005835B0 /* ShopPhotoCell.xib in Resources */,
 				3600FE7B20AC51710028A806 /* AddCommodityCell.xib in Resources */,
 				360044D92092CA2800BEDF73 /* photoCell.xib in Resources */,
 				361E7B7C20EA579D009ACE8E /* PromotionAwardViewController.xib in Resources */,
@@ -1544,6 +1545,7 @@
 				366052CC20EF448F002BB138 /* ic_head.png in Resources */,
 				36137E1E2099451200C9A669 /* PhotoCollectionViewCell.xib in Resources */,
 				360AA1B120EB570000E6DE17 /* ic_delete1@3x.png in Resources */,
+				36FF49FF20F9E1AA00F28729 /* 车辆示例.jpg in Resources */,
 				3624E2C62091EE1300CC4AF4 /* LogInViewController.xib in Resources */,
 				36AAFB8020B6894E00F9775B /* MainStoresCell.xib in Resources */,
 				3616859220A9B2DD00E9CE6E /* SellingCell.xib in Resources */,
@@ -1563,6 +1565,7 @@
 				360044D42092CA0100BEDF73 /* StoresCell.xib in Resources */,
 				360AA1AB20EB56A300E6DE17 /* ic_dakongbai@2x.png in Resources */,
 				360E9FE320D8B3DD005DB120 /* FreeChangAgainTirePhotoCell.xib in Resources */,
+				36FF49FB20F9DE6500F28729 /* 前轮示例.jpg in Resources */,
 				36C809C920D890770036C14A /* FreeChangeAgainCodeNumberCell.xib in Resources */,
 				360CD54120DCE25E005123B9 /* StoresOrderCommodityCell.xib in Resources */,
 				368A7A67209B2D6900CA8DD0 /* DegreeCell.xib in Resources */,
@@ -1733,7 +1736,6 @@
 				367F984720F5E9AA0022838C /* SDBrowserImageView.m in Sources */,
 				3624E2B32091E65800CC4AF4 /* BaseViewController.m in Sources */,
 				36FA66BA20941F0B0069C105 /* YMDatePickerView.m in Sources */,
-				36AFA18A20A2CA0F005835B0 /* ShopPhotoCell.m in Sources */,
 				36B422CC20A56AB10062847F /* ShopDetailsViewController.m in Sources */,
 				36E39B8D20F45B80001EC78F /* ShopPhotoView.m in Sources */,
 				36AFA1A520A2EC85005835B0 /* ShopItemCollectionViewCell.m in Sources */,
@@ -1974,8 +1976,9 @@
 			baseConfigurationReference = C9FB91DBA1ADD001F3EE8554 /* Pods-ruyiRuyi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AW3WK2C3KB;
 				ENABLE_BITCODE = NO;
 				GCC_INPUT_FILETYPE = automatic;
@@ -1985,10 +1988,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ruyiruyiios.merchants;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e8a86981-af15-47c8-9022-9e232b8c1191";
-				PROVISIONING_PROFILE_SPECIFIER = ruyiruyiMerchants;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1998,8 +2000,9 @@
 			baseConfigurationReference = EC9CCC8C9D08F0B5950781AC /* Pods-ruyiRuyi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AW3WK2C3KB;
 				ENABLE_BITCODE = NO;
 				GCC_INPUT_FILETYPE = automatic;
@@ -2009,10 +2012,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ruyiruyiios.merchants;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e8a86981-af15-47c8-9022-9e232b8c1191";
-				PROVISIONING_PROFILE_SPECIFIER = ruyiruyiMerchants;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -2022,8 +2024,9 @@
 			baseConfigurationReference = 106A310B6A8473086B462A46 /* Pods-ruyiRuyiTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM2BB8HHW8;
+				DEVELOPMENT_TEAM = AW3WK2C3KB;
 				INFOPLIST_FILE = ruyiRuyiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2042,8 +2045,9 @@
 			baseConfigurationReference = 0C773A9806433584C89988FE /* Pods-ruyiRuyiTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM2BB8HHW8;
+				DEVELOPMENT_TEAM = AW3WK2C3KB;
 				INFOPLIST_FILE = ruyiRuyiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2062,7 +2066,7 @@
 			baseConfigurationReference = 063A649E2571D3ABBB98DEAE /* Pods-ruyiRuyiUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM2BB8HHW8;
+				DEVELOPMENT_TEAM = AW3WK2C3KB;
 				INFOPLIST_FILE = ruyiRuyiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2081,7 +2085,7 @@
 			baseConfigurationReference = B8721B92012CC0A64FD2C0CE /* Pods-ruyiRuyiUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JM2BB8HHW8;
+				DEVELOPMENT_TEAM = AW3WK2C3KB;
 				INFOPLIST_FILE = ruyiRuyiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

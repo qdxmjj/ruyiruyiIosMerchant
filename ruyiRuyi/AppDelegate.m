@@ -82,8 +82,9 @@
     [JJShare ShareRegister];
     
     
-    
     [[Harpy sharedInstance] setPresentingViewController:_window.rootViewController];
+
+//    [[Harpy sharedInstance] setAppID:@"1347670578"];
 
     //如要使用代理方法 可选签订
 //    [[Harpy sharedInstance] setDelegate:self];
@@ -97,7 +98,6 @@
 
     //设置提示应用程序名
     [[Harpy sharedInstance] setAppName:@"如意如驿商家版"];
-    
     
     /*（可选）设置应用的警报类型
     默认情况下，Harpy配置为使用HarpyAlertTypeOption */
@@ -113,49 +113,47 @@
     [[Harpy sharedInstance] checkVersion];
     
     //注册消息处理函数的处理方法
-    
-    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
-    
-    // 发送崩溃日志
-    
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    
-    NSString *dataPath = [path stringByAppendingPathComponent:@"Exception.txt"];
-    
-    NSData *data = [NSData dataWithContentsOfFile:dataPath];
-    
-    if (data != nil) {
-        
-        [self sendExceptionLogWithData:data path:dataPath];
-        
-    }
+//    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+//
+//    // 发送崩溃日志
+//    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//
+//    NSString *dataPath = [path stringByAppendingPathComponent:@"Exception.txt"];
+//
+//    NSData *data = [NSData dataWithContentsOfFile:dataPath];
+//
+//    if (data != nil) {
+//
+//        [self sendExceptionLogWithData:data path:dataPath];
+//
+//    }
     return YES;
 }
 
 #pragma mark -- 发送崩溃日志
-- (void)sendExceptionLogWithData:(NSData *)data path:(NSString *)path {
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer.timeoutInterval = 5.0f;
-    //告诉AFN，支持接受 text/xml 的数据
-    [AFJSONResponseSerializer serializer].acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
-    
-    NSString *urlString = @"后台地址";
-    
-    [manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        
-        [formData appendPartWithFileData:data name:@"file" fileName:@"Exception.txt" mimeType:@"txt"];
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-        
-        // 删除文件
-        NSFileManager *fileManger = [NSFileManager defaultManager];
-        [fileManger removeItemAtPath:path error:nil];
-        
-    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
-        
-    }];
-}
+//- (void)sendExceptionLogWithData:(NSData *)data path:(NSString *)path {
+//
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    manager.requestSerializer.timeoutInterval = 5.0f;
+//    //告诉AFN，支持接受 text/xml 的数据
+//    [AFJSONResponseSerializer serializer].acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+//
+//    NSString *urlString = @"后台地址";
+//
+//    [manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+//
+//        [formData appendPartWithFileData:data name:@"file" fileName:@"Exception.txt" mimeType:@"txt"];
+//
+//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+//
+//        // 删除文件
+//        NSFileManager *fileManger = [NSFileManager defaultManager];
+//        [fileManger removeItemAtPath:path error:nil];
+//
+//    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+//
+//    }];
+//}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -109,7 +109,7 @@ static const CGFloat bottomBtnH = 40;
 
 
 -(void)viewWillAppear:(BOOL)animated{
-    
+    [super viewWillAppear:animated];
     [self.baoyangVC getServiceList];
     [self.meirongVC getServiceList];
     [self.gaizhuangVC getServiceList];

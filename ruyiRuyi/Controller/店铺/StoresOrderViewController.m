@@ -182,6 +182,7 @@
                 orderTypeText = @"轮胎修补订单";
                 break;
             default:
+                orderTypeText = @"未知的订单";
                 break;
         }
         

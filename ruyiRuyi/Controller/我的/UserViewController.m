@@ -100,10 +100,9 @@
         }
             break;
         case 3:{
-            
+         
+            [MBProgressHUD showTextMessage:@"正在开发中.."];
         }
-            
-            
             break;
         case 4:
         {

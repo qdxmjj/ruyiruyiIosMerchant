@@ -398,6 +398,8 @@
                 orderTypeText = @"轮胎修补订单";
                 break;
             default:
+                orderTypeText = @"未知的订单";
+
                 break;
         }
         
@@ -429,16 +431,18 @@
     
     CustomizeExampleViewController *ceVC = [[CustomizeExampleViewController alloc] init];
     
-    ceVC.contentArr = @[@"轮胎破损部位特写照",@"轮胎条形码特写照",@"每条确定免费更换的轮胎必须拍以上两张照片"].mutableCopy;
+    ceVC.contentArr = @[@"从车前方左侧45°角拍摄",@"机动车影像应占相片的三分之二",@"机动车相片应当能够清晰辨认车身颜色及外观特征"].mutableCopy;
     
-    ceVC.imgNameArr = @[@"ic_head",@"ic_head"].mutableCopy;
+    ceVC.imgNameArr = @[@"车辆示例"].mutableCopy;
     
     [self.navigationController pushViewController:ceVC animated:YES];
     self.hidesBottomBarWhenPushed = YES;
 }
 
+
 -(void)submitOrderInfoEvent{
     
+    //包含内存泄露，一个字典申请了两份内存，暂时无法测试修改会不会对功能有影响，以后再gai
     NSDictionary *dic = [[NSDictionary alloc] init];
 
     NSMutableArray *newArr = [NSMutableArray array];

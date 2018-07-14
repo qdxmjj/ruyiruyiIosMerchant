@@ -17,6 +17,6 @@
 
 +(void)getCommitByConditionWithInfo:(NSDictionary *)info succrss:(_Nullable requestSuccessBlock )succrsshandler failure:(_Nullable requestFailureBlock)failureHandler;
 
-+(void)updateStoreInfoWithInfo:(NSDictionary *)info serviceTypes:(NSString *)serviceType succrss:(_Nullable requestSuccessBlock )succrsshandler failure:(_Nullable requestFailureBlock)failureHandler;
++(void)updateStoreInfoWithInfo:(NSDictionary *)info serviceTypes:(NSString *)serviceType photos:(NSArray <JJFileParam *> *)photos succrss:(_Nullable requestSuccessBlock )succrsshandler failure:(_Nullable requestFailureBlock)failureHandler;
 
 @end

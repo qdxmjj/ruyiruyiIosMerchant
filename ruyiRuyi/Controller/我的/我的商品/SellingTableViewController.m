@@ -47,20 +47,18 @@
     self.tableView.mj_footer=[MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         
         [self loadMoreData];
-        
     }];
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         [self loadNewData];
-        
     }];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [self getStockByConditionWithPage:@"1" serviceTypeId:@"" servicesId:@"" stockStatus:[NSString stringWithFormat:@"%lu",self.commodityType]];
+    [self getStockByConditionWithPage:@"1" serviceTypeId:@"" servicesId:@"" stockStatus:[NSString stringWithFormat:@"%lu",(unsigned long)self.commodityType]];
 }
 //下拉刷新
 -(void)loadNewData{

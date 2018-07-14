@@ -61,19 +61,27 @@
         return;
     }
     
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.label.text = @"正在修改密码...";
+    [hud showAnimated:YES];
+    
     [ResetPwdRequest changeStorePwdWithInfo:@{@"password":[MD5Encrypt MD5ForUpper32Bate:self.pwdField.text],@"phone":self.phoneFleld.text,@"code":self.codeField.text} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
        
-        [self.navigationController popViewControllerAnimated:YES];
+        [hud hideAnimated:YES];
+
+        if ([code longLongValue] == 1) {
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }
         
     } failure:^(NSError * _Nullable error) {
-        
+        [hud hideAnimated:YES];
     }];
     
 }
 
 
 - (IBAction)getCodeEvent:(UIButton *)sender {
-    
     
     BOOL isPhone = [JJTools valiMobile:self.phoneFleld.text];
     
@@ -118,12 +126,13 @@
 
 //    NSDictionary *dic = @{@"phone":self.phoneFleld.text};
     
+
+    
     [EnrollmentRequestData getCodeWithReqJson:self.phoneFleld.text succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
         NSLog(@"验证码:%@",data);
         
     } failure:^(NSError * _Nullable error) {
-        
     }];
 }
 

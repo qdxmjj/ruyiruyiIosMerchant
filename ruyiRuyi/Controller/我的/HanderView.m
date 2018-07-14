@@ -65,7 +65,7 @@
     [self.leftBtn setImage:[UIImage imageNamed:@"ic_dingdan"] forState:UIControlStateNormal];
     [self.leftBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [self.leftBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.leftBtn layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:40];
+    [self.leftBtn layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:20];
     [toolView addSubview:self.leftBtn];
     
     
@@ -75,7 +75,7 @@
     [self.rigBtn setImage:[UIImage imageNamed:@"ic_shop"] forState:UIControlStateNormal];
     [self.rigBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
     [self.rigBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.rigBtn layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:40];
+    [self.rigBtn layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:20];
     [toolView addSubview:self.rigBtn];
 
     

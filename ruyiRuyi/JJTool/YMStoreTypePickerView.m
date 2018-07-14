@@ -38,8 +38,8 @@
            
             make.centerX.mas_equalTo(self.mas_centerX);
             make.centerY.mas_equalTo(self.mas_centerY);
-            make.width.and.height.mas_equalTo(CGSizeMake(343,234));
-            
+            make.width.and.height.mas_equalTo(CGSizeMake(self.frame.size.width-20,(self.frame.size.width-20)*0.7));
+
         }];
         [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
 
@@ -98,6 +98,33 @@
     
     
     return 20.f;
+}
+
+-(UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    
+    UILabel *lbl = (UILabel *)view;
+    
+    if (lbl == nil) {
+        
+        lbl = [[UILabel alloc]init];
+        
+        //在这里设置字体相关属性
+        
+        lbl.font = [UIFont systemFontOfSize:14.f];
+        
+        lbl.textColor = [UIColor blackColor];
+        
+        [lbl setTextAlignment:NSTextAlignmentCenter];
+        
+        [lbl setBackgroundColor:[UIColor clearColor]];
+        
+    }
+    
+    //重新加载lbl的文字内容
+    
+    lbl.text = [self pickerView:pickerView titleForRow:row forComponent:component];
+    
+    return lbl;
 }
 
 

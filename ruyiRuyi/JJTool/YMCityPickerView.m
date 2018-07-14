@@ -58,8 +58,8 @@
             
             make.centerX.mas_equalTo(self.mas_centerX);
             make.centerY.mas_equalTo(self.mas_centerY);
-            make.width.and.height.mas_equalTo(CGSizeMake(343,234));
-            
+            make.width.and.height.mas_equalTo(CGSizeMake(self.frame.size.width-20,(self.frame.size.width-20)*0.7));
+
         }];
         [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
             

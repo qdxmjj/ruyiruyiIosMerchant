@@ -9,7 +9,6 @@
 #import "ShopDetailsViewController.h"
 #import "ShopInfoCell.h"
 #import "ShopItemCell.h"
-#import "ShopPhotoCell.h"
 #import "photoCell.h"
 #import "ShopInfoRequest.h"
 
@@ -40,6 +39,7 @@
 
     [self.view addSubview:self.bottomBtn];
     [self.view addSubview:self.tableView];
+    [self getShopInfoList];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -84,26 +84,53 @@
     NSString *startTime;NSString *endTime;
     
     NSArray *array = [infoCell.storeTimeBtn.titleLabel.text componentsSeparatedByString:@"至"];
-    
     startTime = [NSString stringWithFormat:@"2000-01-01T %@.000+0800",array[0]];
     endTime = [NSString stringWithFormat:@"2000-01-01T %@.000+0800",array[1]];
     
+    if (self.shopPhotoView.location_img == nil) {
+        
+        [MBProgressHUD showTextMessage:@"请选择门头照片！"];
+        return;
+    }
+    
+    if (self.shopPhotoView.indoor_img == nil) {
+        
+        [MBProgressHUD showTextMessage:@"请选择店内照片！"];
+        return;
+    }
+    
+    if (self.shopPhotoView.factory_img == nil) {
+        
+        [MBProgressHUD showTextMessage:@"请选择车间照片！"];
+        return;
+    }
+    
+    float imgCompressionQuality = 0.3;//图片压缩比例
+    NSData *licenseData=UIImageJPEGRepresentation(self.shopPhotoView.location_img, imgCompressionQuality);
+    NSData *storeData=UIImageJPEGRepresentation(self.shopPhotoView.indoor_img, imgCompressionQuality);
+    NSData *storeData1=UIImageJPEGRepresentation(self.shopPhotoView.factory_img, imgCompressionQuality);
+    
+    NSArray <JJFileParam *> *photos=@[
+                                   [JJFileParam fileConfigWithfileData:licenseData name:@"location_img" fileName:@"location_img.png" mimeType:@"image/jpg/png/jpeg"],
+                                   [JJFileParam fileConfigWithfileData:storeData name:@"indoor_img" fileName:@"indoor_img.png" mimeType:@"image/jpg/png/jpeg"],
+                                   [JJFileParam fileConfigWithfileData:storeData1 name:@"factory_img" fileName:@"factory_img.png" mimeType:@"image/jpg/png/jpeg"],
+                                   ];
     
     [ShopInfoRequest updateStoreInfoWithInfo:@{@"id":[UserConfig storeID],
                                                @"status":status,
                                                @"startTime":startTime,
                                                @"endTime":endTime
-                                               }
-                                serviceTypes:[cell.selelItems componentsJoinedByString:@","]
-                                     succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
-        
-                                         
-                                         [self.navigationController popViewControllerAnimated:YES];
-    
-                                     } failure:^(NSError * _Nullable error) {
-        
-    
-                                     }];
+                                               } serviceTypes:[cell.selelItems componentsJoinedByString:@","] photos:photos succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+                                                   
+                                                   [[SDImageCache sharedImageCache] clearMemory];
+                                                   
+                                                   [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+
+                                                   }];
+                                                   
+                                               } failure:^(NSError * _Nullable error) {
+                                                   
+                                               }];
 }
 
 
@@ -114,16 +141,14 @@
     [ShopInfoRequest getShopInfoWithInfo:@{@"storeId":[UserConfig storeID]} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
         [self.shopModel setValuesForKeysWithDictionary:data];
-        
-//        @property(nonatomic,strong)NSURL *factoryImgUrl;//
-//
-//        @property(nonatomic,strong)NSURL *indoorImgUrl;
-//
-//        @property(nonatomic,strong)NSURL *locationImgUrl;
+
         [self.bottomImgArr addObject:self.shopModel.locationImgUrl];
         [self.bottomImgArr addObject:self.shopModel.indoorImgUrl];
         [self.bottomImgArr addObject:self.shopModel.factoryImgUrl];
-
+        
+        
+        self.shopPhotoView.imgUrlArr = self.bottomImgArr;
+        
         [self.tableView reloadData];
         
         //请求服务项目
@@ -146,7 +171,7 @@
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -184,19 +209,6 @@
         }
             break;
             
-        case 2:
-        {
-            ShopPhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"shopPhotoCellID" forIndexPath:indexPath];
-
-            [cell.indoorImg sd_setImageWithURL:self.shopModel.indoorImgUrl];
-            [cell.factoryImg sd_setImageWithURL:self.shopModel.factoryImgUrl];
-            [cell.locationImg sd_setImageWithURL:self.shopModel.locationImgUrl];
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-
-            return cell;
-        }
-            break;
-            
         default:
             break;
     }
@@ -216,10 +228,6 @@
             
             break;
         case 1:
-            
-            return 120.f;
-            break;
-        case 2:
             
             return 120.f;
             break;
@@ -280,14 +288,10 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.tableFooterView = self.shopPhotoView;
+    
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ShopInfoCell class]) bundle:nil] forCellReuseIdentifier:@"shopInfoCellID"];
     
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ShopItemCell class]) bundle:nil] forCellReuseIdentifier:@"shopItemCellID"];
-    
-    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ShopPhotoCell class]) bundle:nil] forCellReuseIdentifier:@"shopPhotoCellID"];
-    
-//    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([photoCell class]) bundle:nil] forCellReuseIdentifier:@"shopPhotoCellID"];
-
     return _tableView;
 }
 
@@ -322,9 +326,6 @@
         _shopPhotoView = [[ShopPhotoView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 120)];
         
     }
-    
-    
-    
     return _shopPhotoView;
 }
 

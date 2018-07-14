@@ -33,7 +33,6 @@
     } else {
         
         self.automaticallyAdjustsScrollViewInsets = NO;
-        
     }
     
 

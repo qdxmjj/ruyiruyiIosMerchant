@@ -18,15 +18,15 @@
 
 @property(nonatomic,copy)NSString *content;
 
-@property(nonatomic,strong)NSURL *img1;
+@property(nonatomic,copy)NSString *img1Url;
 
-@property(nonatomic,strong)NSURL *img2;
+@property(nonatomic,copy)NSString *img2Url;
 
-@property(nonatomic,strong)NSURL *img3;
+@property(nonatomic,copy)NSString *img3Url;
 
-@property(nonatomic,strong)NSURL *img4;
+@property(nonatomic,copy)NSString *img4Url;
 
-@property(nonatomic,strong)NSURL *img5;
+@property(nonatomic,copy)NSString *img5Url;
 
 @property(nonatomic,strong)NSMutableArray *imaArr;
 

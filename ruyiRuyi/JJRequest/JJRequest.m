@@ -280,7 +280,7 @@
             break;
         default:
             
-            [MBProgressHUD showError:@"未知错误！" integer:errorCode];
+            [MBProgressHUD showError:@"网络错误，请重试！" integer:errorCode];
             break;
     }
     

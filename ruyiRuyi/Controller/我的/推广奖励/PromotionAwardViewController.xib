@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,13 +66,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7E9-Ht-G6E">
-                                <rect key="frame" x="75" y="425" width="275" height="121"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="121" id="vwz-hV-2Pw"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                                <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7E9-Ht-G6E">
+                                <rect key="frame" x="75" y="437" width="275" height="114"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="label">
+                                        <attributes>
+                                            <color key="NSColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="11" name="STFangsong"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -79,6 +84,7 @@
                         <constraints>
                             <constraint firstItem="Iwz-Ba-qkG" firstAttribute="centerX" secondItem="btr-pM-R31" secondAttribute="centerX" id="66m-UP-TN4"/>
                             <constraint firstItem="btr-pM-R31" firstAttribute="centerX" secondItem="dxw-ni-l8D" secondAttribute="centerX" id="B7X-aX-aHX"/>
+                            <constraint firstItem="7E9-Ht-G6E" firstAttribute="height" secondItem="5cE-zb-Ug3" secondAttribute="height" multiplier="0.2" id="DDN-dJ-y0i"/>
                             <constraint firstItem="btr-pM-R31" firstAttribute="width" secondItem="5cE-zb-Ug3" secondAttribute="width" id="DMC-d8-mHm"/>
                             <constraint firstItem="DdD-lu-YuY" firstAttribute="centerX" secondItem="Iwz-Ba-qkG" secondAttribute="centerX" id="GQs-vP-wB2"/>
                             <constraint firstItem="dxw-ni-l8D" firstAttribute="trailing" secondItem="7E9-Ht-G6E" secondAttribute="trailing" constant="25" id="IcV-Xq-MOa"/>
@@ -86,7 +92,7 @@
                             <constraint firstItem="btr-pM-R31" firstAttribute="centerY" secondItem="dxw-ni-l8D" secondAttribute="centerY" id="Ok8-IV-AvV"/>
                             <constraint firstItem="Iwz-Ba-qkG" firstAttribute="top" secondItem="btr-pM-R31" secondAttribute="top" constant="10" id="RKc-ax-dVO"/>
                             <constraint firstItem="DdD-lu-YuY" firstAttribute="top" secondItem="Iwz-Ba-qkG" secondAttribute="bottom" constant="-88" id="bOz-dt-kj3"/>
-                            <constraint firstItem="dxw-ni-l8D" firstAttribute="bottom" secondItem="7E9-Ht-G6E" secondAttribute="bottom" constant="25" id="lsS-K3-af5"/>
+                            <constraint firstItem="dxw-ni-l8D" firstAttribute="bottom" secondItem="7E9-Ht-G6E" secondAttribute="bottom" constant="20" id="lsS-K3-af5"/>
                             <constraint firstItem="Xb1-ZV-VSV" firstAttribute="centerX" secondItem="Iwz-Ba-qkG" secondAttribute="centerX" id="mgy-q3-dJj"/>
                             <constraint firstItem="btr-pM-R31" firstAttribute="height" secondItem="5cE-zb-Ug3" secondAttribute="height" id="vR5-t0-mX7"/>
                             <constraint firstItem="Xb1-ZV-VSV" firstAttribute="top" secondItem="Iwz-Ba-qkG" secondAttribute="bottom" constant="8" id="ykH-jF-Eus"/>

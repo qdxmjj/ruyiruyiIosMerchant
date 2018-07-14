@@ -273,6 +273,9 @@
         return;
     }
     
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.label.text = @"正在添加商品...";
+    [hud showAnimated:YES];
     
     float imgCompressionQuality = 0.3;//图片压缩比例
     NSData *licenseData = UIImageJPEGRepresentation(self.headImgBtn.imageView.image, imgCompressionQuality);
@@ -302,36 +305,69 @@
                                                       }
           stock_img:imgArr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
            
+              [hud hideAnimated:YES];
+              
               [self.navigationController popViewControllerAnimated:YES];
             
           } failure:^(NSError * _Nullable error) {
-            
+              [hud hideAnimated:YES];
+
           }];
         
-    }else{
+    }else if([sender.titleLabel.text isEqualToString:@"继续添加"]){
         
-    //新增商品
-    imgArr=@[[JJFileParam fileConfigWithfileData:licenseData name:@"stock_img" fileName:@"shangpin.png" mimeType:@"image/jpg/png/jpeg"]];
+
         
-    [MyCommodityRequest addCommodityWithInfo:@{
-                                               @"storeId":[UserConfig storeID],
-                                               @"name":self.name,
-                                               @"serviceTypeId":self.ServiceTypeId,
-                                               @"serviceId":self.ServicesId,
-                                               @"amount":self.amount,
-                                               @"price":self.price,
-                                               @"status":self.status}
+        //继续添加商品商品
+        imgArr=@[[JJFileParam fileConfigWithfileData:licenseData name:@"stock_img" fileName:@"shangpin.png" mimeType:@"image/jpg/png/jpeg"]];
+        
+        [MyCommodityRequest addCommodityWithInfo:@{
+                                                   @"storeId":[UserConfig storeID],
+                                                   @"name":self.name,
+                                                   @"serviceTypeId":self.ServiceTypeId,
+                                                   @"serviceId":self.ServicesId,
+                                                   @"amount":self.amount,
+                                                   @"price":self.price,
+                                                   @"status":self.status}
      
-    hotos:imgArr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+                                           hotos:imgArr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+                                               
+                                               self.statusField.text = nil;
+                                               self.nameField.text = nil;
+                                               self.priceField.text = nil;
+                                               self.amountField.text = nil;
+                                               self.commodityTypeField.text = nil;
+                                               [self.headImgBtn setImage:[UIImage imageNamed:@"ic_head"] forState:UIControlStateNormal];
+                                               
+                                               [hud hideAnimated:YES];
+                                               
+                                           } failure:^(NSError * _Nullable error) {
+                                               [hud hideAnimated:YES];
+                                           }];
+        }else{
         
-        [self.navigationController popViewControllerAnimated:YES];
+            //新增商品
+            imgArr=@[[JJFileParam fileConfigWithfileData:licenseData name:@"stock_img" fileName:@"shangpin.png" mimeType:@"image/jpg/png/jpeg"]];
+            
+            [MyCommodityRequest addCommodityWithInfo:@{
+                                                       @"storeId":[UserConfig storeID],
+                                                       @"name":self.name,
+                                                       @"serviceTypeId":self.ServiceTypeId,
+                                                       @"serviceId":self.ServicesId,
+                                                       @"amount":self.amount,
+                                                       @"price":self.price,
+                                                       @"status":self.status}
+             
+                                               hotos:imgArr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+                                                   
+                                                   [hud hideAnimated:YES];
+                                                   
+                                                   [self.navigationController popViewControllerAnimated:YES];
+                                               } failure:^(NSError * _Nullable error) {
+                                                   [hud hideAnimated:YES];
+                                               }];
         
-    } failure:^(NSError * _Nullable error) {
-       
-        
-    }];
-    
-    }
+        }
     
 }
 
@@ -387,9 +423,6 @@
         
     }];
     [self loadViewIfNeeded];
-    
-    
-    
 }
 
 
@@ -470,6 +503,7 @@
         [_goOnAddBtn setTitle:@"继续添加" forState:UIControlStateNormal];
         [_goOnAddBtn setTitleColor:[UIColor colorWithRed:255.f/255.f green:102.f/255.f blue:35.f/255.f alpha:1.f] forState:UIControlStateNormal];
         _goOnAddBtn.layer.borderColor = [[UIColor colorWithRed:255.f/255.f green:102.f/255.f blue:35.f/255.f alpha:1.f] CGColor];
+        [_goOnAddBtn addTarget:self action:@selector(addCommodityEvent:) forControlEvents:UIControlEventTouchUpInside];
         _goOnAddBtn.layer.borderWidth = 1.0f;
         _goOnAddBtn.layer.cornerRadius = 5.f;
         _goOnAddBtn.layer.masksToBounds = YES;

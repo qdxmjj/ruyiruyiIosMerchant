@@ -12,6 +12,7 @@
 #import "PromotionRequest.h"
 #import "ExtensionInfo.h"
 #import "JJShare.h"
+
 @interface PromotionAwardViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -22,6 +23,7 @@
 @property(nonatomic,strong)NSArray *rewardUserArr;
 
 @property(nonatomic,strong)ExtensionInfo *extensionInfo;
+
 @end
 
 @implementation PromotionAwardViewController
@@ -35,6 +37,23 @@
     
     self.tableView.tableHeaderView = self.headerView;
     
+    if (IS_iPhone_5) {
+        
+        self.rewardContentLab.font = [UIFont systemFontOfSize:11.f];
+    }
+    if (IS_iPhone_6) {
+        
+        self.rewardContentLab.font = [UIFont systemFontOfSize:12.f];
+    }
+    if (IS_iPhone6_Plus) {
+        
+        self.rewardContentLab.font = [UIFont systemFontOfSize:13.f];
+    }
+    if (KIsiPhoneX) {
+        
+        self.rewardContentLab.font = [UIFont systemFontOfSize:14.f];
+    }
+    
     UIButton*bt=[UIButton buttonWithType:UIButtonTypeCustom];
     [bt setImage:[UIImage imageNamed:@"ic_erweima"] forState:UIControlStateNormal];
     [bt addTarget:self action:@selector(pushQRCodeVC) forControlEvents:UIControlEventTouchUpInside];
@@ -45,7 +64,8 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    
+    [super viewWillAppear:animated];
+
     self.hidesBottomBarWhenPushed = YES;
     
 }

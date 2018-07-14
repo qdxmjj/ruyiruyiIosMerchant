@@ -29,6 +29,12 @@
     [self.photoCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([PhotoCollectionViewCell class]) bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"photoCollectionCell"];
 }
 
+-(void)setItemContentArr:(NSArray *)itemContentArr{
+    
+    _itemContentArr = itemContentArr;
+    
+    [self.photoCollectionView reloadData];
+}
 
 
 //设置分区数（必须实现）
@@ -50,7 +56,10 @@
     
     PhotoCollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"photoCollectionCell" forIndexPath:indexPath];
     [cell.deleteImageBtn addTarget:self action:@selector(deleteImage:) forControlEvents:UIControlEventTouchUpInside];
-    cell.bottonTitleLab.text = self.itemContentArr[indexPath.row];
+    
+    if (self.itemContentArr.count >=3) {
+        cell.bottonTitleLab.text = self.itemContentArr[indexPath.row];
+    }
 
     return cell;
     

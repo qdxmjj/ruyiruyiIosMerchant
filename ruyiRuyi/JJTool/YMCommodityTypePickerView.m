@@ -46,12 +46,14 @@
         [self.mainView addSubview:self.selectBtn];
         [self.mainView addSubview:self.pView];
 
+
+        
         
         [self.mainView mas_makeConstraints:^(MASConstraintMaker *make) {
             
             make.centerX.mas_equalTo(self.mas_centerX);
             make.centerY.mas_equalTo(self.mas_centerY);
-            make.width.and.height.mas_equalTo(CGSizeMake(343,234));
+            make.width.and.height.mas_equalTo(CGSizeMake(self.frame.size.width-20,(self.frame.size.width-20)*0.7));
             
         }];
         [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -345,7 +347,7 @@
     if (!_titleLab) {
         
         _titleLab = [[UILabel alloc] init];
-        _titleLab.text = @"请选择门店城市";
+        _titleLab.text = @"请选择服务类型";
         _titleLab.font = [UIFont systemFontOfSize:16.f];
     }
     return _titleLab;

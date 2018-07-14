@@ -94,6 +94,11 @@
             [weakSelf.tableView.mj_footer setHidden:YES];
         }
         
+        [[SDImageCache sharedImageCache] clearMemory];
+        
+        [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+            
+        }];
         [weakSelf.tableView reloadData];
 
     } failure:^(NSError * _Nullable error) {
@@ -133,9 +138,9 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-
+    NSLog(@"%@",self.dataArr[indexPath.row]);
 }
 
 
@@ -177,8 +182,6 @@
         
         _dataArr = [NSMutableArray array];
     }
-    
-    
     return _dataArr;
 }
 

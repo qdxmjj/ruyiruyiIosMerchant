@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,12 +18,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Pf-Nv-LGA">
-                    <rect key="frame" x="16" y="226.5" width="343" height="234"/>
+                    <rect key="frame" x="10" y="219.5" width="355" height="248.5"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFK-4j-YcE">
-                            <rect key="frame" x="0.0" y="194" width="343" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFK-4j-YcE">
+                            <rect key="frame" x="0.0" y="208.5" width="355" height="40"/>
                             <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="tjD-gW-Jge"/>
+                            </constraints>
                             <state key="normal" title="确定">
                                 <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -30,46 +33,60 @@
                                 <action selector="selelctTime:" destination="iN0-l3-epB" eventType="touchUpInside" id="1ig-2S-rsX"/>
                             </connections>
                         </button>
-                        <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="749" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="27T-bc-Crx">
-                            <rect key="frame" x="180" y="36" width="163" height="150"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="aAC-zf-nfe"/>
-                                <outlet property="delegate" destination="-1" id="Qhe-sQ-yle"/>
-                            </connections>
-                        </pickerView>
-                        <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uFF-8E-doT">
-                            <rect key="frame" x="0.0" y="36" width="162" height="150"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uFF-8E-doT">
+                            <rect key="frame" x="8" y="50.5" width="162" height="148"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="wuD-kL-z2v"/>
                                 <outlet property="delegate" destination="-1" id="Kle-yj-rUR"/>
                             </connections>
                         </pickerView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="请选择营业时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8B-aR-QlG">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择营业时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8B-aR-QlG">
                             <rect key="frame" x="8" y="8" width="115" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="vnW-fV-ulu"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="至" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmI-ft-YOi">
-                            <rect key="frame" x="162" y="101" width="18" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="至" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmI-ft-YOi">
+                            <rect key="frame" x="168.5" y="114.5" width="18" height="20"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="27T-bc-Crx">
+                            <rect key="frame" x="184" y="50.5" width="163" height="148"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="aAC-zf-nfe"/>
+                                <outlet property="delegate" destination="-1" id="Qhe-sQ-yle"/>
+                            </connections>
+                        </pickerView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="234" id="3zG-to-iil"/>
-                        <constraint firstAttribute="width" constant="343" id="8d5-Fs-78y"/>
+                        <constraint firstItem="uFF-8E-doT" firstAttribute="centerY" secondItem="jmI-ft-YOi" secondAttribute="centerY" id="6L4-nU-27z"/>
+                        <constraint firstItem="jmI-ft-YOi" firstAttribute="centerX" secondItem="7Pf-Nv-LGA" secondAttribute="centerX" id="7ZO-2i-IDk"/>
+                        <constraint firstItem="jmI-ft-YOi" firstAttribute="centerY" secondItem="7Pf-Nv-LGA" secondAttribute="centerY" id="9bU-o7-GFa"/>
+                        <constraint firstItem="fFK-4j-YcE" firstAttribute="top" secondItem="27T-bc-Crx" secondAttribute="bottom" constant="10" id="I9X-X1-E29"/>
+                        <constraint firstAttribute="height" secondItem="7Pf-Nv-LGA" secondAttribute="width" multiplier="0.7" id="JFJ-Sz-9wF"/>
+                        <constraint firstItem="uFF-8E-doT" firstAttribute="leading" secondItem="7Pf-Nv-LGA" secondAttribute="leading" constant="8" id="ScB-Ox-lSO"/>
+                        <constraint firstItem="q8B-aR-QlG" firstAttribute="leading" secondItem="7Pf-Nv-LGA" secondAttribute="leading" constant="8" id="V1I-lx-DZp"/>
+                        <constraint firstAttribute="bottom" secondItem="fFK-4j-YcE" secondAttribute="bottom" id="b20-qL-JUp"/>
+                        <constraint firstItem="fFK-4j-YcE" firstAttribute="top" secondItem="uFF-8E-doT" secondAttribute="bottom" constant="10" id="cPZ-6E-kdY"/>
+                        <constraint firstAttribute="trailing" secondItem="27T-bc-Crx" secondAttribute="trailing" constant="8" id="ctJ-N1-kpB"/>
+                        <constraint firstItem="jmI-ft-YOi" firstAttribute="leading" secondItem="uFF-8E-doT" secondAttribute="trailing" constant="-1.5" id="gJR-6e-MiI"/>
+                        <constraint firstItem="27T-bc-Crx" firstAttribute="leading" secondItem="jmI-ft-YOi" secondAttribute="trailing" constant="-2.5" id="niL-Zr-x3r"/>
+                        <constraint firstItem="q8B-aR-QlG" firstAttribute="top" secondItem="7Pf-Nv-LGA" secondAttribute="top" constant="8" id="paj-up-3Qe"/>
+                        <constraint firstItem="fFK-4j-YcE" firstAttribute="leading" secondItem="7Pf-Nv-LGA" secondAttribute="leading" id="uLo-C0-g7e"/>
+                        <constraint firstItem="27T-bc-Crx" firstAttribute="centerY" secondItem="jmI-ft-YOi" secondAttribute="centerY" id="xva-Fk-hGw"/>
+                        <constraint firstAttribute="trailing" secondItem="fFK-4j-YcE" secondAttribute="trailing" id="yBz-0x-Vnd"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="0.50778574486301364" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="7Pf-Nv-LGA" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:1" constant="-20" id="oVk-mO-h4l"/>
                 <constraint firstItem="7Pf-Nv-LGA" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="vgD-Xk-8Gd"/>
                 <constraint firstItem="7Pf-Nv-LGA" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="ywu-h9-3GL"/>
             </constraints>

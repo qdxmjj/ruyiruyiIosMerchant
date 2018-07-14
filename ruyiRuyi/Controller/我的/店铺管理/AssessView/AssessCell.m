@@ -51,9 +51,9 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
 
-    if (self.dataImgArr.count-1>0) {
+    if (self.dataImgArr.count>0) {
         
-        return self.dataImgArr.count-1;
+        return self.dataImgArr.count;
     }
     
     return 0;
@@ -68,7 +68,6 @@
     [cell.itemImg sd_setImageWithURL:self.dataImgArr[indexPath.row]  placeholderImage:[[UIImage alloc] initWithContentsOfFile:imagePath]];
     
     return cell;
-    
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -76,12 +75,11 @@
     SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
     
     //设置容器视图,父视图
-    
-    browser.sourceImagesContainerView = self;
+    browser.sourceImagesContainerView = self.imgCollectionView;
     
     browser.currentImageIndex = indexPath.item;
     
-    browser.imageCount = self.dataImgArr.count-1;
+    browser.imageCount = self.dataImgArr.count;
     
     //设置代理
     browser.delegate = self;
@@ -110,21 +108,21 @@
 
 - (void)setModel:(AssessModel *)model
 {
+    
     self.contentlab.text = model.content;
-    [self.headImg sd_setImageWithURL:model.handImg placeholderImage:[UIImage imageNamed:@"ic_my_shibai"]];
+    [self.headImg sd_setImageWithURL:model.handImg placeholderImage:[UIImage imageNamed:@"ic_my_shibai"] options:SDWebImageRefreshCached];
+    
     self.titleLab.text = model.storeCommitUserName;
     self.timeLab.text = [JJTools getTimestampFromTime:[NSString stringWithFormat:@"%@",model.time] formatter:@"yyyy-MM-dd"];
-    if (model.imaArr.count-1<=0) {
+    if (model.imaArr.count<=0) {
 
         self.bottomViewH.constant = 0.1f;
-
     }else{
 
         self.bottomViewH.constant = 50+10+10;
     }
     self.dataImgArr = model.imaArr;
     [self.imgCollectionView reloadData];
-    
 }
 
 @end

@@ -49,25 +49,22 @@
 }
 
 
-+(void)updateStoreInfoWithInfo:(NSDictionary *)info serviceTypes:(NSString *)serviceType succrss:(requestSuccessBlock)succrsshandler failure:(requestFailureBlock)failureHandler{
++(void)updateStoreInfoWithInfo:(NSDictionary *)info serviceTypes:(NSString *)serviceType photos:(NSArray <JJFileParam *> *)photos succrss:(_Nullable requestSuccessBlock )succrsshandler failure:(_Nullable requestFailureBlock)failureHandler{
     
     
-    
-    
-    [self postRequest:@"updateStoreInfoByStoreId" params:@{@"reqJson":[JJTools convertToJsonData:info],@"serviceTypeList":serviceType} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+    [self updateRequest:@"updateStoreInfoByStoreId" params:@{@"reqJson":[JJTools convertToJsonData:info],@"serviceTypeList":serviceType} fileConfig:photos progress:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
         
-        if ([code longLongValue] != 1) {
+    } success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+        
+        if ([code longLongValue] == 1) {
             
-            [MBProgressHUD showTextMessage:message];
-            return ;
+            succrsshandler(code,message,data);
         }
-        succrsshandler(code,message,data);
+        [MBProgressHUD showTextMessage:message];
 
-    } failure:^(NSError * _Nullable error) {
+    } complete:^(id  _Nullable dataObj, NSError * _Nullable error) {
         
     }];
-    
-    
     
 }
 @end
