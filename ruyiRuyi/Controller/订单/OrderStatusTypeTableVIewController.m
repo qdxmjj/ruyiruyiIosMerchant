@@ -20,6 +20,7 @@
 @property(nonatomic,assign)NSInteger pageNumber;
 
 @property(nonatomic,copy)NSString *orderStates;
+
 @end
 
 @implementation OrderStatusTypeTableVIewController
@@ -30,7 +31,7 @@
     
     if (self) {
         
-        self.orderStates = [NSString stringWithFormat:@"%ld",listType];
+        self.orderStates = [NSString stringWithFormat:@"%ld",(long)listType];
         
     }
     return self;

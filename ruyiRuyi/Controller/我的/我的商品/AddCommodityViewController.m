@@ -244,6 +244,7 @@
 #pragma mark click event
 -(void)selectPhoto:(UIButton *)sender{
     
+    
     [[ZZYPhotoHelper shareHelper] showImageViewSelcteWithResultBlock:^(id data) {
         
         [sender setImage:(UIImage *)data forState:UIControlStateNormal];
@@ -315,8 +316,6 @@
           }];
         
     }else if([sender.titleLabel.text isEqualToString:@"继续添加"]){
-        
-
         
         //继续添加商品商品
         imgArr=@[[JJFileParam fileConfigWithfileData:licenseData name:@"stock_img" fileName:@"shangpin.png" mimeType:@"image/jpg/png/jpeg"]];
@@ -422,7 +421,6 @@
         make.bottom.mas_equalTo(self.goOnAddBtn.mas_top).inset(10);
         
     }];
-    [self loadViewIfNeeded];
 }
 
 
@@ -434,18 +432,18 @@
 
 -(void)dealloc{
     
-    self.name = nil;
-    self.price = nil;
-    self.statusID = nil;
-    self.imgUrl = nil;
-    self.status = nil;
-    self.amount = nil;
-    self.commodityTypeText = nil;
-    self.ServicesId = nil;
-    self.ServiceTypeId = nil;
-    self.headerImg = nil;
-    self.bButtonTitle = nil;
-    self.aModel = nil;
+//    self.name = nil;
+//    self.price = nil;
+//    self.statusID = nil;
+//    self.imgUrl = nil;
+//    self.status = nil;
+//    self.amount = nil;
+//    self.commodityTypeText = nil;
+//    self.ServicesId = nil;
+//    self.ServiceTypeId = nil;
+//    self.headerImg = nil;
+//    self.bButtonTitle = nil;
+//    self.aModel = nil;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -177,13 +177,16 @@
     
     [UserConfig userDefaultsSetObject:nil key:kFirstLogIn];
     
-    [[SDImageCache sharedImageCache] clearMemory];
-    
-    [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
-        
-    }];
+//    [[SDImageCache sharedImageCache] clearMemory];
+//
+//    [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+//
+//    }];
     
     BaseNavigation *nav = [[BaseNavigation alloc] initWithRootViewController: [[LogInViewController alloc] init]];
-    [[UIApplication sharedApplication].keyWindow setRootViewController:nav];
+    
+    [[UIApplication sharedApplication] delegate].window.rootViewController = nav;
+
+//    [[UIApplication sharedApplication].keyWindow setRootViewController:nav];
 }
 @end

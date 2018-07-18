@@ -93,12 +93,6 @@
     
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    
-}
-
 -(void)getMainOrdersInfo:(NSString *)number{
     
     JJWeakSelf

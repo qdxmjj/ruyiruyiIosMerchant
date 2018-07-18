@@ -18,23 +18,24 @@
 
 +(void)showError:(NSString *)message integer:(NSInteger )ErrorCode{
     
-    NSString *Error = [NSString stringWithFormat:@"%@（%ld）",message,ErrorCode];
+    NSString *Error = [NSString stringWithFormat:@"%@（%ld）",message,(long)ErrorCode];
 
     [self MBProgressHUDWithTextMessage:Error];
     return;
 }
 
--(void)showTextLoading{
++ (void)showWaitMessage:(NSString *)message showView:(UIView *)view{
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-    hud.mode = MBProgressHUDModeAnnularDeterminate;
-
-    hud.label.text = @"正在加载...";
-    hud.mode = MBProgressHUDModeText;
-
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.label.text = message;
     [hud showAnimated:YES];
-    [hud hideAnimated:YES afterDelay:1.5];
+}
 
++(void)hideWaitViewAnimated:(UIView *)view{
+    
+//    [self hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
+    
+    [self hideHUDForView:view animated:YES];
 }
 
 +(void)MBProgressHUDWithTextMessage:(NSString *)message {

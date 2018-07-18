@@ -11,7 +11,20 @@
 #import "JJMacro.h"
 
 @implementation JJRequest
+
++ (AFHTTPSessionManager *)sharedHTTPSession{
+    static AFHTTPSessionManager *manager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        manager = [AFHTTPSessionManager manager];
+    });
+    return manager;
+}
+
+//会有内存泄漏
 + (AFHTTPSessionManager *)getRequestManager {
+    
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     /**
      *  可以接受的类型
@@ -50,7 +63,7 @@
         return;
     }
     
-    AFHTTPSessionManager *manager = [self getRequestManager];
+    AFHTTPSessionManager *manager = [self sharedHTTPSession];
     
     [manager GET:url parameters:params progress: nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject){
@@ -82,7 +95,7 @@
         
     }
     
-    AFHTTPSessionManager *manager = [self getRequestManager];
+    AFHTTPSessionManager *manager = [self sharedHTTPSession];
     
     [manager POST:[NSString stringWithFormat:@"%@/%@",RuYiRuYiIP,url] parameters:params progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject){
@@ -111,7 +124,7 @@
         return;
     }
     
-    AFHTTPSessionManager *manager = [self getRequestManager];
+    AFHTTPSessionManager *manager = [self sharedHTTPSession];
     [manager PUT:url parameters:params
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
              
@@ -134,7 +147,7 @@
         return;
     }
     
-    AFHTTPSessionManager *manager = [self getRequestManager];
+    AFHTTPSessionManager *manager = [self sharedHTTPSession];
     [manager DELETE:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         NSString *code = [responseObject objectForKey:@"status"];
@@ -205,7 +218,7 @@
         return;
     }
     
-    AFHTTPSessionManager *manager = [self getRequestManager];
+    AFHTTPSessionManager *manager = [self sharedHTTPSession];
     
     //上传图片延长 上传时间
 //    if ([self rangeOfString:url string:@"AddPunchclock"]) {

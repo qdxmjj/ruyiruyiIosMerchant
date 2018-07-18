@@ -95,16 +95,14 @@
         
     } success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
-        if ([code longLongValue]==1) {
-            
-            succrsshandler(code,message,data);
-        }
-        [MBProgressHUD showTextMessage:message];
-
+        
+        succrsshandler(code,message,data);
+        
+        
     } complete:^(id  _Nullable dataObj, NSError * _Nullable error) {
         
         
-        
+        failureHandler(error);
     }];
     
     

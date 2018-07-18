@@ -35,7 +35,7 @@
     
     self.tableView.tableHeaderView = self.handerView;
     self.tableView.scrollEnabled = NO;
-
+    self.tableView.tableFooterView = [UIView new];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([UserCell class]) bundle:nil] forCellReuseIdentifier:@"userCellID"];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updataHeadphoto) name:@"updataHeadPhotoNotification" object:nil];
@@ -158,7 +158,7 @@
         _handerView = [[HanderView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, self.tableView.bounds.size.height*0.4)];
         
         _handerView.Avatar = [UserConfig storeImgUrl];
-        _handerView.userName = [UserConfig producerName];
+        _handerView.userName = [UserConfig storeName];
         
         [_handerView.leftBtn addTarget:self action:@selector(pushMyOrderViewControllerEvent) forControlEvents:UIControlEventTouchUpInside];
         [_handerView.rigBtn addTarget:self action:@selector(pushMyShopViewControllerEvent) forControlEvents:UIControlEventTouchUpInside];

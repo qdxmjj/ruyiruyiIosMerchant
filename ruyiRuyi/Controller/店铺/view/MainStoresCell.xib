@@ -35,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="   " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBF-gY-cFw">
-                        <rect key="frame" x="261" y="10.5" width="22" height="17"/>
+                        <rect key="frame" x="261" y="10.5" width="25" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="748" constant="20" id="79G-5G-OHU"/>
                         </constraints>
@@ -63,10 +63,10 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="券" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMI-dy-VzQ">
-                        <rect key="frame" x="286" y="10" width="18" height="18"/>
+                        <rect key="frame" x="289" y="10" width="15" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="b6V-jb-RC2"/>
-                            <constraint firstAttribute="width" constant="18" id="jEW-87-W4f"/>
+                            <constraint firstAttribute="width" constant="15" id="jEW-87-W4f"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="1" green="0.40000000000000002" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>

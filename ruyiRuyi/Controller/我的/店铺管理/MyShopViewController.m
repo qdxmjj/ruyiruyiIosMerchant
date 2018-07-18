@@ -61,12 +61,6 @@ static const CGFloat topBtnH = 45;
     [self.contentScrView addSubview:self.assessVC.tableView];
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.assessVC getAssessInfo:@"1"];
-}
-
-
 #pragma mark topButton event
 -(void)topBtnPressed:(UIButton *)btn{
     
@@ -76,9 +70,42 @@ static const CGFloat topBtnH = 45;
 #pragma mark scrollView delegate
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
-    
     self.sliderView.mj_x = scrollView.contentOffset.x/2;
+    
+    CGFloat pageWidth = scrollView.frame.size.width;
+    
+    if (scrollView.contentOffset.x == pageWidth) {
+        NSLog(@"当前显示评价页面");
+        
+        [self.assessVC getAssessInfo:@"1"];
+    }
+    
 }
+
+// 滑动scrollView，并且手指离开时执行。一次有效滑动，只执行一次。
+// 当pagingEnabled属性为YES时，不调用，该方法
+//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+//
+//    NSLog(@"scrollViewWillEndDragging");
+//
+//    if (self.assessVC.isViewLoaded && self.assessVC.view.window) {
+//
+//        NSLog(@"当前显示评价页面");
+//    }
+//}
+//
+//- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+//
+//    NSLog(@"scrollViewDidEndScrollingAnimation");
+//    // 有效的动画方法为：
+//    //    - (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated 方法
+//    //    - (void)scrollRectToVisible:(CGRect)rect animated:(BOOL)animated 方法
+//
+//    if (self.assessVC.isViewLoaded && self.assessVC.view.window) {
+//
+//        NSLog(@"当前显示评价页面");
+//    }
+//}
 
 #pragma mark 视图加载
 -(UIScrollView *)contentScrView{

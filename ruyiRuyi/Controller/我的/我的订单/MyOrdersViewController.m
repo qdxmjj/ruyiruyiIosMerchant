@@ -74,11 +74,6 @@ static CGFloat const topBtnH = 45;
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.hidesBottomBarWhenPushed = YES;
-//    [self.AllOrdersVC getMyOrdersInfo:@"1"];
-//    [self.TuBeDeliveredVC getMyOrdersInfo:@"1"];
-//    [self.WaitReceiveVC getMyOrdersInfo:@"1"];
-//    [self.WaitService getMyOrdersInfo:@"1"];
-//    [self.CompletedVC getMyOrdersInfo:@"1"];
 }
 
 -(void)viewWillLayoutSubviews{

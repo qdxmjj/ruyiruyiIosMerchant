@@ -30,8 +30,8 @@
     
     UserViewController *myVC = [[UserViewController alloc] init];
 
-    [self setController:ordersVC title:@"订单" imageString:@"ic_tubiao1" selectedImageString:@"ic_tubiao1_xuanzhong"];
-    [self setController:storeVC title:@"店铺" imageString:@"ic_shop_weixuan" selectedImageString:@"ic_shop_xuanzhong"];
+    [self setController:ordersVC title:@"平台订单" imageString:@"ic_tubiao1" selectedImageString:@"ic_tubiao1_xuanzhong"];
+    [self setController:storeVC title:@"店铺订单" imageString:@"ic_shop_weixuan" selectedImageString:@"ic_shop_xuanzhong"];
     [self setController:myVC title:@"我的" imageString:@"ic_wode_weixuan" selectedImageString:@"ic_wode_xuanzhong"];
     
 }
@@ -44,6 +44,8 @@
     nav.navigationBar.titleTextAttributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor], NSForegroundColorAttributeName, nil];
     controller.title=title;
     
+    NSDictionary *dictHome = [NSDictionary dictionaryWithObject:[UIColor orangeColor] forKey:NSForegroundColorAttributeName];
+    [nav.tabBarItem setTitleTextAttributes:dictHome forState:UIControlStateSelected];
     [self addChildViewController:nav];
 }
 

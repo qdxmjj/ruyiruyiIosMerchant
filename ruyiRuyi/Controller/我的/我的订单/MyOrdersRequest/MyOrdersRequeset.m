@@ -24,6 +24,7 @@
 
     } failure:^(NSError * _Nullable error) {
         
+        failureHandler(error);
     }]; 
 }
 

@@ -15,7 +15,7 @@
 #import "JJMacro.h"
 #import "JJShare.h"
 #import <Harpy.h>
-#import "MyUncaughtExceptionHandler.h"
+#import <Bugly/Bugly.h>
 #import <AFNetworking.h>
 @interface AppDelegate ()
 
@@ -45,7 +45,6 @@
     
     keyboardManager.placeholderFont = [UIFont boldSystemFontOfSize:17]; // 设置占位文字的字体
     
-    
     self.window =[[UIWindow alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     
     NSString *yesOnNO = [UserConfig userDefaultsGetObjectForKey:kFirstLogIn];
@@ -54,22 +53,14 @@
         
         BaseNavigation *nav = [[BaseNavigation alloc] initWithRootViewController: [[LogInViewController alloc] init]];
         self.window.rootViewController = nav;
-        
     }else{
         
         self.window.rootViewController = [[RootViewController alloc]init];
     }
 
-    
-//    [[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@""]];
-//    [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@""]];
-    
-
     _mapManager = [[BMKMapManager alloc]init];
-    
     // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
     BOOL ret = [_mapManager start:@"wjUDClrGGndu7VvyRT4VFrVEPWd3qO8t"  generalDelegate:nil];
-    
     if (!ret) {
         NSLog(@"manager start failed!");
     }
@@ -81,79 +72,36 @@
     
     [JJShare ShareRegister];
     
-    
-    [[Harpy sharedInstance] setPresentingViewController:_window.rootViewController];
+    [self configureBugly];
 
-//    [[Harpy sharedInstance] setAppID:@"1347670578"];
-
-    //如要使用代理方法 可选签订
-//    [[Harpy sharedInstance] setDelegate:self];
-
-    //可选）设置此选项后，仅当当前版本已发布X天时才会显示警报。
-    //默认情况下，此值设置为1（天），以避免Apple更新JSON的速度快于应用程序二进制文件传播到App Store的问题。
-    [[Harpy sharedInstance] setShowAlertAfterCurrentVersionHasBeenReleasedForDays:1];
-
-    //设置提示文字颜色
-    [[Harpy sharedInstance] setAlertControllerTintColor:[UIColor redColor]];
-
-    //设置提示应用程序名
-    [[Harpy sharedInstance] setAppName:@"如意如驿商家版"];
-    
-    /*（可选）设置应用的警报类型
-    默认情况下，Harpy配置为使用HarpyAlertTypeOption */
-    [[Harpy sharedInstance] setAlertType:HarpyAlertTypeOption];
-    
-    /*（可选）如果您的应用程序在美国App Store中不可用，则必须指定两个字母
-    您的应用程序所在地区的国家/地区代码。*/
-    [[Harpy sharedInstance] setCountryCode:@"CHN"];
-    
-    /*如果设置，将会把语言设置为指定语言，不跟随系统文字*/
-    [[Harpy sharedInstance] setForceLanguageLocalization:HarpyLanguageChineseSimplified];
-    //开始执行检查
-    [[Harpy sharedInstance] checkVersion];
-    
-    //注册消息处理函数的处理方法
-//    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
-//
-//    // 发送崩溃日志
-//    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-//
-//    NSString *dataPath = [path stringByAppendingPathComponent:@"Exception.txt"];
-//
-//    NSData *data = [NSData dataWithContentsOfFile:dataPath];
-//
-//    if (data != nil) {
-//
-//        [self sendExceptionLogWithData:data path:dataPath];
-//
-//    }
     return YES;
 }
 
-#pragma mark -- 发送崩溃日志
-//- (void)sendExceptionLogWithData:(NSData *)data path:(NSString *)path {
-//
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    manager.requestSerializer.timeoutInterval = 5.0f;
-//    //告诉AFN，支持接受 text/xml 的数据
-//    [AFJSONResponseSerializer serializer].acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
-//
-//    NSString *urlString = @"后台地址";
-//
-//    [manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-//
-//        [formData appendPartWithFileData:data name:@"file" fileName:@"Exception.txt" mimeType:@"txt"];
-//
-//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-//
-//        // 删除文件
-//        NSFileManager *fileManger = [NSFileManager defaultManager];
-//        [fileManger removeItemAtPath:path error:nil];
-//
-//    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
-//
-//    }];
-//}
+#pragma mark -- bugly
+- (void)configureBugly {
+    
+    BuglyConfig *config = [[BuglyConfig alloc] init];
+    
+    config.unexpectedTerminatingDetectionEnable = YES; //非正常退出事件记录开关，默认关闭
+    config.reportLogLevel = BuglyLogLevelVerbose; //报告级别
+    //config.deviceIdentifier = [UIDevice currentDevice].identifierForVendor.UUIDString; //设备标识
+    config.blockMonitorEnable = YES; //开启卡顿监控
+    config.blockMonitorTimeout = 5; //卡顿监控判断间隔，单位为秒
+    //    config.delegate = self;
+    
+#if DEBUG
+    config.debugMode = YES; //SDK Debug信息开关, 默认关闭
+    config.channel = @"debug";
+#else
+    config.channel = @"release";
+#endif
+    
+    [Bugly startWithAppId:@"3df5353770"
+#if DEBUG
+        developmentDevice:YES
+#endif
+                   config:config];
+}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -170,37 +118,11 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     
-    /*
-     Perform check for new version of your app
-     Useful if user returns to you app from background after being sent tot he App Store,
-     but doesn't update their app before coming back to your app.
-     
-     ONLY USE THIS IF YOU ARE USING *HarpyAlertTypeForce*
-     
-     Also, performs version check on first launch.
-     */
     
-    /*
-     检查您的应用的新版本
-     如果用户在发送到App Store后从后台返回应用程序，则非常有用，
-     但在回到您的应用之前不会更新他们的应用。
-     
-     注意：只有当你使用*HarpyAlertTypeForce*样式弹框类型是才使用这种方法
-
-       此外，首次启动时执行版本检查。
-      */
-//    [[Harpy sharedInstance] checkVersion];
 }
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    
-    //每天检查新版本
-    [[Harpy sharedInstance] checkVersionDaily];
-
-    //每周检查新版本
-//    [[Harpy sharedInstance] checkVersionWeekly];
 
     
 }

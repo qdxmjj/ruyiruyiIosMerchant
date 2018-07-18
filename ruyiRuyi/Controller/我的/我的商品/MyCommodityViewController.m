@@ -9,7 +9,6 @@
 #import "MyCommodityViewController.h"
 #import "CommodityBottomView.h"
 #import "SellingTableViewController.h"
-#import "DropTableViewController.h"
 #import "AddCommodityViewController.h"
 
 #import "YMCommodityTypePickerView.h"
@@ -69,15 +68,12 @@ static const CGFloat bottomH = 45;
     [self.contentScrView addSubview:self.sellingVC.tableView];
     [self.contentScrView addSubview:self.dropVC.tableView];
 
+    [self getCommodityTypeRequest];//获取商家的服务类型
 }
 
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    [self getCommodityTypeRequest];//获取商家的服务类型
-
-
     self.hidesBottomBarWhenPushed = YES;
 
 }
@@ -117,6 +113,7 @@ static const CGFloat bottomH = 45;
 
     YMCommodityTypePickerView * commodityPV = [[YMCommodityTypePickerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     commodityPV.dataDic = self.Cmodel.commodityTypeDic;
+    
     commodityPV.disBlock = ^(NSString *FieldText, NSString *selectServiceTypeID, NSString *selectServiceID, BOOL isDismis) {
             
         if (isDismis) {
@@ -125,7 +122,7 @@ static const CGFloat bottomH = 45;
             weakSelf.bottomView.imgV.transform = transform;
         }
 
-        if(self.contentScrView.contentOffset.x == 0){
+        if(weakSelf.contentScrView.contentOffset.x == 0){
             
             weakSelf.sellingVC.serviceTypeId = selectServiceTypeID;
             weakSelf.sellingVC.servicesId = selectServiceID;

@@ -11,8 +11,16 @@
 @interface MBProgressHUD (YYM_category)
 
 
+/**
+ *  正在加载
+ */
++ (void)showWaitMessage:(NSString *)message showView:(UIView *)view;
+
++(void)hideWaitViewAnimated:(UIView *)view;
+
 
 +(void)showTextMessage:(NSString *)message;
 
 +(void)showError:(NSString *)message integer:(NSInteger )ErrorCode;
+
 @end

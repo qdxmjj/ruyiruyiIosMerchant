@@ -9,11 +9,9 @@
 #ifndef JJMacro_h
 #define JJMacro_h
 
-
 #define SCREEN_WIDTH  [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define STATUS_BAR_FRAME [[UIApplication sharedApplication] statusBarFrame]
-
 
 #define JJThemeColor  [UIColor colorWithRed:255.f/255 green:102.f/255 blue:35.f/255 alpha:1.f]
 #define JJFirstLevelFont [UIColor colorWithRed:66.f/255.f green:66.f/255.f blue:66.f/255.f alpha:1.f]

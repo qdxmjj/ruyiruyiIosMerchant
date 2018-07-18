@@ -17,11 +17,11 @@
 
 @property(nonatomic,copy)NSString *name;//商品名称
 
-@property(nonatomic,strong)NSString *price;//单价
+@property(nonatomic,copy)NSString *price;//单价
 
 @property(nonatomic,copy)NSString *status;//商品状态
 
-@property(nonatomic,strong)NSString *amount;//库存
+@property(nonatomic,copy)NSString *amount;//库存
 
 @property(nonatomic,copy)NSString *commodityTypeText;//显示用的商品分类
 

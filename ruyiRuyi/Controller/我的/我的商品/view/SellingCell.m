@@ -25,7 +25,7 @@
     
     self.titleLab.text = model.name;
     self.soldLab.text = [NSString stringWithFormat:@"库存：%@",model.amount];
-    self.priceLab.attributedText = [JJTools priceWithRedString:[NSString stringWithFormat:@"%@.0",model.price]];
+    self.priceLab.attributedText = [JJTools priceWithRedString:[NSString stringWithFormat:@"%@",model.price]];
     self.stocklab.text = [NSString stringWithFormat:@"已售：   %@",model.soldNo];
     [self.commodityImg sd_setImageWithURL:[NSURL URLWithString:model.imgUrl]];
 }

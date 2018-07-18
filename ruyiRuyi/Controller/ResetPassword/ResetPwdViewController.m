@@ -103,7 +103,6 @@
     
     [self requestWithCode];
     
-    
 }
 
 
@@ -139,7 +138,6 @@
 
 -(void)removeFromSuperview{
     
-    
     [self.time invalidate];
     self.time = nil;
     
@@ -147,7 +145,7 @@
 }
 -(void)dealloc{
     
-    NSLog(@"释放cell");
+    NSLog(@"释放验证码重置密码cell");
 }
 
 

@@ -14,6 +14,7 @@
 
 @property(nonatomic,strong)NSMutableArray *dataArr;
 
+@property(nonatomic,strong)UIImageView *backgroundImgView;
 
 @end
 
@@ -34,7 +35,10 @@
     
     self.tableView.allowsMultipleSelection = YES;
 
+    [self.view addSubview:self.backgroundImgView];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MyServiceCell class]) bundle:nil] forCellReuseIdentifier:@"myServiceCellID"];
+
+    [self getServiceList];
 
 }
 
@@ -51,6 +55,11 @@
         [self.dataArr addObjectsFromArray:data];
         
         NSLog(@"%@",data);
+        
+        if (self.dataArr.count>0 ){
+            
+            self.backgroundImgView.hidden = YES;
+        }
         
         [self.tableView reloadData];
         
@@ -168,6 +177,20 @@
     
     return [UIView new];
 }
+
+-(UIImageView *)backgroundImgView{
+    
+    if (!_backgroundImgView) {
+        
+        _backgroundImgView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+        _backgroundImgView.backgroundColor = [UIColor whiteColor];
+        [_backgroundImgView setImage:[UIImage imageNamed:@"ic_dakongbai"]];
+        _backgroundImgView.contentMode = UIViewContentModeCenter;
+    }
+    
+    return _backgroundImgView;
+}
+
 -(NSMutableArray *)dataArr{
     
     if (!_dataArr) {

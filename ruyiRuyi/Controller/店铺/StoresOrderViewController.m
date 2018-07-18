@@ -47,7 +47,7 @@
     
     if (self) {
         
-        self.orderType = [NSString stringWithFormat:@"%ld",orderState];
+        self.orderType = [NSString stringWithFormat:@"%ld",(long)orderState];
         
         self.buttonEnabled = NO;
         
@@ -156,8 +156,12 @@
 }
 
 -(void)getOrdersInfo:(NSString *)orderNo orderType:(NSString *)orderType storeId:(NSString *)storeId{
+    
+    [super getOrdersInfo:orderType orderType:orderType storeId:storeId];
 
     [MainOrdersRequest getStoreOrderInfoByNoAndTypeWithInfo:@{@"orderNo":orderNo,@"orderType":orderType,@"storeId":storeId} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+        
+        [MBProgressHUD hideWaitViewAnimated:self.view];
         
         [self.ordersContentArr addObject:[data objectForKey:@"userName"]];
         [self.ordersContentArr addObject:[data objectForKey:@"userPhone"]];
@@ -219,6 +223,7 @@
         [self.tableView reloadData];
         
     } failure:^(NSError * _Nullable error) {
+        [MBProgressHUD hideWaitViewAnimated:self.view];
     }];
 }
 

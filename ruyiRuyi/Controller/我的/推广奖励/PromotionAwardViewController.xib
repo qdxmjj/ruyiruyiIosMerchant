@@ -56,7 +56,7 @@
                                     <action selector="shareEvent:" destination="-1" eventType="touchUpInside" id="gyZ-UC-xHM"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D7E5W" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdD-lu-YuY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdD-lu-YuY">
                                 <rect key="frame" x="113" y="112" width="147" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="bhp-RV-fSW"/>

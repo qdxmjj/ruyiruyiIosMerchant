@@ -44,7 +44,7 @@
     [super viewDidLoad];
     self.title = @"定位";
     self.view.backgroundColor = [UIColor whiteColor];
-    self.view = self.mapView;
+    [self.view addSubview:self.mapView];
     
     [self.view addSubview:self.bottomView];
     // 初始化BMKLocationService
@@ -103,7 +103,6 @@
 -(void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
 {
 
-    
     BMKCoordinateRegion region;
     region.center.latitude = userLocation.location.coordinate.latitude;
     region.center.longitude = userLocation.location.coordinate.longitude;

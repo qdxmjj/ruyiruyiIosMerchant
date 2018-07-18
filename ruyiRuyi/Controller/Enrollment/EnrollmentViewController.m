@@ -198,6 +198,8 @@
     
 
     if (indexPath.section==7) {
+    
+        [MBProgressHUD showWaitMessage:@"正在注册..." showView:self.view];
         
         if (self.longitude && self.latitude) {
 
@@ -239,7 +241,6 @@
 
             NSLog(@"上传ID判断一下，有的城市没有区");
         }
-
 
         if (
             [storeCell.storeName.text isEqualToString:@""]
@@ -321,15 +322,19 @@
 
         [EnrollmentRequestData userEnrollmentWithReqjson:[JJTools convertToJsonData:reqJsonDic] serviceTypes:str photos:arr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
            
+            [MBProgressHUD hideWaitViewAnimated:self.view];
+            
             if ([code longLongValue] == 1) {
                 
+                [MBProgressHUD showTextMessage:message];
+
                 [self.navigationController popViewControllerAnimated:YES];
             }
 
         } failure:^(NSError * _Nullable error) {
             
+            [MBProgressHUD hideWaitViewAnimated:self.view];
         }];
-        
         
     }
     
@@ -351,7 +356,6 @@
         self.latitude = [NSString stringWithFormat:@"%f",latitude];
 
     };
-    
     
     [self.navigationController pushViewController:jjMap animated:YES];
 }
@@ -388,7 +392,7 @@
     return _myTabView;
 }
 
--(NSMutableArray <NSIndexPath *> *)indexPathArr{
+-(NSMutableArray *)indexPathArr{
     
     if (!_indexPathArr) {
         

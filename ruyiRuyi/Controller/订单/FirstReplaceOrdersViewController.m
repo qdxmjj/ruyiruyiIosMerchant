@@ -357,7 +357,11 @@
 
 -(void)getOrdersInfo:(NSString *)orderNo orderType:(NSString *)orderType storeId:(NSString *)storeId{
     
+    [super getOrdersInfo:orderNo orderType:orderType storeId:storeId];
+    
     [MainOrdersRequest getStoreOrderInfoByNoAndTypeWithInfo:@{@"orderNo":orderNo,@"orderType":orderType,@"storeId":storeId} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+        
+        [MBProgressHUD hideWaitViewAnimated:self.view];
         
         if (self.ordersContentArr.count>0) {
             
@@ -423,6 +427,7 @@
         
     } failure:^(NSError * _Nullable error) {
         
+        [MBProgressHUD hideWaitViewAnimated:self.view];
     }];
 }
 
@@ -627,7 +632,7 @@
         
         serviceType = StoreRefuseServiceType;
         
-        [MainOrdersRequest confirmServrceTypeWithInfo:@{@"orderNo":self.ordersContentArr[5],@"serviceType":[NSString stringWithFormat:@"%ld",serviceType],@"orderType":self.orderTypeStr} photos:@[] succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+        [MainOrdersRequest confirmServrceTypeWithInfo:@{@"orderNo":self.ordersContentArr[5],@"serviceType":[NSString stringWithFormat:@"%ld",(long)serviceType],@"orderType":self.orderTypeStr} photos:@[] succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
             
             self.popOrdersVCBlock(YES);
             [self.navigationController popViewControllerAnimated:YES];
@@ -663,7 +668,7 @@
                                    [JJFileParam fileConfigWithfileData:carImgData name:@"carImg" fileName:@"cheliang.png" mimeType:@"image/jpg/png/jpeg"]
                                    ];
     
-    [MainOrdersRequest confirmServrceTypeWithInfo:@{@"orderNo":self.ordersContentArr[5],@"serviceType":[NSString stringWithFormat:@"%ld",serviceType],@"orderType":self.orderTypeStr} photos:arr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+    [MainOrdersRequest confirmServrceTypeWithInfo:@{@"orderNo":self.ordersContentArr[5],@"serviceType":[NSString stringWithFormat:@"%ld",(long)serviceType],@"orderType":self.orderTypeStr} photos:arr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
         self.popOrdersVCBlock(YES);
         [self.navigationController popViewControllerAnimated:YES];

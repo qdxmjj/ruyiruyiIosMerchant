@@ -87,7 +87,7 @@
     
 }
 
--(void)setMaxValue:(double)maxValue{
+-(void)setMaxValue:(CGFloat)maxValue{
     
     if (maxValue < _minValue) {
         maxValue = _minValue;
@@ -95,7 +95,7 @@
     _maxValue = maxValue;
 }
 
--(void)setMinValue:(double)minValue{
+-(void)setMinValue:(CGFloat)minValue{
     
     if (minValue > _maxValue) {
         minValue = _maxValue;
@@ -111,7 +111,7 @@
 //    }
     self.maxValue -= model.repairAmount;
     self.barCodelab.text = model.barCode;
-    self.numerLab.text = [NSString stringWithFormat:@"%ld", model.repairAmount];
+    self.numerLab.text = [NSString stringWithFormat:@"%ld", (long)model.repairAmount];
 }
 
 -(void)setStepperViewHidden:(BOOL)hidden{

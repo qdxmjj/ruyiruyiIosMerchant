@@ -74,11 +74,6 @@
         
         cell.imageView.image =(UIImage *)data;
         
-        NSData *licenseData= UIImageJPEGRepresentation((UIImage *)data, 0.3f);
-
-        NSString *str = [NSString stringWithUTF8String:[licenseData bytes]];
-        
-        NSLog(@"--%@",str);
         switch (indexPath.row) {
             case 0:
                 weakSelf.img1 = (UIImage *)data;

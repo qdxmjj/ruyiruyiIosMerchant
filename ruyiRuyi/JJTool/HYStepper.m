@@ -92,7 +92,7 @@
 
 
 #pragma mark - setters
--(void)setValue:(double)value{
+-(void)setValue:(CGFloat)value{
     if (value < _minValue) {
         value = _minValue;
     }
@@ -115,14 +115,14 @@
 //    _valueChanged ? _valueChanged(_value) : nil;
 }
 
--(void)setMaxValue:(double)maxValue{
+-(void)setMaxValue:(CGFloat)maxValue{
     if (maxValue < _minValue) {
         maxValue = _minValue;
     }
     _maxValue = maxValue;
 }
 
--(void)setMinValue:(double)minValue{
+-(void)setMinValue:(CGFloat)minValue{
     if (minValue > _maxValue) {
         minValue = _maxValue;
     }

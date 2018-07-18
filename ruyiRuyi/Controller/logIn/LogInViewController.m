@@ -23,7 +23,6 @@
     [super viewDidLoad];
 
     self.navigationController.delegate = self;
-
 }
 
 
@@ -59,17 +58,14 @@
         return;
     }
 
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-    hud.label.text = @"正在登录...";
-    [hud showAnimated:YES];
+    [MBProgressHUD showWaitMessage:@"正在登录..." showView:self.view];
     
-
     NSDictionary *dic = @{@"phone":self.accountField.text,@"password":[MD5Encrypt MD5ForUpper32Bate:self.pwdField.text]};
     
 
     [LogInrequestData logInRequestWithReqJson:[JJTools convertToJsonData:dic] succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
 
-        [hud hideAnimated:YES];
+        [MBProgressHUD hideWaitViewAnimated:self.view];
         
         if ([code longLongValue]==111111) {
 
@@ -90,7 +86,7 @@
         
     } failure:^(NSError * _Nullable error) {
 
-        [hud hideAnimated:YES];
+        [MBProgressHUD hideWaitViewAnimated:self.view];
 
     }];
 

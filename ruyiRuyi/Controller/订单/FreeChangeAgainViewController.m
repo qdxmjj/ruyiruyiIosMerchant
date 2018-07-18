@@ -82,7 +82,7 @@
     
     if (self) {
         
-        NSLog(@"当前订单状态：%ld",orderState);
+        NSLog(@"当前订单状态：%ld",(long)orderState);
         self.CodeNumberCellDisplay = NO;//条形码cell是否显示，默认隐藏
         self.switchHidden = NO;// 默认隐藏 条形码对比
         self.selectServiceCellDisplay = NO;//默认隐藏商家服务状态
@@ -186,7 +186,11 @@
 #pragma mark 页面数据的获取
 -(void)getOrdersInfo:(NSString *)orderNo orderType:(NSString *)orderType storeId:(NSString *)storeId{
     
+    [super getOrdersInfo:orderNo orderType:orderType storeId:storeId];
+
     [MainOrdersRequest getStoreOrderInfoByNoAndTypeWithInfo:@{@"orderNo":orderNo,@"orderType":orderType,@"storeId":storeId} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+        
+        [MBProgressHUD hideWaitViewAnimated:self.view];
         
         if (self.ordersContentArr.count>0) {
             
@@ -252,6 +256,7 @@
         
     } failure:^(NSError * _Nullable error) {
         
+        [MBProgressHUD hideWaitViewAnimated:self.view];
     }];
     
 }
@@ -403,6 +408,8 @@
             
             SelectServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FreeChangAgainSelectServiceTypeCellID" forIndexPath:indexPath];
             
+            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, cell.bounds.size.width);
+
             if (self.ordersContentArr.count>0) {
                 NSNumber *i = self.storeServiceTypes[indexPath.row];
                 [cell setCellType:i.integerValue];
@@ -449,7 +456,7 @@
             break;
         case 5:
             
-            return 40;
+            return 50;
             break;
             
         default:
@@ -642,7 +649,6 @@
         _originalNewbarCodeArr = [NSMutableArray array];
     }
     
-    
     return _originalNewbarCodeArr;
 }
 -(NSMutableArray *)freeChangeArr{
@@ -777,7 +783,7 @@
     [MainOrdersRequest
      freeChangeServiceTypeWithInfo:@{
                                 @"orderNo":self.ordersContentArr[5],
-                                @"serviceType":[NSString stringWithFormat:@"%ld",serviceType],
+                                @"serviceType":[NSString stringWithFormat:@"%ld",(long)serviceType],
                                 @"orderType":self.orderTypeStr
                                 }
      changeBarCodeVoList:self.freeChangeArr

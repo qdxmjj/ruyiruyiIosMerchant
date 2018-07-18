@@ -34,7 +34,7 @@ static const CGFloat bottomBtnH = 40;
 
     self.title = @"我的服务";
 
-    NSArray  *titleArr = @[@"保养",@"美容清洗",@"安装",@"轮胎服务"];
+    NSArray  *titleArr = @[@"汽车保养",@"美容清洗",@"改装安装",@"轮胎服务"];
     
     for (int i=0; i<=3; i++) {
         
@@ -75,6 +75,18 @@ static const CGFloat bottomBtnH = 40;
          make.right.mas_equalTo(self.view.mas_right).offset(-10);
          make.height.mas_equalTo(bottomBtnH);
     }];
+    
+    [self addChildViewController:self.baoyangVC];
+    [self.contentScrView addSubview:self.baoyangVC.tableView];
+    
+    [self addChildViewController:self.meirongVC];
+    [self.contentScrView addSubview:self.meirongVC.tableView];
+    
+    [self addChildViewController:self.anzhuangVC];
+    [self.contentScrView addSubview:self.anzhuangVC.tableView];
+    
+    [self addChildViewController:self.gaizhuangVC];
+    [self.contentScrView addSubview:self.gaizhuangVC.tableView];
 }
 
 
@@ -110,10 +122,10 @@ static const CGFloat bottomBtnH = 40;
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.baoyangVC getServiceList];
-    [self.meirongVC getServiceList];
-    [self.gaizhuangVC getServiceList];
-    [self.anzhuangVC getServiceList];
+//    [self.baoyangVC getServiceList];
+//    [self.meirongVC getServiceList];
+//    [self.gaizhuangVC getServiceList];
+//    [self.anzhuangVC getServiceList];
 }
 
 #pragma mark topButton event
@@ -180,8 +192,7 @@ static const CGFloat bottomBtnH = 40;
         
         _baoyangVC = [[MyServiceTableViewController alloc] initWithServiceType:ServiceTypeBaoyang];
         _baoyangVC.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, CGRectGetHeight(self.contentScrView.frame));
-        [self addChildViewController:self.baoyangVC];
-        [self.contentScrView addSubview:self.baoyangVC.view];
+
         
     }
     return _baoyangVC;
@@ -191,8 +202,7 @@ static const CGFloat bottomBtnH = 40;
         
         _meirongVC = [[MyServiceTableViewController alloc] initWithServiceType:ServiceTypeMeirong];
         _meirongVC.view.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, CGRectGetHeight(self.contentScrView.frame));
-        [self addChildViewController:self.meirongVC];
-        [self.contentScrView addSubview:self.meirongVC.view];
+
         
     }
     return _meirongVC;
@@ -202,9 +212,7 @@ static const CGFloat bottomBtnH = 40;
         
         _anzhuangVC = [[MyServiceTableViewController alloc] initWithServiceType:ServiceTypeAnzhuang];
         _anzhuangVC.view.frame = CGRectMake(SCREEN_WIDTH*2, 0, SCREEN_WIDTH, CGRectGetHeight(self.contentScrView.frame));
-        
-        [self addChildViewController:self.anzhuangVC];
-        [self.contentScrView addSubview:self.anzhuangVC.view];
+
     }
     return _anzhuangVC;
 }
@@ -214,8 +222,7 @@ static const CGFloat bottomBtnH = 40;
         _gaizhuangVC = [[MyServiceTableViewController alloc] initWithServiceType:ServiceTypeGaizhuang];
         _gaizhuangVC.view.frame = CGRectMake(SCREEN_WIDTH*3, 0, SCREEN_WIDTH, CGRectGetHeight(self.contentScrView.frame));
         
-        [self addChildViewController:self.gaizhuangVC];
-        [self.contentScrView addSubview:self.gaizhuangVC.view];
+
     }
     return _gaizhuangVC;
 }

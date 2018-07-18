@@ -67,7 +67,6 @@
 		36137E2120995C1B00C9A669 /* ZZYPhotoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 36137E2020995C1B00C9A669 /* ZZYPhotoHelper.m */; };
 		3616854420A92D8E00E9CE6E /* MyCommodityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3616854320A92D8E00E9CE6E /* MyCommodityViewController.m */; };
 		3616854720A92DDA00E9CE6E /* SellingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3616854620A92DDA00E9CE6E /* SellingTableViewController.m */; };
-		3616854A20A92E7000E9CE6E /* DropTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3616854920A92E7000E9CE6E /* DropTableViewController.m */; };
 		3616859120A9B2DD00E9CE6E /* SellingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3616858F20A9B2DD00E9CE6E /* SellingCell.m */; };
 		3616859220A9B2DD00E9CE6E /* SellingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3616859020A9B2DD00E9CE6E /* SellingCell.xib */; };
 		3618716D20E2239300BBAE43 /* TireRepairViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3618716C20E2239300BBAE43 /* TireRepairViewController.m */; };
@@ -171,7 +170,6 @@
 		36D009F020A14B72008D1F53 /* MyServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D009EE20A14B72008D1F53 /* MyServiceCell.m */; };
 		36D009F120A14B72008D1F53 /* MyServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36D009EF20A14B72008D1F53 /* MyServiceCell.xib */; };
 		36D009F520A17219008D1F53 /* ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D009F420A17219008D1F53 /* ServiceRequest.m */; };
-		36DEE65E20F4BD21004503BB /* MyUncaughtExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 36DEE65D20F4BD21004503BB /* MyUncaughtExceptionHandler.m */; };
 		36E39B8D20F45B80001EC78F /* ShopPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E39B8C20F45B80001EC78F /* ShopPhotoView.m */; };
 		36E39B9120F45D2E001EC78F /* ShopPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E39B8F20F45D2E001EC78F /* ShopPhotoCollectionViewCell.m */; };
 		36E39B9220F45D2E001EC78F /* ShopPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E39B9020F45D2E001EC78F /* ShopPhotoCollectionViewCell.xib */; };
@@ -185,7 +183,7 @@
 		36F4F18020B94732009CA642 /* SelectServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F4F17E20B94732009CA642 /* SelectServiceCell.m */; };
 		36F4F18120B94732009CA642 /* SelectServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F4F17F20B94732009CA642 /* SelectServiceCell.xib */; };
 		36F6ED9020F347F200FC23DF /* shareIMG.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F6ED8F20F347F200FC23DF /* shareIMG.png */; };
-		36F6ED9220F3603800FC23DF /* qidong.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F6ED9120F3603800FC23DF /* qidong.png */; };
+		36F6ED9220F3603800FC23DF /* qidongtu.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F6ED9120F3603800FC23DF /* qidongtu.png */; };
 		36FA66B920941F0B0069C105 /* YMDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FA66B620941F0A0069C105 /* YMDatePickerView.xib */; };
 		36FA66BA20941F0B0069C105 /* YMDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FA66B820941F0B0069C105 /* YMDatePickerView.m */; };
 		36FA66BC20945FA10069C105 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FA66BB20945FA10069C105 /* CoreLocation.framework */; };
@@ -328,8 +326,6 @@
 		3616854320A92D8E00E9CE6E /* MyCommodityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCommodityViewController.m; sourceTree = "<group>"; };
 		3616854520A92DDA00E9CE6E /* SellingTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SellingTableViewController.h; sourceTree = "<group>"; };
 		3616854620A92DDA00E9CE6E /* SellingTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SellingTableViewController.m; sourceTree = "<group>"; };
-		3616854820A92E7000E9CE6E /* DropTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DropTableViewController.h; sourceTree = "<group>"; };
-		3616854920A92E7000E9CE6E /* DropTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DropTableViewController.m; sourceTree = "<group>"; };
 		3616858E20A9B2DD00E9CE6E /* SellingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SellingCell.h; sourceTree = "<group>"; };
 		3616858F20A9B2DD00E9CE6E /* SellingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SellingCell.m; sourceTree = "<group>"; };
 		3616859020A9B2DD00E9CE6E /* SellingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SellingCell.xib; sourceTree = "<group>"; };
@@ -513,8 +509,6 @@
 		36D009EF20A14B72008D1F53 /* MyServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyServiceCell.xib; sourceTree = "<group>"; };
 		36D009F320A17219008D1F53 /* ServiceRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceRequest.h; sourceTree = "<group>"; };
 		36D009F420A17219008D1F53 /* ServiceRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceRequest.m; sourceTree = "<group>"; };
-		36DEE65C20F4BD21004503BB /* MyUncaughtExceptionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyUncaughtExceptionHandler.h; sourceTree = "<group>"; };
-		36DEE65D20F4BD21004503BB /* MyUncaughtExceptionHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyUncaughtExceptionHandler.m; sourceTree = "<group>"; };
 		36E39B8B20F45B80001EC78F /* ShopPhotoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopPhotoView.h; sourceTree = "<group>"; };
 		36E39B8C20F45B80001EC78F /* ShopPhotoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopPhotoView.m; sourceTree = "<group>"; };
 		36E39B8E20F45D2E001EC78F /* ShopPhotoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopPhotoCollectionViewCell.h; sourceTree = "<group>"; };
@@ -536,7 +530,7 @@
 		36F4F17E20B94732009CA642 /* SelectServiceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectServiceCell.m; sourceTree = "<group>"; };
 		36F4F17F20B94732009CA642 /* SelectServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectServiceCell.xib; sourceTree = "<group>"; };
 		36F6ED8F20F347F200FC23DF /* shareIMG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareIMG.png; sourceTree = "<group>"; };
-		36F6ED9120F3603800FC23DF /* qidong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qidong.png; sourceTree = "<group>"; };
+		36F6ED9120F3603800FC23DF /* qidongtu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qidongtu.png; sourceTree = "<group>"; };
 		36FA66B620941F0A0069C105 /* YMDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMDatePickerView.xib; sourceTree = "<group>"; };
 		36FA66B720941F0B0069C105 /* YMDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMDatePickerView.h; sourceTree = "<group>"; };
 		36FA66B820941F0B0069C105 /* YMDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMDatePickerView.m; sourceTree = "<group>"; };
@@ -668,7 +662,7 @@
 				36FF49FE20F9E1A900F28729 /* 车辆示例.jpg */,
 				36FF49FA20F9DE6500F28729 /* 前轮示例.jpg */,
 				36FF49FC20F9DE6800F28729 /* 后轮示例.jpg */,
-				36F6ED9120F3603800FC23DF /* qidong.png */,
+				36F6ED9120F3603800FC23DF /* qidongtu.png */,
 				36F6ED8F20F347F200FC23DF /* shareIMG.png */,
 				366052C920EF448E002BB138 /* ic_head.png */,
 				366052CB20EF448F002BB138 /* ic_head@2x.png */,
@@ -804,8 +798,6 @@
 				3616854320A92D8E00E9CE6E /* MyCommodityViewController.m */,
 				3616854520A92DDA00E9CE6E /* SellingTableViewController.h */,
 				3616854620A92DDA00E9CE6E /* SellingTableViewController.m */,
-				3616854820A92E7000E9CE6E /* DropTableViewController.h */,
-				3616854920A92E7000E9CE6E /* DropTableViewController.m */,
 				3600FE7020ABDA0D0028A806 /* AddCommodityViewController.h */,
 				3600FE7120ABDA0D0028A806 /* AddCommodityViewController.m */,
 			);
@@ -898,8 +890,6 @@
 				360AA19220EB561900E6DE17 /* 推广图片 */,
 				36A8AE1F2091C6BE00A6E883 /* AppDelegate.h */,
 				36A8AE202091C6BE00A6E883 /* AppDelegate.m */,
-				36DEE65C20F4BD21004503BB /* MyUncaughtExceptionHandler.h */,
-				36DEE65D20F4BD21004503BB /* MyUncaughtExceptionHandler.m */,
 				36A8AE282091C6BF00A6E883 /* Assets.xcassets */,
 				36A8AE2A2091C6BF00A6E883 /* LaunchScreen.storyboard */,
 				36A8AE2D2091C6BF00A6E883 /* Info.plist */,
@@ -1558,7 +1548,7 @@
 				360AA1B720EB655300E6DE17 /* ic_my_shibai.png in Resources */,
 				36D009F120A14B72008D1F53 /* MyServiceCell.xib in Resources */,
 				36AE7DF620B552C30079A4CC /* TiresCell.xib in Resources */,
-				36F6ED9220F3603800FC23DF /* qidong.png in Resources */,
+				36F6ED9220F3603800FC23DF /* qidongtu.png in Resources */,
 				36D009DC20A13138008D1F53 /* OrderCell.xib in Resources */,
 				36F4F18120B94732009CA642 /* SelectServiceCell.xib in Resources */,
 				360AA1C120EB9D0F00E6DE17 /* ic_shouci.png in Resources */,
@@ -1691,7 +1681,6 @@
 			files = (
 				36FAC65F20B003080082F10E /* CommodityTypeModel.m in Sources */,
 				3623D58320D7B51A007799E3 /* FreeChangeAgainViewController.m in Sources */,
-				3616854A20A92E7000E9CE6E /* DropTableViewController.m in Sources */,
 				361CF5A020E370F1007DFA17 /* TireRepairBarCodeModel.m in Sources */,
 				36033B7C2099B0F800F9B5E5 /* YMStoreTypePickerView.m in Sources */,
 				360044D82092CA2800BEDF73 /* photoCell.m in Sources */,
@@ -1731,7 +1720,6 @@
 				36AAFB8420B68CF300F9775B /* StoresModel.m in Sources */,
 				36FAEE2C20AD12F60011EDB1 /* MyCommodityRequest.m in Sources */,
 				36FE63C520A0212C00209196 /* LogInrequestData.m in Sources */,
-				36DEE65E20F4BD21004503BB /* MyUncaughtExceptionHandler.m in Sources */,
 				36AAFB9B20B7EAF700F9775B /* StoresRequest.m in Sources */,
 				367F984720F5E9AA0022838C /* SDBrowserImageView.m in Sources */,
 				3624E2B32091E65800CC4AF4 /* BaseViewController.m in Sources */,

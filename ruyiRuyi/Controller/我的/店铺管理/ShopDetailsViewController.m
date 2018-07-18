@@ -117,16 +117,14 @@
                                    ];
     
     [ShopInfoRequest updateStoreInfoWithInfo:@{@"id":[UserConfig storeID],
+                                               @"phone":[UserConfig phone],
                                                @"status":status,
                                                @"startTime":startTime,
                                                @"endTime":endTime
                                                } serviceTypes:[cell.selelItems componentsJoinedByString:@","] photos:photos succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
                                                    
-                                                   [[SDImageCache sharedImageCache] clearMemory];
-                                                   
-                                                   [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
-
-                                                   }];
+                                                   [MBProgressHUD showTextMessage:@"修改成功"];
+                                                   [self.navigationController popViewControllerAnimated:YES];
                                                    
                                                } failure:^(NSError * _Nullable error) {
                                                    
@@ -145,7 +143,6 @@
         [self.bottomImgArr addObject:self.shopModel.locationImgUrl];
         [self.bottomImgArr addObject:self.shopModel.indoorImgUrl];
         [self.bottomImgArr addObject:self.shopModel.factoryImgUrl];
-        
         
         self.shopPhotoView.imgUrlArr = self.bottomImgArr;
         

@@ -95,8 +95,9 @@
 
 -(void)getMyOrdersInfo:(NSString *)number{
     JJWeakSelf
+
     
-    [MyOrdersRequeset getStoreGeneralOrderByStateWithInfo:@{@"page":number,@"rows":@"10",@"storeId":[UserConfig storeID],@"state":[NSString stringWithFormat:@"%ld",self.ordersType]} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+    [MyOrdersRequeset getStoreGeneralOrderByStateWithInfo:@{@"page":number,@"rows":@"10",@"storeId":[UserConfig storeID],@"state":[NSString stringWithFormat:@"%ld",(long)self.ordersType]} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
        
         if ( weakSelf.pageNumber==1) {
             [weakSelf.dataArr removeAllObjects];
@@ -112,6 +113,8 @@
             
             self.backgroundImgView.hidden = YES;
         }
+        
+        
         [weakSelf.tableView reloadData];
         
     } failure:^(NSError * _Nullable error) {
@@ -145,7 +148,6 @@
     
     MyOrdersCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myOrdersCellID" forIndexPath:indexPath];
 
-
     MyOrdersDetailsModel *model = [[MyOrdersDetailsModel alloc] init];
     
     [model setValuesForKeysWithDictionary:self.dataArr[indexPath.row]];
@@ -163,10 +165,12 @@
     NSInteger i =  [[self.dataArr[indexPath.row] objectForKey:@"orderState"] longLongValue];
 
     OrderDetailsViewController *orderDetailsVC = [OrderFactory GenerateOrders:orderType orderStatus:i];
+    
     if (orderDetailsVC == nil) {
         
         return;
     }
+    
     [orderDetailsVC getOrdersInfo:[self.dataArr[indexPath.row] objectForKey:@"orderNo"] orderType:[self.dataArr[indexPath.row] objectForKey:@"orderType"] storeId:[UserConfig storeID]];
     
     orderDetailsVC.popOrdersVCBlock = ^(BOOL isPop) {

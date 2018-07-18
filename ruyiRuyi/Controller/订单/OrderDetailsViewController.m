@@ -23,6 +23,8 @@
 
 
 -(void)getOrdersInfo:(NSString *)orderNo orderType:(NSString *)orderType storeId:(NSString *)storeId{
+    
+    [MBProgressHUD showWaitMessage:@"正在获取订单..." showView:self.view];
 
 }
 

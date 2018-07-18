@@ -15,6 +15,7 @@
     NSInteger pageNumber;
 }
 
+@property(nonatomic,assign)BOOL isRefresh;
 @property(nonatomic,strong)NSMutableArray *dataArr;//数据源
 
 @end
@@ -35,6 +36,7 @@
     
     
     pageNumber = 1;
+    _isRefresh = YES;
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([AssessCell class]) bundle:nil] forCellReuseIdentifier:@"assessCellID"];
     
@@ -42,13 +44,11 @@
     self.tableView.mj_footer=[MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
       
         [self loadMoreData];
-        
     }];
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         [self loadNewData];
-
     }];
     
     
@@ -56,6 +56,7 @@
 
 -(void)loadNewData{
     
+    self.isRefresh = YES;
     pageNumber=1;
     self.tableView.mj_footer.hidden = NO;
     [self getAssessInfo:[NSString stringWithFormat:@"%ld",(long)pageNumber]];
@@ -66,7 +67,7 @@
 -(void)loadMoreData{
     
     JJWeakSelf
-
+    self.isRefresh = YES;
     pageNumber +=1;
     [weakSelf getAssessInfo:[NSString stringWithFormat:@"%ld",(long)pageNumber]];
     [weakSelf.tableView.mj_footer endRefreshing];
@@ -80,12 +81,21 @@
 
 -(void)getAssessInfo:(NSString *)number{
     
+    if (self.isRefresh == NO) {
+        
+        return;
+    }
+    
+    [MBProgressHUD showWaitMessage:@"正在获取..." showView:self.view];
+    
     JJWeakSelf
     [ShopInfoRequest getCommitByConditionWithInfo:@{@"page":number,@"rows":@"10",@"storeId":[UserConfig storeID],@"userId":@""} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
         if ( self->pageNumber==1) {
             [self.dataArr removeAllObjects];
         }
+        
+        self.isRefresh = NO;
         
         [weakSelf.dataArr addObjectsFromArray:[data objectForKey:@"rows"]];
 
@@ -94,16 +104,13 @@
             [weakSelf.tableView.mj_footer setHidden:YES];
         }
         
-        [[SDImageCache sharedImageCache] clearMemory];
+        [MBProgressHUD hideWaitViewAnimated:self.view];
         
-        [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
-            
-        }];
         [weakSelf.tableView reloadData];
 
     } failure:^(NSError * _Nullable error) {
         
-        
+        [MBProgressHUD hideWaitViewAnimated:self.view];
     }];
     
 }

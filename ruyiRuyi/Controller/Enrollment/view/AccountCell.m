@@ -146,7 +146,7 @@
 }
 -(void)dealloc{
 
-    NSLog(@"释放cell");
+    NSLog(@"释放验证码定时器cell");
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
