@@ -84,7 +84,7 @@
                     <rect key="frame" x="113" y="130.5" width="246" height="17"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yr7-lJ-ma2">
                     <rect key="frame" x="38" y="159" width="321" height="1"/>

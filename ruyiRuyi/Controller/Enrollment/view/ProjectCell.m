@@ -64,7 +64,7 @@
         
         return self.dataArr.count;
     }
-    return 1;
+    return 0;
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     

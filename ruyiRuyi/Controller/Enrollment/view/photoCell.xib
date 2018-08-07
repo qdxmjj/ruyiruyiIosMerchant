@@ -19,9 +19,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="109.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2g4-mj-f8N">
-                        <rect key="frame" x="0.0" y="40" width="320" height="69"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2g4-mj-f8N">
+                        <rect key="frame" x="0.0" y="40" width="320" height="70"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s5R-tl-IaN" customClass="photoLayout">
                             <size key="itemSize" width="50" height="50"/>
@@ -45,11 +44,17 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="h9g-oC-gVr" firstAttribute="centerY" secondItem="vT0-a3-gf9" secondAttribute="centerY" id="Aeq-cc-B04"/>
+                    <constraint firstItem="2g4-mj-f8N" firstAttribute="top" secondItem="vT0-a3-gf9" secondAttribute="bottom" constant="8" id="XjB-Dq-KYL"/>
                     <constraint firstAttribute="trailing" secondItem="h9g-oC-gVr" secondAttribute="trailing" constant="16" id="jfR-Wm-GSN"/>
                     <constraint firstItem="vT0-a3-gf9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="yDd-l0-bU1"/>
                     <constraint firstItem="vT0-a3-gf9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="yST-X1-GKc"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="aW0-zy-SZf" firstAttribute="trailing" secondItem="2g4-mj-f8N" secondAttribute="trailing" id="0uv-cx-ZL5"/>
+                <constraint firstItem="aW0-zy-SZf" firstAttribute="bottom" secondItem="2g4-mj-f8N" secondAttribute="bottom" id="cal-Vd-s6l"/>
+                <constraint firstItem="2g4-mj-f8N" firstAttribute="leading" secondItem="aW0-zy-SZf" secondAttribute="leading" id="smR-uH-hSG"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="photoCollectionView" destination="2g4-mj-f8N" id="sjv-AZ-MeF"/>

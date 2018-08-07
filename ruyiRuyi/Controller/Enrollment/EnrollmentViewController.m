@@ -7,6 +7,7 @@
 //
 
 #import "EnrollmentViewController.h"
+#import "UserProtocolViewController.h"
 #import "JJMapViewController.h"
 #import "AccountCell.h"
 #import "StoresCell.h"
@@ -130,6 +131,13 @@
             DegreeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DegreeCell" forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
+            cell.eventBlock = ^(BOOL isClick) {
+              
+                UserProtocolViewController *userProtocolVC = [[UserProtocolViewController alloc] init];
+                userProtocolVC.dealIdStr = @"2";
+                [self.navigationController pushViewController:userProtocolVC animated:YES];
+                
+            };
             if (![self.indexPathArr containsObject:cell]) {
                 [self.indexPathArr addObject:cell];
             }
@@ -159,13 +167,13 @@
             return 282;
             break;
         case 2:case 3:case 4:
-            return 115;
+            return 130;
             break;
         case 5:
-            return 100;
+            return 120;
             break;
         case 6:
-            return 80;
+            return 110;
             break;
         default:
             return 40;
@@ -199,7 +207,6 @@
 
     if (indexPath.section==7) {
     
-        [MBProgressHUD showWaitMessage:@"正在注册..." showView:self.view];
         
         if (self.longitude && self.latitude) {
 
@@ -247,6 +254,8 @@
             ||
             [storeCell.storeType.titleLabel.text isEqualToString:@"请选择您的门店类别"]
             ||
+            [storeCell.storeType.titleLabel.text isEqualToString:@"未获取到数据!"]
+            ||
             [storeCell.storePhone.text isEqualToString:@""]
             ||
             [storeCell.storeTime.titleLabel.text isEqualToString:@"请选择您的营业时间"]
@@ -255,7 +264,7 @@
             ||
             [storeCell.storeLocation.text isEqualToString:@""]
             ||
-            [storeCell.MapBtn.titleLabel.text isEqualToString:@""]
+            [storeCell.MapBtn.titleLabel.text isEqualToString:@"  点击自动定位"]
             ) {
 
             [MBProgressHUD showTextMessage:@"门店信息不完整!"];
@@ -301,6 +310,14 @@
         
         NSString *appExpert = [Dcell.selectBtn isEqualToString:@"熟练"] ? @"1":@"2";
         
+        if (!Dcell.confirmProtocolBtn.selected) {
+            
+            [MBProgressHUD showTextMessage:@"请先选择协议！"];
+            return;
+        }
+        
+        [MBProgressHUD showWaitMessage:@"正在注册..." showView:self.view];
+
         NSDictionary *reqJsonDic = @{@"producerName":accCell.userField.text,@"phone":accCell.phoenField.text,@"password":[MD5Encrypt MD5ForUpper32Bate:accCell.passwordField.text],@"storeName":storeCell.storeName.text,@"storeTypeId":storeCell.storeTypeID,@"tel":storeCell.storePhone.text,@"startTime":storeStartTime,@"endTime":storeStopTime,@"cityId":storeCell.cityID,@"positionId":storeCell.areaID,@"address":storeCell.storeLocation.text,@"longitude":self.longitude,@"latitude":self.latitude,@"appExpert":appExpert,@"storeLocation":storeCell.storeCity.titleLabel.text};
         
         float imgCompressionQuality = 0.3;//图片压缩比例
@@ -320,16 +337,17 @@
         
         NSString *str = [NSString stringWithFormat:@"%@",[Pcell.selectItems componentsJoinedByString:@","]];//#为分隔符
 
+
+        
         [EnrollmentRequestData userEnrollmentWithReqjson:[JJTools convertToJsonData:reqJsonDic] serviceTypes:str photos:arr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
            
             [MBProgressHUD hideWaitViewAnimated:self.view];
             
             if ([code longLongValue] == 1) {
                 
-                [MBProgressHUD showTextMessage:message];
-
                 [self.navigationController popViewControllerAnimated:YES];
             }
+            [MBProgressHUD showTextMessage:message];
 
         } failure:^(NSError * _Nullable error) {
             
@@ -354,13 +372,10 @@
         
         self.longitude = [NSString stringWithFormat:@"%f",longitude];
         self.latitude = [NSString stringWithFormat:@"%f",latitude];
-
     };
     
     [self.navigationController pushViewController:jjMap animated:YES];
 }
-
-
 
 -(UITableView *)myTabView{
     

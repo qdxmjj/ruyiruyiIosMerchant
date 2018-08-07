@@ -13,18 +13,14 @@
 
 static const CGFloat topBtnH = 45;
 
-
-
 @interface MyShopViewController ()<UIScrollViewDelegate>
-
-
 
 @property(nonatomic,strong)UIScrollView *contentScrView;//主view
 
 @property(nonatomic,strong)UIImageView *sliderView;//滑块
 
-
 @property(nonatomic,strong)ShopDetailsViewController *shopVC;//商店详情
+
 @property(nonatomic,strong)AssessTableViewController *assessVC;//店铺评价
 
 @end
@@ -120,7 +116,7 @@ static const CGFloat topBtnH = 45;
             _contentScrView.frame = CGRectMake(0, topBtnH+2, SCREEN_WIDTH, SCREEN_HEIGHT-64-topBtnH);
         }
         _contentScrView.contentSize=CGSizeMake(SCREEN_WIDTH*2, 0);
-        _contentScrView.backgroundColor=[UIColor lightGrayColor];
+        _contentScrView.backgroundColor=[UIColor colorWithRed:220.f/255.f green:220.f/255.f blue:220.f/255.f alpha:1.f];
         _contentScrView.showsVerticalScrollIndicator=NO;
         _contentScrView.delegate=self;
         _contentScrView.showsHorizontalScrollIndicator=NO;
@@ -149,8 +145,8 @@ static const CGFloat topBtnH = 45;
 -(AssessTableViewController *)assessVC{
     if (!_assessVC) {
         
-        _assessVC = [[AssessTableViewController alloc] initWithStyle:UITableViewStylePlain];
-        _assessVC.tableView.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, CGRectGetHeight(self.contentScrView.frame));
+        _assessVC = [[AssessTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        _assessVC.tableView.frame = CGRectMake(SCREEN_WIDTH, 2, SCREEN_WIDTH, CGRectGetHeight(self.contentScrView.frame));
     }
     return _assessVC;
 }

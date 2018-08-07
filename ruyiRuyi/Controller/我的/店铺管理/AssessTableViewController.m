@@ -18,22 +18,25 @@
 @property(nonatomic,assign)BOOL isRefresh;
 @property(nonatomic,strong)NSMutableArray *dataArr;//数据源
 
+@property(nonatomic,strong)UIImageView *backgroundImgView;
+
 @end
 
 @implementation AssessTableViewController
 
--(instancetype)initWithStyle:(UITableViewStyle)style{
-    
-    self = [super initWithStyle:UITableViewStyleGrouped];
-    
-    
-    return self;
-}
+//-(instancetype)initWithStyle:(UITableViewStyle)style{
+//
+//    self = [super initWithStyle:UITableViewStyleGrouped];
+//
+//
+//    return self;
+//}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    [self.view addSubview:self.backgroundImgView];
     
     pageNumber = 1;
     _isRefresh = YES;
@@ -102,6 +105,11 @@
         if ([[data objectForKey:@"rows"] count]<10 ||data == nil) {
             
             [weakSelf.tableView.mj_footer setHidden:YES];
+        }
+        
+        if (self.dataArr.count>0 ){
+            
+            self.backgroundImgView.hidden = YES;
         }
         
         [MBProgressHUD hideWaitViewAnimated:self.view];
@@ -192,4 +200,16 @@
     return _dataArr;
 }
 
+-(UIImageView *)backgroundImgView{
+    
+    if (!_backgroundImgView) {
+        
+        _backgroundImgView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+        _backgroundImgView.backgroundColor = [UIColor whiteColor];
+        [_backgroundImgView setImage:[UIImage imageNamed:@"ic_dakongbai"]];
+        _backgroundImgView.contentMode = UIViewContentModeCenter;
+    }
+    
+    return _backgroundImgView;
+}
 @end

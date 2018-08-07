@@ -19,9 +19,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="109.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="SF3-Dl-fE7">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="SF3-Dl-fE7">
                         <rect key="frame" x="0.0" y="40" width="320" height="70"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xVJ-Dd-Lnr" customClass="ProjectLayout">
                             <size key="itemSize" width="50" height="50"/>
@@ -30,15 +29,24 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="希望合作项目" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97q-CF-0S2">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="希望合作项目" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97q-CF-0S2">
                         <rect key="frame" x="16" y="11" width="104" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.36862745098039218" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="SF3-Dl-fE7" firstAttribute="top" secondItem="97q-CF-0S2" secondAttribute="bottom" constant="8" id="U07-s3-aOw"/>
+                    <constraint firstItem="97q-CF-0S2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="b7x-dt-jHE"/>
+                    <constraint firstItem="97q-CF-0S2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="vWg-9C-2MD"/>
+                </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="SF3-Dl-fE7" firstAttribute="leading" secondItem="aW0-zy-SZf" secondAttribute="leading" id="VxF-LS-Dzs"/>
+                <constraint firstItem="aW0-zy-SZf" firstAttribute="trailing" secondItem="SF3-Dl-fE7" secondAttribute="trailing" id="cSd-im-eYj"/>
+                <constraint firstItem="aW0-zy-SZf" firstAttribute="bottom" secondItem="SF3-Dl-fE7" secondAttribute="bottom" id="zgo-kI-By7"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="projectCollectionView" destination="SF3-Dl-fE7" id="lTu-mZ-v0O"/>

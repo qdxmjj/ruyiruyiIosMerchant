@@ -16,6 +16,7 @@
 #import "OrderCell.h"
 #import "OrderDetailsViewController.h"
 #import "OrderFactory.h"
+
 @interface OrdersViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate>
 
 @property(nonatomic,strong)OrderHanderView *handerView;
@@ -55,10 +56,11 @@
     self.tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         [self loadNewData];
-        
     }];
     
     [self.tableview.mj_header beginRefreshing];
+    
+
 }
 
 //下拉刷新

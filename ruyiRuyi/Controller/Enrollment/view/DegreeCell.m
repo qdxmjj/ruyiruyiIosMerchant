@@ -7,12 +7,24 @@
 //
 
 #import "DegreeCell.h"
+@interface DegreeCell ()<UITextViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
+@end
 @implementation DegreeCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:@"提交即表示同意《小马驾驾用户协议》"];
+        
+    [attStr addAttribute:NSLinkAttributeName
+                             value:@"xmjjProtocol://"
+                             range:[[attStr string] rangeOfString:@"《小马驾驾用户协议》"]];
+    self.textView.delegate = self;
+    self.textView.attributedText = attStr;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -48,7 +60,22 @@
         self.selectBtn = @"";
     }
 }
+- (IBAction)confirmAgreementEvent:(UIButton *)sender {
+    
+    sender.selected = !sender.selected;
+}
 
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange{
+    
+    if ([[URL scheme] isEqualToString:@"xmjjProtocol"]) {
+        
+        if (self.eventBlock) {
+            self.eventBlock(YES);
+        }
+        return NO;
+    }
+    return YES;
+}
 
 -(UIImage *)imageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f); //宽高 1.0只要有值就够了

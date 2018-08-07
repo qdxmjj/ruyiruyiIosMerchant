@@ -101,7 +101,7 @@
 
     // 创建图片图片附件
     NSTextAttachment *attach = [[NSTextAttachment alloc] init];
-    attach.image = [UIImage imageNamed:@"ic_yes"];
+    attach.image = [UIImage imageNamed:@"ic_redyes"];
     attach.bounds = CGRectMake(0, 0, 20, 20);
 
     NSAttributedString *attachString = [NSAttributedString attributedStringWithAttachment:attach];

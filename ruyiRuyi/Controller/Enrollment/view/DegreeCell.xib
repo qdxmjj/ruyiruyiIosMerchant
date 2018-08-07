@@ -12,11 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="79" id="KGk-i7-Jjw" customClass="DegreeCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="113" id="KGk-i7-Jjw" customClass="DegreeCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="109.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机APP操作" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcF-Ad-wiF">
@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffP-ae-1lp">
-                        <rect key="frame" x="16" y="49.5" width="71" height="25"/>
+                        <rect key="frame" x="16" y="42" width="71" height="25"/>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="cIi-g9-lg6"/>
@@ -41,7 +41,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oko-Tw-ivv">
-                        <rect key="frame" x="112" y="49.5" width="71" height="25"/>
+                        <rect key="frame" x="112" y="42" width="71" height="25"/>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <state key="normal" title="不熟练">
@@ -51,25 +51,61 @@
                             <action selector="selectBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="R1E-X9-Xg7"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSK-Ex-hus">
+                        <rect key="frame" x="16" y="84" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="dFQ-kT-3Mu"/>
+                            <constraint firstAttribute="width" constant="15" id="xPv-bD-jpT"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <state key="normal" image="ic_no.png"/>
+                        <state key="selected" image="ic_yes.png"/>
+                        <connections>
+                            <action selector="confirmAgreementEvent:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="JwO-hj-1Xd"/>
+                        </connections>
+                    </button>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfH-Ff-tqY">
+                        <rect key="frame" x="34" y="77.5" width="286" height="28"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="UqK-hw-FxA"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <connections>
+                            <outlet property="delegate" destination="-1" id="srt-G9-5Wg"/>
+                        </connections>
+                    </textView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="UcF-Ad-wiF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="4tg-7u-ei8"/>
-                    <constraint firstAttribute="bottom" secondItem="ffP-ae-1lp" secondAttribute="bottom" constant="5" id="Ero-bk-24x"/>
+                    <constraint firstItem="AfH-Ff-tqY" firstAttribute="leading" secondItem="gSK-Ex-hus" secondAttribute="trailing" constant="3" id="7XT-u8-oov"/>
                     <constraint firstItem="ffP-ae-1lp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="GgR-M8-ZbK"/>
                     <constraint firstItem="Oko-Tw-ivv" firstAttribute="height" secondItem="ffP-ae-1lp" secondAttribute="height" id="Gne-mt-jcf"/>
                     <constraint firstItem="UcF-Ad-wiF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="Lc6-Qi-NPK"/>
+                    <constraint firstItem="AfH-Ff-tqY" firstAttribute="centerY" secondItem="gSK-Ex-hus" secondAttribute="centerY" id="RVG-1x-u8S"/>
+                    <constraint firstItem="gSK-Ex-hus" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="V18-yI-eKm"/>
+                    <constraint firstItem="ffP-ae-1lp" firstAttribute="top" secondItem="UcF-Ad-wiF" secondAttribute="bottom" constant="10" id="VY0-aV-DMe"/>
                     <constraint firstItem="Oko-Tw-ivv" firstAttribute="leading" secondItem="ffP-ae-1lp" secondAttribute="trailing" constant="25" id="bUU-eQ-efy"/>
+                    <constraint firstAttribute="trailing" secondItem="AfH-Ff-tqY" secondAttribute="trailing" id="e0A-46-2IN"/>
                     <constraint firstItem="Oko-Tw-ivv" firstAttribute="centerY" secondItem="ffP-ae-1lp" secondAttribute="centerY" id="g97-yv-KpX"/>
                     <constraint firstItem="Oko-Tw-ivv" firstAttribute="width" secondItem="ffP-ae-1lp" secondAttribute="width" id="knT-Rq-Ve6"/>
                     <constraint firstAttribute="trailing" secondItem="UcF-Ad-wiF" secondAttribute="trailing" constant="16" id="uTX-Bj-Ich"/>
+                    <constraint firstAttribute="bottom" secondItem="gSK-Ex-hus" secondAttribute="bottom" constant="10.5" id="vTT-tM-yaL"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="btn1" destination="ffP-ae-1lp" id="ONV-ox-Saw"/>
                 <outlet property="btn2" destination="Oko-Tw-ivv" id="ldU-Sj-V0M"/>
+                <outlet property="confirmProtocolBtn" destination="gSK-Ex-hus" id="kOU-VF-zVB"/>
+                <outlet property="textView" destination="AfH-Ff-tqY" id="wAy-0P-r1e"/>
             </connections>
-            <point key="canvasLocation" x="-175" y="-28.5"/>
+            <point key="canvasLocation" x="-175" y="-12"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic_no.png" width="17" height="17"/>
+        <image name="ic_yes.png" width="17" height="17"/>
+    </resources>
 </document>

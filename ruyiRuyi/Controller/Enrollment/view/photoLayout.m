@@ -35,7 +35,7 @@
     self.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
     
 
-    self.itemSize = CGSizeMake(SCREEN_WIDTH/3-40, 69);
+    self.itemSize = CGSizeMake((SCREEN_WIDTH - 20 - 20)/3, ((SCREEN_WIDTH - 20 - 20)/3)*0.66);
     
 }
 @end

@@ -74,12 +74,13 @@
                 break;
             case ordersStateWaitReceipt:
                 
-                self.buttonTitle = @"待收货";
+                self.buttonTitle = @"确认收货";
                 self.buttonEnabled = NO;
 
                 break;
             case ordersStateWaitConfirm:
                 
+                //商家没有待确认服务
                 self.repairTimesHidden = YES;
                 
                 break;

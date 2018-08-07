@@ -48,7 +48,7 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
        
         make.top.mas_equalTo(self.view.mas_top);
-        make.bottom.mas_equalTo(self.view.mas_bottom).inset(60);
+        make.bottom.mas_equalTo(self.view.mas_bottom).inset(55);
         make.width.mas_equalTo(SCREEN_WIDTH);
     }];
     
@@ -105,6 +105,8 @@
         return;
     }
     
+    [MBProgressHUD showWaitMessage:@"正在设置..." showView:self.view];
+    
     float imgCompressionQuality = 0.3;//图片压缩比例
     NSData *licenseData=UIImageJPEGRepresentation(self.shopPhotoView.location_img, imgCompressionQuality);
     NSData *storeData=UIImageJPEGRepresentation(self.shopPhotoView.indoor_img, imgCompressionQuality);
@@ -123,11 +125,17 @@
                                                @"endTime":endTime
                                                } serviceTypes:[cell.selelItems componentsJoinedByString:@","] photos:photos succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
                                                    
-                                                   [MBProgressHUD showTextMessage:@"修改成功"];
-                                                   [self.navigationController popViewControllerAnimated:YES];
+                                                   [MBProgressHUD hideWaitViewAnimated:self.view];
+
+                                                   if ([code longLongValue] == 1) {
+
+                                                       [MBProgressHUD showTextMessage:@"修改成功！"];
+                                                       [self.navigationController popViewControllerAnimated:YES];
+                                                   }
                                                    
                                                } failure:^(NSError * _Nullable error) {
                                                    
+                                                   [MBProgressHUD hideWaitViewAnimated:self.view];
                                                }];
 }
 

@@ -11,6 +11,8 @@
 #import "EnrollmentViewController.h"
 #import "RootViewController.h"
 #import "LogInrequestData.h"
+
+#import <JPUSHService.h>
 @interface LogInViewController ()<UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *accountField;
 @property (weak, nonatomic) IBOutlet UITextField *pwdField;
@@ -78,7 +80,13 @@
             [UserConfig userDefaultsSetObject:[data objectForKey:@"phone"] key:kPhone];
 
             [UserConfig userDefaultsSetObject:@"yes" key:kFirstLogIn];
-
+            
+            //登录注册别名用于指定推送
+            [JPUSHService setAlias:[data objectForKey:@"phone"] completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+                
+                NSLog(@"%ld   %@",iResCode,iAlias);
+            } seq:0];
+            
             [[UIApplication sharedApplication].keyWindow setRootViewController:[[RootViewController alloc]init]];
             
         }
@@ -89,10 +97,6 @@
         [MBProgressHUD hideWaitViewAnimated:self.view];
 
     }];
-
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {

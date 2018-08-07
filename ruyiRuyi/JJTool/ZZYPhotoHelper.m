@@ -30,6 +30,8 @@ static ZZYPhotoHelper *picker = nil;
     return picker;
 }
 
+
+
 - (void)showImageViewSelcteWithResultBlock:(ZZYPhotoHelperBlock)selectImageBlock{
     
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"选取图片" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -60,7 +62,7 @@ static ZZYPhotoHelper *picker = nil;
     picker.helper                  = [[ZZYPhotoDelegateHelper alloc] init];
     picker.delegate                = picker.helper;
     picker.sourceType              = sourceType;
-    picker.allowsEditing = YES;//默认是可以修改的
+    picker.allowsEditing = NO;//默认是可以修改的
     
     picker.helper.selectImageBlock = selectImageBlock;
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:self animated:YES completion:nil];

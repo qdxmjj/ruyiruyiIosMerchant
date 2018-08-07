@@ -11,6 +11,8 @@
 #import "ChangePwdViewController.h"
 #import "BaseNavigation.h"
 #import <Masonry.h>
+
+#import <JPUSHService.h>
 @interface SetingViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)UIButton *signOutBtn;
@@ -69,23 +71,62 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 1;
+    return 3;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"setingCellID" forIndexPath:indexPath];
-    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+
+
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+                                      reuseIdentifier:@"setingCellID"];
+    }
+
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     switch (indexPath.row) {
         case 0:
             cell.textLabel.text = @"修改密码";
             cell.imageView.image = [UIImage imageNamed:@"ic_gaimima"];
             cell.imageView.contentMode = UIViewContentModeCenter;
             break;
+        case 1:
+            
+            cell.textLabel.text = @"设置通知";
+            if ([[UIDevice currentDevice].systemVersion floatValue]>=8.0f) {
+                UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
+                if (UIUserNotificationTypeNone == setting.types) {
+
+                    cell.detailTextLabel.text = @"推送已关闭";
+                }else{
+
+                    cell.detailTextLabel.text = @"推送已开启";
+                }
+            }
+            cell.imageView.image = [UIImage imageNamed:@"ic_gaimima"];
+            cell.imageView.contentMode = UIViewContentModeCenter;
+            break;
+        case 2:{
+            cell.textLabel.text = @"清理缓存";
+            NSString *path = [NSString stringWithFormat:@"%@/Documents/",NSHomeDirectory()];
+            
+            float pathSize = [self folderSizeAtPath:path];
+            float tmpSize = [[SDImageCache sharedImageCache] getSize] / 1024 /1024;
+            float allSize = pathSize + tmpSize;
+            NSString *clearCacheSizeStr = allSize >= 1 ? [NSString stringWithFormat:@"%.2fM",allSize] : [NSString stringWithFormat:@"%.2fK",allSize * 1024];
+            cell.detailTextLabel.text = clearCacheSizeStr;
+            
+            cell.imageView.image = [UIImage imageNamed:@"ic_gaimima"];
+            cell.imageView.contentMode = UIViewContentModeCenter;
+            
+        }
+            break;
         default:
+            
             break;
     }
     
@@ -105,16 +146,48 @@
             break;
         case 1:{
             
+            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+            
+            if (@available(iOS 10.0, *)) {
+                
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:^(BOOL success) {
+                    
+                    NSLog(@"%@",success == YES? @"YES":@"NO");
+                }];
+                
+            } else {
+
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+            }
+        }
+            break;
+        case 2:{
+            
+            UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"是否清空所有的缓存数据" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+                    
+                }];
+                
+                NSString *path = [NSString stringWithFormat:@"%@/Documents/",NSHomeDirectory()];
+                [self clearfoder:path mainThread:^{
+                    [tableView reloadData];
+                    [MBProgressHUD showTextMessage:@"清理成功"];
+                }];
+                
+            }]];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
 
         }
-            
             break;
             
         default:
             break;
     }
-    
 }
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     
@@ -143,16 +216,9 @@
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        
         _tableView.backgroundColor = [UIColor whiteColor];
-        
         _tableView.scrollEnabled = NO;
-        
-        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"setingCellID"];
-        
     }
-    
-    
     return _tableView;
 }
 
@@ -169,24 +235,76 @@
         _signOutBtn.layer.masksToBounds = YES;
         [_signOutBtn addTarget:self action:@selector(signOut) forControlEvents:UIControlEventTouchUpInside];
     }
-    
     return _signOutBtn;
 }
 
+//退出登录
 -(void)signOut{
     
     [UserConfig userDefaultsSetObject:nil key:kFirstLogIn];
     
-//    [[SDImageCache sharedImageCache] clearMemory];
-//
-//    [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
-//
-//    }];
+    //退出登录设置一个永远不会触发的别名
+    [JPUSHService setAlias:@"999" completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+        //0成功
+        NSLog(@"%ld :  %@",iResCode,iAlias);
+    } seq:0];
     
     BaseNavigation *nav = [[BaseNavigation alloc] initWithRootViewController: [[LogInViewController alloc] init]];
     
     [[UIApplication sharedApplication] delegate].window.rootViewController = nav;
-
 //    [[UIApplication sharedApplication].keyWindow setRootViewController:nav];
+}
+
+//清理缓存文件夹
+-(void)clearfoder:(NSString *)path mainThread:(dispatch_block_t)block
+{
+    NSFileManager* manager = [NSFileManager defaultManager];
+    
+    if (![manager fileExistsAtPath:path]) return;
+    NSArray *subPaths = [manager subpathsAtPath:path];
+    dispatch_queue_t systemQueue=dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_async(systemQueue, ^{
+        for (NSString *subPath in subPaths) {
+            [manager removeItemAtPath:[path stringByAppendingPathComponent:subPath] error:nil];
+        }
+        dispatch_sync(dispatch_get_main_queue(), block);
+    });
+    
+}
+
+//遍历文件夹获得文件夹大小，返回多少M
+- (float ) folderSizeAtPath:(NSString*) folderPath{
+    
+    NSFileManager* manager = [NSFileManager defaultManager];
+    
+    if (![manager fileExistsAtPath:folderPath]) return 0;
+    
+    NSEnumerator *childFilesEnumerator = [[manager subpathsAtPath:folderPath] objectEnumerator];
+    
+    NSString* fileName;
+    
+    long long folderSize = 0;
+    
+    while ((fileName = [childFilesEnumerator nextObject]) != nil){
+        
+        NSString* fileAbsolutePath = [folderPath stringByAppendingPathComponent:fileName];
+        
+        folderSize += [self fileSizeAtPath:fileAbsolutePath];
+    }
+    return folderSize/(1024.0*1024.0);
+}
+
+- (long long) fileSizeAtPath:(NSString*) filePath{
+    
+    NSFileManager* manager = [NSFileManager defaultManager];
+    
+    if ([manager fileExistsAtPath:filePath]){
+        
+        return [[manager attributesOfItemAtPath:filePath error:nil] fileSize];
+        
+    }
+    
+    return 0;
+    
 }
 @end

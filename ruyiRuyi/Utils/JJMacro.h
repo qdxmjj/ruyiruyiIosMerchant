@@ -21,9 +21,14 @@
 #define JJWeakSelf __weak typeof(self) weakSelf = self;
 #define JJStrongSele __strong __typeof (self) strongSelf = self
 
+//推送
+
+
 //测试版IP
-//#define RuYiRuYiIP  @"http://192.168.0.190:8060"
-//#define RuYiRuYiIP  @"http://192.168.0.167:8082/xmjj-webservice"
+//#define RuYiRuYiIP  @"http://192.168.0.190:8060"  //龚林
+//#define RuYiRuYiIP  @"http://192.168.0.105:8060"  //于鹏鹉
+
+//#define RuYiRuYiIP  @"http://192.168.0.167:8082/xmjj-webservice" // ceshi
 
 //正式版IP
 #define RuYiRuYiIP  @"http://180.76.243.205:10002/xmjj-webservice/"
@@ -56,6 +61,7 @@
 #define SLog(format, ...)
 #endif
 
+//登录信息key
 #define KstoreImgUrl    @"KstoreImgUrl"
 #define KproducerName    @"KproducerName"
 #define KstoreID    @"kstoreID"

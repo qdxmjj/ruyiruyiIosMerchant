@@ -78,14 +78,14 @@
                 break;
             case ordersStateWaitReceipt:
                 
-                self.buttonTitle = @"待收货";
+                self.buttonTitle = @"确认收货";
                 self.CodeNumberCellDisplay = YES;
                 self.switchHidden = YES;
                 
                 break;
             case ordersStateWaitConfirm:
                 
-                self.buttonTitle = @"待商家确认服务";
+                self.buttonTitle = @"确认服务";
                 self.bottomViewH = 0;
                 self.CodeNumberCellDisplay = YES;
                 self.selectServiceCellDisplay = YES;

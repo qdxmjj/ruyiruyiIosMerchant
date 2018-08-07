@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^ClickProtocolEventBlock)(BOOL isClick);
+
 @interface DegreeCell : UITableViewCell
 
 
 @property (weak, nonatomic) IBOutlet UIButton *btn1;
 @property (weak, nonatomic) IBOutlet UIButton *btn2;
+@property (weak, nonatomic) IBOutlet UIButton *confirmProtocolBtn;
 @property(nonatomic,copy)NSString *selectBtn;
+
+@property(nonatomic,copy)ClickProtocolEventBlock eventBlock;
 
 @end

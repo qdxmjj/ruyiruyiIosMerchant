@@ -91,11 +91,17 @@
 		3624E2C12091E6E400CC4AF4 /* BaseNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3624E2C02091E6E400CC4AF4 /* BaseNavigation.m */; };
 		3624E2C52091EE1300CC4AF4 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3624E2C32091EE1300CC4AF4 /* LogInViewController.m */; };
 		3624E2C62091EE1300CC4AF4 /* LogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3624E2C42091EE1300CC4AF4 /* LogInViewController.xib */; };
+		3629D53F21018D4A003F76B9 /* ic_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 3629D53921018D48003F76B9 /* ic_yes.png */; };
+		3629D54021018D4A003F76B9 /* ic_yes@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3629D53A21018D48003F76B9 /* ic_yes@3x.png */; };
+		3629D54121018D4A003F76B9 /* ic_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 3629D53B21018D48003F76B9 /* ic_no.png */; };
+		3629D54221018D4A003F76B9 /* ic_no@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3629D53C21018D49003F76B9 /* ic_no@3x.png */; };
+		3629D54321018D4A003F76B9 /* ic_no@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3629D53D21018D49003F76B9 /* ic_no@2x.png */; };
+		3629D54421018D4A003F76B9 /* ic_yes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3629D53E21018D49003F76B9 /* ic_yes@2x.png */; };
+		3629D5472101B46E003F76B9 /* UserProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3629D5452101B46D003F76B9 /* UserProtocolViewController.m */; };
 		3647A85D2099D51B000723FA /* YMCityPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3647A85C2099D51B000723FA /* YMCityPickerView.m */; };
 		366052CC20EF448F002BB138 /* ic_head.png in Resources */ = {isa = PBXBuildFile; fileRef = 366052C920EF448E002BB138 /* ic_head.png */; };
 		366052CD20EF448F002BB138 /* ic_head@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 366052CA20EF448F002BB138 /* ic_head@3x.png */; };
 		366052CE20EF448F002BB138 /* ic_head@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 366052CB20EF448F002BB138 /* ic_head@2x.png */; };
-		36656D76209C5BEC00D97874 /* HUDQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 36656D75209C5BEC00D97874 /* HUDQueue.m */; };
 		3676AE0220EA2B8D0067EDA0 /* JJShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 3676AE0120EA2B8D0067EDA0 /* JJShare.m */; };
 		3676AE0820EA468D0067EDA0 /* PromotionAwardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3676AE0720EA468D0067EDA0 /* PromotionAwardViewController.m */; };
 		367F984720F5E9AA0022838C /* SDBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 367F984120F5E9AA0022838C /* SDBrowserImageView.m */; };
@@ -156,9 +162,9 @@
 		36B7F3CB20B3EBCE00252811 /* MyOrdersRequeset.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B7F3CA20B3EBCE00252811 /* MyOrdersRequeset.m */; };
 		36B7F3CF20B44E7800252811 /* MainOrdersRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B7F3CE20B44E7800252811 /* MainOrdersRequest.m */; };
 		36BA8B5120EE2272009373D0 /* CustomizeExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BA8B5020EE2272009373D0 /* CustomizeExampleViewController.m */; };
-		36BA8B5620EE47E8009373D0 /* ic_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 36BA8B5320EE47E7009373D0 /* ic_yes.png */; };
-		36BA8B5720EE47E8009373D0 /* ic_yes@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36BA8B5420EE47E7009373D0 /* ic_yes@3x.png */; };
-		36BA8B5820EE47E8009373D0 /* ic_yes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36BA8B5520EE47E8009373D0 /* ic_yes@2x.png */; };
+		36BA8B5620EE47E8009373D0 /* ic_redyes.png in Resources */ = {isa = PBXBuildFile; fileRef = 36BA8B5320EE47E7009373D0 /* ic_redyes.png */; };
+		36BA8B5720EE47E8009373D0 /* ic_redyes@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36BA8B5420EE47E7009373D0 /* ic_redyes@3x.png */; };
+		36BA8B5820EE47E8009373D0 /* ic_redyes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36BA8B5520EE47E8009373D0 /* ic_redyes@2x.png */; };
 		36C809C820D890770036C14A /* FreeChangeAgainCodeNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C809C620D890770036C14A /* FreeChangeAgainCodeNumberCell.m */; };
 		36C809C920D890770036C14A /* FreeChangeAgainCodeNumberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36C809C720D890770036C14A /* FreeChangeAgainCodeNumberCell.xib */; };
 		36D009DB20A13138008D1F53 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D009D920A13138008D1F53 /* OrderCell.m */; };
@@ -179,11 +185,12 @@
 		36EF2FE820A47ACF005FFE1A /* AssessCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EF2FE620A47ACF005FFE1A /* AssessCollectionViewCell.m */; };
 		36EF2FE920A47ACF005FFE1A /* AssessCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EF2FE720A47ACF005FFE1A /* AssessCollectionViewCell.xib */; };
 		36EF2FEC20A47AE4005FFE1A /* AssessFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EF2FEB20A47AE4005FFE1A /* AssessFlowLayout.m */; };
+		36F3CBAC2106CD9E00B60636 /* CustomPushSound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36F3CBAB2106CD9E00B60636 /* CustomPushSound.caf */; };
 		36F400AC209DB86F00DAA633 /* StoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F400AA209DB86F00DAA633 /* StoresViewController.m */; };
 		36F4F18020B94732009CA642 /* SelectServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F4F17E20B94732009CA642 /* SelectServiceCell.m */; };
 		36F4F18120B94732009CA642 /* SelectServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F4F17F20B94732009CA642 /* SelectServiceCell.xib */; };
 		36F6ED9020F347F200FC23DF /* shareIMG.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F6ED8F20F347F200FC23DF /* shareIMG.png */; };
-		36F6ED9220F3603800FC23DF /* qidongtu.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F6ED9120F3603800FC23DF /* qidongtu.png */; };
+		36F6ED9220F3603800FC23DF /* qidongIMG.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F6ED9120F3603800FC23DF /* qidongIMG.png */; };
 		36FA66B920941F0B0069C105 /* YMDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FA66B620941F0A0069C105 /* YMDatePickerView.xib */; };
 		36FA66BA20941F0B0069C105 /* YMDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FA66B820941F0B0069C105 /* YMDatePickerView.m */; };
 		36FA66BC20945FA10069C105 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FA66BB20945FA10069C105 /* CoreLocation.framework */; };
@@ -370,13 +377,19 @@
 		3624E2C22091EE1300CC4AF4 /* LogInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		3624E2C32091EE1300CC4AF4 /* LogInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		3624E2C42091EE1300CC4AF4 /* LogInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogInViewController.xib; sourceTree = "<group>"; };
+		3629D53921018D48003F76B9 /* ic_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_yes.png; sourceTree = "<group>"; };
+		3629D53A21018D48003F76B9 /* ic_yes@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_yes@3x.png"; sourceTree = "<group>"; };
+		3629D53B21018D48003F76B9 /* ic_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_no.png; sourceTree = "<group>"; };
+		3629D53C21018D49003F76B9 /* ic_no@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_no@3x.png"; sourceTree = "<group>"; };
+		3629D53D21018D49003F76B9 /* ic_no@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_no@2x.png"; sourceTree = "<group>"; };
+		3629D53E21018D49003F76B9 /* ic_yes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_yes@2x.png"; sourceTree = "<group>"; };
+		3629D5452101B46D003F76B9 /* UserProtocolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProtocolViewController.m; sourceTree = "<group>"; };
+		3629D5462101B46E003F76B9 /* UserProtocolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProtocolViewController.h; sourceTree = "<group>"; };
 		3647A85B2099D51B000723FA /* YMCityPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMCityPickerView.h; sourceTree = "<group>"; };
 		3647A85C2099D51B000723FA /* YMCityPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMCityPickerView.m; sourceTree = "<group>"; };
 		366052C920EF448E002BB138 /* ic_head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_head.png; sourceTree = "<group>"; };
 		366052CA20EF448F002BB138 /* ic_head@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_head@3x.png"; sourceTree = "<group>"; };
 		366052CB20EF448F002BB138 /* ic_head@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_head@2x.png"; sourceTree = "<group>"; };
-		36656D74209C5BEC00D97874 /* HUDQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HUDQueue.h; sourceTree = "<group>"; };
-		36656D75209C5BEC00D97874 /* HUDQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HUDQueue.m; sourceTree = "<group>"; };
 		3676AE0020EA2B8D0067EDA0 /* JJShare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJShare.h; sourceTree = "<group>"; };
 		3676AE0120EA2B8D0067EDA0 /* JJShare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JJShare.m; sourceTree = "<group>"; };
 		3676AE0620EA468D0067EDA0 /* PromotionAwardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PromotionAwardViewController.h; sourceTree = "<group>"; };
@@ -487,9 +500,9 @@
 		36B7F3CE20B44E7800252811 /* MainOrdersRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainOrdersRequest.m; sourceTree = "<group>"; };
 		36BA8B4F20EE2272009373D0 /* CustomizeExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomizeExampleViewController.h; sourceTree = "<group>"; };
 		36BA8B5020EE2272009373D0 /* CustomizeExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomizeExampleViewController.m; sourceTree = "<group>"; };
-		36BA8B5320EE47E7009373D0 /* ic_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_yes.png; sourceTree = "<group>"; };
-		36BA8B5420EE47E7009373D0 /* ic_yes@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_yes@3x.png"; sourceTree = "<group>"; };
-		36BA8B5520EE47E8009373D0 /* ic_yes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_yes@2x.png"; sourceTree = "<group>"; };
+		36BA8B5320EE47E7009373D0 /* ic_redyes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_redyes.png; sourceTree = "<group>"; };
+		36BA8B5420EE47E7009373D0 /* ic_redyes@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_redyes@3x.png"; sourceTree = "<group>"; };
+		36BA8B5520EE47E8009373D0 /* ic_redyes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_redyes@2x.png"; sourceTree = "<group>"; };
 		36C809C520D890770036C14A /* FreeChangeAgainCodeNumberCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeChangeAgainCodeNumberCell.h; sourceTree = "<group>"; };
 		36C809C620D890770036C14A /* FreeChangeAgainCodeNumberCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreeChangeAgainCodeNumberCell.m; sourceTree = "<group>"; };
 		36C809C720D890770036C14A /* FreeChangeAgainCodeNumberCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FreeChangeAgainCodeNumberCell.xib; sourceTree = "<group>"; };
@@ -524,13 +537,15 @@
 		36EF2FE720A47ACF005FFE1A /* AssessCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssessCollectionViewCell.xib; sourceTree = "<group>"; };
 		36EF2FEA20A47AE4005FFE1A /* AssessFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssessFlowLayout.h; sourceTree = "<group>"; };
 		36EF2FEB20A47AE4005FFE1A /* AssessFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssessFlowLayout.m; sourceTree = "<group>"; };
+		36F3CBAA2106BC4700B60636 /* ruyiRuyi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ruyiRuyi.entitlements; sourceTree = "<group>"; };
+		36F3CBAB2106CD9E00B60636 /* CustomPushSound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CustomPushSound.caf; sourceTree = "<group>"; };
 		36F400A9209DB86F00DAA633 /* StoresViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoresViewController.h; sourceTree = "<group>"; };
 		36F400AA209DB86F00DAA633 /* StoresViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoresViewController.m; sourceTree = "<group>"; };
 		36F4F17D20B94732009CA642 /* SelectServiceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectServiceCell.h; sourceTree = "<group>"; };
 		36F4F17E20B94732009CA642 /* SelectServiceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectServiceCell.m; sourceTree = "<group>"; };
 		36F4F17F20B94732009CA642 /* SelectServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectServiceCell.xib; sourceTree = "<group>"; };
 		36F6ED8F20F347F200FC23DF /* shareIMG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareIMG.png; sourceTree = "<group>"; };
-		36F6ED9120F3603800FC23DF /* qidongtu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qidongtu.png; sourceTree = "<group>"; };
+		36F6ED9120F3603800FC23DF /* qidongIMG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qidongIMG.png; sourceTree = "<group>"; };
 		36FA66B620941F0A0069C105 /* YMDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YMDatePickerView.xib; sourceTree = "<group>"; };
 		36FA66B720941F0B0069C105 /* YMDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMDatePickerView.h; sourceTree = "<group>"; };
 		36FA66B820941F0B0069C105 /* YMDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMDatePickerView.m; sourceTree = "<group>"; };
@@ -659,10 +674,16 @@
 		36071A1720EC71F50089E633 /* 其他图片 */ = {
 			isa = PBXGroup;
 			children = (
+				3629D53B21018D48003F76B9 /* ic_no.png */,
+				3629D53D21018D49003F76B9 /* ic_no@2x.png */,
+				3629D53C21018D49003F76B9 /* ic_no@3x.png */,
+				3629D53921018D48003F76B9 /* ic_yes.png */,
+				3629D53E21018D49003F76B9 /* ic_yes@2x.png */,
+				3629D53A21018D48003F76B9 /* ic_yes@3x.png */,
 				36FF49FE20F9E1A900F28729 /* 车辆示例.jpg */,
 				36FF49FA20F9DE6500F28729 /* 前轮示例.jpg */,
 				36FF49FC20F9DE6800F28729 /* 后轮示例.jpg */,
-				36F6ED9120F3603800FC23DF /* qidongtu.png */,
+				36F6ED9120F3603800FC23DF /* qidongIMG.png */,
 				36F6ED8F20F347F200FC23DF /* shareIMG.png */,
 				366052C920EF448E002BB138 /* ic_head.png */,
 				366052CB20EF448F002BB138 /* ic_head@2x.png */,
@@ -750,8 +771,8 @@
 				36137E262099612900C9A669 /* view */,
 				360044C32092ACFB00BEDF73 /* EnrollmentViewController.h */,
 				360044C42092ACFB00BEDF73 /* EnrollmentViewController.m */,
-				36656D74209C5BEC00D97874 /* HUDQueue.h */,
-				36656D75209C5BEC00D97874 /* HUDQueue.m */,
+				3629D5462101B46E003F76B9 /* UserProtocolViewController.h */,
+				3629D5452101B46D003F76B9 /* UserProtocolViewController.m */,
 			);
 			path = Enrollment;
 			sourceTree = "<group>";
@@ -885,6 +906,7 @@
 		3624E2C82091FAD300CC4AF4 /* AppConfig */ = {
 			isa = PBXGroup;
 			children = (
+				36F3CBAB2106CD9E00B60636 /* CustomPushSound.caf */,
 				36BA8B5220EE3326009373D0 /* 拍照示例 */,
 				36071A1720EC71F50089E633 /* 其他图片 */,
 				360AA19220EB561900E6DE17 /* 推广图片 */,
@@ -986,6 +1008,7 @@
 		36A8AE1E2091C6BE00A6E883 /* ruyiRuyi */ = {
 			isa = PBXGroup;
 			children = (
+				36F3CBAA2106BC4700B60636 /* ruyiRuyi.entitlements */,
 				367F983E20F5E99C0022838C /* Library */,
 				3624E2C82091FAD300CC4AF4 /* AppConfig */,
 				3624E2B02091E60A00CC4AF4 /* VCBase */,
@@ -1219,9 +1242,9 @@
 		36BA8B5220EE3326009373D0 /* 拍照示例 */ = {
 			isa = PBXGroup;
 			children = (
-				36BA8B5320EE47E7009373D0 /* ic_yes.png */,
-				36BA8B5520EE47E8009373D0 /* ic_yes@2x.png */,
-				36BA8B5420EE47E7009373D0 /* ic_yes@3x.png */,
+				36BA8B5320EE47E7009373D0 /* ic_redyes.png */,
+				36BA8B5520EE47E8009373D0 /* ic_redyes@2x.png */,
+				36BA8B5420EE47E7009373D0 /* ic_redyes@3x.png */,
 			);
 			path = "拍照示例";
 			sourceTree = "<group>";
@@ -1404,6 +1427,7 @@
 				36A8AE192091C6BE00A6E883 /* Frameworks */,
 				36A8AE1A2091C6BE00A6E883 /* Resources */,
 				E73AF9F2B0517FA93344DDA9 /* [CP] Copy Pods Resources */,
+				36E0B52821001F7C005838B5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1463,6 +1487,14 @@
 				TargetAttributes = {
 					36A8AE1B2091C6BE00A6E883 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					36A8AE332091C6BF00A6E883 = {
 						CreatedOnToolsVersion = 9.3;
@@ -1508,20 +1540,23 @@
 				36FF49FD20F9DE6800F28729 /* 后轮示例.jpg in Resources */,
 				36E39B9220F45D2E001EC78F /* ShopPhotoCollectionViewCell.xib in Resources */,
 				360AA1B620EB655300E6DE17 /* ic_my_shibai@3x.png in Resources */,
+				36F3CBAC2106CD9E00B60636 /* CustomPushSound.caf in Resources */,
 				360AA1AC20EB56A300E6DE17 /* ic_dakongbai@3x.png in Resources */,
 				36F6ED9020F347F200FC23DF /* shareIMG.png in Resources */,
 				36899BA420BBD12B00B06184 /* OrdersPhotoCell.xib in Resources */,
 				360AA1A120EB561900E6DE17 /* ic_erweima@3x.png in Resources */,
+				3629D54421018D4A003F76B9 /* ic_yes@2x.png in Resources */,
 				366052CE20EF448F002BB138 /* ic_head@2x.png in Resources */,
 				360AA1C020EB9D0F00E6DE17 /* ic_hui_free.png in Resources */,
 				366052CD20EF448F002BB138 /* ic_head@3x.png in Resources */,
 				361E7B8120EA605E009ACE8E /* promotionAwardCell.xib in Resources */,
 				3600FE7B20AC51710028A806 /* AddCommodityCell.xib in Resources */,
 				360044D92092CA2800BEDF73 /* photoCell.xib in Resources */,
+				3629D54221018D4A003F76B9 /* ic_no@3x.png in Resources */,
 				361E7B7C20EA579D009ACE8E /* PromotionAwardViewController.xib in Resources */,
 				36AFA1A620A2EC85005835B0 /* ShopItemCollectionViewCell.xib in Resources */,
 				36AFA17B20A293F1005835B0 /* ShopInfoCell.xib in Resources */,
-				36BA8B5720EE47E8009373D0 /* ic_yes@3x.png in Resources */,
+				36BA8B5720EE47E8009373D0 /* ic_redyes@3x.png in Resources */,
 				360AA1B820EB655300E6DE17 /* ic_my_shibai@2x.png in Resources */,
 				36AFA1A120A2EB97005835B0 /* ShopItemCell.xib in Resources */,
 				360AA1AA20EB56A300E6DE17 /* ic_dakongbai.png in Resources */,
@@ -1539,21 +1574,25 @@
 				3624E2C62091EE1300CC4AF4 /* LogInViewController.xib in Resources */,
 				36AAFB8020B6894E00F9775B /* MainStoresCell.xib in Resources */,
 				3616859220A9B2DD00E9CE6E /* SellingCell.xib in Resources */,
-				36BA8B5620EE47E8009373D0 /* ic_yes.png in Resources */,
+				3629D54321018D4A003F76B9 /* ic_no@2x.png in Resources */,
+				36BA8B5620EE47E8009373D0 /* ic_redyes.png in Resources */,
+				3629D53F21018D4A003F76B9 /* ic_yes.png in Resources */,
 				36AE7E0020B55B2D0079A4CC /* OrdersInfoCell.xib in Resources */,
 				360AA1BF20EB9D0F00E6DE17 /* ic_hui_fuwu.png in Resources */,
 				368A7A5F209B196800CA8DD0 /* ProjectCell.xib in Resources */,
-				36BA8B5820EE47E8009373D0 /* ic_yes@2x.png in Resources */,
+				36BA8B5820EE47E8009373D0 /* ic_redyes@2x.png in Resources */,
 				360AA1A420EB561900E6DE17 /* ic_people@3x.png in Resources */,
 				360AA1B720EB655300E6DE17 /* ic_my_shibai.png in Resources */,
 				36D009F120A14B72008D1F53 /* MyServiceCell.xib in Resources */,
 				36AE7DF620B552C30079A4CC /* TiresCell.xib in Resources */,
-				36F6ED9220F3603800FC23DF /* qidongtu.png in Resources */,
+				36F6ED9220F3603800FC23DF /* qidongIMG.png in Resources */,
 				36D009DC20A13138008D1F53 /* OrderCell.xib in Resources */,
 				36F4F18120B94732009CA642 /* SelectServiceCell.xib in Resources */,
 				360AA1C120EB9D0F00E6DE17 /* ic_shouci.png in Resources */,
 				360044D42092CA0100BEDF73 /* StoresCell.xib in Resources */,
 				360AA1AB20EB56A300E6DE17 /* ic_dakongbai@2x.png in Resources */,
+				3629D54121018D4A003F76B9 /* ic_no.png in Resources */,
+				3629D54021018D4A003F76B9 /* ic_yes@3x.png in Resources */,
 				360E9FE320D8B3DD005DB120 /* FreeChangAgainTirePhotoCell.xib in Resources */,
 				36FF49FB20F9DE6500F28729 /* 前轮示例.jpg in Resources */,
 				36C809C920D890770036C14A /* FreeChangeAgainCodeNumberCell.xib in Resources */,
@@ -1607,6 +1646,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		36E0B52821001F7C005838B5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n#\n# Copyright 2016 Bugly, Tencent. All rights reserved.\n#\n# V1.4.0\n#\n# 2016.08.03\n#\n#\n#\n######################################################\n# 1. 脚本集成到Xcode工程的Target\n######################################################\n#\n# --- Copy the SCRIPT to the Run Script of Build Phases in the Xcode project ---\n#\n# #\nBUGLY_APP_ID=\"3df5353770\"\n# #\nBUGLY_APP_KEY=\"e53a0f92-0eb4-44e1-9f51-cf5603cc332b\"\n# #\nBUNDLE_IDENTIFIER=\"com.ponyShop.pony\"\n# #\nUPLOAD_DSYM_ONLY=1\n#\n# # 脚本默认配置的版本格式为CFBundleShortVersionString(CFBundleVersion),  如果你修改默认的版本格式, 请设置此变量, 如果不想修改, 请忽略此设置\n# CUSTOMIZED_APP_VERSION=\"\"\n#\n# # Debug模式编译是否上传，1＝上传 0＝不上传，默认不上传\n UPLOAD_DEBUG_SYMBOLS=1\n#\n# # 模拟器编译是否上传，1=上传 0=不上传，默认不上传\n UPLOAD_SIMULATOR_SYMBOLS=1\n#\n# #只有Archive操作时上传, 1=支持Archive上传 0=所有Release模式编译都上传\n# UPLOAD_ARCHIVE_ONLY=0\n#\n# #\n# source dSYMUpload.sh\n#\n# --- END OF SCRIPT ---\n#\n#\n#\n#\n#######################################################\n# 2. 脚本根据输入参数处理\n#######################################################\n#\n# #命令行下输入应用基本信息, .dSYM文件的父目录路径, 输出文件目录即可\n#\n# sh dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir>\n#\n# #\n#\n# #注意:\n# # 1. dSYMUpload.sh会调用buglySymboliOS.jar进行.dSYM解析，所以依赖Java运行时环境\n# # 2. dSYMUpload.sh和buglySymboliOS.jar的文件路径需一致\n#\n#\n\n#\n# --- CONTENT OF SCRIPT ---\n#\n\n# Bugly服务域名\nBUGLY_DSYM_UPLOAD_DOMAIN=\"api.bugly.qq.com\"\n\n# 注意jar工具的路径跟dSYMUpload.sh脚本路径一致, 请务必保证jar路径的正确性\nBUGLY_SYMBOL_JAR_PATH=\"dsymtool/buglySymboliOS.jar\"\n# 查找添加到系统目录的jar工具\nif [ ! -f \"${BUGLY_SYMBOL_JAR_PATH}\" ]; then\nBUGLY_SYMBOL_JAR_PATH=\"$HOME/bin/buglySymboliOS.jar\"\nfi\n\n# 打印错误信息\nfunction exitWithMessage(){\n    echo \"--------------------------------\"\n    echo \"${1}\"\n    echo \"--------------------------------\"\n    exit ${2}\n}\n\n# 上传bSYMBOL文件\nfunction dSYMUpload() {\n    P_APP_ID=\"$1\"\n    P_APP_KEY=\"$2\"\n    P_APP_BUNDLE_ID=\"$3\"\n    P_APP_VERSION=\"$4\"\n    P_BSYMBOL_ZIP_FILE=\"$5\"\n    \n    #\n    P_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE##*/}\n        P_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE_NAME//&/_}\n            P_BSYMBOL_ZIP_FILE_NAME=\"${P_BSYMBOL_ZIP_FILE_NAME// /_}\"\n            \n            DSYM_UPLOAD_URL=\"https://${BUGLY_DSYM_UPLOAD_DOMAIN}/openapi/file/upload/symbol?app_id=${P_APP_ID}&app_key=${P_APP_KEY}\"\n            echo \"dSYM upload url: ${DSYM_UPLOAD_URL}\"\n            \n            echo \"-----------------------------\"\n            STATUS=$(/usr/bin/curl -k \"${DSYM_UPLOAD_URL}\" --form \"api_version=1\" --form \"app_id=${P_APP_ID}\" --form \"app_key=${P_APP_KEY}\" --form \"symbolType=2\"  --form \"bundleId=${BUNDLE_IDENTIFIER}\" --form \"productVersion=${BUGLY_APP_VERSION}\" --form \"fileName=${P_BSYMBOL_ZIP_FILE_NAME}\" --form \"file=@${P_BSYMBOL_ZIP_FILE}\" --verbose)\n            echo \"-----------------------------\"\n            \n            UPLOAD_RESULT=\"FAILTURE\"\n            echo \"Bugly server response: ${STATUS}\"\n            if [ ! \"${STATUS}\" ]; then\n            echo \"Error: Failed to upload the zip archive file.\"\n            elif [[ \"${STATUS}\" == *\"{\\\"reponseCode\\\":\\\"0\\\"}\"* ]]; then\n            echo \"Success to upload the dSYM for the app [${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION}]\"\n            UPLOAD_RESULT=\"SUCCESS\"\n            else\n            echo \"Error: Failed to upload the zip archive file to Bugly.\"\n            fi\n            \n            #Remove temp dSYM archive\n            #echo \"Remove temporary zip archive: ${DSYM_ZIP_FPATH}\"\n            #/bin/rm -f \"${DSYM_ZIP_FPATH}\"\n            \n            if [ \"$?\" -ne 0 ]; then\n            exitWithMessage \"Error: Failed to remove temporary zip archive.\" 0\n            fi\n            \n            echo \"--------------------------------\"\n            echo \"${UPLOAD_RESULT} - dSYM upload complete.\"\n            \n            if [[ \"${UPLOAD_RESULT}\" == \"FAILTURE\" ]]; then\n            echo \"--------------------------------\"\n            echo \"Failed to upload the dSYM\"\n            echo \"Please check the script and try it again.\"\n            fi\n        }\n        \n        # .dSYM解析为bSYMBOL文件\n        function dSYMParse() {\n            DSYM_FILE=\"$1\"\n            DSYM_SYMBOL_FILE=\"$2\"\n            \n            echo \"--------------------------------\"\n            echo \"Extract symbol info from .dSYM file. to ${DSYM_SYMBOL_FILE}\"\n            (/usr/bin/java -Xms512m -Xmx1024m -Dfile.encoding=UTF8 -jar \"${BUGLY_SYMBOL_JAR_PATH}\" -i \"${DSYM_FILE}\" -o \"${DSYM_SYMBOL_FILE}\" ) || exitWithMessage \"Error: Failed to extract symbols.\" 1\n            echo \"--------------------------------\"\n            \n        }\n        \n        # 执行\n        function run() {\n            \n            CONFIG_BUGLY_APP_ID=\"$1\"\n            CONFIG_BUGLY_APP_KEY=\"$2\"\n            \n            CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER=\"$3\"\n            CONFIG_BUGLY_APP_VERSION=\"$4\"\n            CONFIG_DSYM_SOURCE_DIR=\"$5\"\n            CONFIG_DSYM_DEST_DIR=\"$6\"\n            CONFIG_UPLOAD_DSYM_ONLY=\"$7\"\n            \n            # 检查必须参数是否设置\n            if [ ! \"${CONFIG_BUGLY_APP_ID}\" ]; then\n            exitWithMessage \"Error: Bugly App ID not defined. Please set 'BUGLY_APP_ID' \" 0\n            fi\n            \n            if [[ \"${CONFIG_BUGLY_APP_ID}\" == *\"App ID\"* ]]; then\n            exitWithMessage \"Error: Bugly App ID not defined.\" 0\n            fi\n            \n            if [ ! \"${CONFIG_BUGLY_APP_KEY}\" ]; then\n            exitWithMessage \"Error: Bugly App Key not defined.\" 0\n            fi\n            \n            if [ ! \"${CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER}\" ]; then\n            exitWithMessage \"Error: Bundle Identifier not defined.\" 0\n            fi\n            \n            if [ ! \"${CONFIG_BUGLY_APP_VERSION}\" ]; then\n            exitWithMessage \"Error: App Version not defined.\" 0\n            fi\n            \n            if [ ! -e \"${CONFIG_DSYM_SOURCE_DIR}\" ]; then\n            exitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_SOURCE_DIR}\" 0\n            fi\n            \n            if [ ! \"${CONFIG_DSYM_DEST_DIR}\" ]; then\n            exitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_DEST_DIR}\" 0\n            fi\n            \n            if [ ! -e \"${CONFIG_DSYM_DEST_DIR}\" ]; then\n            mkdir ${CONFIG_DSYM_DEST_DIR}\n            fi\n            \n            DSYM_FOLDER=\"${CONFIG_DSYM_SOURCE_DIR}\"\n            IFS=$'\\n'\n            \n            echo \"Scaning dSYM FOLDER: ${DSYM_FOLDER} ...\"\n            RET=\"F\"\n            \n            #\n            for dsymFile in $(find \"$DSYM_FOLDER\" -name '*.dSYM'); do\n            RET=\"T\"\n            echo \"Found dSYM file: $dsymFile\"\n            \n            DSYM_FILE_NAME=${dsymFile##*/}\n                DSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_FILE_NAME}.zip\"\n                DSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_SYMBOL_ZIP_FILE_NAME// /_}\"\n                DSYM_SYMBOL_ZIP_FILE=${CONFIG_DSYM_DEST_DIR}/${DSYM_SYMBOL_ZIP_FILE_NAME}\n                \n                if [ $CONFIG_UPLOAD_DSYM_ONLY -eq 1 ]; then\n                if [ -e $DSYM_SYMBOL_ZIP_FILE ]; then\n                rm -f $DSYM_SYMBOL_ZIP_FILE\n                fi\n                # 如果只上传dSYM，直接压缩dSYM目录\n                zip -r -j $DSYM_SYMBOL_ZIP_FILE $dsymFile -x *.plist\n                else\n                # 使用符号表工具来生成Symbol文件\n                dSYMParse $dsymFile $DSYM_SYMBOL_ZIP_FILE\n                fi\n                \n                # 上传\n                dSYMUpload $CONFIG_BUGLY_APP_ID $CONFIG_BUGLY_APP_KEY $CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER $CONFIG_BUGLY_APP_VERSION $DSYM_SYMBOL_ZIP_FILE\n                done\n                \n                if [ $RET = \"F\" ]; then\n                exitWithMessage \"No .dSYM found in ${DSYM_FOLDER}\" 0\n                fi\n            }\n            \n            # 在Xcode工程中执行\n            function runInXcode(){\n                echo \"Uploading dSYM to Bugly in Xcode ...\"\n                \n                echo \"Info.Plist : ${INFOPLIST_FILE}\"\n                \n                BUNDLE_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleVersion' \"${INFOPLIST_FILE}\")\n                BUNDLE_SHORT_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' \"${INFOPLIST_FILE}\")\n                \n                # 组装Bugly默认识别的版本信息(格式为CFBundleShortVersionString(CFBundleVersion), 例如: 1.0(1))\n                if [ ! \"${CUSTOMIZED_APP_VERSION}\" ]; then\n                BUGLY_APP_VERSION=\"${BUNDLE_SHORT_VERSION}(${BUNDLE_VERSION})\"\n                else\n                BUGLY_APP_VERSION=\"${CUSTOMIZED_APP_VERSION}\"\n                fi\n                \n                echo \"--------------------------------\"\n                echo \"Prepare application information.\"\n                echo \"--------------------------------\"\n                \n                echo \"Product Name: ${PRODUCT_NAME}\"\n                echo \"Bundle Identifier: ${BUNDLE_IDENTIFIER}\"\n                echo \"Version: ${BUNDLE_SHORT_VERSION}\"\n                echo \"Build: ${BUNDLE_VERSION}\"\n                \n                echo \"Bugly App ID: ${BUGLY_APP_ID}\"\n                echo \"Bugly App key: ${BUGLY_APP_KEY}\"\n                echo \"Bugly App Version: ${BUGLY_APP_VERSION}\"\n                \n                echo \"--------------------------------\"\n                echo \"Check the arguments ...\"\n                \n                ##检查模拟器编译是否允许上传符号\n                if [ \"$EFFECTIVE_PLATFORM_NAME\" == \"-iphonesimulator\" ]; then\n                if [ $UPLOAD_SIMULATOR_SYMBOLS -eq 0 ]; then\n                exitWithMessage \"Warning: Build for simulator and skipping to upload. \\nYou can modify 'UPLOAD_SIMULATOR_SYMBOLS' to 1 in the script.\" 0\n                fi\n                fi\n                \n                ##检查是否是Release模式编译\n                if [ \"${CONFIGURATION=}\" == \"Debug\" ]; then\n                if [ $UPLOAD_DEBUG_SYMBOLS -eq 0 ]; then\n                exitWithMessage \"Warning: Build for debug mode and skipping to upload. \\nYou can modify 'UPLOAD_DEBUG_SYMBOLS' to 1 in the script.\" 0\n                fi\n                fi\n                \n                ##检查是否Archive操作\n                if [ $UPLOAD_ARCHIVE_ONLY -eq 1 ]; then\n                if [[ \"$TARGET_BUILD_DIR\" == *\"/Archive\"* ]]; then\n                echo \"Archive the package\"\n                else\n                exitWithMessage \"Warning: Build for NOT Archive mode and skipping to upload. \\nYou can modify 'UPLOAD_ARCHIVE_ONLY' to 0 in the script.\" 0\n                fi\n                fi\n                \n                #\n                run ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${BUILD_DIR}/BuglySymbolTemp ${UPLOAD_DSYM_ONLY}\n            }\n            \n            # 根据Xcode的环境变量判断是否处于Xcode环境\n            INFO_PLIST_FILE=\"${INFOPLIST_FILE}\"\n            \n            BuildInXcode=\"F\"\n            if [ -f \"${INFO_PLIST_FILE}\" ]; then\n            BuildInXcode=\"T\"\n            fi\n            \n            if [ $BuildInXcode = \"T\" ]; then\n            runInXcode\n            else\n            echo \"\\nUsage: dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir> [upload_dsym_only]\\n\"\n            # 你可以在此处直接设置BuglyAppID和BuglyAppKey，排除不常变参数的输入\n            BUGLY_APP_ID=\"$1\"\n            BUGLY_APP_KEY=\"$2\"\n            BUNDLE_IDENTIFIER=\"$3\"\n            BUGLY_APP_VERSION=\"$4\"\n            DWARF_DSYM_FOLDER_PATH=\"$5\"\n            SYMBOL_OUTPUT_PATH=\"$6\"\n            UPLOAD_DSYM_ONLY=$7\n            run ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${SYMBOL_OUTPUT_PATH} ${UPLOAD_DSYM_ONLY}\n            fi\n";
 		};
 		684EE676E5AC3E7867BF8373 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1714,6 +1766,7 @@
 				3624E2B62091E66400CC4AF4 /* BaseTableViewController.m in Sources */,
 				3600FE7A20AC51710028A806 /* AddCommodityCell.m in Sources */,
 				36AE7DF520B552C30079A4CC /* TiresCell.m in Sources */,
+				3629D5472101B46E003F76B9 /* UserProtocolViewController.m in Sources */,
 				36A584D7209C417900A71C35 /* MBProgressHUD+YYM_category.m in Sources */,
 				3623D58620D7B6EE007799E3 /* OrderDetailsViewController.m in Sources */,
 				361CF59D20E36996007DFA17 /* HYStepper.m in Sources */,
@@ -1790,7 +1843,6 @@
 				36E39B9120F45D2E001EC78F /* ShopPhotoCollectionViewCell.m in Sources */,
 				360965C220E767EF000D7688 /* OrderStatusTypeTableVIewController.m in Sources */,
 				36AE7DED20B5098D0079A4CC /* OrdersModel.m in Sources */,
-				36656D76209C5BEC00D97874 /* HUDQueue.m in Sources */,
 				36AFA17620A2936F005835B0 /* AssessTableViewController.m in Sources */,
 				36137E192099446800C9A669 /* photoLayout.m in Sources */,
 				36AE7E0620B595220079A4CC /* TiresModel.m in Sources */,
@@ -1964,7 +2016,9 @@
 			baseConfigurationReference = C9FB91DBA1ADD001F3EE8554 /* Pods-ruyiRuyi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = NO;
+				CODE_SIGN_ENTITLEMENTS = ruyiRuyi/ruyiRuyi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AW3WK2C3KB;
@@ -1988,7 +2042,9 @@
 			baseConfigurationReference = EC9CCC8C9D08F0B5950781AC /* Pods-ruyiRuyi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = NO;
+				CODE_SIGN_ENTITLEMENTS = ruyiRuyi/ruyiRuyi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AW3WK2C3KB;

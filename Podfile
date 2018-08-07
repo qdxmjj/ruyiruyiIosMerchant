@@ -23,8 +23,12 @@ target 'ruyiRuyi' do
   # 平台SDK模块(对照一下平台，需要的加上。如果只需要QQ、微信、新浪微博，只需要以下3行)
   pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'
 
+  #腾讯
   pod 'Bugly'
   
+  #极光推送
+  pod 'JPush'
+
   target 'ruyiRuyiTests' do
     inherit! :search_paths
     # Pods for testing

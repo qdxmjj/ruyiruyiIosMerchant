@@ -20,18 +20,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qidongtu.png" translatesAutoresizingMaskIntoConstraints="NO" id="ItF-7d-kXm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="ItF-7d-kXm" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Pg9-ZK-540"/>
-                            <constraint firstItem="ItF-7d-kXm" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="iH2-FK-myn"/>
-                            <constraint firstItem="ItF-7d-kXm" firstAttribute="bottom" secondItem="1Om-TN-z8A" secondAttribute="top" id="jdN-jt-rQL"/>
-                            <constraint firstItem="ItF-7d-kXm" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailing" id="n7e-6y-oJ7"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -39,7 +28,4 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="qidongtu.png" width="750" height="1334"/>
-    </resources>
 </document>

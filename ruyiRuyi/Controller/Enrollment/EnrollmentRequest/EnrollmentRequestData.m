@@ -7,7 +7,6 @@
 //
 
 #import "EnrollmentRequestData.h"
-#import "HUDQueue.h"
 
 @implementation EnrollmentRequestData
 
@@ -96,8 +95,8 @@
     } success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
         
+
         succrsshandler(code,message,data);
-        
         
     } complete:^(id  _Nullable dataObj, NSError * _Nullable error) {
         

@@ -28,10 +28,16 @@
     
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:20], NSFontAttributeName, nil]];
     
-    UIBarButtonItem *spaceBar = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    spaceBar.width = -20;
 
-    self.navigationItem.leftBarButtonItems =@[spaceBar,[self BarButtonItemWithImage:[UIImage imageNamed:@"ic_back"] target:self action:@selector(backButtonAction)]];
+    
+    if (@available(iOS 11.0, *)) {
+
+        self.navigationItem.leftBarButtonItems =@[[self BarButtonItemWithImage:[UIImage imageNamed:@"ic_back"] target:self action:@selector(backButtonAction)]];
+    }else{
+            UIBarButtonItem *spaceBar = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+            spaceBar.width = -20;  //iOS11 已失效
+        self.navigationItem.leftBarButtonItems =@[spaceBar,[self BarButtonItemWithImage:[UIImage imageNamed:@"ic_back"] target:self action:@selector(backButtonAction)]];
+    }
 }
 
 - (void)backButtonAction{
@@ -42,10 +48,15 @@
 {
     UIButton*bt=[UIButton buttonWithType:UIButtonTypeCustom];
     [bt setImage:image forState:UIControlStateNormal];
-    bt.frame=CGRectMake(0, 0, 33, 33);
+    bt.frame=CGRectMake(0, 0, 44, 44);
     [bt addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    if (@available(iOS 11.0, *)) {
+        [bt setImageEdgeInsets:UIEdgeInsetsMake(0, -20, 0, 0)];//解决iOS11 左侧按钮偏移的问题
+    }
     return [[UIBarButtonItem alloc]initWithCustomView:bt];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
