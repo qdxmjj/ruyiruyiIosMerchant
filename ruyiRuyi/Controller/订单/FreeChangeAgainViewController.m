@@ -738,6 +738,8 @@
         return;
     }
     
+    [MBProgressHUD showWaitMessage:@"正在处理.." showView:self.view];
+
     StoreServiceType serviceType;
     if ([sender.titleLabel.text isEqualToString:@"确认服务"]) {
         serviceType = StoreConfirmServiceType;
@@ -747,6 +749,7 @@
     
     if (self.freeChangeArr.count != self.newTireNumber) {
         
+        [MBProgressHUD hideWaitViewAnimated:self.view];
         [MBProgressHUD showTextMessage:@"请选择足够的需要更换轮胎！"];
         return;
     }
@@ -755,8 +758,8 @@
     
     if (DrivingLicenseCell.selectPhotoBen.imageView.image == nil) {
         
+        [MBProgressHUD hideWaitViewAnimated:self.view];
         [MBProgressHUD showTextMessage:@"请选择行驶证照片！"];
-        
         return;
     }
     
@@ -765,6 +768,7 @@
     
     if (carCell.selectPhotoBen.imageView.image == nil) {
         
+        [MBProgressHUD hideWaitViewAnimated:self.view];
         [MBProgressHUD showTextMessage:@"请选择车辆照片！"];
         return;
     }
@@ -793,6 +797,7 @@
      succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
          
+         [MBProgressHUD hideWaitViewAnimated:self.view];
          [self.navigationController popViewControllerAnimated:YES];
          self.popOrdersVCBlock(YES);
          
@@ -854,8 +859,11 @@
         [newArr addObject:newDic];
     }
     //    NSLog(@"新的数组：%@",newArr);
+    [MBProgressHUD showWaitMessage:@"正在处理.." showView:self.view];
+
     [MainOrdersRequest submitStoreConfirmReceiptShoesWithInfo:newArr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
+        [MBProgressHUD hideWaitViewAnimated:self.view];
         [self.navigationController popViewControllerAnimated:YES];
         self.popOrdersVCBlock(YES);
         

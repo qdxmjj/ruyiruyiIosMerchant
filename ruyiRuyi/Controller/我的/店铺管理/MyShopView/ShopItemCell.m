@@ -77,8 +77,6 @@
         cell.itemTextLab.textColor = [UIColor whiteColor];
     }
 
-
-    
     return cell;
     
 }

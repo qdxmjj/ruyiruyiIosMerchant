@@ -95,6 +95,7 @@
         
     } complete:^(id  _Nullable dataObj, NSError * _Nullable error) {
         
+        failureHandler(error);
     }];
 }
 

@@ -144,7 +144,6 @@
             [self.ordersContentArr removeAllObjects];
         }
 
-        
         [self.ordersContentArr addObject:[data objectForKey:@"userName"]];
         [self.ordersContentArr addObject:[data objectForKey:@"userPhone"]];
         [self.ordersContentArr addObject:[data objectForKey:@"platNumber"]];
@@ -527,7 +526,8 @@
         [MBProgressHUD showTextMessage:@"订单信息获取失败！"];
         return;
     }
-    
+    [MBProgressHUD showWaitMessage:@"正在处理.." showView:self.view];
+
     StoreServiceType serviceType;
     if ([sender.titleLabel.text isEqualToString:@"确认服务"]) {
         
@@ -539,6 +539,7 @@
         
         [MainOrdersRequest tireRepairSelectServiceTypeWithInfo:@{@"orderNo":self.ordersContentArr[5],@"serviceType":[NSString stringWithFormat:@"%ld",(long)serviceType],@"orderType":self.orderTypeStr} repairBarCodeList:@[] photos:@[] succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
             
+            [MBProgressHUD hideWaitViewAnimated:self.view];
             [self.navigationController popViewControllerAnimated:YES];
             self.popOrdersVCBlock(YES);
             
@@ -555,6 +556,7 @@
     
     if (self.tireRepairPhotoArr.count<=0) {
         
+        [MBProgressHUD hideWaitViewAnimated:self.view];
         [MBProgressHUD showTextMessage:@"至少选择一处修补！"];
         return;
     }
@@ -581,12 +583,14 @@
         
         if (tirePhotoCell.selectTirePhotoBtn.imageView.image == nil) {
             
+            [MBProgressHUD hideWaitViewAnimated:self.view];
             [MBProgressHUD showTextMessage:@"请添加轮胎正面照！"];
             return;
         }
         
         if (tirePhotoCell.selectBarCodeBtn.imageView.image == nil) {
             
+            [MBProgressHUD hideWaitViewAnimated:self.view];
             [MBProgressHUD showTextMessage:@"请添加条形码特写照！"];
             return;
         }
@@ -614,12 +618,16 @@
     OrdersPhotoCell *DrivingLicenseCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
     
     if (DrivingLicenseCell.selectPhotoBen.imageView.image == nil) {
+        
+        [MBProgressHUD hideWaitViewAnimated:self.view];
         [MBProgressHUD showTextMessage:@"请选择行驶证照片！"];
         return;
     }
     OrdersPhotoCell *carCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:3]];
     
     if (carCell.selectPhotoBen.imageView.image == nil) {
+        
+        [MBProgressHUD hideWaitViewAnimated:self.view];
         [MBProgressHUD showTextMessage:@"请选择车辆照片！"];
         return;
     }
@@ -634,6 +642,7 @@
     
     [MainOrdersRequest tireRepairSelectServiceTypeWithInfo:@{@"orderNo":self.ordersContentArr[5],@"serviceType":[NSString stringWithFormat:@"%ld",(long)serviceType],@"orderType":self.orderTypeStr} repairBarCodeList:repairBarCodeList photos:photoArr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
+        [MBProgressHUD hideWaitViewAnimated:self.view];
         [self.navigationController popViewControllerAnimated:YES];
         self.popOrdersVCBlock(YES);
 

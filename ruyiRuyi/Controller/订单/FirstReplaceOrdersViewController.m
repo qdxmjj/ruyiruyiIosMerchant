@@ -484,8 +484,12 @@
         [newArr addObject:newDic];
     }
 //    NSLog(@"新的数组：%@",newArr);
+    
+    [MBProgressHUD showWaitMessage:@"正在处理.." showView:self.view];
+
     [MainOrdersRequest submitStoreConfirmReceiptShoesWithInfo:newArr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
 
+        [MBProgressHUD hideWaitViewAnimated:self.view];
         [self.navigationController popViewControllerAnimated:YES];
         self.popOrdersVCBlock(YES);
 
@@ -622,6 +626,9 @@
         
         return;
     }
+    
+    [MBProgressHUD showWaitMessage:@"正在处理.." showView:self.view];
+    
     StoreServiceType serviceType;
     if ([sender.titleLabel.text isEqualToString:@"确认服务"]) {
         
@@ -634,6 +641,7 @@
         
         [MainOrdersRequest confirmServrceTypeWithInfo:@{@"orderNo":self.ordersContentArr[5],@"serviceType":[NSString stringWithFormat:@"%ld",(long)serviceType],@"orderType":self.orderTypeStr} photos:@[] succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
             
+            [MBProgressHUD hideWaitViewAnimated:self.view];
             self.popOrdersVCBlock(YES);
             [self.navigationController popViewControllerAnimated:YES];
             
@@ -653,6 +661,7 @@
 
     if (cell.selectPhotoBen.imageView.image == nil || cell1.selectPhotoBen.imageView.image == nil) {
         
+        [MBProgressHUD hideWaitViewAnimated:self.view];
         [MBProgressHUD showTextMessage:@"请选择车辆相关照片！"];
         return;
     }
@@ -670,15 +679,18 @@
     
     [MainOrdersRequest confirmServrceTypeWithInfo:@{@"orderNo":self.ordersContentArr[5],@"serviceType":[NSString stringWithFormat:@"%ld",(long)serviceType],@"orderType":self.orderTypeStr} photos:arr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
+        [MBProgressHUD hideWaitViewAnimated:self.view];
+
         self.popOrdersVCBlock(YES);
         [self.navigationController popViewControllerAnimated:YES];
         
     } failure:^(NSError * _Nullable error) {
         
-        
+        [MBProgressHUD hideWaitViewAnimated:self.view];
+
     }];
     
-    NSLog(@"%@   %@",self.orderTypeStr,self.ordersContentArr[5]);
+//    NSLog(@"%@   %@",self.orderTypeStr,self.ordersContentArr[5]);
 }
 
 
