@@ -1,46 +1,46 @@
 PODS:
-  - AFNetworking (3.2.0):
-    - AFNetworking/NSURLSession (= 3.2.0)
-    - AFNetworking/Reachability (= 3.2.0)
-    - AFNetworking/Security (= 3.2.0)
-    - AFNetworking/Serialization (= 3.2.0)
-    - AFNetworking/UIKit (= 3.2.0)
-  - AFNetworking/NSURLSession (3.2.0):
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.0)
-  - AFNetworking/Security (3.2.0)
-  - AFNetworking/Serialization (3.2.0)
-  - AFNetworking/UIKit (3.2.0):
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - BaiduMapKit (4.0.0)
   - Bugly (2.5.0)
   - Harpy (4.1.14)
-  - IQKeyboardManager (6.0.2)
-  - JCore (1.2.0)
-  - JPush (3.0.9):
+  - IQKeyboardManager (6.1.1)
+  - JCore (1.2.2)
+  - JPush (3.1.0):
     - JCore (~> 1.2.0)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
-  - MJRefresh (3.1.15.3)
-  - mob_sharesdk (4.1.2):
-    - mob_sharesdk/ShareSDK (= 4.1.2)
+  - MJRefresh (3.1.15.6)
+  - mob_sharesdk (4.1.4):
+    - mob_sharesdk/ShareSDK (= 4.1.4)
     - MOBFoundation
-  - mob_sharesdk/ShareSDK (4.1.2):
+  - mob_sharesdk/ShareSDK (4.1.4):
     - MOBFoundation
-  - mob_sharesdk/ShareSDKPlatforms/WeChat (4.1.2):
+  - mob_sharesdk/ShareSDKPlatforms/WeChat (4.1.4):
     - mob_sharesdk/ShareSDK
     - MOBFoundation
-  - mob_sharesdk/ShareSDKUI (4.1.2):
+  - mob_sharesdk/ShareSDKUI (4.1.4):
     - mob_sharesdk/ShareSDK
     - MOBFoundation
-  - MOBFoundation (3.1.6)
+  - MOBFoundation (3.1.8)
   - SDCycleScrollView (1.75):
     - SDWebImage (>= 4.0.0)
-  - SDWebImage (4.3.3):
-    - SDWebImage/Core (= 4.3.3)
-  - SDWebImage/Core (4.3.3)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
 
 DEPENDENCIES:
   - AFNetworking
@@ -75,20 +75,20 @@ SPEC REPOS:
     - SDWebImage
 
 SPEC CHECKSUMS:
-  AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   BaiduMapKit: 8fa2eb2ca81b92b740b19d9ff3b59d751d3e92e1
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   Harpy: b2fbe6819f6a8932df32d7cd2fb20f442df86bbc
-  IQKeyboardManager: c49d59e358aeeffaa0280aa305093c2b194d2607
-  JCore: b52e3dd73625eec70afd1244bb9c41038aa06087
-  JPush: 48041e8c5ad2ef9b48709eb0888af9640b36e9b0
+  IQKeyboardManager: 79c57795f5c2408d259d37b9da2ed07efcbb5225
+  JCore: f14c0549968a63c22e246a4875aa9d428446f373
+  JPush: 5921e25ad13e0386351079217b009f2039084eac
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
-  mob_sharesdk: e859de6ace7542f3395ce055682f7cd40efdfaa1
-  MOBFoundation: a87c5f11fb87f873337189c3ec0add4d3ec6221a
+  MJRefresh: 0efa19656679d70a0f47cbe76e56c2271fe53a97
+  mob_sharesdk: 765cc2fd2fac0a6fd7c3e6c2b10d729ad006c608
+  MOBFoundation: 7f1e157be332576e4d45809a03bc733292c6ad8d
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
-  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
 
 PODFILE CHECKSUM: 3e83a73eac91fdf946564792ed4b8e5b1551f777
 

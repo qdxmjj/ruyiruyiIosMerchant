@@ -27,8 +27,7 @@
 "ShareType_20" = "打印";
 "ShareType_21" = "拷贝";
 "ShareType_22" = "微信好友";
-//"ShareType_23" = "微信朋友圈";
-"ShareType_23" = "朋友圈";
+"ShareType_23" = "微信朋友圈";
 "ShareType_24" = "QQ";
 "ShareType_25" = "Instapaper";
 "ShareType_26" = "Pocket";
@@ -48,11 +47,13 @@
 "ShareType_44" = "KakaoTalk";
 "ShareType_45" = "KakaoStory";
 "ShareType_46" = "Messenger";
+"ShareType_47" = "Telegram";
 "ShareType_50" = "支付宝好友";
 "ShareType_51" = "支付宝朋友圈";
 "ShareType_52" = "钉钉";
 "ShareType_53" = "YouTube";
 "ShareType_54" = "美拍";
+"ShareType_55" = "中国移动";
 
 "ShareType_994" = "易信";
 "ShareType_995" = "Kakao";

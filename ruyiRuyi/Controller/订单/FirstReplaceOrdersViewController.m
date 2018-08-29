@@ -623,7 +623,6 @@
     if (!self.orderTypeStr&&self.orderTypeStr.length<=0) {
         
         [MBProgressHUD showTextMessage:@"订单信息获取失败！"];
-        
         return;
     }
     

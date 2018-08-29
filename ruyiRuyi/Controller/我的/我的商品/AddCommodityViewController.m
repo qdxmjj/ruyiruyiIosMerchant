@@ -268,9 +268,10 @@
         return;
         
     }
-    if ([self.price isEqualToString:@"0"] || [self.amount isEqualToString:@"0"]) {
+    //[self.price isEqualToString:@"0"] ||
+    if ([self.amount isEqualToString:@"0"]) {
         
-        [MBProgressHUD showTextMessage:@"价格或库存不能为0！"];
+        [MBProgressHUD showTextMessage:@"库存不能为0！"];
         return;
     }
     
