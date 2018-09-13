@@ -16,7 +16,7 @@
 #import "MyCommodityViewController.h"
 #import "SetingViewController.h"
 #import "PromotionAwardViewController.h"
-
+#import "DeliveryOrderViewController.h"
 @interface UserViewController ()<UINavigationControllerDelegate>
 
 @property(nonatomic,strong)NSArray *imgArr;
@@ -54,14 +54,14 @@
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
+    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    if (self.imgArr.count>0) {
-        return self.imgArr.count;
+    
+    if (self.titleArr.count>0) {
+        return self.titleArr.count;
     }
     return 0;
 }
@@ -71,7 +71,9 @@
     UserCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userCellID" forIndexPath:indexPath];
     
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+    
     cell.imgView.image = [UIImage imageNamed:self.imgArr[indexPath.row]];
+    
     cell.titleLab.text = self.titleArr[indexPath.row];
     
     return cell;
@@ -86,7 +88,7 @@
             
             
             [self.navigationController pushViewController:[[MyServiceViewController alloc]init] animated:YES];
-
+            
             break;
         case 1:
             
@@ -100,15 +102,37 @@
         }
             break;
         case 3:{
-         
-            [MBProgressHUD showTextMessage:@"正在开发中.."];
+            
+            [MBProgressHUD showWaitMessage:@"正在查询权限.." showView:self.view];
+            NSDictionary *params = @{@"storeId":[UserConfig storeID]};
+            [JJRequest postRequest:@"/checkStoreAuth" params:@{@"reqJson":[JJTools convertToJsonData:params]} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+                
+                [MBProgressHUD hideWaitViewAnimated:self.view];
+                
+                if ([code longLongValue] == 1) {
+                    
+                    if ([data boolValue] == true) {
+                        
+                        [self.navigationController pushViewController:[[DeliveryOrderViewController alloc]init] animated:YES];
+                    }else{
+                        [MBProgressHUD showTextMessage:@"您没有发货权限！"];
+                    }
+                }
+                
+            } failure:^(NSError * _Nullable error) {
+                [MBProgressHUD hideWaitViewAnimated:self.view];
+            }];
         }
             break;
         case 4:
         {
+            [MBProgressHUD showTextMessage:@"正在开发中.."];
+        }
+            break;
+        case 5:
+        {
             [self.navigationController pushViewController:[[SetingViewController alloc]init] animated:YES];
         }
-            
             break;
         default:
             break;
@@ -137,7 +161,7 @@
     
     if (!_imgArr) {
         
-        _imgArr = [NSArray arrayWithObjects:@"ic_service",@"ic_thing",@"ic_gift",@"ic_word",@"ic_zhanghao", nil];
+        _imgArr = [NSArray arrayWithObjects:@"ic_service",@"ic_thing",@"ic_gift",@"ic_m_fahuo",@"ic_word",@"ic_zhanghao", nil];
     }
     return _imgArr;
 }
@@ -145,7 +169,7 @@
     
     if (!_titleArr) {
         
-        _titleArr = [NSArray arrayWithObjects:@"我的服务",@"我的商品",@"推广奖励",@"店主有话说",@"设置", nil];
+        _titleArr = [NSArray arrayWithObjects:@"我的服务",@"我的商品",@"推广奖励",@"订单发货",@"店主有话说",@"设置", nil];
     }
     return _titleArr;
 }

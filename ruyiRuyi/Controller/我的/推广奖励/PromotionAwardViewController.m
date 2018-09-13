@@ -32,7 +32,7 @@
     [super viewDidLoad];
     
     self.title = @"推广有礼";
-
+    
     self.headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-nav_height-bottom_height-44-25);
     
     self.tableView.tableHeaderView = self.headerView;
@@ -65,7 +65,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-
+    
     self.hidesBottomBarWhenPushed = YES;
     
 }
@@ -77,7 +77,7 @@
         
         myCodeVC.extensionInfo = self.extensionInfo;
         [self.navigationController pushViewController:myCodeVC animated:YES];
-    } 
+    }
 }
 
 
@@ -115,12 +115,12 @@
             
             identifier = @"promotionDefaultCellID";
             index = 2;
-   
+            
             break;
     }
     
     promotionAwardCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-
+    
     if (!cell) {
         
         cell = [[[NSBundle mainBundle] loadNibNamed:@"promotionAwardCell" owner:self options:nil] objectAtIndex:index];
@@ -163,12 +163,12 @@
 -(void)getPromotionInfo{
     
     [PromotionRequest getPromotionAwardInfoWithReqjson:@{@"storeId":[UserConfig storeID]} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
-       
+        
         self.rewardContentLab.text = [data objectForKey:@"award"];
         self.InvitationCodeLab.text = [data objectForKey:@"invitationCode"];
         
         self.rewardUserArr = [data objectForKey:@"shareRelationList"];
-//
+        //
         [self.tableView reloadData];
         
         self.extensionInfo = [[ExtensionInfo alloc] init];
@@ -197,12 +197,12 @@
         
         _rewardUserArr = [NSArray array];
         
-//        _rewardUserArr =  @[
-//
-//  @{@"createdTime": @"1527150989000",@"phone": @"17864239822"},
-//  @{@"createdTime": @"1527150989000",@"phone": @"17864239820"},
-//  @{@"createdTime": @"1527150989000",@"phone": @"17864239829"}];
-   
+        //        _rewardUserArr =  @[
+        //
+        //  @{@"createdTime": @"1527150989000",@"phone": @"17864239822"},
+        //  @{@"createdTime": @"1527150989000",@"phone": @"17864239820"},
+        //  @{@"createdTime": @"1527150989000",@"phone": @"17864239829"}];
+        
     }
     
     

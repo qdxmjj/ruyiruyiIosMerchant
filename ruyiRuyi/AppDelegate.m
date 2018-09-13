@@ -14,7 +14,6 @@
 #import "MyCommodityViewController.h"
 #import "JJMacro.h"
 #import "JJShare.h"
-#import <Harpy.h>
 #import <Bugly/Bugly.h>
 #import <AFNetworking.h>
 

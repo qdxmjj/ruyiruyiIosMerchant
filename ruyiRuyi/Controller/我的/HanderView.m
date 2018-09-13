@@ -54,12 +54,12 @@
     toolView.layer.shadowOffset = CGSizeMake(0, 0);
     toolView.layer.cornerRadius = 5;
     [self addSubview:toolView];
-
+    
     
     UIView *lineView = [[UIView alloc] init];
     lineView.backgroundColor = [UIColor lightGrayColor];
     [toolView addSubview:lineView];
-
+    
     self.leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.leftBtn setTitle:@"我的订单" forState:UIControlStateNormal];
     [self.leftBtn setImage:[UIImage imageNamed:@"ic_dingdan"] forState:UIControlStateNormal];
@@ -77,7 +77,7 @@
     [self.rigBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.rigBtn layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop imageTitleSpace:20];
     [toolView addSubview:self.rigBtn];
-
+    
     
     [handerImg mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -113,7 +113,7 @@
     
     
     [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-       
+        
         make.width.mas_equalTo(1);
         make.centerX.mas_equalTo(toolView.mas_centerX);
         make.centerY.mas_equalTo(toolView.mas_centerY);
@@ -122,14 +122,14 @@
     }];
     
     [self.leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-       
+        
         make.left.mas_equalTo(toolView.mas_left);
         make.right.mas_equalTo(lineView.mas_left);
         make.top.and.bottom.mas_equalTo(toolView);
     }];
     
     [self.rigBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-    
+        
         make.left.mas_equalTo(lineView.mas_right);
         make.right.mas_equalTo(toolView.mas_right);
         make.top.and.bottom.mas_equalTo(toolView);

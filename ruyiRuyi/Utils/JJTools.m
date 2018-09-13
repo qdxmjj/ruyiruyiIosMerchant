@@ -66,30 +66,30 @@
 
 
 +(NSString *)getTimestampFromTime:(NSString *)timeStampString formatter:(NSString *)format{
-
-// timeStampString 是服务器返回的13位时间戳
-
-// iOS 生成的时间戳是10位
-NSTimeInterval interval    =[timeStampString doubleValue] / 1000.0;
-NSDate *date               = [NSDate dateWithTimeIntervalSince1970:interval];
-
-NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-if (!format) {
+    
+    // timeStampString 是服务器返回的13位时间戳
+    
+    // iOS 生成的时间戳是10位
+    NSTimeInterval interval    =[timeStampString doubleValue] / 1000.0;
+    NSDate *date               = [NSDate dateWithTimeIntervalSince1970:interval];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    if (!format) {
         
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-}else{
-    [formatter setDateFormat:format];//@"yyyy-MM-dd HH:mm:ss"
-}
-NSString *dateString       = [formatter stringFromDate: date];
-NSLog(@"服务器返回的时间戳对应的时间是:%@",dateString);
-
-
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    }else{
+        [formatter setDateFormat:format];//@"yyyy-MM-dd HH:mm:ss"
+    }
+    NSString *dateString       = [formatter stringFromDate: date];
+//    NSLog(@"服务器返回的时间戳对应的时间是:%@",dateString);
+    
+    
     return dateString;
 }
 +(NSString *)convertToJsonData:(id)object
 
 {
-
+    
     
     NSError *error;
     
@@ -109,11 +109,11 @@ NSLog(@"服务器返回的时间戳对应的时间是:%@",dateString);
     
     NSMutableString *mutStr = [NSMutableString stringWithString:jsonString];
     
-//    NSRange range = {0,jsonString.length};
+    //    NSRange range = {0,jsonString.length};
     
     //去掉字符串中的空格
     
-//    [mutStr replaceOccurrencesOfString:@" " withString:@"" options:NSLiteralSearch range:range];
+    //    [mutStr replaceOccurrencesOfString:@" " withString:@"" options:NSLiteralSearch range:range];
     
     NSRange range2 = {0,mutStr.length};
     

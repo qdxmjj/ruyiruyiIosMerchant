@@ -104,7 +104,6 @@
               NSString *message = [responseObject objectForKey:@"msg"];
               id data = [responseObject objectForKey:@"data"];
               
-              
               successHandler(code,message,data);
               
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -114,6 +113,82 @@
               
               failureHandler(error);
           }];
+}
+
++ (void)GL_PostRequest:(NSString *)url params:(NSDictionary *)params success:(GL_requestSuccessBlock)successHandler failure:(requestFailureBlock)failureHandler{
+
+    if ([self checkNetworkStatus] == NO) {
+        successHandler(nil,nil);
+        failureHandler(nil);
+        return;
+    }
+    
+    AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
+    if (!reachabilityManager.isReachableViaWiFi) {
+        
+        
+    }
+    
+    AFHTTPSessionManager *manager = [self sharedHTTPSession];
+    
+    [manager POST:[NSString stringWithFormat:@"%@/%@",GL_RuYiRuYiIP,url] parameters:params progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject){
+              
+              NSString *total = [responseObject objectForKey:@"total"];
+              id rows = [responseObject objectForKey:@"rows"];
+              
+              successHandler(rows,total);
+              
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              NSLog(@"------请求失败-------%@",error);
+              
+              [self requestErrorCode:error.code];
+              
+              failureHandler(error);
+          }];
+}
+
++ (void)GL_UpdateRequest:(NSString * _Nullable )url params:( NSDictionary * _Nullable )params fileConfig:( NSArray<JJFileParam*> * _Nullable )fileArray progress:(_Nullable progressBlock)progressHandler success:(_Nullable requestSuccessBlock)successHandler complete:(_Nullable responseBlock)completionHandler{
+    
+    if ([self checkNetworkStatus] == NO) {
+        progressHandler(0, 0, 0);
+        completionHandler(nil, nil);
+        return;
+    }
+    
+    AFHTTPSessionManager *manager = [self sharedHTTPSession];
+    
+    //上传图片延长 上传时间
+    //    if ([self rangeOfString:url string:@"AddPunchclock"]) {
+    manager.requestSerializer.timeoutInterval = 40;
+    //    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@/%@",GL_RuYiRuYiIP,url] parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  formData) {
+        
+        for (JJFileParam *upload in fileArray) {
+            
+            [formData appendPartWithFileData:upload.fileData name:upload.name fileName:upload.fileName mimeType:upload.mimeType];
+        }
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress){
+        progressHandler(0,0,0);
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSString *code = [responseObject objectForKey:@"code"];
+        NSString *message = [responseObject objectForKey:@"msg"];
+        id data = [responseObject objectForKey:@"data"];
+        
+        
+        
+        successHandler(code,message,data);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        
+        [self requestErrorCode:error.code];
+        
+        completionHandler(task,error);
+    }];
+    
 }
 
 + (void)putRequest:(NSString *)url params:(NSDictionary *)params success:(requestSuccessBlock)successHandler failure:(requestFailureBlock)failureHandler {

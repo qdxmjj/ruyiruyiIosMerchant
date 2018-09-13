@@ -146,7 +146,7 @@
             break;
         case 1:{
             
-            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+//            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
             
             if (@available(iOS 10.0, *)) {
                 
