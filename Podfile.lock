@@ -16,7 +16,6 @@ PODS:
     - AFNetworking/NSURLSession
   - BaiduMapKit (4.0.0)
   - Bugly (2.5.0)
-  - Harpy (4.1.14)
   - IQKeyboardManager (6.1.1)
   - JCore (1.2.2)
   - JPush (3.1.0):
@@ -41,12 +40,12 @@ PODS:
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
+  - ZBarSDK (1.3.1)
 
 DEPENDENCIES:
   - AFNetworking
   - BaiduMapKit
   - Bugly
-  - Harpy
   - IQKeyboardManager
   - JPush
   - Masonry
@@ -56,13 +55,13 @@ DEPENDENCIES:
   - mob_sharesdk/ShareSDKPlatforms/WeChat
   - mob_sharesdk/ShareSDKUI
   - SDCycleScrollView
+  - ZBarSDK
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - BaiduMapKit
     - Bugly
-    - Harpy
     - IQKeyboardManager
     - JCore
     - JPush
@@ -73,12 +72,12 @@ SPEC REPOS:
     - MOBFoundation
     - SDCycleScrollView
     - SDWebImage
+    - ZBarSDK
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   BaiduMapKit: 8fa2eb2ca81b92b740b19d9ff3b59d751d3e92e1
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
-  Harpy: b2fbe6819f6a8932df32d7cd2fb20f442df86bbc
   IQKeyboardManager: 79c57795f5c2408d259d37b9da2ed07efcbb5225
   JCore: f14c0549968a63c22e246a4875aa9d428446f373
   JPush: 5921e25ad13e0386351079217b009f2039084eac
@@ -89,7 +88,8 @@ SPEC CHECKSUMS:
   MOBFoundation: 7f1e157be332576e4d45809a03bc733292c6ad8d
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
 
-PODFILE CHECKSUM: 3e83a73eac91fdf946564792ed4b8e5b1551f777
+PODFILE CHECKSUM: cf26fdf5b6aa5384b3d6a488829e8800ca91f39e
 
 COCOAPODS: 1.5.0

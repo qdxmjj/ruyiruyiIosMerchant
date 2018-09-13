@@ -13,7 +13,7 @@ target 'ruyiRuyi' do
   pod 'SDCycleScrollView'
   pod 'BaiduMapKit' #百度地图SDK
   pod 'MBProgressHUD'
-  pod 'Harpy' #提示更新
+  pod 'ZBarSDK'
   # 主模块(必须)
   pod 'mob_sharesdk'
  
