@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0461E097215F1EC900DE9F8A /* IncomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461E095215F1EC900DE9F8A /* IncomeViewController.m */; };
+		0461E098215F1EC900DE9F8A /* IncomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0461E096215F1EC900DE9F8A /* IncomeViewController.xib */; };
+		0461E09E215F23BD00DE9F8A /* IncomeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461E09D215F23BD00DE9F8A /* IncomeListTableViewController.m */; };
+		0461E0A2215F424100DE9F8A /* IncomeOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461E0A0215F424100DE9F8A /* IncomeOrderCell.m */; };
+		0461E0A3215F424100DE9F8A /* IncomeOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0461E0A1215F424100DE9F8A /* IncomeOrderCell.xib */; };
+		04B36F52216061BB00BD373E /* IncomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B36F51216061BB00BD373E /* IncomeModel.m */; };
 		19CB3C20E28D63F0AA94849C /* libPods-ruyiRuyiUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A1E2DCBBA0DD043D258918 /* libPods-ruyiRuyiUITests.a */; };
 		360044C52092ACFB00BEDF73 /* EnrollmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360044C42092ACFB00BEDF73 /* EnrollmentViewController.m */; };
 		360044CE2092C9C300BEDF73 /* AccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 360044CC2092C9C300BEDF73 /* AccountCell.m */; };
@@ -272,6 +278,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0461E094215F1EC900DE9F8A /* IncomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncomeViewController.h; sourceTree = "<group>"; };
+		0461E095215F1EC900DE9F8A /* IncomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IncomeViewController.m; sourceTree = "<group>"; };
+		0461E096215F1EC900DE9F8A /* IncomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeViewController.xib; sourceTree = "<group>"; };
+		0461E09C215F23BD00DE9F8A /* IncomeListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncomeListTableViewController.h; sourceTree = "<group>"; };
+		0461E09D215F23BD00DE9F8A /* IncomeListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IncomeListTableViewController.m; sourceTree = "<group>"; };
+		0461E09F215F424100DE9F8A /* IncomeOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncomeOrderCell.h; sourceTree = "<group>"; };
+		0461E0A0215F424100DE9F8A /* IncomeOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IncomeOrderCell.m; sourceTree = "<group>"; };
+		0461E0A1215F424100DE9F8A /* IncomeOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeOrderCell.xib; sourceTree = "<group>"; };
+		04B36F50216061BB00BD373E /* IncomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncomeModel.h; sourceTree = "<group>"; };
+		04B36F51216061BB00BD373E /* IncomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IncomeModel.m; sourceTree = "<group>"; };
 		063A649E2571D3ABBB98DEAE /* Pods-ruyiRuyiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ruyiRuyiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ruyiRuyiUITests/Pods-ruyiRuyiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		0C773A9806433584C89988FE /* Pods-ruyiRuyiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ruyiRuyiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ruyiRuyiTests/Pods-ruyiRuyiTests.release.xcconfig"; sourceTree = "<group>"; };
 		106A310B6A8473086B462A46 /* Pods-ruyiRuyiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ruyiRuyiTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ruyiRuyiTests/Pods-ruyiRuyiTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -700,6 +716,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0461E093215F1E8F00DE9F8A /* 收益 */ = {
+			isa = PBXGroup;
+			children = (
+				04B36F50216061BB00BD373E /* IncomeModel.h */,
+				04B36F51216061BB00BD373E /* IncomeModel.m */,
+				0461E094215F1EC900DE9F8A /* IncomeViewController.h */,
+				0461E095215F1EC900DE9F8A /* IncomeViewController.m */,
+				0461E096215F1EC900DE9F8A /* IncomeViewController.xib */,
+				0461E09C215F23BD00DE9F8A /* IncomeListTableViewController.h */,
+				0461E09D215F23BD00DE9F8A /* IncomeListTableViewController.m */,
+				0461E09F215F424100DE9F8A /* IncomeOrderCell.h */,
+				0461E0A0215F424100DE9F8A /* IncomeOrderCell.m */,
+				0461E0A1215F424100DE9F8A /* IncomeOrderCell.xib */,
+			);
+			path = "收益";
+			sourceTree = "<group>";
+		};
 		36033B6F2099620400F9B5E5 /* JJTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,13 +761,6 @@
 				36137E2020995C1B00C9A669 /* ZZYPhotoHelper.m */,
 			);
 			path = JJTool;
-			sourceTree = "<group>";
-		};
-		36033B7620999C2000F9B5E5 /* EnrollmentRequest */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = EnrollmentRequest;
 			sourceTree = "<group>";
 		};
 		36071A1720EC71F50089E633 /* 其他图片 */ = {
@@ -837,6 +863,7 @@
 		36137E23209960CE00C9A669 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0461E093215F1E8F00DE9F8A /* 收益 */,
 				36F400A0209DB80100DAA633 /* 订单 */,
 				36F4009F209DB7FC00DAA633 /* 我的 */,
 				36F4009E209DB7C200DAA633 /* 店铺 */,
@@ -957,7 +984,6 @@
 		3624E2AE2091E57B00CC4AF4 /* JJRequest */ = {
 			isa = PBXGroup;
 			children = (
-				36033B7620999C2000F9B5E5 /* EnrollmentRequest */,
 				3624E2A22091E16F00CC4AF4 /* JJFileParam.h */,
 				3624E2A32091E16F00CC4AF4 /* JJFileParam.m */,
 				3624E29F2091E10D00CC4AF4 /* JJRequest.h */,
@@ -1708,6 +1734,7 @@
 				360CB0012148BEDA0059DF2E /* qr_top_right@2x.png in Resources */,
 				36A584CF209C0A4300A71C35 /* ResetPwdViewController.xib in Resources */,
 				366052CC20EF448F002BB138 /* ic_head.png in Resources */,
+				0461E0A3215F424100DE9F8A /* IncomeOrderCell.xib in Resources */,
 				36137E1E2099451200C9A669 /* PhotoCollectionViewCell.xib in Resources */,
 				360CAFFA2148BEDA0059DF2E /* qr_bottom_left@3x.png in Resources */,
 				360AA1B120EB570000E6DE17 /* ic_delete1@3x.png in Resources */,
@@ -1740,6 +1767,7 @@
 				3629D54121018D4A003F76B9 /* ic_no.png in Resources */,
 				3629D54021018D4A003F76B9 /* ic_yes@3x.png in Resources */,
 				360CB00D2148BEDA0059DF2E /* qrcode_scan_btn_photo_nor@2x.png in Resources */,
+				0461E098215F1EC900DE9F8A /* IncomeViewController.xib in Resources */,
 				360E9FE320D8B3DD005DB120 /* FreeChangAgainTirePhotoCell.xib in Resources */,
 				360CB0022148BEDA0059DF2E /* qr_top_right@3x.png in Resources */,
 				36FF49FB20F9DE6500F28729 /* 前轮示例.jpg in Resources */,
@@ -1898,6 +1926,7 @@
 				360A9EFA20EB1C0F00E6DE17 /* ExtensionInfo.m in Sources */,
 				360F498020B2FBA8005D4CCF /* MyOrdersCell.m in Sources */,
 				3630E650213FD11E005855A8 /* DeliveryOrderModel.m in Sources */,
+				0461E0A2215F424100DE9F8A /* IncomeOrderCell.m in Sources */,
 				3623D58920D7BC83007799E3 /* OrderFactory.m in Sources */,
 				36D009E920A14104008D1F53 /* MyServiceViewController.m in Sources */,
 				3600FE7320ABDA0D0028A806 /* AddCommodityViewController.m in Sources */,
@@ -1912,6 +1941,7 @@
 				36AAFB9420B7DB6700F9775B /* ChangePwdViewController.m in Sources */,
 				36D009EC20A14165008D1F53 /* MyServiceTableViewController.m in Sources */,
 				36AE7E0320B566DF0079A4CC /* CodeNumheadView.m in Sources */,
+				04B36F52216061BB00BD373E /* IncomeModel.m in Sources */,
 				360A9EF620EB1BB900E6DE17 /* MyCodeView.m in Sources */,
 				3624E2C12091E6E400CC4AF4 /* BaseNavigation.m in Sources */,
 				368A7A55209AF22B00CA8DD0 /* JJFileStorage.m in Sources */,
@@ -1962,6 +1992,7 @@
 				368A7A62209B1A6400CA8DD0 /* ProjectLayout.m in Sources */,
 				36AAFB7B20B6533A00F9775B /* StoresHeadView.m in Sources */,
 				36EF2FE820A47ACF005FFE1A /* AssessCollectionViewCell.m in Sources */,
+				0461E097215F1EC900DE9F8A /* IncomeViewController.m in Sources */,
 				360F497C20B26BFA005D4CCF /* YMStoreStatusPickerView.m in Sources */,
 				36B7F3CF20B44E7800252811 /* MainOrdersRequest.m in Sources */,
 				360E9FE220D8B3DD005DB120 /* FreeChangAgainTirePhotoCell.m in Sources */,
@@ -1988,6 +2019,7 @@
 				3630E64B213FAAEB005855A8 /* TireNumberCell.m in Sources */,
 				3616854420A92D8E00E9CE6E /* MyCommodityViewController.m in Sources */,
 				36AFA19E20A2E7D8005835B0 /* ShopItemCell.m in Sources */,
+				0461E09E215F23BD00DE9F8A /* IncomeListTableViewController.m in Sources */,
 				36D009E620A13511008D1F53 /* OrderHanderView.m in Sources */,
 				360965BF20E761E0000D7688 /* OrderStatusTypeViewController.m in Sources */,
 				36B7F3CB20B3EBCE00252811 /* MyOrdersRequeset.m in Sources */,

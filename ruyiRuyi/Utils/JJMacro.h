@@ -29,7 +29,7 @@
 //#define GL_RuYiRuYiIP  @"http://192.168.0.190:8030"  //龚林
 #define GL_RuYiRuYiIP  @"http://180.76.243.205:10004"  //龚林
 
-//#define RuYiRuYiIP  @"http://192.168.0.105:8060"  //于鹏鹉
+//#define RuYiRuYiIP  @"http://192.168.0.105:233"  //于鹏鹉
 
 //#define RuYiRuYiIP  @"http://192.168.0.167:8082/xmjj-webservice" // ceshi
 

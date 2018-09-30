@@ -15,4 +15,10 @@
 #import <MJRefresh.h>
 @interface BaseTableViewController : UITableViewController
 
+-(void)addRefreshControl;
+
+-(void)loadMoreData;
+
+-(void)loadNewData;
+
 @end

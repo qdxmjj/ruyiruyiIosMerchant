@@ -11,6 +11,7 @@
 #import "UserViewController.h"
 #import "OrdersViewController.h"
 #import "StoresViewController.h"
+#import "IncomeViewController.h"
 @interface RootViewController ()
 
 @end
@@ -30,10 +31,15 @@
     
     UserViewController *myVC = [[UserViewController alloc] init];
 
+    IncomeViewController *incomeVC = [[IncomeViewController alloc] init];
+
+    
     [self setController:ordersVC title:@"平台订单" imageString:@"ic_tubiao1" selectedImageString:@"ic_tubiao1_xuanzhong"];
     [self setController:storeVC title:@"店铺订单" imageString:@"ic_shop_weixuan" selectedImageString:@"ic_shop_xuanzhong"];
+    [self setController:incomeVC title:@"收益" imageString:@"ic_wode_weixuan" selectedImageString:@"ic_wode_xuanzhong"];
     [self setController:myVC title:@"我的" imageString:@"ic_wode_weixuan" selectedImageString:@"ic_wode_xuanzhong"];
     
+
 }
 
 -(void)setController:(UIViewController *)controller title:(NSString *)title imageString:(NSString *)image selectedImageString:(NSString *)selectedImageString

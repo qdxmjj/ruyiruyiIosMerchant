@@ -48,6 +48,9 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+
 -(UIBarButtonItem *)BarButtonItemWithImage:(UIImage *)image target:(id)target action:(SEL)action
 {
     UIButton*bt=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -57,6 +60,31 @@
     return [[UIBarButtonItem alloc]initWithCustomView:bt];
 }
 
+-(void)addRefreshControl{
+    
+    //上拉更多
+    self.tableView.mj_footer=[MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        
+        [self loadMoreData];
+        
+    }];
+    
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [self loadNewData];
+        
+    }];
+}
+
+-(void)loadMoreData{
+    
+    
+}
+
+-(void)loadNewData{
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

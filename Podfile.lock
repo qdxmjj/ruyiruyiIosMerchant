@@ -58,7 +58,7 @@ DEPENDENCIES:
   - ZBarSDK
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - BaiduMapKit
     - Bugly
@@ -92,4 +92,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: cf26fdf5b6aa5384b3d6a488829e8800ca91f39e
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
