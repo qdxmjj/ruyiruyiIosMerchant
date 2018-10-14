@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IncomeViewController">
             <connections>
+                <outlet property="dateLab" destination="MrD-MB-n8R" id="BCg-yM-jIg"/>
                 <outlet property="scrollView" destination="e9c-wA-ZNP" id="uuc-rJ-Ews"/>
                 <outlet property="sliderView" destination="qnk-ut-yTk" id="ddg-Ev-8p0"/>
                 <outlet property="sliderViewX" destination="Pzh-nX-D7o" id="ewM-8s-Bf5"/>
@@ -27,25 +28,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U6d-CS-ByS">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrD-MB-n8R">
-                            <rect key="frame" x="8" y="40" width="91" height="71"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrD-MB-n8R">
+                            <rect key="frame" x="8" y="34.5" width="91" height="71"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="91" id="KM4-Pl-dRE"/>
+                                <constraint firstAttribute="height" constant="71" id="KWX-TD-92E"/>
+                            </constraints>
                             <attributedString key="attributedText">
                                 <fragment content="2018年 ">
-                                    <attributes>
-                                        <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content=" ">
-                                    <attributes>
-                                        <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="10" name=".PingFangSC-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content=" ">
                                     <attributes>
                                         <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
@@ -69,14 +59,20 @@
                             </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ikd-bl-4Qy">
-                            <rect key="frame" x="107" y="46" width="2" height="59"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ikd-bl-4Qy">
+                            <rect key="frame" x="110" y="40.5" width="2" height="59"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="2" id="SnC-57-pwf"/>
+                                <constraint firstAttribute="height" constant="59" id="UhW-7r-rli"/>
+                            </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aP-u9-7Na">
-                            <rect key="frame" x="129" y="38" width="180" height="73"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aP-u9-7Na">
+                            <rect key="frame" x="129" y="33.5" width="180" height="73"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="180" id="2qG-D0-MAI"/>
+                                <constraint firstAttribute="height" constant="73" id="j4o-Mq-WPY"/>
+                            </constraints>
                             <attributedString key="attributedText">
                                 <fragment content="总收益 ">
                                     <attributes>
@@ -112,18 +108,30 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="MrD-MB-n8R" firstAttribute="leading" secondItem="U6d-CS-ByS" secondAttribute="leading" constant="8" id="5dF-WC-fxt"/>
+                        <constraint firstItem="5aP-u9-7Na" firstAttribute="leading" secondItem="ikd-bl-4Qy" secondAttribute="trailing" constant="17" id="E6i-0j-k3F"/>
+                        <constraint firstItem="ikd-bl-4Qy" firstAttribute="centerY" secondItem="MrD-MB-n8R" secondAttribute="centerY" id="bOH-JT-paH"/>
+                        <constraint firstItem="MrD-MB-n8R" firstAttribute="centerY" secondItem="U6d-CS-ByS" secondAttribute="centerY" id="duA-aE-pmU"/>
                         <constraint firstAttribute="height" constant="140" id="qYW-an-LLe"/>
+                        <constraint firstItem="ikd-bl-4Qy" firstAttribute="leading" secondItem="MrD-MB-n8R" secondAttribute="trailing" constant="11" id="s12-Sc-dmF"/>
+                        <constraint firstItem="5aP-u9-7Na" firstAttribute="centerY" secondItem="ikd-bl-4Qy" secondAttribute="centerY" id="vPZ-Ea-gAH"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ITF-al-LcT" userLabel="View1">
                     <rect key="frame" x="0.0" y="140" width="375" height="60"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3H-Fb-vrE">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3H-Fb-vrE">
                             <rect key="frame" x="0.0" y="0.0" width="125" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="服务收益">
-                                <color key="titleColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <state key="selected">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="topBtnPressed:" destination="-1" eventType="touchUpInside" id="G1h-0K-1p8"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="888" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uG-C3-5pq">
                             <rect key="frame" x="47.5" y="35" width="31.5" height="20"/>
@@ -134,12 +142,18 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TB2-fK-JJu">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TB2-fK-JJu">
                             <rect key="frame" x="124.5" y="0.0" width="125" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="商品收益">
-                                <color key="titleColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <state key="selected">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="topBtnPressed:" destination="-1" eventType="touchUpInside" id="BFK-Bz-RLt"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="666" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Tq-XH-7Tc">
                             <rect key="frame" x="171" y="35" width="32" height="20"/>
@@ -150,12 +164,18 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdP-hd-xJb">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdP-hd-xJb">
                             <rect key="frame" x="250" y="0.0" width="125" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="销售收益">
-                                <color key="titleColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <state key="selected">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="topBtnPressed:" destination="-1" eventType="touchUpInside" id="khN-e0-IhC"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qnk-ut-yTk" userLabel="bottomView">
                             <rect key="frame" x="25.5" y="57" width="75" height="2"/>

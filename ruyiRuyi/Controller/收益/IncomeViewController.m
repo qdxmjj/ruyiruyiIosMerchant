@@ -8,7 +8,10 @@
 
 #import "IncomeViewController.h"
 #import "IncomeListTableViewController.h"
-@interface IncomeViewController ()<UINavigationControllerDelegate,UIScrollViewDelegate>
+#import "IncomeDatePickerView.h"
+
+#define viewW self.view.frame.size.width
+@interface IncomeViewController ()<UINavigationControllerDelegate,UIScrollViewDelegate,selectDateDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -20,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIView *sliderView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sliderViewX;
+
+@property (weak, nonatomic) IBOutlet UILabel *dateLab;
 
 @end
 
@@ -41,8 +46,67 @@
     [self addChildViewController:self.sellIncomeVC];
     [self.scrollView addSubview:self.sellIncomeVC.view];
     
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectDatePickerView)];
+    
+    [self.dateLab addGestureRecognizer:tapGesture];
+    
+    [JJRequest postRequest:@"/getStoreEarningsCountByMonth" params:@{@"reqJson":[JJTools convertToJsonData:@{@"storeId":[UserConfig storeID],@"date":@"2018-09-01 00:00:00"}]} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+        
+        NSLog(@"%@",data);
+        
+    } failure:^(NSError * _Nullable error) {
+        
+    }];
     
     
+}
+
+-(void)viewDidLayoutSubviews{
+    
+    _serviceIncomeVC.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, CGRectGetHeight(self.scrollView.frame));
+    
+    
+    _commdityIncomeVC.tableView.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, CGRectGetHeight(self.scrollView.frame));
+    
+    
+    _sellIncomeVC.tableView.frame = CGRectMake(SCREEN_WIDTH*2, 0, SCREEN_WIDTH, CGRectGetHeight(self.scrollView.frame));
+}
+#pragma mark event
+-(IBAction)topBtnPressed:(UIButton *)btn{
+    
+    [self.scrollView setContentOffset:CGPointMake(btn.frame.origin.x*3, 0) animated:YES];
+}
+
+#pragma mark dateLab addTapGesture
+
+-(void)selectDatePickerView{
+    
+    IncomeDatePickerView *incomeDateView = [[IncomeDatePickerView alloc] initWithFrame:self.view.frame];
+    incomeDateView.delegate = self;
+    [incomeDateView showWithSuperView:self.view];
+    
+}
+
+-(void)selectDateWithYear:(NSString *)year month:(NSString *)month{
+    
+    
+    NSLog(@"%@ %@",year,month);
+    NSString *str = [NSString stringWithFormat:@"%@年\n%@月",year,month];
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:str];
+        
+    [attributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15.f] range:NSMakeRange(0, 5)];
+    
+    [attributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:25.f] range:NSMakeRange(6, 3)];
+
+    [attributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17.f] range:NSMakeRange(str.length-1, 1)];
+
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+
+    style.alignment = NSTextAlignmentCenter;
+
+    [attributedStr addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0,str.length)];
+
+    self.dateLab.attributedText = attributedStr;
 }
 
 #pragma mark scrollView delegate
@@ -55,6 +119,7 @@
 //    NSLog(@"%f",scrollView.contentOffset.x);
 //
 //    printf("%f",scrollView.contentOffset.x/3);
+    
 }
 
 
@@ -63,8 +128,7 @@
     if (!_serviceIncomeVC) {
         
         _serviceIncomeVC = [[IncomeListTableViewController alloc] initWithStyle:UITableViewStylePlain withIdentifier:@"serviceCellID"];
-        _serviceIncomeVC.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, CGRectGetHeight(self.scrollView.frame));
-
+//        _serviceIncomeVC.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, CGRectGetHeight(self.scrollView.frame));
     }
     return _serviceIncomeVC;
 }
@@ -73,8 +137,7 @@
     if (!_commdityIncomeVC) {
         
         _commdityIncomeVC = [[IncomeListTableViewController alloc] initWithStyle:UITableViewStylePlain withIdentifier:@"serviceCellID"];
-        _commdityIncomeVC.view.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, CGRectGetHeight(self.scrollView.frame));
-
+//        _commdityIncomeVC.tableView.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, CGRectGetHeight(self.scrollView.frame));
     }
     return _commdityIncomeVC;
 }
@@ -83,8 +146,7 @@
     if (!_sellIncomeVC) {
         
         _sellIncomeVC = [[IncomeListTableViewController alloc] initWithStyle:UITableViewStylePlain withIdentifier:@"sellCellID"];
-        _sellIncomeVC.view.frame = CGRectMake(SCREEN_WIDTH*2, 0, SCREEN_WIDTH, CGRectGetHeight(self.scrollView.frame));
-
+//        _sellIncomeVC.tableView.frame = CGRectMake(SCREEN_WIDTH*2, 0, SCREEN_WIDTH, CGRectGetHeight(self.scrollView.frame));
     }
     return _sellIncomeVC;
 }

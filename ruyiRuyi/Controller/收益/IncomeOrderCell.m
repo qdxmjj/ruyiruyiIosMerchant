@@ -7,12 +7,20 @@
 //
 
 #import "IncomeOrderCell.h"
-
+#import "UIImage+ImageRoundedCorner.h"
 @implementation IncomeOrderCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    UIImage *image = [UIImage imageNamed:@"shareIMG"];
+    image = [image imageAddCornerWithRadius:25.f andSize:CGSizeMake(50, 50)];
+    self.serviceCellImageView.image = image;
+    
+    UIImage *saleImage = [UIImage imageNamed:@"shareIMG"];
+    saleImage = [saleImage imageAddCornerWithRadius:40.f andSize:CGSizeMake(80, 80)];
+    self.saleCellImageView.image = saleImage;
 }
 
 -(void)setIncomeInfoByModel:(IncomeModel *)model{

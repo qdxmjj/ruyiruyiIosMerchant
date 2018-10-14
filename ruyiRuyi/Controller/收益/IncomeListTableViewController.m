@@ -37,7 +37,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     [self addRefreshControl];
 }
 
@@ -82,6 +81,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"IncomeOrderCell" owner:self options:nil] objectAtIndex:_cellIndex];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    
     return cell;
 }
 

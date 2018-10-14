@@ -13,6 +13,8 @@
 		0461E0A2215F424100DE9F8A /* IncomeOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461E0A0215F424100DE9F8A /* IncomeOrderCell.m */; };
 		0461E0A3215F424100DE9F8A /* IncomeOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0461E0A1215F424100DE9F8A /* IncomeOrderCell.xib */; };
 		04B36F52216061BB00BD373E /* IncomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B36F51216061BB00BD373E /* IncomeModel.m */; };
+		04F5A898216B4DBE00385BFD /* UIImage+ImageRoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5A897216B4DBE00385BFD /* UIImage+ImageRoundedCorner.m */; };
+		04FC8557216C90D800D3C88A /* IncomeDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC8556216C90D800D3C88A /* IncomeDatePickerView.m */; };
 		19CB3C20E28D63F0AA94849C /* libPods-ruyiRuyiUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A1E2DCBBA0DD043D258918 /* libPods-ruyiRuyiUITests.a */; };
 		360044C52092ACFB00BEDF73 /* EnrollmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360044C42092ACFB00BEDF73 /* EnrollmentViewController.m */; };
 		360044CE2092C9C300BEDF73 /* AccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 360044CC2092C9C300BEDF73 /* AccountCell.m */; };
@@ -288,6 +290,10 @@
 		0461E0A1215F424100DE9F8A /* IncomeOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeOrderCell.xib; sourceTree = "<group>"; };
 		04B36F50216061BB00BD373E /* IncomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncomeModel.h; sourceTree = "<group>"; };
 		04B36F51216061BB00BD373E /* IncomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IncomeModel.m; sourceTree = "<group>"; };
+		04F5A896216B4DBE00385BFD /* UIImage+ImageRoundedCorner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageRoundedCorner.h"; sourceTree = "<group>"; };
+		04F5A897216B4DBE00385BFD /* UIImage+ImageRoundedCorner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageRoundedCorner.m"; sourceTree = "<group>"; };
+		04FC8555216C90D800D3C88A /* IncomeDatePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncomeDatePickerView.h; sourceTree = "<group>"; };
+		04FC8556216C90D800D3C88A /* IncomeDatePickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IncomeDatePickerView.m; sourceTree = "<group>"; };
 		063A649E2571D3ABBB98DEAE /* Pods-ruyiRuyiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ruyiRuyiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ruyiRuyiUITests/Pods-ruyiRuyiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		0C773A9806433584C89988FE /* Pods-ruyiRuyiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ruyiRuyiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ruyiRuyiTests/Pods-ruyiRuyiTests.release.xcconfig"; sourceTree = "<group>"; };
 		106A310B6A8473086B462A46 /* Pods-ruyiRuyiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ruyiRuyiTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ruyiRuyiTests/Pods-ruyiRuyiTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -729,6 +735,8 @@
 				0461E09F215F424100DE9F8A /* IncomeOrderCell.h */,
 				0461E0A0215F424100DE9F8A /* IncomeOrderCell.m */,
 				0461E0A1215F424100DE9F8A /* IncomeOrderCell.xib */,
+				04F5A896216B4DBE00385BFD /* UIImage+ImageRoundedCorner.h */,
+				04F5A897216B4DBE00385BFD /* UIImage+ImageRoundedCorner.m */,
 			);
 			path = "收益";
 			sourceTree = "<group>";
@@ -743,6 +751,8 @@
 				36FA66B720941F0B0069C105 /* YMDatePickerView.h */,
 				36FA66B820941F0B0069C105 /* YMDatePickerView.m */,
 				36FA66B620941F0A0069C105 /* YMDatePickerView.xib */,
+				04FC8555216C90D800D3C88A /* IncomeDatePickerView.h */,
+				04FC8556216C90D800D3C88A /* IncomeDatePickerView.m */,
 				36033B7A2099B0F800F9B5E5 /* YMStoreTypePickerView.h */,
 				36033B7B2099B0F800F9B5E5 /* YMStoreTypePickerView.m */,
 				3647A85B2099D51B000723FA /* YMCityPickerView.h */,
@@ -1943,6 +1953,7 @@
 				36AE7E0320B566DF0079A4CC /* CodeNumheadView.m in Sources */,
 				04B36F52216061BB00BD373E /* IncomeModel.m in Sources */,
 				360A9EF620EB1BB900E6DE17 /* MyCodeView.m in Sources */,
+				04FC8557216C90D800D3C88A /* IncomeDatePickerView.m in Sources */,
 				3624E2C12091E6E400CC4AF4 /* BaseNavigation.m in Sources */,
 				368A7A55209AF22B00CA8DD0 /* JJFileStorage.m in Sources */,
 				36899BA320BBD12B00B06184 /* OrdersPhotoCell.m in Sources */,
@@ -2011,6 +2022,7 @@
 				36073B9C20DE356C000ED38B /* CommodityInfoModel.m in Sources */,
 				36AFA17020A292C0005835B0 /* MyShopViewController.m in Sources */,
 				36D009F020A14B72008D1F53 /* MyServiceCell.m in Sources */,
+				04F5A898216B4DBE00385BFD /* UIImage+ImageRoundedCorner.m in Sources */,
 				36FE63C020A01D0100209196 /* UserCell.m in Sources */,
 				36033B7920999F1700F9B5E5 /* EnrollmentRequestData.m in Sources */,
 				36F4F18020B94732009CA642 /* SelectServiceCell.m in Sources */,

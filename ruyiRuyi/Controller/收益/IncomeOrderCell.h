@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "IncomeModel.h"
 @interface IncomeOrderCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *serviceCellImageView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *saleCellImageView;
 -(void)setIncomeInfoByModel:(IncomeModel *)model;
 
 @end
