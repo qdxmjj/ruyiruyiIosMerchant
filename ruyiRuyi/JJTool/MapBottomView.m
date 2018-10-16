@@ -10,14 +10,6 @@
 
 @implementation MapBottomView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 -(instancetype)initWithFrame:(CGRect)frame{
     
     self = [super initWithFrame:frame];
@@ -45,7 +37,7 @@
     self.btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.btn setBackgroundColor:[JJTools getColor:@"#FF6623"]];
     [self.btn setTitle:@"确认选择" forState:UIControlStateNormal];
-    self.btn.layer.cornerRadius = 3.0;//2.0是圆角的弧度，根据需求自己更改
+    self.btn.layer.cornerRadius = 3.0;
     [self addSubview:self.btn];
     
     [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {

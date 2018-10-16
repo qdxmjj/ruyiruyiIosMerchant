@@ -139,8 +139,6 @@
     
     [JJRequest postRequest:incomeType params:@{@"reqJson":[JJTools convertToJsonData:@{@"storeId":[UserConfig storeID],@"date":data,@"page":page,@"rows":@"10"}]} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
-//        NSLog(@"type：%@",incomeType);
-//        NSLog(@"%@",data);
         if ( self.page==1) {
             
             [self.dataArr removeAllObjects];
@@ -154,12 +152,11 @@
         for (NSDictionary *dic in [data objectForKey:@"rows"]) {
             
             IncomeModel *model =  [IncomeModel initWithType:self.incomdeType];
-
             [model setValuesForKeysWithDictionary:dic];
             
             [self.dataArr addObject:model];
         }
-//        NSLog(@"%@",self->_dataArr);
+
         [self.tableView reloadData];
         
     } failure:^(NSError * _Nullable error) {

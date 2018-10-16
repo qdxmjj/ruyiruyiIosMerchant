@@ -7,10 +7,10 @@
 //
 
 #import "IncomeViewController.h"
-#import "IncomeListTableViewController.h"
 #import "IncomeDatePickerView.h"
+#import "WithdrawViewController.h"
+#import "IncomeListTableViewController.h"
 
-#define viewW self.view.frame.size.width
 @interface IncomeViewController ()<UINavigationControllerDelegate,UIScrollViewDelegate,selectDateDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -89,8 +89,11 @@
     [self.scrollView setContentOffset:CGPointMake(btn.frame.origin.x*4, 0) animated:YES];
 }
 
+- (IBAction)withdrawEvent:(UIButton *)sender {
+ 
+    [self.navigationController pushViewController:[[WithdrawViewController alloc]init] animated:YES];
+}
 #pragma mark dateLab addTapGesture
-
 -(void)selectDatePickerView{
     
     IncomeDatePickerView *incomeDateView = [[IncomeDatePickerView alloc] initWithFrame:self.view.frame];

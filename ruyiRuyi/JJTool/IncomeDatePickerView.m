@@ -188,16 +188,17 @@
     
     NSString *monthStr;
 
+    //当前年 月份可能不够12个月 用当前月 减掉 选择的row  非当前年 12个月 用12来减
     if (self.selectYear != self.year && self.selectYear != 0) {
-        
-        if (12-yearInteger<10) {
-            
+
+        if (12-monthInteger<10) {
+
             monthStr  = [NSString stringWithFormat:@"0%ld",12-monthInteger];
         }else{
             monthStr  = [NSString stringWithFormat:@"%ld",12-monthInteger];
         }
     }else{
-        
+    
         if (_month-monthInteger<10) {
             
             monthStr  = [NSString stringWithFormat:@"0%ld",self.month-monthInteger];

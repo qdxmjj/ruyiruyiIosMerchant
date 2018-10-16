@@ -25,19 +25,17 @@
 
 
 //测试版IP
-//#define RuYiRuYiIP  @"http://192.168.0.190:8060"  //龚林
+//#define RuYiRuYiIP  @"http://192.168.0.190:8060"  //龚林 测试
 //#define GL_RuYiRuYiIP  @"http://192.168.0.190:8030"  //龚林 测试发货ID
 #define GL_RuYiRuYiIP  @"http://180.76.243.205:10004"  //龚林  正式发货ID
 
-//#define RuYiRuYiIP  @"http://192.168.0.105:233"  //于鹏鹉
 
 
-#define RuYiRuYiIP  @"http://192.168.0.111:8060"  //于鹏鹉
+//#define RuYiRuYiIP  @"http://192.168.0.105:233"  //于鹏鹉 测试
+//#define RuYiRuYiIP  @"http://192.168.0.111:8060"  //于鹏鹉 测试
+//#define RuYiRuYiIP  @"http://192.168.0.167:8082/xmjj-webservice" // 测试
 
-//#define RuYiRuYiIP  @"http://192.168.0.167:8082/xmjj-webservice" // ceshi
-
-//正式版IP
-//#define RuYiRuYiIP  @"http://180.76.243.205:10002/xmjj-webservice"
+#define RuYiRuYiIP  @"http://180.76.243.205:10002/xmjj-webservice" //正式版IP
 
 // 判断是否是iPhone X
 #define KIsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)

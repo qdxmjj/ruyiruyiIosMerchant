@@ -91,13 +91,22 @@
                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNF-gn-7Y5">
+                            <rect key="frame" x="315" y="35" width="31" height="30"/>
+                            <state key="normal" title="提现"/>
+                            <connections>
+                                <action selector="withdrawEvent:" destination="-1" eventType="touchUpInside" id="9yq-dY-hzd"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="CNF-gn-7Y5" firstAttribute="centerY" secondItem="U6d-CS-ByS" secondAttribute="centerY" id="0JZ-7p-Stu"/>
                         <constraint firstItem="cmX-iS-tsv" firstAttribute="leading" secondItem="MrD-MB-n8R" secondAttribute="trailing" constant="-22" id="3oR-Qj-Qli"/>
                         <constraint firstItem="MrD-MB-n8R" firstAttribute="leading" secondItem="U6d-CS-ByS" secondAttribute="leading" constant="8" id="5dF-WC-fxt"/>
                         <constraint firstItem="l04-Rk-avx" firstAttribute="centerY" secondItem="U6d-CS-ByS" secondAttribute="centerY" id="DEb-bw-Ht0"/>
                         <constraint firstItem="DLE-bH-CcB" firstAttribute="leading" secondItem="ikd-bl-4Qy" secondAttribute="trailing" constant="20" id="FTd-J1-WfV"/>
+                        <constraint firstAttribute="trailing" secondItem="CNF-gn-7Y5" secondAttribute="trailing" constant="29" id="THG-DV-N7X"/>
                         <constraint firstItem="ikd-bl-4Qy" firstAttribute="centerY" secondItem="MrD-MB-n8R" secondAttribute="centerY" id="bOH-JT-paH"/>
                         <constraint firstItem="cmX-iS-tsv" firstAttribute="top" secondItem="MrD-MB-n8R" secondAttribute="bottom" constant="-38" id="bPa-za-V5q"/>
                         <constraint firstItem="MrD-MB-n8R" firstAttribute="centerY" secondItem="U6d-CS-ByS" secondAttribute="centerY" constant="10" id="duA-aE-pmU"/>
