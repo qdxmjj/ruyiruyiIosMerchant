@@ -13,6 +13,7 @@
 #import <UIImageView+WebCache.h>
 #import <Masonry.h>
 #import <MJRefresh.h>
+#import "JJRequest.h"
 @interface BaseTableViewController : UITableViewController
 
 -(void)addRefreshControl;

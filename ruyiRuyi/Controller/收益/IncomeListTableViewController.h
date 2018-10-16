@@ -7,9 +7,11 @@
 //
 
 #import "BaseTableViewController.h"
-
+#import "IncomeModel.h"
 @interface IncomeListTableViewController : BaseTableViewController
 
--(instancetype)initWithStyle:(UITableViewStyle)style withIdentifier:(NSString *)cellIdentifier;
+@property(nonatomic,copy)NSString *selectData;
+
+-(instancetype)initWithStyle:(UITableViewStyle)style withIncometype:(incomeType )IncomeType;
 
 @end

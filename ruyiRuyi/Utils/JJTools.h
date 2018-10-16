@@ -14,6 +14,8 @@
 
 +(NSString *)getTimestampFromTime:(NSString *)timeStampString formatter:(NSString *)format;//时间戳转时间
 
++(NSString *)getDateWithformatter:(NSString *)format;//
+
 +(NSString *)convertToJsonData:(id )object;//字典转json
 
 +(UIImage *)imageWithColor:(UIColor *)color;//颜色转图片

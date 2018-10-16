@@ -12,7 +12,11 @@
 		0461E09E215F23BD00DE9F8A /* IncomeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461E09D215F23BD00DE9F8A /* IncomeListTableViewController.m */; };
 		0461E0A2215F424100DE9F8A /* IncomeOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461E0A0215F424100DE9F8A /* IncomeOrderCell.m */; };
 		0461E0A3215F424100DE9F8A /* IncomeOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0461E0A1215F424100DE9F8A /* IncomeOrderCell.xib */; };
-		04B36F52216061BB00BD373E /* IncomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B36F51216061BB00BD373E /* IncomeModel.m */; };
+		047EBDA321742BAC00D17C1D /* ServiceIncomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 047EBDA221742BAC00D17C1D /* ServiceIncomeModel.m */; };
+		047EBDA621742BBE00D17C1D /* CommodityIncomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 047EBDA521742BBE00D17C1D /* CommodityIncomeModel.m */; };
+		047EBDA921742BDC00D17C1D /* SellIncomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 047EBDA821742BDC00D17C1D /* SellIncomeModel.m */; };
+		047EBDAC21742BEE00D17C1D /* AdditionalIncomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 047EBDAB21742BEE00D17C1D /* AdditionalIncomeModel.m */; };
+		047EBDAF217434F800D17C1D /* IncomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 047EBDAE217434F800D17C1D /* IncomeModel.m */; };
 		04F5A898216B4DBE00385BFD /* UIImage+ImageRoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5A897216B4DBE00385BFD /* UIImage+ImageRoundedCorner.m */; };
 		04FC8557216C90D800D3C88A /* IncomeDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FC8556216C90D800D3C88A /* IncomeDatePickerView.m */; };
 		19CB3C20E28D63F0AA94849C /* libPods-ruyiRuyiUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A1E2DCBBA0DD043D258918 /* libPods-ruyiRuyiUITests.a */; };
@@ -288,8 +292,16 @@
 		0461E09F215F424100DE9F8A /* IncomeOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncomeOrderCell.h; sourceTree = "<group>"; };
 		0461E0A0215F424100DE9F8A /* IncomeOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IncomeOrderCell.m; sourceTree = "<group>"; };
 		0461E0A1215F424100DE9F8A /* IncomeOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeOrderCell.xib; sourceTree = "<group>"; };
-		04B36F50216061BB00BD373E /* IncomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncomeModel.h; sourceTree = "<group>"; };
-		04B36F51216061BB00BD373E /* IncomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IncomeModel.m; sourceTree = "<group>"; };
+		047EBDA121742BAC00D17C1D /* ServiceIncomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceIncomeModel.h; sourceTree = "<group>"; };
+		047EBDA221742BAC00D17C1D /* ServiceIncomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceIncomeModel.m; sourceTree = "<group>"; };
+		047EBDA421742BBE00D17C1D /* CommodityIncomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommodityIncomeModel.h; sourceTree = "<group>"; };
+		047EBDA521742BBE00D17C1D /* CommodityIncomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommodityIncomeModel.m; sourceTree = "<group>"; };
+		047EBDA721742BDC00D17C1D /* SellIncomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SellIncomeModel.h; sourceTree = "<group>"; };
+		047EBDA821742BDC00D17C1D /* SellIncomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SellIncomeModel.m; sourceTree = "<group>"; };
+		047EBDAA21742BEE00D17C1D /* AdditionalIncomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdditionalIncomeModel.h; sourceTree = "<group>"; };
+		047EBDAB21742BEE00D17C1D /* AdditionalIncomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdditionalIncomeModel.m; sourceTree = "<group>"; };
+		047EBDAD217434F800D17C1D /* IncomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncomeModel.h; sourceTree = "<group>"; };
+		047EBDAE217434F800D17C1D /* IncomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IncomeModel.m; sourceTree = "<group>"; };
 		04F5A896216B4DBE00385BFD /* UIImage+ImageRoundedCorner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageRoundedCorner.h"; sourceTree = "<group>"; };
 		04F5A897216B4DBE00385BFD /* UIImage+ImageRoundedCorner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageRoundedCorner.m"; sourceTree = "<group>"; };
 		04FC8555216C90D800D3C88A /* IncomeDatePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncomeDatePickerView.h; sourceTree = "<group>"; };
@@ -725,8 +737,16 @@
 		0461E093215F1E8F00DE9F8A /* 收益 */ = {
 			isa = PBXGroup;
 			children = (
-				04B36F50216061BB00BD373E /* IncomeModel.h */,
-				04B36F51216061BB00BD373E /* IncomeModel.m */,
+				047EBDAD217434F800D17C1D /* IncomeModel.h */,
+				047EBDAE217434F800D17C1D /* IncomeModel.m */,
+				047EBDA121742BAC00D17C1D /* ServiceIncomeModel.h */,
+				047EBDA221742BAC00D17C1D /* ServiceIncomeModel.m */,
+				047EBDA421742BBE00D17C1D /* CommodityIncomeModel.h */,
+				047EBDA521742BBE00D17C1D /* CommodityIncomeModel.m */,
+				047EBDA721742BDC00D17C1D /* SellIncomeModel.h */,
+				047EBDA821742BDC00D17C1D /* SellIncomeModel.m */,
+				047EBDAA21742BEE00D17C1D /* AdditionalIncomeModel.h */,
+				047EBDAB21742BEE00D17C1D /* AdditionalIncomeModel.m */,
 				0461E094215F1EC900DE9F8A /* IncomeViewController.h */,
 				0461E095215F1EC900DE9F8A /* IncomeViewController.m */,
 				0461E096215F1EC900DE9F8A /* IncomeViewController.xib */,
@@ -1951,12 +1971,12 @@
 				36AAFB9420B7DB6700F9775B /* ChangePwdViewController.m in Sources */,
 				36D009EC20A14165008D1F53 /* MyServiceTableViewController.m in Sources */,
 				36AE7E0320B566DF0079A4CC /* CodeNumheadView.m in Sources */,
-				04B36F52216061BB00BD373E /* IncomeModel.m in Sources */,
 				360A9EF620EB1BB900E6DE17 /* MyCodeView.m in Sources */,
 				04FC8557216C90D800D3C88A /* IncomeDatePickerView.m in Sources */,
 				3624E2C12091E6E400CC4AF4 /* BaseNavigation.m in Sources */,
 				368A7A55209AF22B00CA8DD0 /* JJFileStorage.m in Sources */,
 				36899BA320BBD12B00B06184 /* OrdersPhotoCell.m in Sources */,
+				047EBDAC21742BEE00D17C1D /* AdditionalIncomeModel.m in Sources */,
 				36AFA1A920A2ED01005835B0 /* ShopItemFlowLayout.m in Sources */,
 				36EF2FEC20A47AE4005FFE1A /* AssessFlowLayout.m in Sources */,
 				36D009DB20A13138008D1F53 /* OrderCell.m in Sources */,
@@ -1971,6 +1991,7 @@
 				361CF59D20E36996007DFA17 /* HYStepper.m in Sources */,
 				36AAFB8420B68CF300F9775B /* StoresModel.m in Sources */,
 				36FAEE2C20AD12F60011EDB1 /* MyCommodityRequest.m in Sources */,
+				047EBDAF217434F800D17C1D /* IncomeModel.m in Sources */,
 				36FE63C520A0212C00209196 /* LogInrequestData.m in Sources */,
 				36AAFB9B20B7EAF700F9775B /* StoresRequest.m in Sources */,
 				367F984720F5E9AA0022838C /* SDBrowserImageView.m in Sources */,
@@ -2029,6 +2050,7 @@
 				36137E1D2099451200C9A669 /* PhotoCollectionViewCell.m in Sources */,
 				36AFA17A20A293F1005835B0 /* ShopInfoCell.m in Sources */,
 				3630E64B213FAAEB005855A8 /* TireNumberCell.m in Sources */,
+				047EBDA921742BDC00D17C1D /* SellIncomeModel.m in Sources */,
 				3616854420A92D8E00E9CE6E /* MyCommodityViewController.m in Sources */,
 				36AFA19E20A2E7D8005835B0 /* ShopItemCell.m in Sources */,
 				0461E09E215F23BD00DE9F8A /* IncomeListTableViewController.m in Sources */,
@@ -2043,7 +2065,9 @@
 				36C809C820D890770036C14A /* FreeChangeAgainCodeNumberCell.m in Sources */,
 				36A8AE2F2091C6BF00A6E883 /* main.m in Sources */,
 				36A8AE212091C6BE00A6E883 /* AppDelegate.m in Sources */,
+				047EBDA321742BAC00D17C1D /* ServiceIncomeModel.m in Sources */,
 				36FE63C820A031A300209196 /* MD5Encrypt.m in Sources */,
+				047EBDA621742BBE00D17C1D /* CommodityIncomeModel.m in Sources */,
 				36EF2FE020A42E37005FFE1A /* AssessCell.m in Sources */,
 				360CD53C20DC8C69005123B9 /* StoresOrderViewController.m in Sources */,
 				36E39B9120F45D2E001EC78F /* ShopPhotoCollectionViewCell.m in Sources */,

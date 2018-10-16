@@ -86,6 +86,21 @@
     
     return dateString;
 }
+
++(NSString *)getDateWithformatter:(NSString *)format{
+    
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    if (!format) {
+        
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    }else{
+        [formatter setDateFormat:format];//@"yyyy-MM-dd HH:mm:ss"
+    }
+    NSString *dateString       = [formatter stringFromDate:[NSDate date]];
+    return dateString;
+    
+}
 +(NSString *)convertToJsonData:(id)object
 
 {
