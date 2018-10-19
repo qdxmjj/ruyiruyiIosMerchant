@@ -24,5 +24,7 @@
 
 +(NSMutableAttributedString *)priceWithRedString:(NSString *)red;
 
++(NSString *)getNowTimeTimestamp3;//获取当前时间戳 （以毫秒为单位）
 
++(BOOL)isCurrentMonth:(NSString *)oldDate;//比较当前时间日期与旧的时间日期 判断是否是当前月
 @end

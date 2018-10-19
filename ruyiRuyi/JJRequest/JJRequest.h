@@ -16,8 +16,9 @@
  */
 typedef void (^requestSuccessBlock)( NSString * _Nullable code, NSString * _Nullable message, _Nullable id data);
 
-typedef void (^GL_requestSuccessBlock)( NSString * _Nullable rows, _Nullable id total);
+typedef void (^GL_requestSuccessBlock)( id _Nullable rows, _Nullable id total);
 
+typedef void (^interchangeableRequestSuccessBlock)(id data);
 /**
  请求失败block
  */
@@ -53,10 +54,11 @@ typedef void (^destinationBlock)(NSURL * _Nonnull documentUrl);
 /**
  龚林后台数据格式专用接口
  */
-+ (void)GL_PostRequest:(NSString *)url params:(NSDictionary *)params success:(GL_requestSuccessBlock)successHandler failure:(requestFailureBlock)failureHandler;
++ (void)GL_PostRequest:(NSString *_Nullable)url params:(NSDictionary *_Nullable)params success:(GL_requestSuccessBlock _Nullable )successHandler failure:(requestFailureBlock _Nullable )failureHandler;
 
 + (void)GL_UpdateRequest:(NSString * _Nullable )url params:( NSDictionary * _Nullable )params fileConfig:( NSArray<JJFileParam*> * _Nullable )fileArray progress:(_Nullable progressBlock)progressHandler success:(_Nullable requestSuccessBlock)successHandler complete:(_Nullable responseBlock)completionHandler;
 
++ (void)interchangeablePostRequest:(NSString *_Nullable)url params:(NSDictionary *_Nullable)params success:(interchangeableRequestSuccessBlock _Nullable )successHandler failure:(requestFailureBlock _Nullable )failureHandler;
 
 
 /**

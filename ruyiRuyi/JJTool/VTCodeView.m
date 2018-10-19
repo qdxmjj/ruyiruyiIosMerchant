@@ -11,6 +11,8 @@
 #import <Masonry.h>
 #import "JJTools.h"
 #import "JJMacro.h"
+#import "UserConfig.h"
+#import "JJRequest.h"
 @interface VTCodeView ()
 
 @property(nonatomic,strong)UIView *mainView;
@@ -44,9 +46,26 @@
         verView.maxLenght = 6;//最大长度
         verView.keyBoardType = UIKeyboardTypeNumberPad;
         [verView mq_verCodeViewWithMaxLenght];
+        
         verView.block = ^(NSString *text){
-            NSLog(@"text = %@",text);
+            
+            if (text.length>=6) {
+
+                [JJRequest postRequest:@"/verificationCode" params:@{@"reqJson":[JJTools convertToJsonData:@{@"phone":[UserConfig phone],@"code":text}]} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+                    
+                    if ([code longLongValue] == 1 || [code longLongValue] == 111111) {
+                        
+                        [MBProgressHUD showTextMessage:@"验证验证码成功！"];
+                        self.block(YES);
+                        [self dismiss];
+                    }else{
+                        [MBProgressHUD showTextMessage:@"验证验证码失败！"];
+                    }
+                } failure:^(NSError * _Nullable error) {
+                }];
+            }
         };
+        
         [self.mainView addSubview:self.closeBtn];
         [self.mainView addSubview:verView];
         [self.mainView addSubview:self.vtCodeLab];
@@ -59,6 +78,13 @@
             make.centerX.mas_equalTo(self.mas_centerX);
             make.centerY.mas_equalTo(self.mas_centerY);
             make.width.and.height.mas_equalTo(CGSizeMake(self.frame.size.width-40,(self.frame.size.width-20)*0.7));
+        }];
+        [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+           
+            make.right.mas_equalTo(self.mainView.mas_right);
+            make.width.height.mas_equalTo(CGSizeMake(40, 40));
+            make.top.mas_equalTo(self.mainView.mas_top).inset(5);
+            
         }];
         
         [verView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -86,7 +112,7 @@
         
         [self.timeButton mas_makeConstraints:^(MASConstraintMaker *make) {
            
-            make.bottom.mas_equalTo(self.mainView.mas_bottom).inset(20);
+            make.bottom.mas_equalTo(self.mainView.mas_bottom).inset(5);
             make.centerX.mas_equalTo(self.mainView.mas_centerX);
             make.width.mas_equalTo(self.mainView.mas_width);
             make.height.mas_equalTo(@20);
@@ -98,10 +124,6 @@
     return self;
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-    [self dismiss];
-}
 
 -(void)getCodeEvent:(UIButton *)sender{
     
@@ -117,8 +139,18 @@
     
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
     
-    
-    //开始请求验证码 如果失败 则倒计时结束
+    [JJRequest postRequest:@"/sendMsgWithoutLimit" params:@{@"reqJson":[JJTools convertToJsonData:@{@"phone":[UserConfig phone]}]} success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+        
+        if ([code longLongValue] == 1) {
+            
+            [MBProgressHUD showTextMessage:@"发送验证码成功"];
+        }else{
+            [MBProgressHUD showTextMessage:@"发送验证码失败"];
+        }
+        
+    } failure:^(NSError * _Nullable error) {
+        
+    }];
 }
 
 -(void)countdownEvent:(NSTimer *)timer{
@@ -190,7 +222,10 @@
     if (!_closeBtn) {
         
         _closeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-        [_closeBtn setTitle:@"X" forState:UIControlStateNormal];
+        [_closeBtn setTitle:@"×" forState:UIControlStateNormal];
+        [_closeBtn setTitleColor:[UIColor colorWithRed:150.f/255.f green:150.f/255.f blue:150.f/255.f alpha:1.f] forState:UIControlStateNormal];
+        [_closeBtn.titleLabel setFont:[UIFont systemFontOfSize:40.f]];
+        [_closeBtn addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _closeBtn;
@@ -212,7 +247,7 @@
     if (!_phoneTextLab) {
         
         _phoneTextLab = [[UILabel alloc] init];
-        _phoneTextLab.text = @"短信验证码已发送至 +86 18353675618";
+        _phoneTextLab.text = [NSString stringWithFormat:@"短信验证码已发送至 +86 %@",[UserConfig phone]];
         _phoneTextLab.font = [UIFont systemFontOfSize:13.f];
         _phoneTextLab.textColor = [UIColor colorWithRed:150.f/255.f green:150.f/255.f blue:150.f/255.f alpha:1.f];
         _phoneTextLab.textAlignment = NSTextAlignmentCenter;
@@ -225,7 +260,7 @@
     
     if (!_timeButton) {
         
-        _timeButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        _timeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_timeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
         [_timeButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [_timeButton addTarget:self action:@selector(getCodeEvent:) forControlEvents:UIControlEventTouchUpInside];

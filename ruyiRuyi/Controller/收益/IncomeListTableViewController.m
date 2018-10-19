@@ -71,6 +71,8 @@
     [self addRefreshControl];
     
     [self getIncomeInfo:[NSString stringWithFormat:@"%@-01 00:00:00",[JJTools getDateWithformatter:@"yyyy-MM"]] page:@"1"];
+    
+    self.tableView.tableFooterView = [UIView new];
 }
 
 -(void)loadNewData{

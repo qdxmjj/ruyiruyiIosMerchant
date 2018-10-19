@@ -126,7 +126,6 @@
     AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
     if (!reachabilityManager.isReachableViaWiFi) {
         
-        
     }
     
     AFHTTPSessionManager *manager = [self sharedHTTPSession];
@@ -148,7 +147,39 @@
           }];
 }
 
-+ (void)GL_UpdateRequest:(NSString * _Nullable )url params:( NSDictionary * _Nullable )params fileConfig:( NSArray<JJFileParam*> * _Nullable )fileArray progress:(_Nullable progressBlock)progressHandler success:(_Nullable requestSuccessBlock)successHandler complete:(_Nullable responseBlock)completionHandler{
++(void)interchangeablePostRequest:(NSString *)url params:(NSDictionary *)params success:(interchangeableRequestSuccessBlock )successHandler failure:(requestFailureBlock)failureHandler{
+    
+    if ([self checkNetworkStatus] == NO) {
+        successHandler(nil);
+        failureHandler(nil);
+        return;
+    }
+    
+    AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
+    if (!reachabilityManager.isReachableViaWiFi) {
+        
+    }
+    
+    AFHTTPSessionManager *manager = [self sharedHTTPSession];
+    
+    [manager POST:[NSString stringWithFormat:@"%@/%@",GL_RuYiRuYiIP,url] parameters:params progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject){
+              
+              
+              successHandler(responseObject);
+              
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              NSLog(@"------请求失败-------%@",error);
+              
+              [self requestErrorCode:error.code];
+              
+              failureHandler(error);
+          }];
+    
+    
+}
+
++ (void)GL_UpdateRequest:(NSString * _Nullable )url params:(NSDictionary * _Nullable )params fileConfig:( NSArray<JJFileParam*> * _Nullable )fileArray progress:(_Nullable progressBlock)progressHandler success:(_Nullable requestSuccessBlock)successHandler complete:(_Nullable responseBlock)completionHandler{
     
     if ([self checkNetworkStatus] == NO) {
         progressHandler(0, 0, 0);

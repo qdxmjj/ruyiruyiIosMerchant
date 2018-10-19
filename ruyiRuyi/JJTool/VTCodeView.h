@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void (^successfulVerificationBlock)(BOOL status);
 @interface VTCodeView : UIView
 
+
+@property(nonatomic,copy)successfulVerificationBlock block;
+
 -(void)showWithSuperView:(UIView *)view;
+
+-(void)dismiss;
 
 @end

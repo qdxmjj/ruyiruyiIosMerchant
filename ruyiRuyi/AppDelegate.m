@@ -81,7 +81,7 @@ static BOOL isProduction = true; //开发环境, true则为生产环境
         NSLog(@"manager start failed!");
     }
 
-    //-----------------微信支付---------------------
+    //-----------------微信---------------------
     [WXApi registerApp:@"wxe7d25890f6c97a1a"];
     
     //-----------------mob分享---------------------

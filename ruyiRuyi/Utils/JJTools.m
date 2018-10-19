@@ -69,7 +69,7 @@
     
     // timeStampString 是服务器返回的13位时间戳
     
-    // iOS 生成的时间戳是10位
+    //
     NSTimeInterval interval    =[timeStampString doubleValue] / 1000.0;
     NSDate *date               = [NSDate dateWithTimeIntervalSince1970:interval];
     
@@ -89,7 +89,6 @@
 
 +(NSString *)getDateWithformatter:(NSString *)format{
     
-    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     if (!format) {
         
@@ -101,25 +100,74 @@
     return dateString;
     
 }
-+(NSString *)convertToJsonData:(id)object
 
-{
+//获取当前时间戳 （以毫秒为单位）
++(NSString *)getNowTimeTimestamp3{
     
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+    
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss SSS"]; // ----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
+    
+    //设置时区,这个对于时间的处理有时很重要
+    
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
+    
+    [formatter setTimeZone:timeZone];
+    
+    NSDate *datenow = [NSDate date];//现在时间,你可以输出来看下是什么格式
+    
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]*1000];
+    
+    return timeSp;
+}
+
++(BOOL)isCurrentMonth:(NSString *)oldDate{
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    [formatter setDateFormat:@"yyyy-MM"];
+  
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
+
+    [formatter setTimeZone:timeZone];
+
+    NSString *dateString = [formatter stringFromDate:[NSDate date]];
+    
+    NSString *oldDates = [self getTimestampFromTime:oldDate formatter:@"yyyy-MM"];
+    
+    NSArray *oldDateArr = [oldDates componentsSeparatedByString:@"-"];
+    
+    NSArray *currentDateArr = [dateString componentsSeparatedByString:@"-"];
+ 
+    if ([currentDateArr[0] integerValue] > [oldDateArr[0] integerValue]) {
+        
+        return YES;
+    }else{
+        
+        if ([currentDateArr[1] integerValue] > [oldDateArr[1] integerValue]) {
+            
+            return YES;
+        }
+        return NO;
+    }
+}
+
++(NSString *)convertToJsonData:(id)object{
     
     NSError *error;
-    
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:NSJSONWritingPrettyPrinted error:&error];
-    
     NSString *jsonString;
     
     if (!jsonData) {
         
         NSLog(@"%@",error);
-        
     }else{
         
         jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
-        
     }
     
     NSMutableString *mutStr = [NSMutableString stringWithString:jsonString];
@@ -135,12 +183,9 @@
     //去掉字符串中的换行符
     [mutStr replaceOccurrencesOfString:@"\n" withString:@"" options:NSLiteralSearch range:range2];
     
-    
     NSLog(@"JSON:%@",mutStr);
     
-    
     return mutStr;
-    
 }
 +(UIImage *)imageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f); //宽高 1.0只要有值就够了

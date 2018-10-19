@@ -7,16 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040A88DA2176CAEF00A5001E /* AlipayInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A88D82176CAEF00A5001E /* AlipayInfoViewController.m */; };
+		040A88DB2176CAEF00A5001E /* AlipayInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040A88D92176CAEF00A5001E /* AlipayInfoViewController.xib */; };
+		040A88DF2176CD4B00A5001E /* WeChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A88DD2176CD4B00A5001E /* WeChatViewController.m */; };
+		040A88E02176CD4B00A5001E /* WeChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040A88DE2176CD4B00A5001E /* WeChatViewController.xib */; };
+		040A88E42177202C00A5001E /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A88E22177202C00A5001E /* RecordingViewController.m */; };
+		040A88E92177211100A5001E /* RecordingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A88E72177211100A5001E /* RecordingCell.m */; };
+		040A88EA2177211100A5001E /* RecordingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040A88E82177211100A5001E /* RecordingCell.xib */; };
 		0461E097215F1EC900DE9F8A /* IncomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461E095215F1EC900DE9F8A /* IncomeViewController.m */; };
 		0461E098215F1EC900DE9F8A /* IncomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0461E096215F1EC900DE9F8A /* IncomeViewController.xib */; };
 		0461E09E215F23BD00DE9F8A /* IncomeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461E09D215F23BD00DE9F8A /* IncomeListTableViewController.m */; };
 		0461E0A2215F424100DE9F8A /* IncomeOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0461E0A0215F424100DE9F8A /* IncomeOrderCell.m */; };
 		0461E0A3215F424100DE9F8A /* IncomeOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0461E0A1215F424100DE9F8A /* IncomeOrderCell.xib */; };
+		0474148D217868B900D589E8 /* WithdrawModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474148C217868B900D589E8 /* WithdrawModel.m */; };
 		047EBDA321742BAC00D17C1D /* ServiceIncomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 047EBDA221742BAC00D17C1D /* ServiceIncomeModel.m */; };
 		047EBDA621742BBE00D17C1D /* CommodityIncomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 047EBDA521742BBE00D17C1D /* CommodityIncomeModel.m */; };
 		047EBDA921742BDC00D17C1D /* SellIncomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 047EBDA821742BDC00D17C1D /* SellIncomeModel.m */; };
 		047EBDAC21742BEE00D17C1D /* AdditionalIncomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 047EBDAB21742BEE00D17C1D /* AdditionalIncomeModel.m */; };
 		047EBDAF217434F800D17C1D /* IncomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 047EBDAE217434F800D17C1D /* IncomeModel.m */; };
+		049BCF9E21797ACD00665191 /* RecordingDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049BCF9D21797ACD00665191 /* RecordingDetailsView.m */; };
+		049BCFA02179830D00665191 /* RecordingDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049BCF9F2179830D00665191 /* RecordingDetailsView.xib */; };
 		04EB02972175791E00703255 /* WithdrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB02952175791E00703255 /* WithdrawViewController.m */; };
 		04EB02982175791E00703255 /* WithdrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04EB02962175791E00703255 /* WithdrawViewController.xib */; };
 		04EB029B2175911200703255 /* VTCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EB029A2175911200703255 /* VTCodeView.m */; };
@@ -289,6 +299,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040A88D72176CAEF00A5001E /* AlipayInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlipayInfoViewController.h; sourceTree = "<group>"; };
+		040A88D82176CAEF00A5001E /* AlipayInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlipayInfoViewController.m; sourceTree = "<group>"; };
+		040A88D92176CAEF00A5001E /* AlipayInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlipayInfoViewController.xib; sourceTree = "<group>"; };
+		040A88DC2176CD4B00A5001E /* WeChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeChatViewController.h; sourceTree = "<group>"; };
+		040A88DD2176CD4B00A5001E /* WeChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeChatViewController.m; sourceTree = "<group>"; };
+		040A88DE2176CD4B00A5001E /* WeChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeChatViewController.xib; sourceTree = "<group>"; };
+		040A88E12177202C00A5001E /* RecordingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingViewController.h; sourceTree = "<group>"; };
+		040A88E22177202C00A5001E /* RecordingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingViewController.m; sourceTree = "<group>"; };
+		040A88E62177211100A5001E /* RecordingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingCell.h; sourceTree = "<group>"; };
+		040A88E72177211100A5001E /* RecordingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingCell.m; sourceTree = "<group>"; };
+		040A88E82177211100A5001E /* RecordingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordingCell.xib; sourceTree = "<group>"; };
 		0461E094215F1EC900DE9F8A /* IncomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncomeViewController.h; sourceTree = "<group>"; };
 		0461E095215F1EC900DE9F8A /* IncomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IncomeViewController.m; sourceTree = "<group>"; };
 		0461E096215F1EC900DE9F8A /* IncomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeViewController.xib; sourceTree = "<group>"; };
@@ -297,6 +318,8 @@
 		0461E09F215F424100DE9F8A /* IncomeOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncomeOrderCell.h; sourceTree = "<group>"; };
 		0461E0A0215F424100DE9F8A /* IncomeOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IncomeOrderCell.m; sourceTree = "<group>"; };
 		0461E0A1215F424100DE9F8A /* IncomeOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeOrderCell.xib; sourceTree = "<group>"; };
+		0474148B217868B900D589E8 /* WithdrawModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawModel.h; sourceTree = "<group>"; };
+		0474148C217868B900D589E8 /* WithdrawModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawModel.m; sourceTree = "<group>"; };
 		047EBDA121742BAC00D17C1D /* ServiceIncomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceIncomeModel.h; sourceTree = "<group>"; };
 		047EBDA221742BAC00D17C1D /* ServiceIncomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceIncomeModel.m; sourceTree = "<group>"; };
 		047EBDA421742BBE00D17C1D /* CommodityIncomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommodityIncomeModel.h; sourceTree = "<group>"; };
@@ -307,6 +330,9 @@
 		047EBDAB21742BEE00D17C1D /* AdditionalIncomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdditionalIncomeModel.m; sourceTree = "<group>"; };
 		047EBDAD217434F800D17C1D /* IncomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IncomeModel.h; sourceTree = "<group>"; };
 		047EBDAE217434F800D17C1D /* IncomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IncomeModel.m; sourceTree = "<group>"; };
+		049BCF9C21797ACD00665191 /* RecordingDetailsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingDetailsView.h; sourceTree = "<group>"; };
+		049BCF9D21797ACD00665191 /* RecordingDetailsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingDetailsView.m; sourceTree = "<group>"; };
+		049BCF9F2179830D00665191 /* RecordingDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordingDetailsView.xib; sourceTree = "<group>"; };
 		04EB02942175791E00703255 /* WithdrawViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawViewController.h; sourceTree = "<group>"; };
 		04EB02952175791E00703255 /* WithdrawViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawViewController.m; sourceTree = "<group>"; };
 		04EB02962175791E00703255 /* WithdrawViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawViewController.xib; sourceTree = "<group>"; };
@@ -767,6 +793,15 @@
 			path = "收益";
 			sourceTree = "<group>";
 		};
+		0474148A2178685900D589E8 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0474148B217868B900D589E8 /* WithdrawModel.h */,
+				0474148C217868B900D589E8 /* WithdrawModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		04EB02922175786400703255 /* IncomeModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -787,9 +822,24 @@
 		04EB02932175787D00703255 /* 提现 */ = {
 			isa = PBXGroup;
 			children = (
+				0474148A2178685900D589E8 /* model */,
 				04EB02942175791E00703255 /* WithdrawViewController.h */,
 				04EB02952175791E00703255 /* WithdrawViewController.m */,
 				04EB02962175791E00703255 /* WithdrawViewController.xib */,
+				040A88D72176CAEF00A5001E /* AlipayInfoViewController.h */,
+				040A88D82176CAEF00A5001E /* AlipayInfoViewController.m */,
+				040A88D92176CAEF00A5001E /* AlipayInfoViewController.xib */,
+				040A88DC2176CD4B00A5001E /* WeChatViewController.h */,
+				040A88DD2176CD4B00A5001E /* WeChatViewController.m */,
+				040A88DE2176CD4B00A5001E /* WeChatViewController.xib */,
+				040A88E12177202C00A5001E /* RecordingViewController.h */,
+				040A88E22177202C00A5001E /* RecordingViewController.m */,
+				049BCF9C21797ACD00665191 /* RecordingDetailsView.h */,
+				049BCF9D21797ACD00665191 /* RecordingDetailsView.m */,
+				049BCF9F2179830D00665191 /* RecordingDetailsView.xib */,
+				040A88E62177211100A5001E /* RecordingCell.h */,
+				040A88E72177211100A5001E /* RecordingCell.m */,
+				040A88E82177211100A5001E /* RecordingCell.xib */,
 			);
 			path = "提现";
 			sourceTree = "<group>";
@@ -1754,6 +1804,7 @@
 			files = (
 				360AA1A220EB561900E6DE17 /* ic_people.png in Resources */,
 				360AA1BE20EB9D0F00E6DE17 /* ic_hui_changxing.png in Resources */,
+				040A88DB2176CAEF00A5001E /* AlipayInfoViewController.xib in Resources */,
 				368A7A5A209B195300CA8DD0 /* ProjectCollectionViewCell.xib in Resources */,
 				360CAFF92148BEDA0059DF2E /* qr_bottom_left@2x.png in Resources */,
 				36AE7DFB20B552EA0079A4CC /* CodeNumberCell.xib in Resources */,
@@ -1795,6 +1846,7 @@
 				360CB00C2148BEDA0059DF2E /* qrcode_scan_btn_photo_down@2x.png in Resources */,
 				360CB00A2148BEDA0059DF2E /* qrcode_scan_btn_myqrcode_down@2x.png in Resources */,
 				36EF2FE920A47ACF005FFE1A /* AssessCollectionViewCell.xib in Resources */,
+				049BCFA02179830D00665191 /* RecordingDetailsView.xib in Resources */,
 				360AA19D20EB561900E6DE17 /* ic_background@2x.png in Resources */,
 				36FA66B920941F0B0069C105 /* YMDatePickerView.xib in Resources */,
 				360044CF2092C9C300BEDF73 /* AccountCell.xib in Resources */,
@@ -1830,6 +1882,7 @@
 				36D009DC20A13138008D1F53 /* OrderCell.xib in Resources */,
 				360CAFFE2148BEDA0059DF2E /* qr_scan_line@3x.png in Resources */,
 				360CB0082148BEDA0059DF2E /* qrcode_scan_btn_flash_down@2x.png in Resources */,
+				040A88EA2177211100A5001E /* RecordingCell.xib in Resources */,
 				36F4F18120B94732009CA642 /* SelectServiceCell.xib in Resources */,
 				360AA1C120EB9D0F00E6DE17 /* ic_shouci.png in Resources */,
 				360044D42092CA0100BEDF73 /* StoresCell.xib in Resources */,
@@ -1855,6 +1908,7 @@
 				360AA19F20EB561900E6DE17 /* ic_erweima.png in Resources */,
 				360AA1C220EB9D0F00E6DE17 /* ic_hui_xiubu.png in Resources */,
 				360CB0002148BEDA0059DF2E /* qr_top_left@3x.png in Resources */,
+				040A88E02176CD4B00A5001E /* WeChatViewController.xib in Resources */,
 				360AA19C20EB561900E6DE17 /* ic_background.png in Resources */,
 				360AA1A320EB561900E6DE17 /* ic_people@2x.png in Resources */,
 			);
@@ -1985,6 +2039,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040A88DA2176CAEF00A5001E /* AlipayInfoViewController.m in Sources */,
 				36FAC65F20B003080082F10E /* CommodityTypeModel.m in Sources */,
 				3623D58320D7B51A007799E3 /* FreeChangeAgainViewController.m in Sources */,
 				361CF5A020E370F1007DFA17 /* TireRepairBarCodeModel.m in Sources */,
@@ -2040,6 +2095,8 @@
 				36FA66BA20941F0B0069C105 /* YMDatePickerView.m in Sources */,
 				36B422CC20A56AB10062847F /* ShopDetailsViewController.m in Sources */,
 				3630E647213F7F8D005855A8 /* DeliveryOrderViewController.m in Sources */,
+				040A88E92177211100A5001E /* RecordingCell.m in Sources */,
+				049BCF9E21797ACD00665191 /* RecordingDetailsView.m in Sources */,
 				36E39B8D20F45B80001EC78F /* ShopPhotoView.m in Sources */,
 				04EB029B2175911200703255 /* VTCodeView.m in Sources */,
 				36AFA1A520A2EC85005835B0 /* ShopItemCollectionViewCell.m in Sources */,
@@ -2053,8 +2110,10 @@
 				361CF5A320E37A8B007DFA17 /* TirePhotoHeaderView.m in Sources */,
 				36AE7DF120B5166F0079A4CC /* FirstReplaceOrdersViewController.m in Sources */,
 				36AAFB7F20B6894E00F9775B /* MainStoresCell.m in Sources */,
+				040A88DF2176CD4B00A5001E /* WeChatViewController.m in Sources */,
 				36D009F520A17219008D1F53 /* ServiceRequest.m in Sources */,
 				360044C52092ACFB00BEDF73 /* EnrollmentViewController.m in Sources */,
+				0474148D217868B900D589E8 /* WithdrawModel.m in Sources */,
 				368A7A5E209B196800CA8DD0 /* ProjectCell.m in Sources */,
 				36AAFB9020B7B97B00F9775B /* SetingViewController.m in Sources */,
 				36AF39E720AEC7DC001BB89A /* ResetPwdRequest.m in Sources */,
@@ -2063,6 +2122,7 @@
 				36FE63B8209FF4DF00209196 /* UserViewController.m in Sources */,
 				36BA8B5120EE2272009373D0 /* CustomizeExampleViewController.m in Sources */,
 				360A9EF720EB1BB900E6DE17 /* MyCodeViewController.m in Sources */,
+				040A88E42177202C00A5001E /* RecordingViewController.m in Sources */,
 				368A7A62209B1A6400CA8DD0 /* ProjectLayout.m in Sources */,
 				36AAFB7B20B6533A00F9775B /* StoresHeadView.m in Sources */,
 				36EF2FE820A47ACF005FFE1A /* AssessCollectionViewCell.m in Sources */,
