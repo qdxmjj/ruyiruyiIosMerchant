@@ -22,7 +22,7 @@
 
 @property(nonatomic,copy)NSString *orderNO;
 
--(void)showWithSuperView:(UIView *)view;
+-(void)show;
 
 -(void)dismiss;
 

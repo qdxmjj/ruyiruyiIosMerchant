@@ -98,7 +98,7 @@
     rdView.date = [JJTools getTimestampFromTime:[NSString stringWithFormat:@"%@",model.applyTime] formatter:nil];
     rdView.orderNO = model.orderNo;
     
-    [rdView showWithSuperView:self.view];
+    [rdView show];
     
 }
 - (void)didReceiveMemoryWarning {

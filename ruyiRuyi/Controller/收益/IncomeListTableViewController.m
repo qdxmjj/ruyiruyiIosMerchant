@@ -154,6 +154,7 @@
         for (NSDictionary *dic in [data objectForKey:@"rows"]) {
             
             IncomeModel *model =  [IncomeModel initWithType:self.incomdeType];
+            
             [model setValuesForKeysWithDictionary:dic];
             
             [self.dataArr addObject:model];

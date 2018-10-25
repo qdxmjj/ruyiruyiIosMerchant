@@ -48,7 +48,7 @@
         self.payNameLab.text = @"微信提现";
     }
     
-    self.WithdrawalAmountLab.text = self.withdrawAmount;
+    self.WithdrawalAmountLab.text = [NSString stringWithFormat:@"%@ 元",self.withdrawAmount];
     
     NSString *statusStr  = [self.withdrawStatus integerValue] == 1?@"提现中":[self.withdrawStatus integerValue] == 2?@"提现成功":@"提现失败";
 
@@ -65,10 +65,10 @@
 
 
 #pragma mark - Action
--(void)showWithSuperView:(UIView *)view{
+-(void)show{
     
-    [view addSubview:self];
-    
+    [[UIApplication sharedApplication].keyWindow addSubview:self];
+
     self.mainView.transform = CGAffineTransformMakeScale(0.7, 0.7);
     
     // 弹簧动画，参数分别为：时长，延时，弹性（越小弹性越大），初始速度
