@@ -73,14 +73,12 @@
             self.alipayName = [incomeVCInfo objectForKey:@"realName"];
             self.alipayID = [incomeVCInfo objectForKey:@"iDNumber"];
             self.alipayAccount = [incomeVCInfo objectForKey:@"aliAccount"];
-            
-            self.bindingTime = [[incomeVCInfo objectForKey:@"bindingTime"] integerValue];
-            
+            self.bindingTime = [incomeVCInfo objectForKey:@"bindingTime"] == [NSNull null] ? 0 : [[incomeVCInfo objectForKey:@"bindingTime"] integerValue];
+//            NSLog(@"%ld",self.bindingTime);
         }else{
             
             NSLog(@"失败");
         }
-        
         
     } failure:^(NSError * _Nullable error) {
         
@@ -114,16 +112,18 @@
         wechatName = @"无名";
     }else if (self.wxBtn.selected){
         
-        if ([self.wechatStatusBen.titleLabel.text isEqualToString:@"未登录>"]) {
-            
-            [MBProgressHUD showTextMessage:@"请先授权微信登录，再进行提现！"];
-            return;
-        }
-        
-        payStatus = 2;
-
-        wechatID = self.wechatOpenID;
-        wechatName = self.wecahtNameLab.text;
+        [MBProgressHUD showTextMessage:@"暂不支持微信提现！"];
+        return;
+//        if ([self.wechatStatusBen.titleLabel.text isEqualToString:@"未登录>"]) {
+//
+//            [MBProgressHUD showTextMessage:@"请先授权微信登录，再进行提现！"];
+//            return;
+//        }
+//
+//        payStatus = 2;
+//
+//        wechatID = self.wechatOpenID;
+//        wechatName = self.wecahtNameLab.text;
     }else{
         
         [MBProgressHUD showTextMessage:@"请选择提现方式!"];
@@ -195,7 +195,6 @@
             if (!isCurrentMonth) {
                 
                 [MBProgressHUD showTextMessage:@"当月只允许解绑一次！"];
-
                 return;
             }
         }
@@ -264,31 +263,29 @@
 
 - (IBAction)weChatLogin:(UIButton *)sender{
     
-    VTCodeView *vtcodeView = [[VTCodeView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    [MBProgressHUD showTextMessage:@"暂不支持微信提现！"];
+    return;
     
-    vtcodeView.block = ^(BOOL status) {
-        
-        if (status) {
-            
-            WeChatViewController *wechatVC = [[WeChatViewController alloc]init];
-            
-            wechatVC.block = ^(NSString *name,NSString *openID) {
-                
-                [sender setTitle:@"解绑>" forState:UIControlStateNormal];
-                self.wecahtNameLab.text = name;
-                self.wechatOpenID = openID;
-            };
-            
-            [self.navigationController pushViewController:wechatVC animated:YES];
-            self.hidesBottomBarWhenPushed = YES;
-        }
-    };
-    
-    [vtcodeView showWithSuperView:self.view];
-
-    
-   
-
+//    VTCodeView *vtcodeView = [[VTCodeView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+//    
+//    vtcodeView.block = ^(BOOL status) {
+//        
+//        if (status) {
+//            
+//            WeChatViewController *wechatVC = [[WeChatViewController alloc]init];
+//            wechatVC.block = ^(NSString *name,NSString *openID) {
+//                
+//                [sender setTitle:@"解绑>" forState:UIControlStateNormal];
+//                self.wecahtNameLab.text = name;
+//                self.wechatOpenID = openID;
+//            };
+//            
+//            [self.navigationController pushViewController:wechatVC animated:YES];
+//            self.hidesBottomBarWhenPushed = YES;
+//        }
+//    };
+//    
+//    [vtcodeView showWithSuperView:self.view];
 }
 
 - (void)didReceiveMemoryWarning {

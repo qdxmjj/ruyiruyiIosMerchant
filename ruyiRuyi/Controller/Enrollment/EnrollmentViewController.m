@@ -337,8 +337,6 @@
         
         NSString *str = [NSString stringWithFormat:@"%@",[Pcell.selectItems componentsJoinedByString:@","]];//#为分隔符
 
-
-        
         [EnrollmentRequestData userEnrollmentWithReqjson:[JJTools convertToJsonData:reqJsonDic] serviceTypes:str photos:arr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
            
             [MBProgressHUD hideWaitViewAnimated:self.view];
@@ -353,9 +351,7 @@
             
             [MBProgressHUD hideWaitViewAnimated:self.view];
         }];
-        
     }
-    
 }
 
 

@@ -258,7 +258,6 @@
 		36FA66C620945FBD0069C105 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FA66C520945FBD0069C105 /* Security.framework */; };
 		36FA66C820945FC40069C105 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FA66C720945FC40069C105 /* libsqlite3.0.tbd */; };
 		36FA66CA20945FCA0069C105 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FA66C920945FCA0069C105 /* CoreTelephony.framework */; };
-		36FA66CC20945FD10069C105 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FA66CB20945FD10069C105 /* libstdc++.6.0.9.tbd */; };
 		36FA66CF2094615F0069C105 /* JJMapViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 36FA66CE2094615F0069C105 /* JJMapViewController.mm */; };
 		36FA66D2209469800069C105 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FA66D0209469800069C105 /* libcrypto.a */; };
 		36FA66D3209469800069C105 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FA66D1209469800069C105 /* libssl.a */; };
@@ -333,6 +332,7 @@
 		049BCF9C21797ACD00665191 /* RecordingDetailsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordingDetailsView.h; sourceTree = "<group>"; };
 		049BCF9D21797ACD00665191 /* RecordingDetailsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordingDetailsView.m; sourceTree = "<group>"; };
 		049BCF9F2179830D00665191 /* RecordingDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordingDetailsView.xib; sourceTree = "<group>"; };
+		04A1C2ED2189970C005B8F7A /* Xcode.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = Xcode.app; path = ../../../../Applications/Xcode.app; sourceTree = "<group>"; };
 		04EB02942175791E00703255 /* WithdrawViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawViewController.h; sourceTree = "<group>"; };
 		04EB02952175791E00703255 /* WithdrawViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawViewController.m; sourceTree = "<group>"; };
 		04EB02962175791E00703255 /* WithdrawViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawViewController.xib; sourceTree = "<group>"; };
@@ -742,7 +742,6 @@
 			files = (
 				36FA66D2209469800069C105 /* libcrypto.a in Frameworks */,
 				36FA66D3209469800069C105 /* libssl.a in Frameworks */,
-				36FA66CC20945FD10069C105 /* libstdc++.6.0.9.tbd in Frameworks */,
 				36FA66CA20945FCA0069C105 /* CoreTelephony.framework in Frameworks */,
 				36FA66C820945FC40069C105 /* libsqlite3.0.tbd in Frameworks */,
 				36FA66C620945FBD0069C105 /* Security.framework in Frameworks */,
@@ -1655,6 +1654,7 @@
 		6AA9A0B2BE466B1AE21C4195 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04A1C2ED2189970C005B8F7A /* Xcode.app */,
 				36FA66D0209469800069C105 /* libcrypto.a */,
 				36FA66D1209469800069C105 /* libssl.a */,
 				36FA66CB20945FD10069C105 /* libstdc++.6.0.9.tbd */,

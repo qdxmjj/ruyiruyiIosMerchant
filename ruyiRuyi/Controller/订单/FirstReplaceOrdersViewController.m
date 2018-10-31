@@ -144,18 +144,41 @@
     [super viewDidLoad];
 
     self.title = @"首次更换订单";
-    
     if (self.bottomViewH != 0) {
         
         [self.view addSubview:self.submitBtn];
-
     }else{
-
     }
-    
     [self.view addSubview:self.tableView];
 }
 
+-(void)viewWillLayoutSubviews{
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.and.right.mas_equalTo(self.view);
+        if (@available(iOS 11.0, *)) {
+            make.top.mas_equalTo(self.view.mas_safeAreaLayoutGuideTop); make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).inset(50);
+            
+        } else {
+            make.top.mas_equalTo(self.view.mas_top);
+            make.bottom.mas_equalTo(self.view.mas_bottom).inset(50);
+        }
+    }];
+    
+    [self.submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.and.right.mas_equalTo(self.view).inset(16);
+        make.top.mas_equalTo(self.tableView.mas_bottom);
+        if (@available(iOS 11.0, *)) {
+            
+            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).inset(10);
+        } else {
+            
+            make.bottom.mas_equalTo(self.view.mas_bottom).inset(10);
+        }
+    }];
+}
 
 -(NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
@@ -545,9 +568,6 @@
         
         _storeServiceTypes = @[@(StoreConfirmServiceType),@(StoreRefuseServiceType),@(clientSelfHelpServiceType)];
     }
-    
-    
-    
     return _storeServiceTypes;
 }
 
@@ -555,15 +575,15 @@
     
     if (!_tableView) {
         
-        CGRect frame;
-        if (KIsiPhoneX) {
-            frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-34-88-self.bottomViewH);
-        }else{
-            
-            frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-self.bottomViewH);
-        }
+//        CGRect frame;
+//        if (KIsiPhoneX) {
+//            frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-34-88-self.bottomViewH);
+//        }else{
+//
+//            frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-self.bottomViewH);
+//        }
         
-        _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         
@@ -588,14 +608,14 @@
     if (!_submitBtn) {
         
         _submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        if (KIsiPhoneX) {
-            
-            [_submitBtn setFrame:CGRectMake(16, SCREEN_HEIGHT-self.bottomViewH-88-34, SCREEN_WIDTH-32, self.bottomViewH)];
-            
-        }else{
-            
-            [_submitBtn setFrame:CGRectMake(16, SCREEN_HEIGHT-self.bottomViewH-64, SCREEN_WIDTH-32, self.bottomViewH)];
-        }
+//        if (KIsiPhoneX) {
+//            
+//            [_submitBtn setFrame:CGRectMake(16, SCREEN_HEIGHT-self.bottomViewH-88-34, SCREEN_WIDTH-32, self.bottomViewH)];
+//            
+//        }else{
+//            
+//            [_submitBtn setFrame:CGRectMake(16, SCREEN_HEIGHT-self.bottomViewH-64, SCREEN_WIDTH-32, self.bottomViewH)];
+//        }
         [_submitBtn setEnabled:self.buttonEnabled];
 
         [_submitBtn setTitle:self.buttonTitle forState:UIControlStateNormal];

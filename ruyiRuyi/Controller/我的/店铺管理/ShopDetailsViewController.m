@@ -45,20 +45,26 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-       
-        make.top.mas_equalTo(self.view.mas_top);
-        make.bottom.mas_equalTo(self.view.mas_bottom).inset(55);
-        make.width.mas_equalTo(SCREEN_WIDTH);
-    }];
-    
     [self.bottomBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.bottom.mas_equalTo(self.view.mas_bottom).inset(5);
+        if (@available(iOS 11.0, *)) {
+            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).inset(5);
+        } else {
+            make.bottom.mas_equalTo(self.view.mas_bottom).inset(5);
+        }
         make.left.mas_equalTo(self.view.mas_left).inset(10);
         make.right.mas_equalTo(self.view.mas_right).inset(10);
         make.height.mas_equalTo(40);
     }];
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.top.mas_equalTo(self.view.mas_top);
+        make.bottom.mas_equalTo(self.bottomBtn.mas_top);
+        make.width.mas_equalTo(SCREEN_WIDTH);
+    }];
+    
+
 }
 
 

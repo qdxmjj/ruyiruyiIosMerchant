@@ -133,7 +133,7 @@
         make.left.and.right.mas_equalTo(self.view);
         if (@available(iOS 11.0, *)) {
             make.top.mas_equalTo(self.view.mas_safeAreaLayoutGuideTop); make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).inset(50);
-
+            
         } else {
             make.top.mas_equalTo(self.view.mas_top);
             make.bottom.mas_equalTo(self.view.mas_bottom).inset(50);
@@ -145,13 +145,12 @@
         make.left.and.right.mas_equalTo(self.view).inset(16);
         make.top.mas_equalTo(self.tableView.mas_bottom);
         if (@available(iOS 11.0, *)) {
-            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).inset(10);
             
+            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).inset(10);
         } else {
 
             make.bottom.mas_equalTo(self.view.mas_bottom).inset(10);
         }
-        
     }];
 }
 

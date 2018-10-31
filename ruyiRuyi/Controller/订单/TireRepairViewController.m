@@ -220,18 +220,12 @@
         
         make.top.mas_equalTo(self.view.mas_top);
         make.width.mas_equalTo(self.view.mas_width);
-        
         if (self.repairTimesHidden) {
-            
             make.bottom.mas_equalTo(self.view.mas_bottom);
-
         }else{
-            
             make.bottom.mas_equalTo(self.submitBtn.mas_top);
         }
     }];
-    
-
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

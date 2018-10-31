@@ -18,7 +18,7 @@ typedef void (^requestSuccessBlock)( NSString * _Nullable code, NSString * _Null
 
 typedef void (^GL_requestSuccessBlock)( id _Nullable rows, _Nullable id total);
 
-typedef void (^interchangeableRequestSuccessBlock)(id data);
+typedef void (^interchangeableRequestSuccessBlock)(id _Nullable data);
 /**
  请求失败block
  */
