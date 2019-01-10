@@ -51,7 +51,6 @@
             make.centerX.mas_equalTo(self.mas_centerX);
             make.centerY.mas_equalTo(self.mas_centerY);
             make.width.and.height.mas_equalTo(CGSizeMake(self.frame.size.width-20,(self.frame.size.width-20)*0.7));
-            
         }];
         
         [self.selectBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -69,8 +68,6 @@
             make.left.and.right.mas_equalTo(self.mainView);
             make.bottom.mas_equalTo(self.selectBtn.mas_top);
         }];
-        
-
     }
     return self;
 }
@@ -90,7 +87,6 @@
             
             if (self.selectYear != self.year && self.selectYear != 0) {
 
-                
                 return 12;
             }
             if (_month < 12) {
@@ -107,12 +103,10 @@
     }
 }
 
-
 -(CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component{
     
     return 30.f;
 }
-
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     
@@ -123,7 +117,6 @@
             [pickerView reloadComponent:1];
             break;
         case 1:
-            
         default:
             break;
     }
@@ -131,21 +124,13 @@
 -(UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
     
     UILabel *lbl = (UILabel *)view;
-    
     if (lbl == nil) {
         
         lbl = [[UILabel alloc]init];
-        
-        //在这里设置字体相关属性
-        
         lbl.font = [UIFont systemFontOfSize:18.f];
-        
         lbl.textColor = [UIColor blackColor];
-        
         [lbl setTextAlignment:NSTextAlignmentCenter];
-        
         [lbl setBackgroundColor:[UIColor clearColor]];
-        
     }
     
     //重新加载lbl的文字内容
@@ -174,7 +159,6 @@
         
         lbl.text = [self pickerView:pickerView titleForRow:row forComponent:component];
     }
-    
     return lbl;
 }
 
@@ -216,17 +200,18 @@
 
 #pragma mark - Action
 -(void)showWithSuperView:(UIView *)view{
-    
-    [view addSubview:self];
-    
+    if (!view) {
+        [[UIApplication sharedApplication].keyWindow addSubview:self];
+    }else{
+        [view addSubview:self];
+    }
+
     self.mainView.transform = CGAffineTransformMakeScale(0.7, 0.7);
     
-    // 弹簧动画，参数分别为：时长，延时，弹性（越小弹性越大），初始速度
     [UIView animateWithDuration: 0.7 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.3 options:0 animations:^{
         // 放大
         self.mainView.transform = CGAffineTransformMakeScale(1, 1);
     } completion:nil];
-    
 }
 
 -(void)dismiss {
@@ -257,10 +242,8 @@
         _dataPickerView = [[UIPickerView alloc] init];
         _dataPickerView.delegate = self;
         [_dataPickerView selectRow:0 inComponent:0 animated:NO];
-        
         [_dataPickerView selectRow:0 inComponent:1 animated:NO];
     }
-    
     return _dataPickerView;
 }
 -(UIButton *)selectBtn{
@@ -271,10 +254,7 @@
         [_selectBtn setTitle:@"确定" forState:UIControlStateNormal];
         [_selectBtn setBackgroundColor:[JJTools getColor:@"#FF6623"]];
         [_selectBtn addTarget:self action:@selector(selectCity:) forControlEvents:UIControlEventTouchUpInside];
-        
     }
-    
-    
     return _selectBtn;
 }
 @end

@@ -12,7 +12,7 @@
 #import "WeChatViewController.h"
 #import "RecordingViewController.h"
 #import "AlipayInfoViewController.h"
-@interface WithdrawViewController ()
+@interface WithdrawViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *zfbBtn;
 @property (weak, nonatomic) IBOutlet UIButton *wxBtn;
 @property (weak, nonatomic) IBOutlet UILabel *alipayPhoneLab;
@@ -30,6 +30,8 @@
 @property (copy, nonatomic) NSString *wechatOpenID;
 
 @property (assign, nonatomic) NSInteger bindingTime;
+
+@property (copy, nonatomic) NSString *withdrawing;//每次只允许一笔提现订单
 @end
 
 @implementation WithdrawViewController
@@ -43,20 +45,18 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"记录" style:UIBarButtonItemStyleDone target:self action:@selector(pushWithdrawalsRecordViewController)];
     
-    
     [MBProgressHUD showWaitMessage:@"正在获取提现数据..." showView:self.view];
     
     [JJRequest interchangeablePostRequest:@"/incomeInfo/queryStoreAccountInfo" params:@{@"storeId":@([[UserConfig storeID] integerValue])} success:^(id data) {
         
         [MBProgressHUD hideWaitViewAnimated:self.view];
         
-        NSDictionary *incomeVCInfo = [data objectForKey:@"data"] == NULL ? @{}:[data objectForKey:@"data"];
-        
-        if (incomeVCInfo.count <=0) {
+        if ( !data || [data objectForKey:@"data"] == [NSNull null]) {
             
             [MBProgressHUD showTextMessage:@"数据异常！"];
             return ;
         }
+        NSDictionary *incomeVCInfo = [data objectForKey:@"data"];
         
         if ([[data objectForKey:@"isSuccess"] boolValue] == YES) {
             
@@ -74,10 +74,11 @@
             self.alipayID = [incomeVCInfo objectForKey:@"iDNumber"];
             self.alipayAccount = [incomeVCInfo objectForKey:@"aliAccount"];
             self.bindingTime = [incomeVCInfo objectForKey:@"bindingTime"] == [NSNull null] ? 0 : [[incomeVCInfo objectForKey:@"bindingTime"] integerValue];
+            self.withdrawing = [NSString stringWithFormat:@"%@",[incomeVCInfo objectForKey:@"withdrawing"]];
 //            NSLog(@"%ld",self.bindingTime);
         }else{
             
-            NSLog(@"失败");
+            [MBProgressHUD showTextMessage:@"获取失败！"];
         }
         
     } failure:^(NSError * _Nullable error) {
@@ -86,16 +87,60 @@
     }];
 }
 
-- (IBAction)withdrawEvent:(UIButton *)sender {
+- (IBAction)withdrawEvent:(UIButton *)sender{
     
-    if ([self.sumTextField.text integerValue] <=0) {
+    if (![self.withdrawing isEqualToString:@"0"]) {
         
-        [MBProgressHUD showTextMessage:@"请输入提现金额！"];
+        [MBProgressHUD showTextMessage:@"您当前有正在提现的订单！"];
         return;
     }
     
-    NSInteger payStatus = 0;
+    if([self.sumTextField.text rangeOfString:@"."].location == NSNotFound) {
+        
+        NSLog(@"str1不包含str2");
+        
+    } else {
+        NSArray *priceArr = [self.sumTextField.text componentsSeparatedByString:@"."];
+        
+        NSString *priceX = priceArr[1];
+        if (priceX.length>2 || priceArr.count>2 ||priceX.length == 0) {
+            
+            [MBProgressHUD showTextMessage:@"请输入正确的价格！"];
+            return;
+        }
+    }
     
+    NSDecimalNumberHandler *rounUp = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundBankers scale:2 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:YES];
+    
+    NSDecimalNumber *num_1 = [NSDecimalNumber decimalNumberWithString:self.sumTextField.text];
+    NSDecimalNumber *availableBalance = [NSDecimalNumber decimalNumberWithString:self.AvailableBalanceLab.text];
+
+    NSDecimalNumber *newNum = [num_1 decimalNumberByRoundingAccordingToBehavior:rounUp];
+    NSDecimalNumber *newAvailableBalance = [availableBalance decimalNumberByRoundingAccordingToBehavior:rounUp];
+
+    if ([newNum doubleValue] <= 0 ) {
+        
+        [MBProgressHUD showTextMessage:@"请输入正确的提现金额！"];
+        return;
+    }
+    
+    if ([newNum doubleValue] < 10) {
+        
+        [MBProgressHUD showTextMessage:@"最低提现10元！"];
+        return;
+    }
+    
+    if ([newNum doubleValue] > [newAvailableBalance doubleValue]) {
+        
+        [MBProgressHUD showTextMessage:@"提现金额不可大于可提现金额！"];
+        return;
+    }
+    
+    NSString *newPirce = [NSString stringWithFormat:@"%@",newNum];
+
+    NSLog(@"价格：%@",newPirce);
+    
+    NSInteger payStatus = 0;
     NSString *wechatID;
     NSString *wechatName;
     if (self.zfbBtn.selected) {
@@ -127,14 +172,20 @@
     }else{
         
         [MBProgressHUD showTextMessage:@"请选择提现方式!"];
-        
         return;
     }
     
-    NSDictionary *params = @{@"storeId":[UserConfig storeID],@"storeName":[UserConfig storeName],@"type":@(payStatus),@"availableMoney":self.AvailableBalanceLab.text,@"withdrawMoney":self.sumTextField.text,@"wxOpenId":wechatID,@"realName":wechatName};
+    [MBProgressHUD showWaitMessage:@"正在提现..." showView:self.view];
+    // 取当前版本的版号
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *currentVersion = [NSString stringWithFormat:@"SS%@",[infoDictionary objectForKey:@"CFBundleShortVersionString"]];
+    
+    NSDictionary *params = @{@"storeId":[UserConfig storeID],@"storeName":[UserConfig storeName],@"type":@(payStatus),@"availableMoney":self.AvailableBalanceLab.text,@"withdrawMoney":newPirce,@"wxOpenId":wechatID,@"realName":wechatName,@"appVersion":currentVersion};
 
     [JJRequest interchangeablePostRequest:@"/withdrawInfo/applyWithdrawOrder" params:params success:^(id data) {
 
+        [MBProgressHUD hideWaitViewAnimated:self.view];
+        
         if ([[data objectForKey:@"isSuccess"] boolValue] == YES) {
 
             [MBProgressHUD showTextMessage:@"发起提现申请成功！"];
@@ -146,9 +197,36 @@
         }
 
     } failure:^(NSError * _Nullable error) {
-
+        [MBProgressHUD hideWaitViewAnimated:self.view];
     }];
 }
+
+#pragma mark textfield dalegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+
+    if ([textField isEqual:self.sumTextField]) {
+
+        return [self validateNumber:string];
+    }
+    return YES;
+}
+
+- (BOOL)validateNumber:(NSString*)number {
+    BOOL res = YES;
+    NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789."];
+    int i = 0;
+    while (i < number.length) {
+        NSString * string = [number substringWithRange:NSMakeRange(i, 1)];
+        NSRange range = [string rangeOfCharacterFromSet:tmpSet];
+        if (range.length == 0) {
+            res = NO;
+            break;
+        }
+        i++;
+    }
+    return res;
+}
+
 
 -(void)pushWithdrawalsRecordViewController{
     
@@ -166,9 +244,12 @@
         return;
     }
     
+    if ([self.AvailableBalanceLab.text longLongValue] <0) {
+        
+        [MBProgressHUD showTextMessage:@"数据异常不可提现！"];
+        return;
+    }
     self.sumTextField.text = self.AvailableBalanceLab.text;
-    
-
 }
 - (IBAction)selectPayWay:(UIButton *)sender {
     
@@ -190,7 +271,7 @@
         
         if (self.bindingTime != 0 && self.bindingTime) {
         
-           BOOL isCurrentMonth = [JJTools isCurrentMonth:[NSString stringWithFormat:@"%ld",self.bindingTime]];
+            BOOL isCurrentMonth = [JJTools isCurrentMonth:[NSString stringWithFormat:@"%ld",(long)self.bindingTime]];
             
             if (!isCurrentMonth) {
                 

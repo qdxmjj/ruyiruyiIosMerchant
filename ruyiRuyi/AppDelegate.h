@@ -15,11 +15,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate,WXApiDelegate>{
     
     BMKMapManager* _mapManager;
-
 }
-
 @property (strong, nonatomic) UIWindow *window;
-
-
 @end
 

@@ -10,13 +10,18 @@
 
 @interface CommodityIncomeModel : IncomeModel
 
-@property(nonatomic,copy)NSString *actuallyPrice;
+@property(nonatomic,copy)NSString *commissions;
+@property(nonatomic,copy)NSString *createdBy;
+@property(nonatomic,copy)NSString *createdTime;
+@property(nonatomic,copy)NSString *ndeletedByo;
+@property(nonatomic,copy)NSString *deletedFlag;
+@property(nonatomic,copy)NSString *discountFlag;
 @property(nonatomic,copy)NSString *earnings;
-@property(nonatomic,copy)NSString *goodsCommissions;
-@property(nonatomic,copy)NSString *no;
-@property(nonatomic,copy)NSString *orderTypeId;
+@property(nonatomic,copy)NSString *earningsType;
+@property(nonatomic,copy)NSString *orderNo;
+@property(nonatomic,copy)NSString *orderType;
 @property(nonatomic,copy)NSString *storeId;
-@property(nonatomic,copy)NSString *storeName;
-@property(nonatomic,copy)NSString *time;
+@property(nonatomic,copy)NSString *totalCommissions;
+
 
 @end

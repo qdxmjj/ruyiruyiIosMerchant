@@ -32,7 +32,7 @@
 //条形码数据
 @property(nonatomic,strong)NSMutableArray *BarCodeArr;
 
-//轮胎照片数据源
+//轮胎照片cell 数据源 每个照片对应一条条形码
 @property(nonatomic,strong)NSMutableArray *tireRepairPhotoArr;
 
 //上传用 repairBarCodeList  选择修补的条形码数组
@@ -307,16 +307,19 @@
             JJWeakSelf
             cell.updateBlock = ^(CGFloat value) {
               
-
                 NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-                [dic addEntriesFromDictionary: weakSelf.submitBarCodeArr[indexPath.row]];
                 
-                [dic setValue:@(value) forKey:@"repairAmount"];
-                
+                //取得原始数据
+                [dic addEntriesFromDictionary: weakSelf.BarCodeArr[indexPath.row]];
+                //取得原始数量 + 现在修补数量 +0 +1 +2 +3
+                NSInteger count = [[dic objectForKey:@"repairAmount"] longLongValue] + value;
+                //替换当前数据 的 修补数量
+                [dic setValue:@(count) forKey:@"repairAmount"];
+                //替换原始数量模板submitBarCodeArr 对应条数据
                 [weakSelf.submitBarCodeArr replaceObjectAtIndex:indexPath.row withObject:dic];
                 
                 if (value) {
-                
+                    //+1 +2 +3
                     if ([weakSelf.tireRepairPhotoArr containsObject:[weakSelf.BarCodeArr[indexPath.row] objectForKey:@"barCode"]]) {
                     }else{
                         [weakSelf.tireRepairPhotoArr addObject:[weakSelf.BarCodeArr[indexPath.row] objectForKey:@"barCode"]];
@@ -325,11 +328,12 @@
                     }
                 }else{
                 
+                    // value == 0 执行此
                     [weakSelf.tireRepairPhotoArr removeObject:[weakSelf.BarCodeArr[indexPath.row] objectForKey:@"barCode"]];
                 
                     [tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:(UITableViewRowAnimationNone)];
                 }
-                
+
             };
             return cell;
         }
@@ -557,14 +561,29 @@
     
     NSMutableArray *repairBarCodeList = [NSMutableArray array];
     
-    for (NSMutableDictionary *barCodeDic in self.submitBarCodeArr) {
+    //此次没有修补的轮胎  不传递给后台  只传修补过的轮胎
+    for (int i = 0; i<self.submitBarCodeArr.count; i++) {
         
+        NSDictionary * barCodeDic = self.submitBarCodeArr[i];
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         
-        [dic setObject:[barCodeDic objectForKey:@"barCode"] forKey:@"barCode"];
-        [dic setObject:[barCodeDic objectForKey:@"repairAmount"] forKey:@"repairAmount"];
+        NSDictionary * oldBarCodeDic = self.BarCodeArr[i];
         
-        [repairBarCodeList addObject:dic];
+        NSInteger oldCount = [[oldBarCodeDic objectForKey:@"repairAmount"] integerValue];
+        NSInteger newCount = [[barCodeDic objectForKey:@"repairAmount"] integerValue];
+        
+        if (newCount > oldCount) {
+            
+            [dic setObject:[barCodeDic objectForKey:@"barCode"] forKey:@"barCode"];
+            [dic setObject:[barCodeDic objectForKey:@"repairAmount"] forKey:@"repairAmount"];
+            
+            [repairBarCodeList addObject:dic];
+        }else if (newCount<oldCount){
+            
+            [MBProgressHUD showTextMessage:@"数据异常！"];
+        }else{
+            
+        }
     }
     
     float imgCompressionQuality = 0.3;//图片压缩比例

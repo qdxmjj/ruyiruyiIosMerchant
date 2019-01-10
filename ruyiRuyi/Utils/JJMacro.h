@@ -25,13 +25,12 @@
 
 
 //测试版IP
-//#define RuYiRuYiIP  @"http://192.168.0.190:8060"  //龚林 测试
 //#define GL_RuYiRuYiIP  @"http://192.168.0.190:8030"  //龚林 测试发货ID
 #define GL_RuYiRuYiIP  @"http://180.76.243.205:10004"  //龚林  正式发货ID
 
 
-
-//#define RuYiRuYiIP  @"http://192.168.0.105:233"  //于鹏鹉 测试
+//#define RuYiRuYiIP  @"http://192.168.0.190:8060"  //龚林 测试
+//#define RuYiRuYiIP  @"http://192.168.0.60:8060"  //于鹏鹉 测试
 //#define RuYiRuYiIP  @"http://192.168.0.111:8060"  //于鹏鹉 测试
 //#define RuYiRuYiIP  @"http://192.168.0.167:8082/xmjj-webservice" // 测试
 
@@ -66,7 +65,7 @@
 #endif
 
 //登录信息key
-#define KstoreImgUrl    @"KstoreImgUrl"
+#define kStoreImgUrl    @"KstoreImgUrl"
 #define KproducerName    @"KproducerName"
 #define KstoreID    @"kstoreID"
 #define kArea       @"kArea"

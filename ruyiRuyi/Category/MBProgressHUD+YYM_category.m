@@ -40,8 +40,7 @@
 
 +(void)MBProgressHUDWithTextMessage:(NSString *)message {
     if ([UIApplication sharedApplication].keyWindow) {
-        
-        
+         
     }
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
     hud.label.text = message;

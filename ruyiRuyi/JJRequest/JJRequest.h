@@ -60,7 +60,6 @@ typedef void (^destinationBlock)(NSURL * _Nonnull documentUrl);
 
 + (void)interchangeablePostRequest:(NSString *_Nullable)url params:(NSDictionary *_Nullable)params success:(interchangeableRequestSuccessBlock _Nullable )successHandler failure:(requestFailureBlock _Nullable )failureHandler;
 
-
 /**
  PUT请求
  */
@@ -70,7 +69,6 @@ typedef void (^destinationBlock)(NSURL * _Nonnull documentUrl);
  DELETE请求
  */
 + (void)deleteRequest:(nonnull NSString *)url params:(NSDictionary *_Nullable )params success:(_Nullable requestSuccessBlock)successHandler failure:(_Nullable requestFailureBlock)failureHandler;
-
 
 /**
  下载文件，监听下载进度

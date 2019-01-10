@@ -98,7 +98,7 @@
     }
     NSString *dateString       = [formatter stringFromDate:[NSDate date]];
     return dateString;
-    
+
 }
 
 //获取当前时间戳 （以毫秒为单位）

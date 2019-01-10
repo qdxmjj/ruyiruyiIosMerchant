@@ -10,7 +10,6 @@
 #import "JJMacro.h"
 @implementation UserConfig
 
-
 +(void)userDefaultsSetObject:(id)object key:(NSString *)key{
     
     [[NSUserDefaults standardUserDefaults] setObject:object forKey:key];
@@ -25,39 +24,25 @@
         return NULL;
     }
 }
-
-
 +(NSString *)storeImgUrl{
     
-    
-    return [self userDefaultsGetObjectForKey:KstoreImgUrl];
+    return [self userDefaultsGetObjectForKey:kStoreImgUrl];
 }
 +(NSString *)producerName{
     
-    
-    
     return [self userDefaultsGetObjectForKey:KproducerName];
 }
-
 +(NSString *)storeID{
-    
-    
     return [self userDefaultsGetObjectForKey:KstoreID];
 }
-
 +(NSString *)storeName{
-    
     
     return [self userDefaultsGetObjectForKey:kStoreName];
 }
-
-
 +(NSString *)token{
-    
     
     return [self userDefaultsGetObjectForKey:kToken];
 }
-
 +(NSString *)phone{
     
     return [self userDefaultsGetObjectForKey:kPhone];

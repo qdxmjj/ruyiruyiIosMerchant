@@ -86,6 +86,8 @@
                         //绑定成功退出页面
                         self.block(self.alipayAccountTextField.text);
                         [self.navigationController popViewControllerAnimated:YES];
+                    }else{
+                        [MBProgressHUD showTextMessage:@"绑定失败！"];
                     }
                     
                 } failure:^(NSError * _Nullable error) {

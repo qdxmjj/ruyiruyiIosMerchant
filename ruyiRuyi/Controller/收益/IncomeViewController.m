@@ -182,6 +182,11 @@
 
 -(NSMutableAttributedString *)dateAttributedStringWithYear:(NSString *)year month:(NSString *)month{
     
+    if (month.length <=1) {
+        
+        month = [NSString stringWithFormat:@"0%@",month];
+    }
+    
     NSString *str = [NSString stringWithFormat:@"%@年\n%@月",year,month];
     NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:str];
     

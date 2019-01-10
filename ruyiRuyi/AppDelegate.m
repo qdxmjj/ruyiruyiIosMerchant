@@ -31,7 +31,10 @@ static NSString * const channel = @"App Store";
 static BOOL isProduction = true; //开发环境, true则为生产环境
 
 @interface AppDelegate ()<JPUSHRegisterDelegate>
+{
+    NSDictionary *_data;
 
+}
 @end
 
 @implementation AppDelegate
@@ -69,10 +72,7 @@ static BOOL isProduction = true; //开发环境, true则为生产环境
     }else{
         self.window.rootViewController = [[RootViewController alloc]init];
     }
-    
     [self.window makeKeyAndVisible];
-
-    
     //----------------- 百度地图 -------------------
     _mapManager = [[BMKMapManager alloc]init];
     // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
@@ -83,35 +83,28 @@ static BOOL isProduction = true; //开发环境, true则为生产环境
 
     //-----------------微信---------------------
     [WXApi registerApp:@"wxe7d25890f6c97a1a"];
-    
     //-----------------mob分享---------------------
     [JJShare ShareRegister];
-
     //-----------------腾讯bugly-------------------
     [self configureBugly];
-
-    
+    //-----------------f更新-------------------
+    [self checkVersion];
     //-----------------极光推送---------------------
     //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
-    
     entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
-    
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
         // 可以添加自定义categories
         // NSSet<UNNotificationCategory *> *categories for iOS10 or later
         // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
     }
-    
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     [JPUSHService setupWithOption:launchOptions appKey:JPushAppKey
                           channel:channel
                  apsForProduction:isProduction
             advertisingIdentifier:nil];
-    
     //未登录不注册别名
     if (yesOnNO) {
-        
         [JPUSHService setAlias:[UserConfig phone] completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
             
             NSLog(@"%ld   %@",(long)iResCode,iAlias);
@@ -120,19 +113,63 @@ static BOOL isProduction = true; //开发环境, true则为生产环境
    
     return YES;
 }
+- (void)checkVersion{
+    
+    //app store生成的地址
+    NSString *URL = @"https://itunes.apple.com/cn/lookup?id=1347670578";
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:URL]];
+    [request setHTTPMethod:@"POST"];
+    NSHTTPURLResponse *urlResponse = nil;
+    NSError *error = nil;
+    NSData *recervedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
+    
+    NSString *results = [[NSString alloc] initWithBytes:[recervedData bytes] length:[recervedData length] encoding:NSUTF8StringEncoding];
+    //NSLog(@"%@",results);
+    NSData *data = [results dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    //NSLog(@"%@",dic);
+    _data = dic;
+    NSArray *infoArray = [dic objectForKey:@"results"];
+    if ([infoArray count]) {
+        NSDictionary *releaseInfo = [infoArray objectAtIndex:0];
+        NSString *lastVersion = [releaseInfo objectForKey:@"version"];
+        
+        // 取当前版本的版号
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        NSString *currentVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+        NSLog(@"appstorversion:%@  产品版本:%@",lastVersion,currentVersion);
+        if ([currentVersion compare:lastVersion]==NSOrderedAscending) {// 比对版本号
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"发现新版本" message:@"是否前往更新" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                UIApplication *application = [UIApplication sharedApplication];
+                NSString *url = self->_data[@"results"][0][@"trackViewUrl"];
+                [application openURL:[NSURL URLWithString:url]];
+            }];
+//            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消更新" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//            }];
+            //0 不强制更新
+            [alertController addAction:ok];
+//            [alertController addAction:cancel];
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
+        }
+    }
+}
+
 
 #pragma mark -- bugly
 - (void)configureBugly {
     
     BuglyConfig *config = [[BuglyConfig alloc] init];
-    
     config.unexpectedTerminatingDetectionEnable = YES; //非正常退出事件记录开关，默认关闭
     config.reportLogLevel = BuglyLogLevelVerbose; //报告级别
     //config.deviceIdentifier = [UIDevice currentDevice].identifierForVendor.UUIDString; //设备标识
     config.blockMonitorEnable = YES; //开启卡顿监控
     config.blockMonitorTimeout = 5; //卡顿监控判断间隔，单位为秒
     //    config.delegate = self;
-    
 #if DEBUG
     config.debugMode = YES; //SDK Debug信息开关, 默认关闭
     config.channel = @"debug";

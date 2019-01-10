@@ -89,9 +89,7 @@
     [weakSelf getMyOrdersInfo:[NSString stringWithFormat:@"%ld",(long)weakSelf.pageNumber]];
 
     [weakSelf.tableView.mj_footer endRefreshing];
-    
 }
-
 
 -(void)getMyOrdersInfo:(NSString *)number{
     JJWeakSelf
@@ -160,9 +158,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    NSInteger orderType = [[self.dataArr[indexPath.row] objectForKey:@"orderType"] longLongValue];
+    NSInteger orderType = [[self.dataArr[indexPath.row] objectForKey:@"orderType"] integerValue];
     
-    NSInteger i =  [[self.dataArr[indexPath.row] objectForKey:@"orderState"] longLongValue];
+    NSInteger i =  [[self.dataArr[indexPath.row] objectForKey:@"orderState"] integerValue];
 
     OrderDetailsViewController *orderDetailsVC = [OrderFactory GenerateOrders:orderType orderStatus:i];
     

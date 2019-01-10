@@ -92,7 +92,6 @@
     [weakSelf.tableView.mj_header endRefreshing];
 }
 
-
 -(void)loadMoreData{
     JJWeakSelf
     
@@ -153,6 +152,7 @@
         
         for (NSDictionary *dic in [data objectForKey:@"rows"]) {
             
+            //之前四种收益类型 数据格式不一样 key不一致 所以使用此方法创建model
             IncomeModel *model =  [IncomeModel initWithType:self.incomdeType];
             
             [model setValuesForKeysWithDictionary:dic];
@@ -211,16 +211,16 @@
             
             ServiceIncomeModel *smodel = (ServiceIncomeModel *)model;
             
-            orderType = [smodel.orderTypeId integerValue];
-            orderNumber = smodel.no;
+            orderType = [smodel.orderType integerValue];
+            orderNumber = smodel.orderNo;
         }
             break;
         case CommodityIncomeType:{
             
             CommodityIncomeModel *cmodel = (CommodityIncomeModel *)model;
             
-            orderType = [cmodel.orderTypeId integerValue];
-            orderNumber = cmodel.no;
+            orderType = [cmodel.orderType integerValue];
+            orderNumber = cmodel.orderNo;
         }
             break;
         default:
@@ -233,7 +233,7 @@
         
         return;
     }
-    [orderDetailsVC getOrdersInfo:orderNumber orderType:[NSString stringWithFormat:@"%ld",orderType] storeId:[UserConfig storeID]];
+    [orderDetailsVC getOrdersInfo:orderNumber orderType:[NSString stringWithFormat:@"%ld",(long)orderType] storeId:[UserConfig storeID]];
     
     orderDetailsVC.popOrdersVCBlock = ^(BOOL isPop) {
         

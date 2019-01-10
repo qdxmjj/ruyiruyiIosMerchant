@@ -166,6 +166,7 @@
             
         }else if ([textField isEqual:self.priceField]){
             
+
             self.price = textField.text;
             
         }else if ([textField isEqual:self.amountField]){
@@ -227,7 +228,7 @@
 
 - (BOOL)validateNumber:(NSString*)number {
     BOOL res = YES;
-    NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+    NSCharacterSet* tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789."];
     int i = 0;
     while (i < number.length) {
         NSString * string = [number substringWithRange:NSMakeRange(i, 1)];
@@ -273,6 +274,27 @@
         
         [MBProgressHUD showTextMessage:@"库存不能为0！"];
         return;
+    }
+    
+    if([self.price rangeOfString:@"."].location == NSNotFound) {
+        
+        NSLog(@"str1不包含str2");
+        
+    } else {
+        NSArray *priceArr = [self.price componentsSeparatedByString:@"."];
+        
+        NSString *priceX = priceArr[1];
+        if (priceX.length>2 || priceArr.count>2 ||priceX.length == 0) {
+            
+            [MBProgressHUD showTextMessage:@"请输入正确的价格！"];
+            return;
+        }
+    }
+    
+
+    
+    if ([self.price componentsSeparatedByString:@"."]) {
+        
     }
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

@@ -72,7 +72,7 @@
         if ([code longLongValue]==111111) {
 
             [UserConfig userDefaultsSetObject:[data objectForKey:@"producerName"] key:KproducerName];
-            [UserConfig userDefaultsSetObject:[data objectForKey:@"storeImgUrl"] key:KstoreImgUrl];
+            [UserConfig userDefaultsSetObject:[data objectForKey:@"storeImgUrl"] key:kStoreImgUrl];
             [UserConfig userDefaultsSetObject:[data objectForKey:@"id"] key:KstoreID];
             [UserConfig userDefaultsSetObject:[data objectForKey:@"storeName"] key:kStoreName];
             [UserConfig userDefaultsSetObject:[data objectForKey:@"token"] key:kToken];

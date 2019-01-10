@@ -107,7 +107,7 @@
         }
     }
     
-//    NSLog(@"%@\n%@",self.defaultUpData,self.imgArr);
+    NSLog(@"%@\n%@",self.defaultUpData,_imgArr);
     [JJRequest GL_UpdateRequest:@"orderInfo/updateOrderPostStatusByStore" params:self.defaultUpData fileConfig:self.imgArr progress:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
         
         

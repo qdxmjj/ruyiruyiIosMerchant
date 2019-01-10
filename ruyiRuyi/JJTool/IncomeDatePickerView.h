@@ -11,7 +11,6 @@
 
 @protocol selectDateDelegate <NSObject>
 
-
 -(void)selectDateWithYear:(NSString *)year month:(NSString *)month;
 
 @end

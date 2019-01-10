@@ -211,7 +211,7 @@
             [StoresRequest updateStoreHeadImgByStoreIdWithInfo:@{@"storeId":[UserConfig storeID],@"headImgUrl":[UserConfig storeImgUrl]} headPhoto:@[[JJFileParam fileConfigWithfileData:imgData name:@"store_head_img" fileName:@"newheadPhoto.png" mimeType:@"image/jpg/png/jpeg"]] succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
     
     
-                [UserConfig userDefaultsSetObject:data key:KstoreImgUrl];
+                [UserConfig userDefaultsSetObject:data key:kStoreImgUrl];
     
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"updataHeadPhotoNotification" object:nil];
                 
