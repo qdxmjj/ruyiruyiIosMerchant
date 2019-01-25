@@ -36,7 +36,7 @@
     
     [self setController:ordersVC title:@"平台订单" imageString:@"ic_tubiao1" selectedImageString:@"ic_tubiao1_xuanzhong"];
     [self setController:storeVC title:@"店铺订单" imageString:@"ic_shop_weixuan" selectedImageString:@"ic_shop_xuanzhong"];
-    [self setController:incomeVC title:@"收益" imageString:@"ic_wode_weixuan" selectedImageString:@"ic_wode_xuanzhong"];
+    [self setController:incomeVC title:@"收益" imageString:@"ic_shouyi" selectedImageString:@"ic_shouyi_xz"];
     [self setController:myVC title:@"我的" imageString:@"ic_wode_weixuan" selectedImageString:@"ic_wode_xuanzhong"];
     
 

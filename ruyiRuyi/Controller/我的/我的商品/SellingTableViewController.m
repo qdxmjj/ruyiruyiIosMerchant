@@ -142,6 +142,15 @@
 
     editCommodity.amount = [NSString stringWithFormat:@"%@",[dic objectForKey:@"amount"]];
 
+    if ([[dic objectForKey:@"discountFlag"] integerValue] == 1) {
+        
+        editCommodity.isSale = YES;
+    }else{
+        editCommodity.isSale = NO;
+    }
+    editCommodity.OriginalPrice = [NSString stringWithFormat:@"%@",[dic objectForKey:@"originalPrice"]];
+    editCommodity.goods_description = [dic objectForKey:@"stockDesc"];
+    
     NSString *TypeID =  [dic objectForKey:@"serviceTypeId"];
     
     switch (TypeID.integerValue) {
@@ -204,8 +213,6 @@
         
         
     }];
-    
-    
 }
 
 

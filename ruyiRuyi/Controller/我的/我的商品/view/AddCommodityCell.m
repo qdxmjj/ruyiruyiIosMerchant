@@ -14,6 +14,23 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    [self.addCommoditySwitch addTarget:self action:@selector(isSpecialPriceGoods:) forControlEvents:UIControlEventTouchUpInside];
+}
+- (void)isSpecialPriceGoods:(UISwitch *)sender {
+    
+    if (sender.on) {
+        
+        if ([self.delegate respondsToSelector:@selector(addCommodityCell:isSpecialPriceGoods:)]) {
+            
+            [self.delegate addCommodityCell:self isSpecialPriceGoods:sender.on];
+        }
+    }else{
+        if ([self.delegate respondsToSelector:@selector(addCommodityCell:isSpecialPriceGoods:)]) {
+            
+            [self.delegate addCommodityCell:self isSpecialPriceGoods:NO];
+        }
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

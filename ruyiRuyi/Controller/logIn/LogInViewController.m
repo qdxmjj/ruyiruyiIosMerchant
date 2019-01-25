@@ -88,9 +88,7 @@
             } seq:0];
             
             [[UIApplication sharedApplication].keyWindow setRootViewController:[[RootViewController alloc]init]];
-            
         }
-        
         
     } failure:^(NSError * _Nullable error) {
 

@@ -17,7 +17,13 @@
 
 @property(nonatomic,copy)NSString *name;//商品名称
 
-@property(nonatomic,copy)NSString *price;//单价
+@property(nonatomic,copy)NSString *price;//现价
+
+@property(nonatomic,copy)NSString *OriginalPrice;//原价
+
+@property(nonatomic,copy)NSString *goods_description;//描述
+
+@property (nonatomic, assign) BOOL isSale;//是否特价商品
 
 @property(nonatomic,copy)NSString *status;//商品状态
 

@@ -99,6 +99,7 @@ static const CGFloat bottomH = 45;
     AddCommodityViewController *addVC = [[AddCommodityViewController alloc]init];
     addVC.aModel = self.Cmodel;
     addVC.bButtonTitle = @"提交商品";
+    addVC.isSale = NO;
     [self.navigationController pushViewController:addVC animated:YES];
     self.hidesBottomBarWhenPushed = YES;
 }

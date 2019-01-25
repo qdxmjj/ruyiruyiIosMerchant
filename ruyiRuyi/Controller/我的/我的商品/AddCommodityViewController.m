@@ -16,9 +16,12 @@
 #import <UIButton+WebCache.h>
 #define GrayColor [UIColor colorWithRed:255.f/255.f green:102.f/255.f blue:35.f/255.f alpha:1.f]
 
-@interface AddCommodityViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+
+@interface AddCommodityViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,addCommodityCellDelegate,UITextViewDelegate>
 {
     BOOL isEditPhotos;
+    
+    CGFloat cellHeight;
 }
 @property (strong, nonatomic)UIButton *headImgBtn;//显示商品头像按钮
 
@@ -42,6 +45,8 @@
 
 @property(nonatomic,strong)UITextField *priceField;
 
+@property(nonatomic,strong)UITextField *originalPriceField;
+
 @property(nonatomic,strong)UITextField *commodityTypeField;
 
 @end
@@ -60,14 +65,22 @@
     [self.view addSubview:self.addCommodityBtn];
     [self.view addSubview:self.goOnAddBtn];
     
-    self.titleArr =@[@"商品名称",@"单价",@"商品分类",@"库存",@"商品状态"];
-    self.textArr = @[@"请在此输入商品名称",@"请在此输入商品单价",@"请在此选择商品分类",@"请在此输入商品库存",@"请在此选择商品状态"];
+    if (self.isSale) {
+        
+        cellHeight = 40;
+        
+        self.titleArr =@[@"商品名称",@"单价",@"原价",@"设为特价商品",@"商品分类",@"库存",@"商品状态",@"商品描述"];
+        self.textArr = @[@"请在此输入商品名称",@"请在此输入商品单价",@"请在此输入商品原价",@"",@"请在此选择商品分类",@"请在此输入商品库存",@"请在此选择商品状态",@"请在此输入商品描述"];
+    }else{
+        self.titleArr =@[@"商品名称",@"单价",@"",@"设为特价商品",@"商品分类",@"库存",@"商品状态",@"商品描述"];
+        self.textArr = @[@"请在此输入商品名称",@"请在此输入商品单价",@"",@"",@"请在此选择商品分类",@"请在此输入商品库存",@"请在此选择商品状态",@"请在此输入商品描述"];
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     
-    return 5;
+    return self.titleArr.count;
 }
 
 -(NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
@@ -78,17 +91,37 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    NSString *identifier = @"";//对应xib中设置的identifier
+    NSInteger index = 0; //xib中第几个Cell
+    switch (indexPath.row) {
+        case 0:case 1:case 2:case 4:case 5:case 6:
+            identifier = @"addGoodsCell1";
+            index = 0;
+            break;
+        case 3:
+            identifier = @"addGoodsCell2";
+            index = 1;
+            break;
+        default:
+            identifier = @"addGoodsCell3";
+            index = 2;
+            break;
+    }
     
-    AddCommodityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contentCellID" forIndexPath:indexPath];
+    AddCommodityCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
-    cell.titleLab.text = self.titleArr[indexPath.row];
-    cell.textField.placeholder = self.textArr[indexPath.row];
-    
+    if (!cell) {
+        
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"AddCommodityCell" owner:self options:nil] objectAtIndex:index];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
     switch (indexPath.row) {
         case 0:
             cell.textField.text = self.name;
             self.nameField = cell.textField;
             [cell.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+            cell.titleLab.text = self.titleArr[indexPath.row];
+            cell.textField.placeholder = self.textArr[indexPath.row];
 
             break;
         case 1:
@@ -96,44 +129,111 @@
             cell.textField.delegate = self;
             self.priceField = cell.textField;
             [cell.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+            cell.titleLab.text = self.titleArr[indexPath.row];
+            cell.textField.placeholder = self.textArr[indexPath.row];
 
             break;
         case 2:
+            
+            cell.textField.text = self.OriginalPrice;
+            cell.textField.delegate = self;
+            self.originalPriceField = cell.textField;
+            [cell.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+            if (self.isSale) {
+                
+                cell.titleLab.textColor = [UIColor lightGrayColor];
+                cell.titleLab.textAlignment = NSTextAlignmentCenter;
+                cell.titleLab.font = [UIFont systemFontOfSize:13.f];
+            }
+            cell.titleLab.text = self.titleArr[indexPath.row];
+            cell.textField.placeholder = self.textArr[indexPath.row];
+            
+            break;
+        case 3:
+            
+            cell.cell1TitleLab.text = self.titleArr[indexPath.row];
+            cell.delegate = self;
+            
+            if (self.isSale) {
+                cell.addCommoditySwitch.on = YES;
+            }
+            
+            break;
+        case 4:
             cell.textField.text = self.commodityTypeText;
             cell.textField.delegate = self;
             self.commodityTypeField = cell.textField;
+            cell.titleLab.text = self.titleArr[indexPath.row];
+            cell.textField.placeholder = self.textArr[indexPath.row];
 
             break;
-        case 3:
+        case 5:
             cell.textField.text = self.amount;
             cell.textField.delegate = self;
             self.amountField = cell.textField;
             [cell.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+            cell.titleLab.text = self.titleArr[indexPath.row];
+            cell.textField.placeholder = self.textArr[indexPath.row];
 
             break;
-        case 4:
+        case 6:
             if (self.status) {
                 
                 cell.textField.text = [self.status longLongValue] == 1 ?@"在售":@"已下架";;
             }
             cell.textField.delegate = self;
             self.statusField = cell.textField;
+            cell.titleLab.text = self.titleArr[indexPath.row];
+            cell.textField.placeholder = self.textArr[indexPath.row];
+
+            break;
+        case 7:
+            cell.titleLab.text = self.titleArr[indexPath.row];
+            cell.contentLab.delegate = self;
+            cell.contentLab.text = self.goods_description;
             break;
             
         default:
             break;
     }
-
-    
     return cell;
-    
 }
 
+- (void)addCommodityCell:(AddCommodityCell *)cell isSpecialPriceGoods:(BOOL)on{
+    self.isSale = on;
+    if (on) {
+        self.titleArr =@[@"商品名称",@"单价",@"原价",@"设为特价商品",@"商品分类",@"库存",@"商品状态",@"商品描述"];
+        self.textArr = @[@"请在此输入商品名称",@"请在此输入商品单价",@"请在此输入商品原价",@"",@"请在此选择商品分类",@"请在此输入商品库存",@"请在此选择商品状态",@"请在此输入商品描述"];
+        cellHeight = 40.f;
+    }else{
+        
+        self.titleArr =@[@"商品名称",@"单价",@"",@"设为特价商品",@"商品分类",@"库存",@"商品状态",@"商品描述"];
+        self.textArr = @[@"请在此输入商品名称",@"请在此输入商品单价",@"",@"",@"请在此选择商品分类",@"请在此输入商品库存",@"请在此选择商品状态",@"请在此输入商品描述"];
+        cellHeight = 0.f;
+    }
+
+    [self.contentTableView reloadData];
+}
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(nonnull UITableViewCell *)cell forRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+//    if (indexPath.row == 3) {
+//
+//        AddCommodityCell *cell1 = (AddCommodityCell *)cell;
+//
+//        cell1.delegate = nil;
+//    }
+}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-    return 40.f;
+    if (indexPath.row == 7) {
+        
+        return 100;
+    }else if (indexPath.row == 2){
+        
+        return cellHeight;
+    }else{
+        return 40.f;
+    }
 }
 
 
@@ -143,18 +243,17 @@
 }
 
 #pragma mark textfield dalegate
+///限制输入
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
-    if ([textField isEqual:self.priceField]||[textField isEqual:self.amountField]) {
+    if ([textField isEqual:self.priceField]||[textField isEqual:self.amountField] || [textField isEqual:self.originalPriceField]) {
 
         return [self validateNumber:string];
     }
     
     return YES;
 }
-
-
-
+///输入实时赋值
 - (void)textFieldDidChange:(UITextField *)textField{
     
     if (textField.markedTextRange == nil) {
@@ -173,13 +272,25 @@
             
             self.amount = textField.text;
             
+        }else if ([textField isEqual:self.originalPriceField]){
+            
+            self.OriginalPrice = textField.text;
+        }else{
+            
         }
     }
     
     NSLog(@"text:%@",self.name);
 
 }
-
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if (textView.markedTextRange == nil) {
+        NSLog(@"text:%@", textView.text);
+        
+        self.goods_description = textView.text;
+    }
+}
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
@@ -256,20 +367,26 @@
 
 -(void)addCommodityEvent:(UIButton *)sender{
     
-    if (!self.ServicesId||!self.ServiceTypeId||!self.status||!self.name||!self.price||!self.amount) {
+    if (!self.ServicesId||!self.ServiceTypeId||!self.status||!self.name||!self.price||!self.amount||!self.OriginalPrice) {
         
         [MBProgressHUD showTextMessage:@"商品信息不完整!"];
         return;
 
     }
     
-    if (self.ServicesId.length<=0||self.ServiceTypeId.length<=0||self.status.length<=0||self.name.length<=0||self.price.length<=0||self.amount.length<=0) {
+    if (self.ServicesId.length<=0||self.ServiceTypeId.length<=0||self.status.length<=0||self.name.length<=0||self.price.length<=0||self.amount.length<=0||self.OriginalPrice.length<=0) {
         
         [MBProgressHUD showTextMessage:@"商品信息不完整!"];
         return;
         
     }
-    //[self.price isEqualToString:@"0"] ||
+    
+    if (self.goods_description.length<=0) {
+        
+        [MBProgressHUD showTextMessage:@"请输入描述信息"];
+        return;
+    }
+
     if ([self.amount isEqualToString:@"0"]) {
         
         [MBProgressHUD showTextMessage:@"库存不能为0！"];
@@ -290,8 +407,6 @@
             return;
         }
     }
-    
-
     
     if ([self.price componentsSeparatedByString:@"."]) {
         
@@ -318,15 +433,28 @@
             imgArr = nil;
         }
         
-        [MyCommodityRequest updateStockTypeWithInfo:@{
-                                                      @"id":self.statusID,
-                                                      @"storeId":[UserConfig storeID],
-                                                      @"name":self.name, @"serviceTypeId":self.ServiceTypeId, @"serviceId":self.ServicesId,
-                                                      @"amount":self.amount,
-                                                      @"price":self.price,
-                                                      @"status":self.status,
-                                                      @"imgUrl":self.imgUrl
-                                                      }
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        [params setObject:self.statusID forKey:@"id"];
+        [params setObject:[UserConfig storeID] forKey:@"storeId"];
+        [params setObject:self.name forKey:@"name"];
+        [params setObject:self.ServiceTypeId forKey:@"serviceTypeId"];
+        [params setObject:self.ServicesId forKey:@"serviceId"];
+        [params setObject:self.amount forKey:@"amount"];
+        [params setObject:self.price forKey:@"price"];
+        [params setObject:self.status forKey:@"status"];
+        [params setObject:self.imgUrl forKey:@"imgUrl"];
+        [params setObject:self.goods_description forKey:@"stockDesc"];
+        if (self.isSale) {
+            
+            [params setObject:self.OriginalPrice forKey:@"originalPrice"];
+            [params setObject:@"1" forKey:@"discountFlag"];
+        }else{
+            
+            [params setObject:@"0" forKey:@"discountFlag"];
+        }
+
+        
+        [MyCommodityRequest updateStockTypeWithInfo:params
           stock_img:imgArr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
            
               [hud hideAnimated:YES];
@@ -343,15 +471,25 @@
         //继续添加商品商品
         imgArr=@[[JJFileParam fileConfigWithfileData:licenseData name:@"stock_img" fileName:@"shangpin.png" mimeType:@"image/jpg/png/jpeg"]];
         
-        [MyCommodityRequest addCommodityWithInfo:@{
-                                                   @"storeId":[UserConfig storeID],
-                                                   @"name":self.name,
-                                                   @"serviceTypeId":self.ServiceTypeId,
-                                                   @"serviceId":self.ServicesId,
-                                                   @"amount":self.amount,
-                                                   @"price":self.price,
-                                                   @"status":self.status}
-     
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        [params setObject:[UserConfig storeID] forKey:@"storeId"];
+        [params setObject:self.name forKey:@"name"];
+        [params setObject:self.ServiceTypeId forKey:@"serviceTypeId"];
+        [params setObject:self.ServicesId forKey:@"serviceId"];
+        [params setObject:self.amount forKey:@"amount"];
+        [params setObject:self.price forKey:@"price"];
+        [params setObject:self.status forKey:@"status"];
+        [params setObject:self.goods_description forKey:@"stockDesc"];
+        if (self.isSale) {
+            
+            [params setObject:self.OriginalPrice forKey:@"originalPrice"];
+            [params setObject:@"1" forKey:@"discountFlag"];
+        }else{
+            
+            [params setObject:@"0" forKey:@"discountFlag"];
+        }
+        
+        [MyCommodityRequest addCommodityWithInfo:params
                                            hotos:imgArr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
                                                
                                                self.statusField.text = nil;
@@ -371,15 +509,26 @@
             //新增商品
             imgArr=@[[JJFileParam fileConfigWithfileData:licenseData name:@"stock_img" fileName:@"shangpin.png" mimeType:@"image/jpg/png/jpeg"]];
             
-            [MyCommodityRequest addCommodityWithInfo:@{
-                                                       @"storeId":[UserConfig storeID],
-                                                       @"name":self.name,
-                                                       @"serviceTypeId":self.ServiceTypeId,
-                                                       @"serviceId":self.ServicesId,
-                                                       @"amount":self.amount,
-                                                       @"price":self.price,
-                                                       @"status":self.status}
-             
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            [params setObject:[UserConfig storeID] forKey:@"storeId"];
+            [params setObject:self.name forKey:@"name"];
+            [params setObject:self.ServiceTypeId forKey:@"serviceTypeId"];
+            [params setObject:self.ServicesId forKey:@"serviceId"];
+            [params setObject:self.amount forKey:@"amount"];
+            [params setObject:self.price forKey:@"price"];
+            [params setObject:self.status forKey:@"status"];
+            [params setObject:self.goods_description forKey:@"stockDesc"];
+            if (self.isSale) {
+                
+                [params setObject:self.OriginalPrice forKey:@"originalPrice"];
+                [params setObject:@"1" forKey:@"discountFlag"];
+            }else{
+                
+                [params setObject:@"0" forKey:@"discountFlag"];
+            }
+            
+            
+            [MyCommodityRequest addCommodityWithInfo:params
                                                hotos:imgArr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
                                                    
                                                    [hud hideAnimated:YES];
@@ -455,18 +604,6 @@
 
 -(void)dealloc{
     
-//    self.name = nil;
-//    self.price = nil;
-//    self.statusID = nil;
-//    self.imgUrl = nil;
-//    self.status = nil;
-//    self.amount = nil;
-//    self.commodityTypeText = nil;
-//    self.ServicesId = nil;
-//    self.ServiceTypeId = nil;
-//    self.headerImg = nil;
-//    self.bButtonTitle = nil;
-//    self.aModel = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -538,10 +675,8 @@
     if (!_contentTableView) {
         
         _contentTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-        _contentTableView.scrollEnabled = NO;
         _contentTableView.delegate = self;
         _contentTableView.dataSource = self;
-        [_contentTableView registerNib:[UINib nibWithNibName:NSStringFromClass([AddCommodityCell class]) bundle:nil] forCellReuseIdentifier:@"contentCellID"];
     }
     return _contentTableView;
 }
