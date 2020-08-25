@@ -41,6 +41,8 @@ typedef void (^popOrdersVCBlock)(BOOL isPop);
  */
 -(void)getOrdersInfo:(NSString *)orderNo orderType:(NSString *)orderType storeId:(NSString *)storeId;
 
+@property (nonatomic, copy) NSString *orderNO;
+
 /**
  * 确认订单等选项完成后的回调
  */

@@ -37,7 +37,6 @@
             return ;
         }
         succrsshandler(code,message,data);
-
         
     } failure:^(NSError * _Nullable error) {
         

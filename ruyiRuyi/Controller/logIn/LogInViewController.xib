@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,7 +25,7 @@
                     <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vsm-R8-mSq">
-                    <rect key="frame" x="47" y="555.5" width="281" height="40"/>
+                    <rect key="frame" x="47" y="540.5" width="281" height="40"/>
                     <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="wSQ-rc-YIP"/>
@@ -58,16 +55,15 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的账号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oph-YF-fRg">
-                    <rect key="frame" x="87" y="309" width="231" height="25"/>
+                    <rect key="frame" x="87" y="299" width="231" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="B2Z-0z-EZH"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_zhanghao" translatesAutoresizingMaskIntoConstraints="NO" id="e0T-jD-cbs" userLabel="Image View Top">
-                    <rect key="frame" x="52" y="309" width="25" height="25"/>
+                    <rect key="frame" x="52" y="299" width="25" height="25"/>
                     <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="aYo-TT-PIX"/>
@@ -75,7 +71,7 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mima" translatesAutoresizingMaskIntoConstraints="NO" id="chJ-4y-qOR" userLabel="Image View Bottom">
-                    <rect key="frame" x="52.5" y="378" width="25" height="25"/>
+                    <rect key="frame" x="52" y="365.5" width="25" height="25"/>
                     <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="cZK-CO-rbC"/>
@@ -83,30 +79,29 @@
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkw-Vj-3ko" userLabel="ViewTop">
-                    <rect key="frame" x="47" y="343" width="281" height="1"/>
+                    <rect key="frame" x="47" y="333" width="281" height="1"/>
                     <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="A1O-Oa-ofN"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jce-ED-PeZ" userLabel="ViewBottom">
-                    <rect key="frame" x="47.5" y="412" width="281" height="1"/>
+                    <rect key="frame" x="47" y="399.5" width="281" height="1"/>
                     <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="7bI-Ce-OQl"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ql8-q4-RcK">
-                    <rect key="frame" x="87.5" y="378" width="231" height="25"/>
+                    <rect key="frame" x="87" y="365.5" width="231" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="Tyq-4C-RpP"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZc-Ab-7L0">
-                    <rect key="frame" x="249.5" y="430" width="69" height="33"/>
+                    <rect key="frame" x="249" y="417" width="69" height="33"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="69" id="lig-qX-Nbb"/>
                     </constraints>
@@ -118,7 +113,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeD-g6-mhX">
-                    <rect key="frame" x="47" y="495.5" width="281" height="40"/>
+                    <rect key="frame" x="47" y="480.5" width="281" height="40"/>
                     <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="YfB-YU-Toc"/>

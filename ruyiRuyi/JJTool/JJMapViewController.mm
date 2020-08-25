@@ -200,6 +200,8 @@
     
     BMKPoiInfo *info = result.poiList[0];
     self.storePosition = info.name;
+    
+    NSLog(@"%@",self.storePosition);
     self.bottomView.titleLab.text = info.name;
     self.bottomView.subTitleLab.text = info.address;
 }

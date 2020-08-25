@@ -173,15 +173,13 @@
     
     OrderDetailsViewController *orderDetailsVC = [OrderFactory GenerateOrders:orderType orderStatus:i];
     if (orderDetailsVC == nil) {
-        
         return;
     }
     [orderDetailsVC getOrdersInfo:[self.dataArr[indexPath.row] objectForKey:@"orderNo"] orderType:[self.dataArr[indexPath.row] objectForKey:@"orderType"] storeId:[UserConfig storeID]];
-    
+    orderDetailsVC.orderNO = [self.dataArr[indexPath.row] objectForKey:@"orderNo"];
     orderDetailsVC.popOrdersVCBlock = ^(BOOL isPop) {
         
         [weakSelf.tableview.mj_header beginRefreshing];
-
     };
     
     [self.navigationController pushViewController:orderDetailsVC animated:YES];

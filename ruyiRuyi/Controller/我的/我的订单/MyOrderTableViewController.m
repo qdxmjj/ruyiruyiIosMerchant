@@ -171,6 +171,7 @@
     
     [orderDetailsVC getOrdersInfo:[self.dataArr[indexPath.row] objectForKey:@"orderNo"] orderType:[self.dataArr[indexPath.row] objectForKey:@"orderType"] storeId:[UserConfig storeID]];
     
+    orderDetailsVC.orderNO = [self.dataArr[indexPath.row] objectForKey:@"orderNo"];
     orderDetailsVC.popOrdersVCBlock = ^(BOOL isPop) {
         
         [self.tableView.mj_header beginRefreshing];

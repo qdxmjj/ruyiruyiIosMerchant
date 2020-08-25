@@ -38,7 +38,7 @@
             succrsshandler(code,message,data);
         }
         
-        [MBProgressHUD showTextMessage:message];
+//        [MBProgressHUD showTextMessage:message];
 
         
     } failure:^(NSError * _Nullable error) {
@@ -56,7 +56,7 @@
             succrsshandler(code,message,data);
         }
 
-        [MBProgressHUD showTextMessage:message];
+//        [MBProgressHUD showTextMessage:message];
 
     } failure:^(NSError * _Nullable error) {
         
@@ -75,9 +75,6 @@
             return ;
         }
         succrsshandler(code,message,data);
-
-
-        
     } failure:^(NSError * _Nullable error) {
         
     }];
@@ -86,29 +83,15 @@
 
 +(void)userEnrollmentWithReqjson:(NSString *)reqJson serviceTypes:(NSString *)serviceTypeList photos:(NSArray <JJFileParam *> *)photos succrss:(requestSuccessBlock)succrsshandler failure:(requestFailureBlock)failureHandler{
     
-
-    
     [JJRequest updateRequest:@"registerStore" params:@{@"reqJson":reqJson,@"serviceTypeList":serviceTypeList} fileConfig:photos progress:^(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
-       
-        
-        
+           
     } success:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
-        
-
         succrsshandler(code,message,data);
-        
     } complete:^(id  _Nullable dataObj, NSError * _Nullable error) {
-        
         
         failureHandler(error);
     }];
-    
-    
-    
-    
-    
-    
 }
 
 @end

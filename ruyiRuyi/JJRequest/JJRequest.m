@@ -100,10 +100,16 @@
     [manager POST:[NSString stringWithFormat:@"%@/%@",RuYiRuYiIP,url] parameters:params progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject){
               
+        
+        NSArray *keys = [responseObject allKeys];
               NSString *code = [responseObject objectForKey:@"status"];
               NSString *message = [responseObject objectForKey:@"msg"];
-              id data = [responseObject objectForKey:@"data"];
+        id data = [keys containsObject:@"data"] ? [responseObject objectForKey:@"data"] : @{};
               
+        if ([data isKindOfClass:[NSNull class]]) {
+            
+            data = @{};
+        }
               successHandler(code,message,data);
               
           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -333,11 +339,13 @@
     
     [manager POST:[NSString stringWithFormat:@"%@/%@",RuYiRuYiIP,url] parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  formData) {
         
-        for (JJFileParam *upload in fileArray) {
-            
-            [formData appendPartWithFileData:upload.fileData name:upload.name fileName:upload.fileName mimeType:upload.mimeType];
+        if (params.count>0 && params != NULL) {
+         
+            for (JJFileParam *upload in fileArray) {
+                
+                [formData appendPartWithFileData:upload.fileData name:upload.name fileName:upload.fileName mimeType:upload.mimeType];
+            }
         }
-        
     } progress:^(NSProgress * _Nonnull uploadProgress){
         progressHandler(0,0,0);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -402,7 +410,5 @@
             [MBProgressHUD showError:@"网络错误，请重试！" integer:errorCode];
             break;
     }
-    
-    
 }
 @end

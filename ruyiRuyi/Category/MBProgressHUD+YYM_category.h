@@ -20,4 +20,6 @@
 
 +(void)showError:(NSString *)message integer:(NSInteger )ErrorCode;
 
++ (void)showTextMessage:(NSString *)message afterDelay:(CGFloat)delay;
+
 @end

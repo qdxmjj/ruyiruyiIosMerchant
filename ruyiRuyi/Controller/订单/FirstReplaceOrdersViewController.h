@@ -12,12 +12,15 @@
 @interface FirstReplaceOrdersViewController : OrderDetailsViewController
 
 
+///已废弃
+
 -(void)getOrdersInfo:(NSString *)orderNo orderType:(NSString *)orderType storeId:(NSString *)storeId;
 
 /**
  * 默认初始化方法
  */
 -(instancetype)initWithOrdersStatus:(orderState )orderState;
+
 
 
 @property(nonatomic,copy)popOrdersVCBlock popOrdersVCBlock;

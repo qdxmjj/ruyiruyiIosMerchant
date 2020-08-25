@@ -12,6 +12,8 @@
 #import "FirstReplaceOrdersViewController.h"
 #import "TireRepairViewController.h"
 #import "StoresOrderViewController.h"
+
+#import "FirstReplaceOrderViewController.h"
 typedef NS_ENUM(NSInteger,orderType) {
     
     OrderOrdinaryCommodityType = 1,//普通商品订单

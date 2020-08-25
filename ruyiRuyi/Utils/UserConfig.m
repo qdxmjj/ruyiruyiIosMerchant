@@ -24,6 +24,10 @@
         return NULL;
     }
 }
++(NSString *)address{
+    
+    return [self userDefaultsGetObjectForKey:@"address"];
+}
 +(NSString *)storeImgUrl{
     
     return [self userDefaultsGetObjectForKey:kStoreImgUrl];
@@ -46,5 +50,13 @@
 +(NSString *)phone{
     
     return [self userDefaultsGetObjectForKey:kPhone];
+}
+
++ (NSString *)testIP{
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"testIP"]) {
+        return [[NSUserDefaults standardUserDefaults] objectForKey:@"testIP"];
+    }else{
+        return @"http://192.168.31.44:8922/";
+    }
 }
 @end

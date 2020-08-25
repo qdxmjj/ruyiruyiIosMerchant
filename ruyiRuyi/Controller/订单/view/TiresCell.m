@@ -21,13 +21,21 @@
     
     self.shoeNameLab.text = model.shoeName;
     
-    NSString *fontRear = [model.fontRearFlag longLongValue] == 0 ?@"前胎/后胎":[model.fontRearFlag longLongValue] == 1?@"前胎":@"后胎";
+    NSString *fontRear = [model.fontRearFlag longLongValue] == 0 ? @"前胎/后胎":[model.fontRearFlag longLongValue] == 1?@"前胎":@"后胎";
     
     NSString *orderTypeS = [orderType longLongValue] == 1?@"普通商品购买":[orderType longLongValue] == 2?@"首次更换":[orderType longLongValue] == 3?@"免费再换":@"轮胎修补";
     
     self.fontRearFlagLab.text = [NSString stringWithFormat:@"更换位置：%@",fontRear];
     
-    self.fontAmountLab.text = [NSString stringWithFormat:@"更换数量：%@",model.fontAmount];
+    if ([model.fontRearFlag longLongValue] == 0) {
+        self.fontAmountLab.text = [NSString stringWithFormat:@"更换数量：%@",model.fontAmount];
+    }
+    if ([model.fontRearFlag longLongValue] == 1) {
+        self.fontAmountLab.text = [NSString stringWithFormat:@"更换数量：%@",model.fontAmount];
+    }
+    if ([model.fontRearFlag longLongValue] == 2) {
+        self.fontAmountLab.text = [NSString stringWithFormat:@"更换数量：%@",model.rearAmount];
+    }
     
     self.orderTypeLab.text = [NSString stringWithFormat:@"服务项目：%@",orderTypeS];
     

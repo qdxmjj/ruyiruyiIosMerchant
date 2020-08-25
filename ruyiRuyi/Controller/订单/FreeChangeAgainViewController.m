@@ -378,8 +378,7 @@
             
             TiresCell *cell = [tableView dequeueReusableCellWithIdentifier:@"freeChangAgainTiresCellID" forIndexPath:indexPath];
             
-            TiresModel *model = [[TiresModel alloc] init];
-            [model setValuesForKeysWithDictionary:self.tiresNumArr[indexPath.row]];
+            TiresModel *model = [TiresModel mj_objectWithKeyValues:self.tiresNumArr[indexPath.row]];
             [cell setTiresModel:model orderType:self.orderTypeStr];
             
             return cell;

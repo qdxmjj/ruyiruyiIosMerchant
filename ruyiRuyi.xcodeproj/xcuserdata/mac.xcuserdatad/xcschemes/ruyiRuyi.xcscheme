@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "36A8AE1B2091C6BE00A6E883"
-               BuildableName = "ruyiRuyi.app"
+               BuildableName = "&#x5982;&#x610f;&#x5982;&#x9a7f;&#x5546;&#x5bb6;&#x7248;.app"
                BlueprintName = "ruyiRuyi"
                ReferencedContainer = "container:ruyiRuyi.xcodeproj">
             </BuildableReference>
@@ -27,6 +27,15 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "36A8AE1B2091C6BE00A6E883"
+            BuildableName = "&#x5982;&#x610f;&#x5982;&#x9a7f;&#x5546;&#x5bb6;&#x7248;.app"
+            BlueprintName = "ruyiRuyi"
+            ReferencedContainer = "container:ruyiRuyi.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -49,20 +58,9 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "36A8AE1B2091C6BE00A6E883"
-            BuildableName = "ruyiRuyi.app"
-            BlueprintName = "ruyiRuyi"
-            ReferencedContainer = "container:ruyiRuyi.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -76,13 +74,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "36A8AE1B2091C6BE00A6E883"
-            BuildableName = "ruyiRuyi.app"
+            BuildableName = "&#x5982;&#x610f;&#x5982;&#x9a7f;&#x5546;&#x5bb6;&#x7248;.app"
             BlueprintName = "ruyiRuyi"
             ReferencedContainer = "container:ruyiRuyi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -95,14 +91,14 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "36A8AE1B2091C6BE00A6E883"
-            BuildableName = "ruyiRuyi.app"
+            BuildableName = "&#x5982;&#x610f;&#x5982;&#x9a7f;&#x5546;&#x5bb6;&#x7248;.app"
             BlueprintName = "ruyiRuyi"
             ReferencedContainer = "container:ruyiRuyi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Debug">
+      buildConfiguration = "Release">
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"

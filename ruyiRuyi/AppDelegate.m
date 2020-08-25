@@ -14,9 +14,12 @@
 #import "MyCommodityViewController.h"
 #import "JJMacro.h"
 #import "JJShare.h"
-#import <Bugly/Bugly.h>
+
 #import <AFNetworking.h>
 
+#import <AlipaySDK/AlipaySDK.h>
+
+#import <Bugly/Bugly.h>
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
 // iOS10注册APNs所需头文件
@@ -82,11 +85,13 @@ static BOOL isProduction = true; //开发环境, true则为生产环境
     }
 
     //-----------------微信---------------------
-    [WXApi registerApp:@"wxe7d25890f6c97a1a"];
+    [WXApi registerApp:@"wx50b5fdd4369dc4c4"
+    universalLink:@"https://xf62o.share2dlink.com/"];
+    
+    [Bugly startWithAppId:@"3df5353770"];
+    
     //-----------------mob分享---------------------
     [JJShare ShareRegister];
-    //-----------------腾讯bugly-------------------
-    [self configureBugly];
     //-----------------f更新-------------------
     [self checkVersion];
     //-----------------极光推送---------------------
@@ -113,6 +118,7 @@ static BOOL isProduction = true; //开发环境, true则为生产环境
    
     return YES;
 }
+
 - (void)checkVersion{
     
     //app store生成的地址
@@ -159,30 +165,94 @@ static BOOL isProduction = true; //开发环境, true则为生产环境
     }
 }
 
+#pragma mark pay
 
-#pragma mark -- bugly
-- (void)configureBugly {
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
     
-    BuglyConfig *config = [[BuglyConfig alloc] init];
-    config.unexpectedTerminatingDetectionEnable = YES; //非正常退出事件记录开关，默认关闭
-    config.reportLogLevel = BuglyLogLevelVerbose; //报告级别
-    //config.deviceIdentifier = [UIDevice currentDevice].identifierForVendor.UUIDString; //设备标识
-    config.blockMonitorEnable = YES; //开启卡顿监控
-    config.blockMonitorTimeout = 5; //卡顿监控判断间隔，单位为秒
-    //    config.delegate = self;
-#if DEBUG
-    config.debugMode = YES; //SDK Debug信息开关, 默认关闭
-    config.channel = @"debug";
-#else
-    config.channel = @"release";
-#endif
-    
-    [Bugly startWithAppId:@"3df5353770"
-#if DEBUG
-        developmentDevice:YES
-#endif
-                   config:config];
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+            if ([[resultDic objectForKey:@"resultStatus"] isEqualToString:@"9000"]) {
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"payStatus" object:nil];
+            }else{
+                
+                [MBProgressHUD showTextMessage:@"支付宝支付失败"];
+            }
+        }];
+    }
+    [WXApi handleOpenURL:url delegate:self];
+    return YES;
 }
+// NOTE: 9.0以后使用新API接口
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary *)options
+{
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+            if ([[resultDic objectForKey:@"resultStatus"] isEqualToString:@"9000"]) {
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"payStatus" object:nil];
+            }else{
+                
+                [MBProgressHUD showTextMessage:@"支付宝支付失败"];
+            }
+        }];
+    }
+    [WXApi handleOpenURL:url delegate:self];
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    
+    [WXApi handleOpenURL:url delegate:self];
+    return YES;
+}
+#pragma mark WXApiDelegate
+- (void)onResp:(BaseResp *)resp{
+    
+    //WXSuccess           = 0,    /**< 成功    */
+    //WXErrCodeCommon     = -1,   /**< 普通错误类型    */
+    //WXErrCodeUserCancel = -2,   /**< 用户点击取消并返回    */
+    //WXErrCodeSentFail   = -3,   /**< 发送失败    */
+    //WXErrCodeAuthDeny   = -4,   /**< 授权失败    */
+    //WXErrCodeUnsupport  = -5,   /**< 微信不支持    */
+    
+    if ([resp isKindOfClass:[SendAuthResp class]]) {
+        
+        if (resp.errCode == 0) {
+            
+            SendAuthResp *resp2 = (SendAuthResp *)resp;
+            NSDictionary *dict = @{@"key":resp2.code};
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"weiXinLoginCallBack" object:nil userInfo:dict];
+        }else{
+            
+            [MBProgressHUD showTextMessage:@"微信登录失败!"];
+        }
+    }else{
+        
+        if (resp.errCode == 0) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"payStatus" object:nil];
+        }else if (resp.errCode == -1){
+            [MBProgressHUD showTextMessage:@"普通错误类型！"];
+        }else if (resp.errCode == -2){
+            [MBProgressHUD showTextMessage:@"用户取消支付！"];
+        }else if (resp.errCode == -3){
+            [MBProgressHUD showTextMessage:@"发送失败！"];
+        }else if (resp.errCode == -4){
+            [MBProgressHUD showTextMessage:@"授权失败！"];
+        }else if (resp.errCode == -5){
+            [MBProgressHUD showTextMessage:@"微信不支持！"];
+        }
+    }
+}
+
+
 
 #pragma mark JPUSH Delegate
 // iOS 10 Support

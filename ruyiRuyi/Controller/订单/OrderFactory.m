@@ -29,7 +29,7 @@
             
         case OrderFirstReplaceType:{
             
-            produceOrder = [[FirstReplaceOrdersViewController alloc] initWithOrdersStatus:status];
+            produceOrder = [[FirstReplaceOrderViewController alloc] initWithOrdersStatus:status];
 
         }
             break;

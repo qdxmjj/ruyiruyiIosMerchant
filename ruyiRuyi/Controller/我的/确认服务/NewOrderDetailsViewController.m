@@ -305,6 +305,13 @@
         }
     }];
     
+    deCoderVC.ScanResult = ^(NSString *result, BOOL isSucceed) {
+        if (isSucceed) {
+            [cell.barCodeText setText:result];
+        }else{
+        }
+    };
+    
     [self presentViewController:deCoderVC animated:YES completion:nil];
 
 }

@@ -8,6 +8,8 @@
 
 #import "FirstReplaceOrdersViewController.h"
 
+#import "YMRequest.h"
+
 #import "CustomizeExampleViewController.h"
 #import "OrdersViewController.h"
 @interface FirstReplaceOrdersViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -46,6 +48,9 @@
 
 @property(nonatomic,assign)NSInteger bottomViewH;
 
+@property (nonatomic, assign) BOOL isYiZhi; ///前后轮是否一致
+@property (nonatomic, copy) NSString *font_shoe_id;///前轮id
+@property (nonatomic, copy) NSString *rear_shoe_id ;///后轮id
 
 @end
 
@@ -89,7 +94,7 @@
                 self.bottomViewH = 0;
                 self.CodeNumberCellDisplay = YES;
                 self.selectServiceCellDisplay = YES;
-                self.ordersPhotoCellDisplay = YES;
+//                self.ordersPhotoCellDisplay = YES; //2019-7-15 去掉了首次更换的车辆认证功能  拍照
                 break;
             case ordersStateInvalid:
                 
@@ -149,41 +154,48 @@
         [self.view addSubview:self.submitBtn];
     }else{
     }
+//    [self.view addSubview:self.submitBtn];
+
     [self.view addSubview:self.tableView];
+    
+    
+    [self setSubViewLayout];
 }
 
--(void)viewWillLayoutSubviews{
+-(void)setSubViewLayout{
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.and.right.mas_equalTo(self.view);
         if (@available(iOS 11.0, *)) {
-            make.top.mas_equalTo(self.view.mas_safeAreaLayoutGuideTop); make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).inset(50);
+            make.top.mas_equalTo(self.view.mas_safeAreaLayoutGuideTop); make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).inset(self.bottomViewH+10);
             
         } else {
             make.top.mas_equalTo(self.view.mas_top);
-            make.bottom.mas_equalTo(self.view.mas_bottom).inset(50);
+            make.bottom.mas_equalTo(self.view.mas_bottom).inset(self.bottomViewH + 10);
         }
     }];
-    
-    [self.submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.left.and.right.mas_equalTo(self.view).inset(16);
-        make.top.mas_equalTo(self.tableView.mas_bottom);
-        if (@available(iOS 11.0, *)) {
-            
-            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).inset(10);
-        } else {
-            
-            make.bottom.mas_equalTo(self.view.mas_bottom).inset(10);
-        }
-    }];
+    if (self.bottomViewH != 0) {
+        [self.submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+               
+               make.left.and.right.mas_equalTo(self.view).inset(16);
+               make.top.mas_equalTo(self.tableView.mas_bottom);
+               if (@available(iOS 11.0, *)) {
+                   
+                   make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).inset(10);
+               } else {
+                   
+                   make.bottom.mas_equalTo(self.view.mas_bottom).inset(10);
+               }
+           }];
+    }
+   
 }
 
 -(NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
     
     
-    return 5;
+    return 6;
 }
 
 -(NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -205,11 +217,17 @@
             break;
         case 2:
             
-
             return self.CodeNumberCellDisplay == NO? 0:self.codeNumArr.count>0?self.codeNumArr.count:0;
             
             break;
+            
         case 3:
+            if (self.isYiZhi) {
+                return 1;
+            }
+            return 3;
+            break;
+        case 4:
             
             if (self.ordersPhotoCellDisplay) {
                 
@@ -218,7 +236,7 @@
             
             return 0;
             break;
-        case 4:
+        case 5:
             
             return self.selectServiceCellDisplay == NO? 0:self.storeServiceTypes.count>0?self.storeServiceTypes.count:0;
             break;
@@ -265,11 +283,10 @@
             cell.statusButton.hidden = !self.switchHidden;
             return cell;
         }
-            
             break;
             
-        case 3:{
-            
+        case 4:{
+            //2015-7-15  已废弃
             OrdersPhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ordersPhotoCellID" forIndexPath:indexPath];
             
             cell.titleLab.text = @[@"行驶证照片",@"车辆照片"][indexPath.row];
@@ -280,7 +297,7 @@
         }
             break;
             
-        case 4:{
+        case 5:{
             
             SelectServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"selectServiceTypeCellID" forIndexPath:indexPath];
             
@@ -300,7 +317,7 @@
             break;
     }
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"nullCellID" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableviewcell_id" forIndexPath:indexPath];
     
     return cell;
 }
@@ -320,11 +337,11 @@
             
             return 50;
             break;
-        case 3:
+        case 4:
         
             return 112;
             break;
-        case 4:
+        case 5:
             
             return 40;
             break;
@@ -333,7 +350,7 @@
             break;
     }
     
-    return 1;
+    return 44;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -377,14 +394,57 @@
     return [UIView new];
 }
 
+- (void)getFontShoe{
+    
+    
+}
 
 -(void)getOrdersInfo:(NSString *)orderNo orderType:(NSString *)orderType storeId:(NSString *)storeId{
-    
     [super getOrdersInfo:orderNo orderType:orderType storeId:storeId];
     
-    [MainOrdersRequest getStoreOrderInfoByNoAndTypeWithInfo:@{@"orderNo":orderNo,@"orderType":orderType,@"storeId":storeId} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+    
+    __block NSInteger  taskCout = 0;
+    
+    [[YMRequest sharedManager] getRequest:@"order/getShoeIdByOrderNo" params:@{} success:^(NSInteger code, NSString * _Nullable message, id  _Nullable data) {
         
-        [MBProgressHUD hideWaitViewAnimated:self.view];
+        taskCout ++;
+        if (taskCout >= 2) {
+            [MBProgressHUD hideWaitViewAnimated:self.view];
+        }
+        if (code == 1) {
+            
+            for (NSDictionary *dic in data) {
+                
+                NSInteger type = [dic[@"user_deleted_flag"] integerValue];
+                
+                if (type == 0) {
+                    self.isYiZhi = YES;
+                    self.font_shoe_id = dic[@"font_shoe_id"];
+                }else if (type == 1){
+                    self.isYiZhi = NO;
+                    self.font_shoe_id = dic[@"font_shoe_id"];
+                }else if (type == 2){
+                    self.isYiZhi = NO;
+                    self.rear_shoe_id = dic[@"rear_shoe_id"];
+                }
+            }
+        }
+        if (taskCout >= 2) {
+            [self.tableView reloadData];
+        }
+    } failure:^(NSError * _Nullable error) {
+        taskCout ++;
+        if (taskCout >= 2) {
+            [MBProgressHUD hideWaitViewAnimated:self.view];
+        }
+    }];
+    
+    [MainOrdersRequest getStoreOrderInfoByNoAndTypeWithInfo:@{@"orderNo":orderNo,@"orderType":orderType,@"storeId":storeId} succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+        taskCout ++;
+
+        if (taskCout >= 2) {
+            [MBProgressHUD hideWaitViewAnimated:self.view];
+        }
         
         if (self.ordersContentArr.count>0) {
             
@@ -400,7 +460,6 @@
             
             [self.codeNumArr removeAllObjects];
         }
-
         
         [self.ordersContentArr addObject:[data objectForKey:@"userName"]];
         [self.ordersContentArr addObject:[data objectForKey:@"userPhone"]];
@@ -446,11 +505,15 @@
         
         [self.codeNumArr addObjectsFromArray:[data objectForKey:@"userCarShoeBarCodeList"]];
         
-        [self.tableView reloadData];
+        if (taskCout >= 2) {
+            [self.tableView reloadData];
+        }
         
     } failure:^(NSError * _Nullable error) {
-        
-        [MBProgressHUD hideWaitViewAnimated:self.view];
+        taskCout ++;
+        if (taskCout >= 2) {
+            [MBProgressHUD hideWaitViewAnimated:self.view];
+        }
     }];
 }
 
@@ -588,7 +651,8 @@
         _tableView.dataSource = self;
         
         [_tableView registerClass:[CodeNumheadView class] forHeaderFooterViewReuseIdentifier:@"codeNumHeadView"];
-        
+        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"tableviewcell_id"];
+
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([OrdersInfoCell class]) bundle:nil] forCellReuseIdentifier:@"ordersInfoCellID"];
         
         [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([TiresCell class]) bundle:nil] forCellReuseIdentifier:@"tiresCellID"];
@@ -608,14 +672,6 @@
     if (!_submitBtn) {
         
         _submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        if (KIsiPhoneX) {
-//            
-//            [_submitBtn setFrame:CGRectMake(16, SCREEN_HEIGHT-self.bottomViewH-88-34, SCREEN_WIDTH-32, self.bottomViewH)];
-//            
-//        }else{
-//            
-//            [_submitBtn setFrame:CGRectMake(16, SCREEN_HEIGHT-self.bottomViewH-64, SCREEN_WIDTH-32, self.bottomViewH)];
-//        }
         [_submitBtn setEnabled:self.buttonEnabled];
 
         [_submitBtn setTitle:self.buttonTitle forState:UIControlStateNormal];
@@ -633,8 +689,6 @@
         [_submitBtn setBackgroundColor:[UIColor lightGrayColor]];
         }
     }
-    
-    
     return _submitBtn;
 }
 
@@ -674,29 +728,31 @@
         serviceType = clientSelfHelpServiceType;
     }
     
-    OrdersPhotoCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
+    //2015-7-15 已废弃车辆认证功能 不在上传车辆照片
     
-    OrdersPhotoCell *cell1 = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:3]];
-
-    if (cell.selectPhotoBen.imageView.image == nil || cell1.selectPhotoBen.imageView.image == nil) {
-        
-        [MBProgressHUD hideWaitViewAnimated:self.view];
-        [MBProgressHUD showTextMessage:@"请选择车辆相关照片！"];
-        return;
-    }
+//    OrdersPhotoCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
+//
+//    OrdersPhotoCell *cell1 = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:3]];
+//
+//    if (cell.selectPhotoBen.imageView.image == nil || cell1.selectPhotoBen.imageView.image == nil) {
+//
+//        [MBProgressHUD hideWaitViewAnimated:self.view];
+//        [MBProgressHUD showTextMessage:@"请选择车辆相关照片！"];
+//        return;
+//    }
+//
+//    float imgCompressionQuality = 0.3;//图片压缩比例
+//
+//    NSData *drivingLicenseImgData=UIImageJPEGRepresentation(cell.selectPhotoBen.imageView.image, imgCompressionQuality);
+//
+//    NSData *carImgData=UIImageJPEGRepresentation(cell1.selectPhotoBen.imageView.image,  imgCompressionQuality);
+//
+//    NSArray <JJFileParam *> *arr=@[
+//                                   [JJFileParam fileConfigWithfileData:drivingLicenseImgData name:@"drivingLicenseImg" fileName:@"xingshizheng.png" mimeType:@"image/jpg/png/jpeg"],
+//                                   [JJFileParam fileConfigWithfileData:carImgData name:@"carImg" fileName:@"cheliang.png" mimeType:@"image/jpg/png/jpeg"]
+//                                   ];
     
-    float imgCompressionQuality = 0.3;//图片压缩比例
-    
-    NSData *drivingLicenseImgData=UIImageJPEGRepresentation(cell.selectPhotoBen.imageView.image, imgCompressionQuality);
-    
-    NSData *carImgData=UIImageJPEGRepresentation(cell1.selectPhotoBen.imageView.image,  imgCompressionQuality);
-    
-    NSArray <JJFileParam *> *arr=@[
-                                   [JJFileParam fileConfigWithfileData:drivingLicenseImgData name:@"drivingLicenseImg" fileName:@"xingshizheng.png" mimeType:@"image/jpg/png/jpeg"],
-                                   [JJFileParam fileConfigWithfileData:carImgData name:@"carImg" fileName:@"cheliang.png" mimeType:@"image/jpg/png/jpeg"]
-                                   ];
-    
-    [MainOrdersRequest confirmServrceTypeWithInfo:@{@"orderNo":self.ordersContentArr[5],@"serviceType":[NSString stringWithFormat:@"%ld",(long)serviceType],@"orderType":self.orderTypeStr} photos:arr succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
+    [MainOrdersRequest confirmServrceTypeWithInfo:@{@"orderNo":self.ordersContentArr[5],@"serviceType":[NSString stringWithFormat:@"%ld",(long)serviceType],@"orderType":self.orderTypeStr} photos:@[] succrss:^(NSString * _Nullable code, NSString * _Nullable message, id  _Nullable data) {
         
         [MBProgressHUD hideWaitViewAnimated:self.view];
 
@@ -706,7 +762,6 @@
     } failure:^(NSError * _Nullable error) {
         
         [MBProgressHUD hideWaitViewAnimated:self.view];
-
     }];
     
 //    NSLog(@"%@   %@",self.orderTypeStr,self.ordersContentArr[5]);

@@ -44,11 +44,26 @@
     }
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
     hud.label.text = message;
+//    hud.label.textColor = [UIColor lightGrayColor];
+    hud.label.numberOfLines = 0;
     hud.mode = MBProgressHUDModeText;
+    hud.animationType = MBProgressHUDAnimationFade;
     
     [hud showAnimated:YES];
     [hud hideAnimated:YES afterDelay:1.5];
     
     return;
 }
+
++ (void)showTextMessage:(NSString *)message afterDelay:(CGFloat)delay{
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+    hud.label.text = message;
+    hud.mode = MBProgressHUDModeText;
+    
+    [hud showAnimated:YES];
+    [hud hideAnimated:YES afterDelay:delay];
+    return;
+}
+
 @end

@@ -7,14 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface TiresModel : NSObject
+#import "BaseModel.h"
+@interface TiresModel : BaseModel
 
 @property(nonatomic,copy)NSString *shoeName;
 
 @property(nonatomic,copy)NSString *shoeImg;
 
 @property(nonatomic,copy)NSString *fontAmount;
+
+@property(nonatomic,copy)NSString *rearAmount;
 
 @property(nonatomic,copy)NSString *fontRearFlag;
 

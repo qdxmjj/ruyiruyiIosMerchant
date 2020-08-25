@@ -101,7 +101,6 @@ static CGFloat const topBtnH = 45;
         
         _contentScrView=[UIScrollView new];
         if (KIsiPhoneX) {
-            
             _contentScrView.frame = CGRectMake(0, topBtnH+2.5, SCREEN_WIDTH, SCREEN_HEIGHT-88-34-topBtnH);
         }else{
             _contentScrView.frame = CGRectMake(0, topBtnH+2.5, SCREEN_WIDTH, SCREEN_HEIGHT-64-topBtnH);

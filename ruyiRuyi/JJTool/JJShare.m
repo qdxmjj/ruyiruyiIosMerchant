@@ -12,34 +12,40 @@
 
 +(void)ShareRegister{
     
-    
-    [ShareSDK registerActivePlatforms:@[@(SSDKPlatformSubTypeWechatSession),@(SSDKPlatformSubTypeWechatTimeline)] onImport:^(SSDKPlatformType platformType) {
-        
-        switch (platformType) {
-            case SSDKPlatformTypeWechat:
-                
-                [ShareSDKConnector connectWeChat:[WXApi class]];
-                
-                break;
-                
-            default:
-                break;
-        }
-        
-    } onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
-        
-        switch (platformType) {
-            case SSDKPlatformTypeWechat:
-                
-                [appInfo SSDKSetupWeChatByAppId:@"wxe7d25890f6c97a1a" appSecret:@"e1d142170ca69c78838af93dbcdc6b1e"];
-                
-                break;
-                
-            default:
-                break;
-        }
-        
+    [ShareSDK registPlatforms:^(SSDKRegister *platformsRegister) {
+       
+        [platformsRegister setupWeChatWithAppId:@"wx50b5fdd4369dc4c4" appSecret:@"3fd265cba96ba3db8fbee5cfdec4d62e" universalLink:@"https://xf62o.share2dlink.com/"];
+
     }];
+    
+    
+//    [ShareSDK registerActivePlatforms:@[@(SSDKPlatformSubTypeWechatSession),@(SSDKPlatformSubTypeWechatTimeline)] onImport:^(SSDKPlatformType platformType) {
+//
+//        switch (platformType) {
+//            case SSDKPlatformTypeWechat:
+//
+//                [ShareSDKConnector connectWeChat:[WXApi class]];
+//
+//                break;
+//
+//            default:
+//                break;
+//        }
+//
+//    } onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
+//
+//        switch (platformType) {
+//            case SSDKPlatformTypeWechat:
+//
+//                [appInfo SSDKSetupWeChatByAppId:@"wxe7d25890f6c97a1a" appSecret:@"e1d142170ca69c78838af93dbcdc6b1e"];
+//
+//                break;
+//
+//            default:
+//                break;
+//        }
+//
+//    }];
 }
 
 

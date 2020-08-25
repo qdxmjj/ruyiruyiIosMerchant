@@ -9,6 +9,7 @@
 #import "LogInViewController.h"
 #import "ResetPwdViewController.h"
 #import "EnrollmentViewController.h"
+#import "RegisterViewController.h"
 #import "RootViewController.h"
 #import "LogInrequestData.h"
 
@@ -35,20 +36,26 @@
     [self.navigationController setNavigationBarHidden:isShowHomePage animated:YES];
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+ 
+    NSLog(@"%@",textField.text);
+    
+}
+
 - (IBAction)btnClickEvent:(UIButton *)sender {
     
     if ([sender.titleLabel.text isEqualToString:@"注册"]) {
         
-        [self.navigationController pushViewController:[[EnrollmentViewController alloc]init] animated:YES];
+//        [self.navigationController pushViewController:[[EnrollmentViewController alloc]init] animated:YES];
+        
+        [self.navigationController pushViewController:[[RegisterViewController alloc]init] animated:YES];
+
         
     }else if ([sender.titleLabel.text isEqualToString:@"忘记密码?"]){
         
         [self.navigationController pushViewController:[[ResetPwdViewController alloc]init] animated:YES];
-        
     }else{
-        
     }
-    
 }
 - (IBAction)landEvent:(UIButton *)sender {
     
@@ -80,11 +87,11 @@
             [UserConfig userDefaultsSetObject:[data objectForKey:@"phone"] key:kPhone];
 
             [UserConfig userDefaultsSetObject:@"yes" key:kFirstLogIn];
-            
+                        
             //登录注册别名用于指定推送
             [JPUSHService setAlias:[data objectForKey:@"phone"] completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
                 
-                NSLog(@"%ld   %@",iResCode,iAlias);
+                NSLog(@"%ld   %@",(long)iResCode,iAlias);
             } seq:0];
             
             [[UIApplication sharedApplication].keyWindow setRootViewController:[[RootViewController alloc]init]];
